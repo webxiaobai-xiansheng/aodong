@@ -1,0 +1,35 @@
+<template>
+  <!-- 取空料斗功能 -->
+  <div class="btn" @click="wxcButtonEmptySpritzerHopper">
+    <text class="btn-txt">取空料斗</text>
+  </div>
+</template>
+
+
+<script>
+// import { WxcButton } from 'weex-ui'
+export default {
+  // components: { WxcButton },
+  methods: {
+    wxcButtonEmptySpritzerHopper (e) {
+      console.log(e)
+    }
+  }
+}
+</script>
+
+<style scoped>
+.btn{
+  display: flex;
+  justify-content: center;
+  background-color:#0099ff;
+  width: 200px;
+  height: 100px;
+  border-radius: 10px;
+}
+.btn-txt{
+  text-align: center;
+  margin: 0 auto;
+  color: #fff;
+}
+</style>
