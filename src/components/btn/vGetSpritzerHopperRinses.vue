@@ -33,5 +33,6 @@ export default {
   text-align: center;
   margin: 0 auto;
   color: #fff;
+  font-size: 35px;
 }
 </style>

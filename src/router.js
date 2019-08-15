@@ -1,39 +1,72 @@
 /* global Vue */
 import Router from 'vue-router';
-// import vPopoverBatch from '@/components/vPopoverBatch';
-// import vPopoverMark from '@/components/vPopoverMark'
-// import vPopoverCapsule from '@/components/vPopoverCapsule'
-// import vPopoverPackage from '@/components/vPopoverPackage'
-// import vPopoverInside from '@/components/vPopoverInside'
-import vPopoverWay from '@/components/vPopoverWay'
+import login from '@/view/login';
+import home from '@/view/home';
+import batch from '@/view/home/batch';
+import granulating from '@/view/home/granulating';
+import capsule from '@/view/home/capsule';
+import laggingCover from '@/view/home/laggingCover';
+import insourcing from '@/view/home/insourcing';
+import wayStation from '@/view/home/wayStation';
+import cleaning from '@/view/home/cleaning';
 Vue.use(Router)
 
 export const router = new Router({
   routes: [
     // {
     //   path: '/',
-    //   name: 'vPopoverBatch',
-    //   component: vPopoverBatch
+    //   name: 'login',
+    //   component: login
     // },
-    // {
-    //   path: '/',
-    //   name: 'vPopoverMark',
-    //   component: vPopoverMark
-    // }
-    // {
-    //   path: '/',
-    //   name: 'vPopoverCapsule',
-    //   component: vPopoverCapsule
-    // }
-    // {
-    //   path: '/',
-    //   name: 'vPopoverInside',
-    //   component: vPopoverInside
-    // }
     {
       path: '/',
-      name: 'vPopoverWay',
-      component: vPopoverWay
+      name: 'home',
+      component: home,
+      redirect: { name: 'batch' },
+      children: [
+        // 批料待发间
+        {
+            path: '/batch',
+            name: 'batch',
+            component: batch
+        },
+        // 制粒间和总混间
+        // {
+        //   path: '/granulating',
+        //   name: 'granulating',
+        //   component: granulating
+        // },
+        // 胶囊间和压片间
+        // {
+        //   path: '/capsule',
+        //   name: 'capsule',
+        //   component: capsule
+        // },
+        // 包衣间
+        // {
+        //   path: '/laggingCover',
+        //   name: 'laggingCover',
+        //   component: laggingCover
+        // },
+        // 内包间
+        // {
+        //   path: '/insourcing',
+        //   name: 'insourcing',
+        //   component: insourcing
+        // },
+        // 中间站
+        // {
+        //   path: '/wayStation',
+        //   name: 'wayStation',
+        //   component: wayStation
+        // },
+        // 清洗间
+        // {
+        //   path: '/cleaning',
+        //   name: 'cleaning',
+        //   component: cleaning
+        // },
+      ]
     }
   ]
 })

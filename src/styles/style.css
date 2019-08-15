@@ -1,6 +1,10 @@
 
 /* 公共样式 begin */
-
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 /* table begin */
 .table_container {
 	width:710;

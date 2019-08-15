@@ -84,11 +84,6 @@
 </script>
 
 <style scope>
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 .btns{
   height: 100px;
   display: flex;
@@ -99,14 +94,15 @@
   display: flex;
   justify-content: center;
   background-color:#0099ff;
-  width: 200px;
-  height: 100px;
+  width: 150px;
+  height: 80px;
   border-radius: 10px;
 }
 .btn-txt{
   text-align: center;
   margin: 0 auto;
   color: #fff;
+  font-size: 35px;
 }
 .content{
   height: 300px;

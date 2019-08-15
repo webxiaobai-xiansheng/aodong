@@ -1,7 +1,5 @@
 <template>
   <div class="home">
-    <!-- <image :src="logo" class="logo" /> -->
-    <text class="greeting">批料待发间</text>
     <router-view/>
   </div>
 </template>
@@ -11,31 +9,73 @@ export default {
   name: 'App',
   data () {
     return {
-      logo: 'https://gw.alicdn.com/tfs/TB1yopEdgoQMeJjy1XaXXcSsFXa-640-302.png',
-      value:''
+      
     }
   },
 }
 </script>
 
 <style scoped>
-  .wrapper {
+  
+/* 公共样式 begin */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* table begin */
+.table_container {
+	width:710;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.table {
+    width: 710;
+    border-style: solid;
+    border-color: #333;
+    border-width: 1px;
+}
+
+.table_tr {
+    flex-direction: row;
+}
+
+.table_th {
+    width: 78.8;
+    height: 60;
+    border-style: solid;
+    border-color: #333;
+    border-right-width: 1px;
     justify-content: center;
     align-items: center;
-  }
-  .logo {
-    width: 424px;
-    height: 200px;
-  }
-  .greeting {
-    text-align: center;
-    margin-top: 70px;
-    font-size: 50px;
-    color: #41B883;
-  }
-  .message {
-    margin: 30px;
-    font-size: 32px;
-    color: #727272;
-  }
+    background-color: #ccc;
+}
+
+.font_16{
+    font-size: 16px;
+}
+
+.table_td {
+    width: 78.8;
+    height: 60;
+    border-style: solid;
+    border-color: #333;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    justify-content: center;
+    align-items: center;
+}
+.test_size{
+    font-size:12px;
+}
+
+.big_size{
+    font-size:16px;
+}
+/* table end */
+/* button begin */
+
+/* button end */
+/* 公共样式 end */
 </style>

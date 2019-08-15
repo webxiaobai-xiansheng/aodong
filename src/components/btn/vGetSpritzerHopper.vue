@@ -1,21 +1,19 @@
 <template>
   <!-- 送料斗功能 -->
-  <!-- <wxc-button text="送料斗" type="blue" size="small"
-              @wxcButtonClicked="wxcButtonGetSpritzerHopper"></wxc-button> -->
   <div>
     <div class="btn" @click="wxcButtonGetSpritzerHopper">
       <text class="btn-txt">送料斗</text>
     </div>
-    <!-- <wxc-mask height="800"
+    <wxc-mask height="800"
               width="702"
               border-radius="0"
               duration="200"
               mask-bg-color="#FFFFFF"
-              :has-animation="hasAnimation"
+              :has-animation="hasAnimation22"
               :has-overlay="true"
               :show-close="true"
-              :show="show"
-              @wxcMaskSetHidden="wxcMaskSetHidden">
+              :show="isShow"
+              @wxcMaskSetHidden="wxcMaskSetHidden22">
       <div class="content">
         <div class="demo-title">
           <text class="title">输入配料信息</text>
@@ -38,9 +36,11 @@
             <option value="audi">Audi</option>
           </select>
         </div>
-        <div>
-          <span>批号</span>
-          <input type="text">
+        <div class="inputBox">
+          <text class="input-title">编号</text>
+          <div class="input_box">
+            <input class="input_item" type="text" placeholder="编号" maxlength="6"/>  
+          </div>
         </div>
         <div>
           <span>日期</span>
@@ -66,7 +66,7 @@
           </select>
         </div>
       </div>
-    </wxc-mask> -->
+    </wxc-mask>
   </div>
 </template>
 
@@ -76,10 +76,10 @@ import { WxcMask,WxcPageCalendar } from 'weex-ui'
 export default {
   components: { WxcMask,WxcPageCalendar },
   data: () => ({
-      show: false,
+      isShow: false,
       overlayCanClose: true,
       isFalse: false,
-      hasAnimation: true,
+      hasAnimation22: true,
 
       animationType: 'push',
       selectedDate: ['2017-06-23', '2017-06-30'],
@@ -90,37 +90,39 @@ export default {
     }),
   methods: {
     wxcButtonGetSpritzerHopper (e) {
-      console.log(e)
+      // console.log(e)
+      console.log(1);
+      this.isShow=true;
     },
-    // openMask (e) {
-    //   this.show = true;
-    //   this.hasAnimation = true;
-    // },
-    // wxcMaskSetHidden () {
-    //   this.show = false;
-    // },
-    // openNoAnimationMask (e) {
-    //   this.show = true;
-    //   this.hasAnimation = false;
-    // },
-    // wxcPageCalendarDateSelected (e) {
-    //   this.selectedDate = e.date;
-    //   this.currentDate = e.date;
-    // },
-    // wxcPageCalendarBackClicked () {
-    // },
-    // showCalendar () {
-    //   this.isRange = false;
-    //   setTimeout(() => {
-    //     this.$refs['wxcPageCalendar'].show();
-    //   }, 10);
-    // },
-    // showReturnCalendar () {
-    //   this.isRange = true;
-    //   setTimeout(() => {
-    //     this.$refs['wxcPageCalendar'].show();
-    //   }, 10);
-    // }
+    openMask (e) {
+      this.isShow = true;
+      this.hasAnimation22 = true;
+    },
+    wxcMaskSetHidden22 () {
+      this.isShow = false;
+    },
+    openNoAnimationMask (e) {
+      this.isShow = true;
+      this.hasAnimation22 = false;
+    },
+    wxcPageCalendarDateSelected (e) {
+      this.selectedDate = e.date;
+      this.currentDate = e.date;
+    },
+    wxcPageCalendarBackClicked () {
+    },
+    showCalendar () {
+      this.isRange = false;
+      setTimeout(() => {
+        this.$refs['wxcPageCalendar'].show();
+      }, 10);
+    },
+    showReturnCalendar () {
+      this.isRange = true;
+      setTimeout(() => {
+        this.$refs['wxcPageCalendar'].show();
+      }, 10);
+    }
   }
 }
 </script>
@@ -138,5 +140,34 @@ export default {
   text-align: center;
   margin: 0 auto;
   color: #fff;
+  font-size: 35px;
+}
+
+.inputBox{
+  display: flex;
+  flex-direction: row;
+  
+}
+.input_box {
+  flex: 2;
+  border-style: solid;
+  border-width: 1;
+  border-color: #333;
+  border-radius: 10;
+  margin-bottom: 40;
+  padding-left: 20;
+}
+
+.input_item {
+  
+  height: 90px;
+}
+
+.input-title{
+  flex: 1;
+  text-align: center;
+  font-size: 35px;
+  height: 90px;
+  line-height: 90px;
 }
 </style>

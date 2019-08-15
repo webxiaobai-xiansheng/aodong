@@ -7,9 +7,7 @@
 
 
 <script>
-// import { WxcButton } from 'weex-ui'
 export default {
-  // components: { WxcButton },
   methods: {
     wxcButtonEmptySpritzerHopper (e) {
       console.log(e)
@@ -31,5 +29,6 @@ export default {
   text-align: center;
   margin: 0 auto;
   color: #fff;
+  font-size: 35px;
 }
 </style>
