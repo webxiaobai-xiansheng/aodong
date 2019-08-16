@@ -9,6 +9,9 @@ import laggingCover from '@/view/home/laggingCover';
 import insourcing from '@/view/home/insourcing';
 import wayStation from '@/view/home/wayStation';
 import cleaning from '@/view/home/cleaning';
+import jurisLogin from '@/view/home/jurisLogin';
+import popUp from '@/view/home/popUp';
+
 Vue.use(Router)
 
 export const router = new Router({
@@ -22,14 +25,15 @@ export const router = new Router({
       path: '/',
       name: 'home',
       component: home,
-      redirect: { name: 'batch' },
+      // redirect: { name: 'batch' },
+      redirect: { name: 'popUp' },
       children: [
         // 批料待发间
-        {
-            path: '/batch',
-            name: 'batch',
-            component: batch
-        },
+        // {
+        //     path: '/batch',
+        //     name: 'batch',
+        //     component: batch
+        // },
         // 制粒间和总混间
         // {
         //   path: '/granulating',
@@ -66,6 +70,19 @@ export const router = new Router({
         //   name: 'cleaning',
         //   component: cleaning
         // },
+        // 权限登录
+        // {
+        //   path: '/jurisLogin',
+        //   name: 'jurisLogin',
+        //   component:jurisLogin
+        // }
+        // 输入信息
+        {
+          path: '/popUp',
+          name: 'popUp',
+          component: popUp
+        }
+        
       ]
     }
   ]

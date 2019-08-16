@@ -2297,8 +2297,25 @@ module.exports = __vue_exports__
 var _require = __webpack_require__(27),
     router = _require.router;
 
-var App = __webpack_require__(386);
+var App = __webpack_require__(398);
 /* eslint-disable no-new */
+
+// 路由导航守卫
+// router.beforeEach((to, from, next) => {
+//   console.log(to)
+//   console.log(from)
+//     // let mycookie = sessionStorage.getItem('mycookie') || '';
+//     // if (mycookie) {
+//     //     next()
+//     // } else {
+//     //     if (to.path != '/login') {
+//     //         next({ path: '/login' })
+//     //     } else {
+//     //         next()
+//     //     }
+//     // }
+// })
+
 new Vue(Vue.util.extend({ el: '#root', router: router }, App));
 router.push('/');
 
@@ -2354,6 +2371,14 @@ var _cleaning = __webpack_require__(378);
 
 var _cleaning2 = _interopRequireDefault(_cleaning);
 
+var _jurisLogin = __webpack_require__(386);
+
+var _jurisLogin2 = _interopRequireDefault(_jurisLogin);
+
+var _popUp = __webpack_require__(390);
+
+var _popUp2 = _interopRequireDefault(_popUp);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /* global Vue */
@@ -2370,13 +2395,62 @@ var router = exports.router = new _vueRouter2.default({
     path: '/',
     name: 'home',
     component: _home2.default,
-    redirect: { name: 'batch' },
+    // redirect: { name: 'batch' },
+    redirect: { name: 'popUp' },
     children: [
     // 批料待发间
+    // {
+    //     path: '/batch',
+    //     name: 'batch',
+    //     component: batch
+    // },
+    // 制粒间和总混间
+    // {
+    //   path: '/granulating',
+    //   name: 'granulating',
+    //   component: granulating
+    // },
+    // 胶囊间和压片间
+    // {
+    //   path: '/capsule',
+    //   name: 'capsule',
+    //   component: capsule
+    // },
+    // 包衣间
+    // {
+    //   path: '/laggingCover',
+    //   name: 'laggingCover',
+    //   component: laggingCover
+    // },
+    // 内包间
+    // {
+    //   path: '/insourcing',
+    //   name: 'insourcing',
+    //   component: insourcing
+    // },
+    // 中间站
+    // {
+    //   path: '/wayStation',
+    //   name: 'wayStation',
+    //   component: wayStation
+    // },
+    // 清洗间
+    // {
+    //   path: '/cleaning',
+    //   name: 'cleaning',
+    //   component: cleaning
+    // },
+    // 权限登录
+    // {
+    //   path: '/jurisLogin',
+    //   name: 'jurisLogin',
+    //   component:jurisLogin
+    // }
+    // 输入信息
     {
-      path: '/batch',
-      name: 'batch',
-      component: _batch2.default
+      path: '/popUp',
+      name: 'popUp',
+      component: _popUp2.default
     }]
   }]
 });
@@ -27482,6 +27556,1212 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
+__vue_options__.__file = "C:\\Users\\IBM\\Desktop\\aodong\\src\\view\\home\\jurisLogin.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-68b1d764"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 387 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "login_content": {
+    "justifyContent": "center",
+    "alignItems": "center",
+    "flexDirection": "column"
+  },
+  "input_box": {
+    "flexDirection": "row",
+    "borderStyle": "solid",
+    "borderWidth": 1,
+    "borderColor": "#333333",
+    "borderRadius": 10,
+    "marginBottom": 40,
+    "paddingLeft": 20
+  },
+  "input_item": {
+    "width": "670",
+    "height": "90"
+  },
+  "button_box": {
+    "marginTop": "20"
+  },
+  "mask-content": {
+    "paddingTop": 20
+  },
+  "mask-title": {
+    "alignItems": "center"
+  },
+  "title": {
+    "fontSize": "28"
+  },
+  "mask-btns": {
+    "alignItems": "center",
+    "justifyContent": "center",
+    "flexDirection": "row"
+  },
+  "scroller-box": {
+    "height": 606,
+    "top": 0,
+    "right": 0,
+    "left": 0,
+    "bottom": 0
+  },
+  "workShop-confirm": {
+    "marginTop": "10"
+  }
+}
+
+/***/ }),
+/* 388 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _weexUi = __webpack_require__(1);
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var modal = weex.requireModule('modal');
+var navigator = weex.requireModule('navigator');
+exports.default = {
+    components: { WxcButton: _weexUi.WxcButton },
+    data: function data() {
+        return {
+            userName: '',
+            userPassword: ''
+        };
+    },
+    methods: {
+        // 账号、密码输入框输入内容后显示 “选择车间按钮”
+        // onInput() {
+        //     if (this.userName && this.userPassword) {
+        //         if (this.isWorkShopDisabled) {
+        //             this.isWorkShopDisabled = false
+        //         }
+        //     } else if (!this.isWorkShopDisabled) {
+        //         this.isWorkShopDisabled = true
+        //     }
+        // },
+
+        // 点击“车间选择”按钮
+        // choseWorkShop(e) {
+        //     this.show = true;
+        //     this.hasAnimation = true;
+        // },
+
+        // 选择车间
+        // wxcRadioListChecked(e) {
+        //     this.checkedInfo = e;
+        //     console.log(e.title);
+        //     console.log(e.title.length);
+        //     if (e.title.length < 1) {
+        //         this.isChoseDisabled = true;
+        //     } else {
+        //         this.isChoseDisabled = false;
+        //     }
+        // },
+
+        // 选择车间--确认按钮
+        // wxcChoseWorkShop() {
+        //     this.show = false;
+        //     this.isLoginDisabled = false;
+        // },
+
+        // 关闭弹窗
+        // wxcMaskSetHidden() {
+        //     this.show = false;
+        // },
+
+        // 登录按钮
+        onLogin: function onLogin() {
+            if (this.userName.length < 1) {
+                modal.toast({ message: '请输入账号' });
+            } else if (this.userPassword.length < 1) {
+                modal.toast({ message: '请输入密码' });
+            } else {
+                modal.toast({ message: '登录成功', duration: 3 });
+                this.$router.push({ name: 'batch' });
+                // navigator.push({
+                //         url: 'batch.html',
+                //         animated: 'true'
+                //     },
+                //     event => {
+                //         modal.toast({
+                //             message: 'callback:' + event
+                //         })
+                //     }
+                // )
+            }
+        },
+
+        // 返回按钮
+        onBlack: function onBlack() {}
+    }
+};
+
+/***/ }),
+/* 389 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["login_content"]
+  }, [_c('div', {
+    staticClass: ["login_input"]
+  }, [_c('div', {
+    staticClass: ["user_name", "input_box"]
+  }, [_c('input', {
+    staticClass: ["input_item"],
+    attrs: {
+      "type": "text",
+      "placeholder": "用户名称",
+      "value": (_vm.userName)
+    },
+    on: {
+      "input": function($event) {
+        _vm.userName = $event.target.attr.value
+      }
+    }
+  })]), _c('div', {
+    staticClass: ["user_password", "input_box"]
+  }, [_c('input', {
+    staticClass: ["input_item"],
+    attrs: {
+      "type": "password",
+      "placeholder": "密码",
+      "value": (_vm.userPassword)
+    },
+    on: {
+      "input": function($event) {
+        _vm.userPassword = $event.target.attr.value
+      }
+    }
+  })])]), _c('div', {
+    staticClass: ["button_box"]
+  }, [_c('wxc-button', {
+    attrs: {
+      "text": "登录",
+      "type": "blue"
+    },
+    on: {
+      "wxcButtonClicked": _vm.onLogin
+    }
+  })], 1), _c('div', {
+    staticClass: ["button_box"]
+  }, [_c('wxc-button', {
+    attrs: {
+      "text": "返回",
+      "type": "blue"
+    },
+    on: {
+      "wxcButtonClicked": _vm.onBlack
+    }
+  })], 1)])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 390 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(391)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(392)
+
+/* template */
+var __vue_template__ = __webpack_require__(397)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "C:\\Users\\IBM\\Desktop\\aodong\\src\\view\\home\\popUp.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-2ab9a3e0"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 391 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "table": {
+    "marginBottom": "40"
+  }
+}
+
+/***/ }),
+/* 392 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _vPopUp = __webpack_require__(393);
+
+var _vPopUp2 = _interopRequireDefault(_vPopUp);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+  data: function data() {
+    return {};
+  },
+
+  components: {
+    vPopUp: _vPopUp2.default
+  },
+  methods: {}
+}; //
+//
+//
+//
+//
+//
+//
+//
+
+/***/ }),
+/* 393 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(394)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(395)
+
+/* template */
+var __vue_template__ = __webpack_require__(396)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "C:\\Users\\IBM\\Desktop\\aodong\\src\\components\\btn\\vPopUp.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-206c7066"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 394 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "inputBox": {
+    "display": "flex",
+    "flexDirection": "row"
+  },
+  "input-title": {
+    "flex": 1,
+    "lineHeight": "60",
+    "textAlign": "center",
+    "fontSize": "30"
+  },
+  "input_box": {
+    "flex": 3,
+    "borderStyle": "solid",
+    "borderWidth": "1",
+    "borderColor": "#333333",
+    "borderRadius": "10",
+    "marginBottom": "40",
+    "paddingLeft": "20"
+  },
+  "input_item": {
+    "height": "60"
+  },
+  "button_box": {
+    "marginTop": "20"
+  },
+  "mask-content": {
+    "paddingTop": 20
+  },
+  "mask-title": {
+    "alignItems": "center"
+  },
+  "title": {
+    "fontSize": "28"
+  },
+  "mask-btns": {
+    "alignItems": "center",
+    "justifyContent": "center",
+    "flexDirection": "row"
+  },
+  "scroller-box": {
+    "height": 606,
+    "top": 0,
+    "right": 0,
+    "left": 0,
+    "bottom": 0
+  },
+  "workShop-confirm": {
+    "marginTop": "10"
+  }
+}
+
+/***/ }),
+/* 395 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _weexUi = __webpack_require__(1);
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var modal = weex.requireModule('modal');
+var navigator = weex.requireModule('navigator');
+exports.default = {
+    components: { WxcButton: _weexUi.WxcButton, WxcSearchbar: _weexUi.WxcSearchbar, WxcIcon: _weexUi.WxcIcon, WxcMask: _weexUi.WxcMask, WxcRadio: _weexUi.WxcRadio },
+    data: function data() {
+        return {
+            userName: '',
+            userPassword: '',
+            isWorkShopDisabled: true,
+            isLoginDisabled: true,
+            isChoseDisabled: true,
+            // 桶编号
+            showBucket: false,
+            hasAnimation: true,
+            // 状态
+            showstatus: false,
+            // 检验合格
+            showqualified: false,
+            // 产品名称
+            showproduct: false,
+            list: [{
+                title: '批料待发间',
+                value: 1
+            }, {
+                title: '制粒间',
+                value: 2
+            }, {
+                title: '总混间',
+                value: 3
+            }, {
+                title: '胶囊间A',
+                value: 4
+            }, {
+                title: '胶囊间B',
+                value: 5
+            }, {
+                title: '压片间',
+                value: 6
+            }, {
+                title: '包衣间',
+                value: 7
+            }, {
+                title: '铝塑包装A',
+                value: 8
+            }, {
+                title: '铝塑包装B',
+                value: 9
+            }, {
+                title: '铝塑包装C',
+                value: 10
+            }, {
+                title: '中间站',
+                value: 11
+            }, {
+                title: '清洗间',
+                value: 12
+            }],
+            status: [{
+                title: '原辅料',
+                value: 1
+            }, {
+                title: '未混颗粒',
+                value: 2
+            }, {
+                title: '已混颗粒',
+                value: 3
+            }, {
+                title: '待清洗',
+                value: 4
+            }, {
+                title: '已清洗',
+                value: 5
+            }],
+            qualified: [{
+                title: '合格',
+                value: 0
+            }, {
+                title: '不合格',
+                value: 1
+            }],
+            product: [{
+                title: '心脑舒通胶囊',
+                value: 0
+            }, {
+                title: '心脑舒通片',
+                value: 1
+            }, {
+                title: '复方益肝灵片',
+                value: 2
+            }, {
+                title: '心清脑止痛胶囊',
+                value: 3
+            }, {
+                title: '豨桐胶囊',
+                value: 4
+            }, {
+                title: '甘草锌胶囊',
+                value: 5
+            }, {
+                title: '清眩降压片',
+                value: 6
+            }, {
+                title: '通便灵胶囊',
+                value: 7
+            }, {
+                title: '乳酸左氧氟沙星胶囊',
+                value: 8
+            }, {
+                title: '六味地黄胶囊',
+                value: 9
+            }, {
+                title: '维格列汀片',
+                value: 10
+            }, {
+                title: '复方丹参片',
+                value: 11
+            }],
+            checkedInfo: { title: '选项2', value: 2 }
+        };
+    },
+    methods: {
+        // 桶编号
+        onBucket: function onBucket() {
+            console.log(1);
+            this.showBucket = true;
+            this.hasAnimation = true;
+            // if (this.userName && this.userPassword) {
+            //     if (this.isWorkShopDisabled) {
+            //         this.isWorkShopDisabled = false
+            //     }
+            // } else if (!this.isWorkShopDisabled) {
+            //     this.isWorkShopDisabled = true
+            // }
+        },
+
+        // 产品名称
+        onProduct: function onProduct() {
+            this.showproduct = true;
+            this.hasAnimation = true;
+        },
+
+        // 状态
+        onStatus: function onStatus() {
+            this.showstatus = true;
+            this.hasAnimation = true;
+        },
+
+        // 校验
+        onQalified: function onQalified() {
+            this.showqualified = true;
+            this.hasAnimation = true;
+        },
+
+        // 点击“车间选择”按钮
+        choseWorkShop: function choseWorkShop(e) {
+            this.showBucket = true;
+            this.hasAnimation = true;
+        },
+
+
+        // 选择桶号
+        wxcRadioBucket: function wxcRadioBucket(e) {
+            this.checkedInfo = e;
+            console.log(e.title);
+            this.userName = e.title;
+            console.log(this.userName);
+            console.log(e.title.length);
+            if (e.title.length < 1) {
+                this.isChoseDisabled = true;
+            } else {
+                this.isChoseDisabled = false;
+            }
+        },
+
+
+        // 选择桶号--确认按钮
+        wxcChoseBucket: function wxcChoseBucket() {
+            this.showBucket = false;
+            this.isLoginDisabled = false;
+        },
+
+
+        // 关闭桶号弹窗
+        wxcMaskBucket: function wxcMaskBucket() {
+            this.showBucket = false;
+        },
+
+
+        // 选择状态
+        wxcRadiostatus: function wxcRadiostatus(e) {
+            this.checkedInfo = e;
+            console.log(e.title);
+            console.log(e.title.length);
+            if (e.title.length < 1) {
+                this.isChoseDisabled = true;
+            } else {
+                this.isChoseDisabled = false;
+            }
+        },
+
+
+        // 选择状态--确认按钮
+        wxcChosestatus: function wxcChosestatus() {
+            this.showBucket = false;
+            this.isLoginDisabled = false;
+        },
+
+
+        // 关闭状态弹窗
+        wxcMaskstatus: function wxcMaskstatus() {
+            this.showBucket = false;
+        },
+
+
+        // 选择检验
+        wxcRadioqualified: function wxcRadioqualified(e) {
+            this.checkedInfo = e;
+            console.log(e.title);
+            this.userName = e.title;
+            console.log(this.userName);
+            console.log(e.title.length);
+            if (e.title.length < 1) {
+                this.isChoseDisabled = true;
+            } else {
+                this.isChoseDisabled = false;
+            }
+        },
+
+
+        // 选择检验--确认按钮
+        wxcChosequalified: function wxcChosequalified() {
+            this.showqualified = false;
+            this.isLoginDisabled = false;
+        },
+
+
+        // 关闭检验弹窗
+        wxcMaskqualified: function wxcMaskqualified() {
+            this.showqualified = false;
+        },
+
+
+        // 选择产品名称
+        wxcRadioproduct: function wxcRadioproduct(e) {
+            this.checkedInfo = e;
+            console.log(e.title);
+            console.log(e.title.length);
+            if (e.title.length < 1) {
+                this.isChoseDisabled = true;
+            } else {
+                this.isChoseDisabled = false;
+            }
+        },
+
+
+        // 选择产品名称--确认按钮
+        wxcChoseproduct: function wxcChoseproduct() {
+            this.showproduct = false;
+            this.isLoginDisabled = false;
+        },
+
+
+        // 关闭产品名称弹窗
+        wxcMaskproduct: function wxcMaskproduct() {
+            this.showproduct = false;
+        },
+        wxcSearchbarInputDisabledClicked: function wxcSearchbarInputDisabledClicked() {},
+
+
+        // 登录按钮
+        login: function login() {
+            if (this.userName.length < 1) {
+                modal.toast({ message: '请输入账号' });
+            } else if (this.userPassword.length < 1) {
+                modal.toast({ message: '请输入密码' });
+            } else {
+                modal.toast({ message: '登录成功', duration: 3 });
+                this.$router.push({ name: 'batch' });
+                // navigator.push({
+                //         url: 'batch.html',
+                //         animated: 'true'
+                //     },
+                //     event => {
+                //         modal.toast({
+                //             message: 'callback:' + event
+                //         })
+                //     }
+                // )
+            }
+        }
+    }
+};
+
+/***/ }),
+/* 396 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["login_content"]
+  }, [_c('div', {
+    staticClass: ["login_input"]
+  }, [_c('div', {
+    staticClass: ["inputBox"]
+  }, [_c('text', {
+    staticClass: ["input-title"]
+  }, [_vm._v("桶编号")]), _c('div', {
+    staticClass: ["input_box"]
+  }, [_c('input', {
+    staticClass: ["input_item"],
+    attrs: {
+      "disabled": "disabled",
+      "placeholder": "桶编号",
+      "value": (_vm.userName)
+    },
+    on: {
+      "focus": _vm.onBucket,
+      "input": function($event) {
+        _vm.userName = $event.target.attr.value
+      }
+    }
+  })])]), _c('div', {
+    staticClass: ["user_password", "input_box"]
+  }, [_c('span', [_vm._v("产品名称")]), _c('input', {
+    staticClass: ["input_item"],
+    attrs: {
+      "type": "password",
+      "placeholder": "密码",
+      "maxlength": "8",
+      "value": (_vm.userPassword)
+    },
+    on: {
+      "change": _vm.onProduct,
+      "input": function($event) {
+        _vm.userPassword = $event.target.attr.value
+      }
+    }
+  })]), _c('div', {
+    staticClass: ["user_password", "input_box"]
+  }, [_c('span', [_vm._v("批号")]), _c('input', {
+    staticClass: ["input_item"],
+    attrs: {
+      "type": "password",
+      "placeholder": "密码",
+      "maxlength": "8",
+      "value": (_vm.userPassword)
+    },
+    on: {
+      "input": function($event) {
+        _vm.userPassword = $event.target.attr.value
+      }
+    }
+  })]), _c('div', {
+    staticClass: ["user_password", "input_box"]
+  }, [_c('span', [_vm._v("日期")]), _c('input', {
+    staticClass: ["input_item"],
+    attrs: {
+      "type": "password",
+      "placeholder": "密码",
+      "maxlength": "8",
+      "value": (_vm.userPassword)
+    },
+    on: {
+      "change": _vm.onInput,
+      "input": function($event) {
+        _vm.userPassword = $event.target.attr.value
+      }
+    }
+  })]), _c('div', {
+    staticClass: ["user_password", "input_box"]
+  }, [_c('span', [_vm._v("状态")]), _c('input', {
+    staticClass: ["input_item"],
+    attrs: {
+      "type": "password",
+      "placeholder": "密码",
+      "maxlength": "8",
+      "value": (_vm.userPassword)
+    },
+    on: {
+      "change": _vm.onStatus,
+      "input": function($event) {
+        _vm.userPassword = $event.target.attr.value
+      }
+    }
+  })]), _c('div', {
+    staticClass: ["user_password", "input_box"]
+  }, [_c('span', [_vm._v("物料名称")]), _c('input', {
+    staticClass: ["input_item"],
+    attrs: {
+      "type": "password",
+      "placeholder": "密码",
+      "maxlength": "8",
+      "value": (_vm.userPassword)
+    },
+    on: {
+      "change": _vm.onInput,
+      "input": function($event) {
+        _vm.userPassword = $event.target.attr.value
+      }
+    }
+  })]), _c('div', {
+    staticClass: ["user_password", "input_box"]
+  }, [_c('span', [_vm._v("检验状态")]), _c('input', {
+    staticClass: ["input_item"],
+    attrs: {
+      "type": "password",
+      "placeholder": "密码",
+      "maxlength": "8",
+      "value": (_vm.userPassword)
+    },
+    on: {
+      "change": _vm.onQalified,
+      "input": function($event) {
+        _vm.userPassword = $event.target.attr.value
+      }
+    }
+  })])]), _c('div', {
+    staticClass: ["button_box"]
+  }, [_c('wxc-button', {
+    attrs: {
+      "text": "确定",
+      "disabled": _vm.isLoginDisabled,
+      "type": "blue"
+    },
+    on: {
+      "wxcButtonClicked": _vm.login
+    }
+  })], 1), _c('wxc-mask', {
+    attrs: {
+      "height": "800",
+      "width": "702",
+      "borderRadius": "0",
+      "duration": "200",
+      "maskBgColor": "#fff",
+      "hasAnimation": _vm.hasAnimation,
+      "hasOverlay": true,
+      "show": _vm.showBucket
+    },
+    on: {
+      "wxcMaskSetHidden": _vm.wxcMaskBucket
+    }
+  }, [_c('div', {
+    staticClass: ["content", "mask-content"]
+  }, [_c('div', {
+    staticClass: ["mask-title"]
+  }, [_c('text', {
+    staticClass: ["title"]
+  }, [_vm._v("请选择桶编号")])]), _c('div', {
+    staticClass: ["scroller-box"]
+  }, [_c('scroller', {
+    staticClass: ["scroller"]
+  }, [_c('wxc-radio', {
+    attrs: {
+      "list": _vm.list
+    },
+    on: {
+      "wxcRadioListChecked": _vm.wxcRadioBucket
+    }
+  })], 1)]), _c('div', {
+    staticClass: ["button_box"]
+  }, [_c('wxc-button', {
+    attrs: {
+      "text": "确定",
+      "type": "blue",
+      "disabled": _vm.isChoseDisabled
+    },
+    on: {
+      "wxcButtonClicked": _vm.wxcChoseBucket
+    }
+  })], 1)])]), _c('wxc-mask', {
+    attrs: {
+      "height": "800",
+      "width": "702",
+      "borderRadius": "0",
+      "duration": "200",
+      "maskBgColor": "#fff",
+      "hasAnimation": _vm.hasAnimation,
+      "hasOverlay": true,
+      "show": _vm.showstatus
+    },
+    on: {
+      "wxcMaskSetHidden": _vm.wxcMaskstatus
+    }
+  }, [_c('div', {
+    staticClass: ["content", "mask-content"]
+  }, [_c('div', {
+    staticClass: ["mask-title"]
+  }, [_c('text', {
+    staticClass: ["title"]
+  }, [_vm._v("请选择状态")])]), _c('div', {
+    staticClass: ["scroller-box"]
+  }, [_c('scroller', {
+    staticClass: ["scroller"]
+  }, [_c('wxc-radio', {
+    attrs: {
+      "list": _vm.status
+    },
+    on: {
+      "wxcRadioListChecked": _vm.wxcRadiostatus
+    }
+  })], 1)]), _c('div', {
+    staticClass: ["button_box"]
+  }, [_c('wxc-button', {
+    attrs: {
+      "text": "确定",
+      "type": "blue",
+      "disabled": _vm.isChoseDisabled
+    },
+    on: {
+      "wxcButtonClicked": _vm.wxcChosestatus
+    }
+  })], 1)])]), _c('wxc-mask', {
+    attrs: {
+      "height": "800",
+      "width": "702",
+      "borderRadius": "0",
+      "duration": "200",
+      "maskBgColor": "#fff",
+      "hasAnimation": _vm.hasAnimation,
+      "hasOverlay": true,
+      "show": _vm.showqualified
+    },
+    on: {
+      "wxcMaskSetHidden": _vm.wxcMaskqualified
+    }
+  }, [_c('div', {
+    staticClass: ["content", "mask-content"]
+  }, [_c('div', {
+    staticClass: ["mask-title"]
+  }, [_c('text', {
+    staticClass: ["title"]
+  }, [_vm._v("请选择检验合格")])]), _c('div', {
+    staticClass: ["scroller-box"]
+  }, [_c('scroller', {
+    staticClass: ["scroller"]
+  }, [_c('wxc-radio', {
+    attrs: {
+      "list": _vm.qualified
+    },
+    on: {
+      "wxcRadioListChecked": _vm.wxcRadioqualified
+    }
+  })], 1)]), _c('div', {
+    staticClass: ["button_box"]
+  }, [_c('wxc-button', {
+    attrs: {
+      "text": "确定",
+      "type": "blue",
+      "disabled": _vm.isChoseDisabled
+    },
+    on: {
+      "wxcButtonClicked": _vm.wxcChosequalified
+    }
+  })], 1)])]), _c('wxc-mask', {
+    attrs: {
+      "height": "800",
+      "width": "702",
+      "borderRadius": "0",
+      "duration": "200",
+      "maskBgColor": "#fff",
+      "hasAnimation": _vm.hasAnimation,
+      "hasOverlay": true,
+      "show": _vm.showproduct
+    },
+    on: {
+      "wxcMaskSetHidden": _vm.wxcMaskproduct
+    }
+  }, [_c('div', {
+    staticClass: ["content", "mask-content"]
+  }, [_c('div', {
+    staticClass: ["mask-title"]
+  }, [_c('text', {
+    staticClass: ["title"]
+  }, [_vm._v("请选择产品名称")])]), _c('div', {
+    staticClass: ["scroller-box"]
+  }, [_c('scroller', {
+    staticClass: ["scroller"]
+  }, [_c('wxc-radio', {
+    attrs: {
+      "list": _vm.product
+    },
+    on: {
+      "wxcRadioListChecked": _vm.wxcRadioproduct
+    }
+  })], 1)]), _c('div', {
+    staticClass: ["button_box"]
+  }, [_c('wxc-button', {
+    attrs: {
+      "text": "确定",
+      "type": "blue",
+      "disabled": _vm.isChoseDisabled
+    },
+    on: {
+      "wxcButtonClicked": _vm.wxcChoseproduct
+    }
+  })], 1)])])], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 397 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["home"]
+  }, [_c('v-pop-up')], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 398 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(399)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(400)
+
+/* template */
+var __vue_template__ = __webpack_require__(401)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
 __vue_options__.__file = "C:\\Users\\IBM\\Desktop\\aodong\\src\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
@@ -27500,7 +28780,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 387 */
+/* 399 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -27550,7 +28830,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 388 */
+/* 400 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27574,7 +28854,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 389 */
+/* 401 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
