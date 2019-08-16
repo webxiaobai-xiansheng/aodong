@@ -9,7 +9,8 @@ import laggingCover from '@/view/home/laggingCover';
 import insourcing from '@/view/home/insourcing';
 import wayStation from '@/view/home/wayStation';
 import cleaning from '@/view/home/cleaning';
-import jurisLogin from '@/view/home/jurisLogin';
+import jurisLogin from '@/view/jurisLogin';
+import jurisLoginMessage from '@/view/jurisLoginMessage';
 import popUp from '@/view/home/popUp';
 
 Vue.use(Router)
@@ -84,6 +85,16 @@ export const router = new Router({
         // }
         
       ]
+    },
+    {
+      path: '/jurisLogin',
+      name: 'jurisLogin',
+      component: jurisLogin
+    },
+    {
+      path: '/jurisLoginMessage',
+      name: 'jurisLoginMessage',
+      component: jurisLoginMessage
     }
   ]
 })

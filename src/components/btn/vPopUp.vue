@@ -4,59 +4,84 @@
             <div class="inputBox">
                 <text class="input-title">桶编号</text>
                 <div class="input_box">
-                    <input v-model="userName" class="input_item" disabled="disabled" placeholder="桶编号"  @focus="onBucket" />
+                    <text class="input_item" @click="onBucket">{{userBucket}}</text>
                 </div>
             </div>
-            <div class="user_password input_box">
-                <span>产品名称</span>
-                <input v-model="userPassword" class="input_item" type="password" placeholder="密码" maxlength="8" @change="onProduct">
+            <div class="inputBox">
+                <text class="input-title">产品名称</text>
+                <div class="input_box">
+                    <text class="input_item" @click="onProduct">{{userProduct}}</text>
+                </div>
             </div>
-            <div class="user_password input_box">
-                <span>批号</span>
-                <input v-model="userPassword" class="input_item" type="password" placeholder="密码" maxlength="8">
+            <div class="inputBox">
+                <text class="input-title">批号</text>
+                <div class="input_box">
+                    <input v-model="userBatch " class="input_item" type="text">
+                </div>
             </div>
-            <div class="user_password input_box">
-                <span>日期</span>
-                <input v-model="userPassword" class="input_item" type="password" placeholder="密码" maxlength="8" @change="onInput">
+            <div class="inputBox">
+                <text class="input-title">日期</text>
+                <div class="input_box">
+                    <text class="input_item" @click="showCalendar">{{userTime}}</text>
+                </div>
             </div>
-            <div class="user_password input_box">
-                <span>状态</span>
-                <input v-model="userPassword" class="input_item" type="password" placeholder="密码" maxlength="8" @change="onStatus">
+
+            <div class="inputBox">
+                <text class="input-title">状态</text>
+                <div class="input_box">
+                    <text class="input_item" @click="onStatus">{{userStatus}}</text>
+                </div>
             </div>
-            <div class="user_password input_box">
-                <span>物料名称</span>
-                <input v-model="userPassword" class="input_item" type="password" placeholder="密码" maxlength="8" @change="onInput">
+            
+            <div class="inputBox">
+                <text class="input-title">物料名称</text>
+                <div class="input_box">
+                    <input v-model="userMaterial" class="input_item" type="text">
+                </div>
             </div>
-            <div class="user_password input_box">
-                <span>检验状态</span>
-                <input v-model="userPassword" class="input_item" type="password" placeholder="密码" maxlength="8" @change="onQalified">
+
+            <div class="inputBox">
+                <text class="input-title">检验状态</text>
+                <div class="input_box">
+                    <text class="input_item" @click="onQalified">{{userQalified}}</text>
+                </div>
             </div>
         </div>
-        <!-- <div class="button_box">
-            <wxc-button text="选择车间" :disabled="isWorkShopDisabled" type="blue" @wxcButtonClicked="choseWorkShop"></wxc-button>
-        </div> -->
+
         <div class="button_box">
-            <wxc-button text="确定" :disabled="isLoginDisabled" type="blue" @wxcButtonClicked="login"></wxc-button>
+            <wxc-button text="确定" type="blue" @wxcButtonClicked="login"></wxc-button>
         </div>
+
+        <div class="button_box">
+            <wxc-button text="返回" type="blue" @wxcButtonClicked="black"></wxc-button>
+        </div>
+
         <!-- 桶编号 -->
-        <wxc-mask height="800" width="702" border-radius="0" duration="200" mask-bg-color="#fff" :has-animation="hasAnimation" :has-overlay="true" :show="showBucket" @wxcMaskSetHidden="wxcMaskBucket">
-            <div class="content mask-content">
-                <div class="mask-title">
-                    <text class="title">请选择桶编号</text>
+        <wxc-popup popup-color="#fff"
+               :show="showBucket"
+               pos="left"
+               height="400">
+               <div class="content mask-content">
+                    <div class="mask-title">
+                        <text class="title">请选择桶编号</text>
+                    </div>
+                    <div class="scroller-box">
+                        <scroller class="scroller">
+                            <wxc-radio :list="list" @wxcRadioListChecked="wxcRadioBucket"></wxc-radio>
+                        </scroller>
+                    </div>
+                    <div class="button_box">
+                        <wxc-button text="确定" type="blue" @wxcButtonClicked="wxcChoseBucket"></wxc-button size="small">
+                    </div>
                 </div>
-                <div class="scroller-box">
-                    <scroller class="scroller">
-                        <wxc-radio :list="list" @wxcRadioListChecked="wxcRadioBucket"></wxc-radio>
-                    </scroller>
-                </div>
-                <div class="button_box">
-                    <wxc-button text="确定" type="blue" :disabled="isChoseDisabled" @wxcButtonClicked="wxcChoseBucket"></wxc-button size="small">
-                </div>
-            </div>
-        </wxc-mask>
+        </wxc-popup>
+
         <!-- 状态 -->
-        <wxc-mask height="800" width="702" border-radius="0" duration="200" mask-bg-color="#fff" :has-animation="hasAnimation" :has-overlay="true" :show="showstatus" @wxcMaskSetHidden="wxcMaskstatus">
-            <div class="content mask-content">
+        <wxc-popup popup-color="#fff"
+               :show="showstatus"
+               pos="left"
+               height="400">
+             <div class="content mask-content">
                 <div class="mask-title">
                     <text class="title">请选择状态</text>
                 </div>
@@ -66,13 +91,16 @@
                     </scroller>
                 </div>
                 <div class="button_box">
-                    <wxc-button text="确定" type="blue" :disabled="isChoseDisabled" @wxcButtonClicked="wxcChosestatus"></wxc-button size="small">
+                    <wxc-button text="确定" type="blue" @wxcButtonClicked="wxcChosestatus"></wxc-button size="small">
                 </div>
             </div>
-        </wxc-mask>
+        </wxc-popup>
 
         <!-- 合格 -->
-        <wxc-mask height="800" width="702" border-radius="0" duration="200" mask-bg-color="#fff" :has-animation="hasAnimation" :has-overlay="true" :show="showqualified" @wxcMaskSetHidden="wxcMaskqualified">
+        <wxc-popup popup-color="#fff"
+               :show="showqualified"
+               pos="left"
+               height="400">
             <div class="content mask-content">
                 <div class="mask-title">
                     <text class="title">请选择检验合格</text>
@@ -83,13 +111,16 @@
                     </scroller>
                 </div>
                 <div class="button_box">
-                    <wxc-button text="确定" type="blue" :disabled="isChoseDisabled" @wxcButtonClicked="wxcChosequalified"></wxc-button size="small">
+                    <wxc-button text="确定" type="blue" @wxcButtonClicked="wxcChosequalified"></wxc-button size="small">
                 </div>
             </div>
-        </wxc-mask>
+        </wxc-popup>
 
         <!-- 产品名称 -->
-        <wxc-mask height="800" width="702" border-radius="0" duration="200" mask-bg-color="#fff" :has-animation="hasAnimation" :has-overlay="true" :show="showproduct" @wxcMaskSetHidden="wxcMaskproduct">
+        <wxc-popup popup-color="#fff"
+               :show="showproduct"
+               pos="left"
+               height="400">
             <div class="content mask-content">
                 <div class="mask-title">
                     <text class="title">请选择产品名称</text>
@@ -100,24 +131,38 @@
                     </scroller>
                 </div>
                 <div class="button_box">
-                    <wxc-button text="确定" type="blue" :disabled="isChoseDisabled" @wxcButtonClicked="wxcChoseproduct"></wxc-button size="small">
+                    <wxc-button text="确定" type="blue" @wxcButtonClicked="wxcChoseproduct"></wxc-button size="small">
                 </div>
             </div>
-        </wxc-mask>
+        </wxc-popup>
+
+        <!-- 日期 -->
+         <wxc-page-calendar :date-range="dateRange"
+                       :animationType="animationType"
+                       :selected-date="selectedDate"
+                       :is-range="isRange"
+                       :minibar-cfg="minibarCfg"
+                       @wxcPageCalendarBackClicked="wxcPageCalendarBackClicked"
+                       @wxcPageCalendarDateSelected="wxcPageCalendarDateSelected"
+                       ref="wxcPageCalendar">
+        </wxc-page-calendar>
     </div>
 </template>
 <script>
 const modal = weex.requireModule('modal');
 const navigator = weex.requireModule('navigator');
-import { WxcButton, WxcSearchbar, WxcIcon, WxcMask, WxcRadio } from 'weex-ui';
+import { WxcButton, WxcRadio, WxcPageCalendar, WxcPopup } from 'weex-ui';
 export default {
-    components: { WxcButton, WxcSearchbar, WxcIcon, WxcMask, WxcRadio },
+    components: { WxcButton,WxcRadio, WxcPageCalendar, WxcPopup },
     data: () => ({
-        userName: '',
-        userPassword: '',
+        userBucket: '',
+        userProduct:'',
+        userBatch:'',
+        userTime:'',
+        userStatus:'',
+        userMaterial:'',
+        userQalified:'',
         isWorkShopDisabled: true,
-        isLoginDisabled: true,
-        isChoseDisabled: true,
         // 桶编号
         showBucket: false,
         hasAnimation: true,
@@ -240,126 +285,75 @@ export default {
             value: 11
           },
         ],
-        checkedInfo: { title: '选项2', value: 2 }
+        // checkedInfo: { title: '选项2', value: 2 },
+        // 时间参数
+        animationType: 'push',
+        currentDate: '',
+        selectedDate: ['2019-08-23', '2020-06-30'],
+        isRange: true,
+        calendarTitle: '选择日期',
+        dateRange: ['2019-08-23', '2020-06-30'],
+        minibarCfg: {
+            title: '日期选择'
+        },
+
+        isBottomShow: false,
     }),
     methods: {
         // 桶编号
         onBucket() {
-            console.log(1)
             this.showBucket=true;
-            this.hasAnimation = true;
-            // if (this.userName && this.userPassword) {
-            //     if (this.isWorkShopDisabled) {
-            //         this.isWorkShopDisabled = false
-            //     }
-            // } else if (!this.isWorkShopDisabled) {
-            //     this.isWorkShopDisabled = true
-            // }
+            
         },
         // 产品名称
         onProduct(){
           this.showproduct=true;
-          this.hasAnimation = true;
+          
         },
         // 状态
         onStatus(){
           this.showstatus=true;
-          this.hasAnimation = true;
+          
         },
         // 校验
         onQalified(){
           this.showqualified=true;
-          this.hasAnimation = true;
-        },
-        // 点击“车间选择”按钮
-        choseWorkShop(e) {
-            this.showBucket= true;
-            this.hasAnimation = true;
+          
         },
 
         // 选择桶号
         wxcRadioBucket(e) {
-            this.checkedInfo = e;
-            console.log(e.title);
-            this.userName=e.title
-            console.log(this.userName)
-            console.log(e.title.length);
-            if (e.title.length < 1) {
-                this.isChoseDisabled = true;
-            } else {
-                this.isChoseDisabled = false;
-            }
+            this.userBucket=e.title
         },
 
         // 选择桶号--确认按钮
         wxcChoseBucket() {
             this.showBucket = false;
-            this.isLoginDisabled = false;
-        },
-
-        // 关闭桶号弹窗
-        wxcMaskBucket() {
-            this.showBucket = false;
         },
 
         // 选择状态
         wxcRadiostatus(e) {
-            this.checkedInfo = e;
-            console.log(e.title);
-            console.log(e.title.length);
-            if (e.title.length < 1) {
-                this.isChoseDisabled = true;
-            } else {
-                this.isChoseDisabled = false;
-            }
+            this.userStatus=e.title
         },
 
         // 选择状态--确认按钮
         wxcChosestatus() {
-            this.showBucket = false;
-            this.isLoginDisabled = false;
-        },
-
-        // 关闭状态弹窗
-        wxcMaskstatus() {
-            this.showBucket = false;
+            this.showstatus = false;
         },
 
         // 选择检验
         wxcRadioqualified(e) {
-            this.checkedInfo = e;
-            console.log(e.title);
-            this.userName=e.title
-            console.log(this.userName)
-            console.log(e.title.length);
-            if (e.title.length < 1) {
-                this.isChoseDisabled = true;
-            } else {
-                this.isChoseDisabled = false;
-            }
+            this.userQalified=e.title
         },
 
         // 选择检验--确认按钮
         wxcChosequalified() {
             this.showqualified = false;
-            this.isLoginDisabled = false;
-        },
-
-        // 关闭检验弹窗
-        wxcMaskqualified() {
-            this.showqualified = false;
         },
         
         // 选择产品名称
         wxcRadioproduct(e) {
-            this.checkedInfo = e;
-            console.log(e.title);
-            console.log(e.title.length);
-            if (e.title.length < 1) {
-                this.isChoseDisabled = true;
-            } else {
-                this.isChoseDisabled = false;
-            }
+            this.userProduct=e.title;
         },
 
         // 选择产品名称--确认按钮
@@ -368,35 +362,35 @@ export default {
             this.isLoginDisabled = false;
         },
 
-        // 关闭产品名称弹窗
-        wxcMaskproduct() {
-            this.showproduct = false;
+        // 时间
+        wxcPageCalendarDateSelected (e) {
+            this.userTime=e.date.join("")
+            this.selectedDate = e.date;
+            this.currentDate = e.date;
         },
-        
-        wxcSearchbarInputDisabledClicked () {
-      },
+        wxcPageCalendarBackClicked () {
+        },
+        showCalendar () {
+            this.isRange = false;
+            setTimeout(() => {
+            this.$refs['wxcPageCalendar'].show();
+            }, 10);
+        },
 
         // 登录按钮
         login() {
-            if (this.userName.length < 1) {
-                modal.toast({ message: '请输入账号' });
-            } else if (this.userPassword.length < 1) {
-                modal.toast({ message: '请输入密码' })
-            } else {
-                modal.toast({ message: '登录成功', duration: 3 });
-                this.$router.push({name:'batch'})
-                // navigator.push({
-                //         url: 'batch.html',
-                //         animated: 'true'
-                //     },
-                //     event => {
-                //         modal.toast({
-                //             message: 'callback:' + event
-                //         })
-                //     }
-                // )
-            }
-        }
+            
+        },
+        black(){
+
+        },
+        openBottomPopup () {
+        this.isBottomShow = true;
+      },
+      //非状态组件，需要在这里关闭
+      popupOverlayBottomClick () {
+        this.isBottomShow = false;
+      }
     }
 }
 </script>
@@ -423,6 +417,7 @@ export default {
     padding-left: 20px;
 }
 .login_content {
+    padding:20px;
     /* justify-content: center; */
     /* align-items: center; */
     /* flex-direction: column; */
@@ -430,11 +425,15 @@ export default {
 
 
 .input_item {
-    /* width: 670px; */
     height: 60px;
+    line-height:60px;
+    font-size:30px;
 }
 
 .button_box {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
     margin-top: 20px;
 }
 

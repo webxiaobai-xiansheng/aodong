@@ -2297,7 +2297,7 @@ module.exports = __vue_exports__
 var _require = __webpack_require__(27),
     router = _require.router;
 
-var App = __webpack_require__(398);
+var App = __webpack_require__(402);
 /* eslint-disable no-new */
 
 // 路由导航守卫
@@ -2375,15 +2375,17 @@ var _jurisLogin = __webpack_require__(386);
 
 var _jurisLogin2 = _interopRequireDefault(_jurisLogin);
 
-var _popUp = __webpack_require__(390);
+var _jurisLoginMessage = __webpack_require__(390);
+
+var _jurisLoginMessage2 = _interopRequireDefault(_jurisLoginMessage);
+
+var _popUp = __webpack_require__(394);
 
 var _popUp2 = _interopRequireDefault(_popUp);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/* global Vue */
-Vue.use(_vueRouter2.default);
-
+Vue.use(_vueRouter2.default); /* global Vue */
 var router = exports.router = new _vueRouter2.default({
   routes: [
   // {
@@ -2452,6 +2454,14 @@ var router = exports.router = new _vueRouter2.default({
       name: 'popUp',
       component: _popUp2.default
     }]
+  }, {
+    path: '/jurisLogin',
+    name: 'jurisLogin',
+    component: _jurisLogin2.default
+  }, {
+    path: '/jurisLoginMessage',
+    name: 'jurisLoginMessage',
+    component: _jurisLoginMessage2.default
   }]
 });
 
@@ -27556,10 +27566,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "C:\\Users\\IBM\\Desktop\\aodong\\src\\view\\home\\jurisLogin.vue"
+__vue_options__.__file = "C:\\Users\\IBM\\Desktop\\aodong\\src\\view\\jurisLogin.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-68b1d764"
+__vue_options__._scopeId = "data-v-1e6223f9"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -27829,7 +27839,7 @@ __vue_styles__.push(__webpack_require__(391)
 __vue_exports__ = __webpack_require__(392)
 
 /* template */
-var __vue_template__ = __webpack_require__(397)
+var __vue_template__ = __webpack_require__(393)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -27841,10 +27851,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "C:\\Users\\IBM\\Desktop\\aodong\\src\\view\\home\\popUp.vue"
+__vue_options__.__file = "C:\\Users\\IBM\\Desktop\\aodong\\src\\view\\jurisLoginMessage.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-2ab9a3e0"
+__vue_options__._scopeId = "data-v-37c36e7e"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -27860,95 +27870,6 @@ module.exports = __vue_exports__
 
 /***/ }),
 /* 391 */
-/***/ (function(module, exports) {
-
-module.exports = {
-  "table": {
-    "marginBottom": "40"
-  }
-}
-
-/***/ }),
-/* 392 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _vPopUp = __webpack_require__(393);
-
-var _vPopUp2 = _interopRequireDefault(_vPopUp);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-  data: function data() {
-    return {};
-  },
-
-  components: {
-    vPopUp: _vPopUp2.default
-  },
-  methods: {}
-}; //
-//
-//
-//
-//
-//
-//
-//
-
-/***/ }),
-/* 393 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(394)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(395)
-
-/* template */
-var __vue_template__ = __webpack_require__(396)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "C:\\Users\\IBM\\Desktop\\aodong\\src\\components\\btn\\vPopUp.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-206c7066"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-/* 394 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -27971,8 +27892,16 @@ module.exports = {
     "marginBottom": "40",
     "paddingLeft": "20"
   },
+  "login_content": {
+    "paddingTop": "20",
+    "paddingRight": "20",
+    "paddingBottom": "20",
+    "paddingLeft": "20"
+  },
   "input_item": {
-    "height": "60"
+    "height": "60",
+    "lineHeight": "60",
+    "fontSize": "30"
   },
   "button_box": {
     "marginTop": "20"
@@ -28004,7 +27933,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 395 */
+/* 392 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28124,18 +28053,660 @@ var _weexUi = __webpack_require__(1);
 //
 //
 //
+//
+//
+//
+//
+//
 
 var modal = weex.requireModule('modal');
 var navigator = weex.requireModule('navigator');
 exports.default = {
-    components: { WxcButton: _weexUi.WxcButton, WxcSearchbar: _weexUi.WxcSearchbar, WxcIcon: _weexUi.WxcIcon, WxcMask: _weexUi.WxcMask, WxcRadio: _weexUi.WxcRadio },
+    components: { WxcButton: _weexUi.WxcButton, WxcRadio: _weexUi.WxcRadio, WxcPageCalendar: _weexUi.WxcPageCalendar, WxcMinibar: _weexUi.WxcMinibar, WxcPopup: _weexUi.WxcPopup },
     data: function data() {
         return {
-            userName: '',
-            userPassword: '',
+            userBucket: '',
+            userProduct: '',
+            userVolume: '',
+            userWeight: '',
+            userTime: '',
             isWorkShopDisabled: true,
-            isLoginDisabled: true,
-            isChoseDisabled: true,
+
+            // 产品名称
+            showproduct: false,
+
+            product: [{
+                title: '空料斗',
+                value: 0
+            }, {
+                title: '空料桶',
+                value: 1
+            }],
+
+            // 时间参数
+            animationType: 'push',
+            currentDate: '',
+            selectedDate: ['2019-08-23', '2020-06-30'],
+            isRange: true,
+            calendarTitle: '选择日期',
+            dateRange: ['2019-08-23', '2020-06-30'],
+            minibarCfg: {
+                title: '日期选择'
+            }
+        };
+    },
+    methods: {
+        // 产品名称
+        onProduct: function onProduct() {
+            this.showproduct = true;
+        },
+
+        // 选择产品名称
+        wxcRadioproduct: function wxcRadioproduct(e) {
+            this.userProduct = e.title;
+        },
+
+
+        // 选择产品名称--确认按钮
+        wxcChoseproduct: function wxcChoseproduct() {
+            this.showproduct = false;
+            this.isLoginDisabled = false;
+        },
+
+
+        // 时间
+        wxcPageCalendarDateSelected: function wxcPageCalendarDateSelected(e) {
+            this.userTime = e.date.join("");
+            this.selectedDate = e.date;
+            this.currentDate = e.date;
+        },
+        wxcPageCalendarBackClicked: function wxcPageCalendarBackClicked() {},
+        showCalendar: function showCalendar() {
+            var _this = this;
+
+            this.isRange = false;
+            setTimeout(function () {
+                _this.$refs['wxcPageCalendar'].show();
+            }, 10);
+        },
+
+
+        // 登录按钮
+        login: function login() {},
+        black: function black() {},
+        minibarLeftButtonClick: function minibarLeftButtonClick() {},
+        minibarRightButtonClick: function minibarRightButtonClick() {
+            modal.toast({ 'message': '退出成功', 'duration': 1 });
+            this.$router.push({ name: 'login' });
+        }
+    }
+};
+
+/***/ }),
+/* 393 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["login_content"]
+  }, [_c('div', {
+    staticClass: ["container"],
+    style: {
+      height: _vm.height
+    }
+  }, [_c('div', {
+    staticClass: ["demo"]
+  }, [_c('wxc-minibar', {
+    attrs: {
+      "backgroundColor": "#009ff0",
+      "leftButton": ""
+    },
+    on: {
+      "wxcMinibarLeftButtonClicked": _vm.minibarLeftButtonClick,
+      "wxcMinibarRightButtonClicked": _vm.minibarRightButtonClick
+    }
+  }, [_c('text', {
+    staticStyle: {
+      fontSize: "35px",
+      color: "#fff"
+    },
+    attrs: {
+      "slot": "middle"
+    },
+    slot: "middle"
+  }, [_vm._v("桶信息输入")]), _c('text', {
+    staticStyle: {
+      fontSize: "35px",
+      color: "#fff"
+    },
+    attrs: {
+      "slot": "right"
+    },
+    slot: "right"
+  }, [_vm._v("退出")])])], 1)]), _c('div', {
+    staticClass: ["login_input"]
+  }, [_c('div', {
+    staticClass: ["inputBox"]
+  }, [_c('text', {
+    staticClass: ["input-title"]
+  }, [_vm._v("桶编号")]), _c('div', {
+    staticClass: ["input_box"]
+  }, [_c('input', {
+    staticClass: ["input_item"],
+    attrs: {
+      "type": "text",
+      "value": (_vm.userBucket)
+    },
+    on: {
+      "input": function($event) {
+        _vm.userBucket = $event.target.attr.value
+      }
+    }
+  })])]), _c('div', {
+    staticClass: ["inputBox"]
+  }, [_c('text', {
+    staticClass: ["input-title"]
+  }, [_vm._v("产品名称")]), _c('div', {
+    staticClass: ["input_box"]
+  }, [_c('text', {
+    staticClass: ["input_item"],
+    on: {
+      "click": _vm.onProduct
+    }
+  }, [_vm._v(_vm._s(_vm.userProduct))])])]), _c('div', {
+    staticClass: ["inputBox"]
+  }, [_c('text', {
+    staticClass: ["input-title"]
+  }, [_vm._v("容器容积")]), _c('div', {
+    staticClass: ["input_box"]
+  }, [_c('input', {
+    staticClass: ["input_item"],
+    attrs: {
+      "type": "text",
+      "value": (_vm.userVolume)
+    },
+    on: {
+      "input": function($event) {
+        _vm.userVolume = $event.target.attr.value
+      }
+    }
+  })])]), _c('div', {
+    staticClass: ["inputBox"]
+  }, [_c('text', {
+    staticClass: ["input-title"]
+  }, [_vm._v("容器重量")]), _c('div', {
+    staticClass: ["input_box"]
+  }, [_c('input', {
+    staticClass: ["input_item"],
+    attrs: {
+      "type": "text",
+      "value": (_vm.userWeight)
+    },
+    on: {
+      "input": function($event) {
+        _vm.userWeight = $event.target.attr.value
+      }
+    }
+  })])]), _c('div', {
+    staticClass: ["inputBox"]
+  }, [_c('text', {
+    staticClass: ["input-title"]
+  }, [_vm._v("日期")]), _c('div', {
+    staticClass: ["input_box"]
+  }, [_c('text', {
+    staticClass: ["input_item"],
+    on: {
+      "click": _vm.showCalendar
+    }
+  }, [_vm._v(_vm._s(_vm.userTime))])])])]), _c('div', {
+    staticClass: ["button_box"]
+  }, [_c('wxc-button', {
+    attrs: {
+      "text": "确定",
+      "type": "blue"
+    },
+    on: {
+      "wxcButtonClicked": _vm.login
+    }
+  })], 1), _c('div', {
+    staticClass: ["button_box"]
+  }, [_c('wxc-button', {
+    attrs: {
+      "text": "返回",
+      "type": "blue"
+    },
+    on: {
+      "wxcButtonClicked": _vm.black
+    }
+  })], 1), _c('wxc-popup', {
+    attrs: {
+      "popupColor": "#fff",
+      "show": _vm.showproduct,
+      "pos": "left",
+      "height": "400"
+    }
+  }, [_c('div', {
+    staticClass: ["content", "mask-content"]
+  }, [_c('div', {
+    staticClass: ["mask-title"]
+  }, [_c('text', {
+    staticClass: ["title"]
+  }, [_vm._v("请选择产品名称")])]), _c('div', {
+    staticClass: ["scroller-box"]
+  }, [_c('scroller', {
+    staticClass: ["scroller"]
+  }, [_c('wxc-radio', {
+    attrs: {
+      "list": _vm.product
+    },
+    on: {
+      "wxcRadioListChecked": _vm.wxcRadioproduct
+    }
+  })], 1)]), _c('div', {
+    staticClass: ["button_box"]
+  }, [_c('wxc-button', {
+    attrs: {
+      "text": "确定",
+      "type": "blue"
+    },
+    on: {
+      "wxcButtonClicked": _vm.wxcChoseproduct
+    }
+  })], 1)])]), _c('wxc-page-calendar', {
+    ref: "wxcPageCalendar",
+    attrs: {
+      "dateRange": _vm.dateRange,
+      "animationType": _vm.animationType,
+      "selectedDate": _vm.selectedDate,
+      "isRange": _vm.isRange,
+      "minibarCfg": _vm.minibarCfg
+    },
+    on: {
+      "wxcPageCalendarBackClicked": _vm.wxcPageCalendarBackClicked,
+      "wxcPageCalendarDateSelected": _vm.wxcPageCalendarDateSelected
+    }
+  })], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 394 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(395)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(396)
+
+/* template */
+var __vue_template__ = __webpack_require__(401)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "C:\\Users\\IBM\\Desktop\\aodong\\src\\view\\home\\popUp.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-2ab9a3e0"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 395 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "table": {
+    "marginBottom": "40"
+  }
+}
+
+/***/ }),
+/* 396 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _vPopUp = __webpack_require__(397);
+
+var _vPopUp2 = _interopRequireDefault(_vPopUp);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+  data: function data() {
+    return {};
+  },
+
+  components: {
+    vPopUp: _vPopUp2.default
+  },
+  methods: {}
+}; //
+//
+//
+//
+//
+//
+//
+//
+
+/***/ }),
+/* 397 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(398)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(399)
+
+/* template */
+var __vue_template__ = __webpack_require__(400)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "C:\\Users\\IBM\\Desktop\\aodong\\src\\components\\btn\\vPopUp.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-206c7066"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 398 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "inputBox": {
+    "display": "flex",
+    "flexDirection": "row"
+  },
+  "input-title": {
+    "flex": 1,
+    "lineHeight": "60",
+    "textAlign": "center",
+    "fontSize": "30"
+  },
+  "input_box": {
+    "flex": 3,
+    "borderStyle": "solid",
+    "borderWidth": "1",
+    "borderColor": "#333333",
+    "borderRadius": "10",
+    "marginBottom": "40",
+    "paddingLeft": "20"
+  },
+  "login_content": {
+    "paddingTop": "20",
+    "paddingRight": "20",
+    "paddingBottom": "20",
+    "paddingLeft": "20"
+  },
+  "input_item": {
+    "height": "60",
+    "lineHeight": "60",
+    "fontSize": "30"
+  },
+  "button_box": {
+    "display": "flex",
+    "justifyContent": "center",
+    "flexDirection": "row",
+    "marginTop": "20"
+  },
+  "mask-content": {
+    "paddingTop": 20
+  },
+  "mask-title": {
+    "alignItems": "center"
+  },
+  "title": {
+    "fontSize": "28"
+  },
+  "mask-btns": {
+    "alignItems": "center",
+    "justifyContent": "center",
+    "flexDirection": "row"
+  },
+  "scroller-box": {
+    "height": 606,
+    "top": 0,
+    "right": 0,
+    "left": 0,
+    "bottom": 0
+  },
+  "workShop-confirm": {
+    "marginTop": "10"
+  }
+}
+
+/***/ }),
+/* 399 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _weexUi = __webpack_require__(1);
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var modal = weex.requireModule('modal');
+var navigator = weex.requireModule('navigator');
+exports.default = {
+    components: { WxcButton: _weexUi.WxcButton, WxcRadio: _weexUi.WxcRadio, WxcPageCalendar: _weexUi.WxcPageCalendar, WxcPopup: _weexUi.WxcPopup },
+    data: function data() {
+        return {
+            userBucket: '',
+            userProduct: '',
+            userBatch: '',
+            userTime: '',
+            userStatus: '',
+            userMaterial: '',
+            userQalified: '',
+            isWorkShopDisabled: true,
             // 桶编号
             showBucket: false,
             hasAnimation: true,
@@ -28242,141 +28813,82 @@ exports.default = {
                 title: '复方丹参片',
                 value: 11
             }],
-            checkedInfo: { title: '选项2', value: 2 }
+            // checkedInfo: { title: '选项2', value: 2 },
+            // 时间参数
+            animationType: 'push',
+            currentDate: '',
+            selectedDate: ['2019-08-23', '2020-06-30'],
+            isRange: true,
+            calendarTitle: '选择日期',
+            dateRange: ['2019-08-23', '2020-06-30'],
+            minibarCfg: {
+                title: '日期选择'
+            },
+
+            isBottomShow: false
         };
     },
     methods: {
         // 桶编号
         onBucket: function onBucket() {
-            console.log(1);
             this.showBucket = true;
-            this.hasAnimation = true;
-            // if (this.userName && this.userPassword) {
-            //     if (this.isWorkShopDisabled) {
-            //         this.isWorkShopDisabled = false
-            //     }
-            // } else if (!this.isWorkShopDisabled) {
-            //     this.isWorkShopDisabled = true
-            // }
         },
 
         // 产品名称
         onProduct: function onProduct() {
             this.showproduct = true;
-            this.hasAnimation = true;
         },
 
         // 状态
         onStatus: function onStatus() {
             this.showstatus = true;
-            this.hasAnimation = true;
         },
 
         // 校验
         onQalified: function onQalified() {
             this.showqualified = true;
-            this.hasAnimation = true;
-        },
-
-        // 点击“车间选择”按钮
-        choseWorkShop: function choseWorkShop(e) {
-            this.showBucket = true;
-            this.hasAnimation = true;
         },
 
 
         // 选择桶号
         wxcRadioBucket: function wxcRadioBucket(e) {
-            this.checkedInfo = e;
-            console.log(e.title);
-            this.userName = e.title;
-            console.log(this.userName);
-            console.log(e.title.length);
-            if (e.title.length < 1) {
-                this.isChoseDisabled = true;
-            } else {
-                this.isChoseDisabled = false;
-            }
+            this.userBucket = e.title;
         },
 
 
         // 选择桶号--确认按钮
         wxcChoseBucket: function wxcChoseBucket() {
             this.showBucket = false;
-            this.isLoginDisabled = false;
-        },
-
-
-        // 关闭桶号弹窗
-        wxcMaskBucket: function wxcMaskBucket() {
-            this.showBucket = false;
         },
 
 
         // 选择状态
         wxcRadiostatus: function wxcRadiostatus(e) {
-            this.checkedInfo = e;
-            console.log(e.title);
-            console.log(e.title.length);
-            if (e.title.length < 1) {
-                this.isChoseDisabled = true;
-            } else {
-                this.isChoseDisabled = false;
-            }
+            this.userStatus = e.title;
         },
 
 
         // 选择状态--确认按钮
         wxcChosestatus: function wxcChosestatus() {
-            this.showBucket = false;
-            this.isLoginDisabled = false;
-        },
-
-
-        // 关闭状态弹窗
-        wxcMaskstatus: function wxcMaskstatus() {
-            this.showBucket = false;
+            this.showstatus = false;
         },
 
 
         // 选择检验
         wxcRadioqualified: function wxcRadioqualified(e) {
-            this.checkedInfo = e;
-            console.log(e.title);
-            this.userName = e.title;
-            console.log(this.userName);
-            console.log(e.title.length);
-            if (e.title.length < 1) {
-                this.isChoseDisabled = true;
-            } else {
-                this.isChoseDisabled = false;
-            }
+            this.userQalified = e.title;
         },
 
 
         // 选择检验--确认按钮
         wxcChosequalified: function wxcChosequalified() {
             this.showqualified = false;
-            this.isLoginDisabled = false;
-        },
-
-
-        // 关闭检验弹窗
-        wxcMaskqualified: function wxcMaskqualified() {
-            this.showqualified = false;
         },
 
 
         // 选择产品名称
         wxcRadioproduct: function wxcRadioproduct(e) {
-            this.checkedInfo = e;
-            console.log(e.title);
-            console.log(e.title.length);
-            if (e.title.length < 1) {
-                this.isChoseDisabled = true;
-            } else {
-                this.isChoseDisabled = false;
-            }
+            this.userProduct = e.title;
         },
 
 
@@ -28387,39 +28899,39 @@ exports.default = {
         },
 
 
-        // 关闭产品名称弹窗
-        wxcMaskproduct: function wxcMaskproduct() {
-            this.showproduct = false;
+        // 时间
+        wxcPageCalendarDateSelected: function wxcPageCalendarDateSelected(e) {
+            this.userTime = e.date.join("");
+            this.selectedDate = e.date;
+            this.currentDate = e.date;
         },
-        wxcSearchbarInputDisabledClicked: function wxcSearchbarInputDisabledClicked() {},
+        wxcPageCalendarBackClicked: function wxcPageCalendarBackClicked() {},
+        showCalendar: function showCalendar() {
+            var _this = this;
+
+            this.isRange = false;
+            setTimeout(function () {
+                _this.$refs['wxcPageCalendar'].show();
+            }, 10);
+        },
 
 
         // 登录按钮
-        login: function login() {
-            if (this.userName.length < 1) {
-                modal.toast({ message: '请输入账号' });
-            } else if (this.userPassword.length < 1) {
-                modal.toast({ message: '请输入密码' });
-            } else {
-                modal.toast({ message: '登录成功', duration: 3 });
-                this.$router.push({ name: 'batch' });
-                // navigator.push({
-                //         url: 'batch.html',
-                //         animated: 'true'
-                //     },
-                //     event => {
-                //         modal.toast({
-                //             message: 'callback:' + event
-                //         })
-                //     }
-                // )
-            }
+        login: function login() {},
+        black: function black() {},
+        openBottomPopup: function openBottomPopup() {
+            this.isBottomShow = true;
+        },
+
+        //非状态组件，需要在这里关闭
+        popupOverlayBottomClick: function popupOverlayBottomClick() {
+            this.isBottomShow = false;
         }
     }
 };
 
 /***/ }),
-/* 396 */
+/* 400 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -28433,138 +28945,115 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["input-title"]
   }, [_vm._v("桶编号")]), _c('div', {
     staticClass: ["input_box"]
+  }, [_c('text', {
+    staticClass: ["input_item"],
+    on: {
+      "click": _vm.onBucket
+    }
+  }, [_vm._v(_vm._s(_vm.userBucket))])])]), _c('div', {
+    staticClass: ["inputBox"]
+  }, [_c('text', {
+    staticClass: ["input-title"]
+  }, [_vm._v("产品名称")]), _c('div', {
+    staticClass: ["input_box"]
+  }, [_c('text', {
+    staticClass: ["input_item"],
+    on: {
+      "click": _vm.onProduct
+    }
+  }, [_vm._v(_vm._s(_vm.userProduct))])])]), _c('div', {
+    staticClass: ["inputBox"]
+  }, [_c('text', {
+    staticClass: ["input-title"]
+  }, [_vm._v("批号")]), _c('div', {
+    staticClass: ["input_box"]
   }, [_c('input', {
     staticClass: ["input_item"],
     attrs: {
-      "disabled": "disabled",
-      "placeholder": "桶编号",
-      "value": (_vm.userName)
+      "type": "text",
+      "value": (_vm.userBatch)
     },
     on: {
-      "focus": _vm.onBucket,
       "input": function($event) {
-        _vm.userName = $event.target.attr.value
+        _vm.userBatch = $event.target.attr.value
       }
     }
   })])]), _c('div', {
-    staticClass: ["user_password", "input_box"]
-  }, [_c('span', [_vm._v("产品名称")]), _c('input', {
+    staticClass: ["inputBox"]
+  }, [_c('text', {
+    staticClass: ["input-title"]
+  }, [_vm._v("日期")]), _c('div', {
+    staticClass: ["input_box"]
+  }, [_c('text', {
     staticClass: ["input_item"],
-    attrs: {
-      "type": "password",
-      "placeholder": "密码",
-      "maxlength": "8",
-      "value": (_vm.userPassword)
-    },
     on: {
-      "change": _vm.onProduct,
-      "input": function($event) {
-        _vm.userPassword = $event.target.attr.value
-      }
+      "click": _vm.showCalendar
     }
-  })]), _c('div', {
-    staticClass: ["user_password", "input_box"]
-  }, [_c('span', [_vm._v("批号")]), _c('input', {
+  }, [_vm._v(_vm._s(_vm.userTime))])])]), _c('div', {
+    staticClass: ["inputBox"]
+  }, [_c('text', {
+    staticClass: ["input-title"]
+  }, [_vm._v("状态")]), _c('div', {
+    staticClass: ["input_box"]
+  }, [_c('text', {
     staticClass: ["input_item"],
-    attrs: {
-      "type": "password",
-      "placeholder": "密码",
-      "maxlength": "8",
-      "value": (_vm.userPassword)
-    },
     on: {
-      "input": function($event) {
-        _vm.userPassword = $event.target.attr.value
-      }
+      "click": _vm.onStatus
     }
-  })]), _c('div', {
-    staticClass: ["user_password", "input_box"]
-  }, [_c('span', [_vm._v("日期")]), _c('input', {
+  }, [_vm._v(_vm._s(_vm.userStatus))])])]), _c('div', {
+    staticClass: ["inputBox"]
+  }, [_c('text', {
+    staticClass: ["input-title"]
+  }, [_vm._v("物料名称")]), _c('div', {
+    staticClass: ["input_box"]
+  }, [_c('input', {
     staticClass: ["input_item"],
     attrs: {
-      "type": "password",
-      "placeholder": "密码",
-      "maxlength": "8",
-      "value": (_vm.userPassword)
+      "type": "text",
+      "value": (_vm.userMaterial)
     },
     on: {
-      "change": _vm.onInput,
       "input": function($event) {
-        _vm.userPassword = $event.target.attr.value
-      }
-    }
-  })]), _c('div', {
-    staticClass: ["user_password", "input_box"]
-  }, [_c('span', [_vm._v("状态")]), _c('input', {
-    staticClass: ["input_item"],
-    attrs: {
-      "type": "password",
-      "placeholder": "密码",
-      "maxlength": "8",
-      "value": (_vm.userPassword)
-    },
-    on: {
-      "change": _vm.onStatus,
-      "input": function($event) {
-        _vm.userPassword = $event.target.attr.value
-      }
-    }
-  })]), _c('div', {
-    staticClass: ["user_password", "input_box"]
-  }, [_c('span', [_vm._v("物料名称")]), _c('input', {
-    staticClass: ["input_item"],
-    attrs: {
-      "type": "password",
-      "placeholder": "密码",
-      "maxlength": "8",
-      "value": (_vm.userPassword)
-    },
-    on: {
-      "change": _vm.onInput,
-      "input": function($event) {
-        _vm.userPassword = $event.target.attr.value
-      }
-    }
-  })]), _c('div', {
-    staticClass: ["user_password", "input_box"]
-  }, [_c('span', [_vm._v("检验状态")]), _c('input', {
-    staticClass: ["input_item"],
-    attrs: {
-      "type": "password",
-      "placeholder": "密码",
-      "maxlength": "8",
-      "value": (_vm.userPassword)
-    },
-    on: {
-      "change": _vm.onQalified,
-      "input": function($event) {
-        _vm.userPassword = $event.target.attr.value
+        _vm.userMaterial = $event.target.attr.value
       }
     }
   })])]), _c('div', {
+    staticClass: ["inputBox"]
+  }, [_c('text', {
+    staticClass: ["input-title"]
+  }, [_vm._v("检验状态")]), _c('div', {
+    staticClass: ["input_box"]
+  }, [_c('text', {
+    staticClass: ["input_item"],
+    on: {
+      "click": _vm.onQalified
+    }
+  }, [_vm._v(_vm._s(_vm.userQalified))])])])]), _c('div', {
     staticClass: ["button_box"]
   }, [_c('wxc-button', {
     attrs: {
       "text": "确定",
-      "disabled": _vm.isLoginDisabled,
       "type": "blue"
     },
     on: {
       "wxcButtonClicked": _vm.login
     }
-  })], 1), _c('wxc-mask', {
+  })], 1), _c('div', {
+    staticClass: ["button_box"]
+  }, [_c('wxc-button', {
     attrs: {
-      "height": "800",
-      "width": "702",
-      "borderRadius": "0",
-      "duration": "200",
-      "maskBgColor": "#fff",
-      "hasAnimation": _vm.hasAnimation,
-      "hasOverlay": true,
-      "show": _vm.showBucket
+      "text": "返回",
+      "type": "blue"
     },
     on: {
-      "wxcMaskSetHidden": _vm.wxcMaskBucket
+      "wxcButtonClicked": _vm.black
+    }
+  })], 1), _c('wxc-popup', {
+    attrs: {
+      "popupColor": "#fff",
+      "show": _vm.showBucket,
+      "pos": "left",
+      "height": "400"
     }
   }, [_c('div', {
     staticClass: ["content", "mask-content"]
@@ -28588,25 +29077,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('wxc-button', {
     attrs: {
       "text": "确定",
-      "type": "blue",
-      "disabled": _vm.isChoseDisabled
+      "type": "blue"
     },
     on: {
       "wxcButtonClicked": _vm.wxcChoseBucket
     }
-  })], 1)])]), _c('wxc-mask', {
+  })], 1)])]), _c('wxc-popup', {
     attrs: {
-      "height": "800",
-      "width": "702",
-      "borderRadius": "0",
-      "duration": "200",
-      "maskBgColor": "#fff",
-      "hasAnimation": _vm.hasAnimation,
-      "hasOverlay": true,
-      "show": _vm.showstatus
-    },
-    on: {
-      "wxcMaskSetHidden": _vm.wxcMaskstatus
+      "popupColor": "#fff",
+      "show": _vm.showstatus,
+      "pos": "left",
+      "height": "400"
     }
   }, [_c('div', {
     staticClass: ["content", "mask-content"]
@@ -28630,25 +29111,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('wxc-button', {
     attrs: {
       "text": "确定",
-      "type": "blue",
-      "disabled": _vm.isChoseDisabled
+      "type": "blue"
     },
     on: {
       "wxcButtonClicked": _vm.wxcChosestatus
     }
-  })], 1)])]), _c('wxc-mask', {
+  })], 1)])]), _c('wxc-popup', {
     attrs: {
-      "height": "800",
-      "width": "702",
-      "borderRadius": "0",
-      "duration": "200",
-      "maskBgColor": "#fff",
-      "hasAnimation": _vm.hasAnimation,
-      "hasOverlay": true,
-      "show": _vm.showqualified
-    },
-    on: {
-      "wxcMaskSetHidden": _vm.wxcMaskqualified
+      "popupColor": "#fff",
+      "show": _vm.showqualified,
+      "pos": "left",
+      "height": "400"
     }
   }, [_c('div', {
     staticClass: ["content", "mask-content"]
@@ -28672,25 +29145,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('wxc-button', {
     attrs: {
       "text": "确定",
-      "type": "blue",
-      "disabled": _vm.isChoseDisabled
+      "type": "blue"
     },
     on: {
       "wxcButtonClicked": _vm.wxcChosequalified
     }
-  })], 1)])]), _c('wxc-mask', {
+  })], 1)])]), _c('wxc-popup', {
     attrs: {
-      "height": "800",
-      "width": "702",
-      "borderRadius": "0",
-      "duration": "200",
-      "maskBgColor": "#fff",
-      "hasAnimation": _vm.hasAnimation,
-      "hasOverlay": true,
-      "show": _vm.showproduct
-    },
-    on: {
-      "wxcMaskSetHidden": _vm.wxcMaskproduct
+      "popupColor": "#fff",
+      "show": _vm.showproduct,
+      "pos": "left",
+      "height": "400"
     }
   }, [_c('div', {
     staticClass: ["content", "mask-content"]
@@ -28714,18 +29179,30 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('wxc-button', {
     attrs: {
       "text": "确定",
-      "type": "blue",
-      "disabled": _vm.isChoseDisabled
+      "type": "blue"
     },
     on: {
       "wxcButtonClicked": _vm.wxcChoseproduct
     }
-  })], 1)])])], 1)
+  })], 1)])]), _c('wxc-page-calendar', {
+    ref: "wxcPageCalendar",
+    attrs: {
+      "dateRange": _vm.dateRange,
+      "animationType": _vm.animationType,
+      "selectedDate": _vm.selectedDate,
+      "isRange": _vm.isRange,
+      "minibarCfg": _vm.minibarCfg
+    },
+    on: {
+      "wxcPageCalendarBackClicked": _vm.wxcPageCalendarBackClicked,
+      "wxcPageCalendarDateSelected": _vm.wxcPageCalendarDateSelected
+    }
+  })], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 397 */
+/* 401 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -28736,21 +29213,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 398 */
+/* 402 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(399)
+__vue_styles__.push(__webpack_require__(403)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(400)
+__vue_exports__ = __webpack_require__(404)
 
 /* template */
-var __vue_template__ = __webpack_require__(401)
+var __vue_template__ = __webpack_require__(405)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -28780,7 +29257,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 399 */
+/* 403 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -28830,7 +29307,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 400 */
+/* 404 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28854,7 +29331,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 401 */
+/* 405 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
