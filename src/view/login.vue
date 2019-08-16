@@ -29,10 +29,12 @@
                 </div>
             </div>
         </wxc-popup>
+        <wxc-button text="测试接口" type="blue" @wxcButtonClicked="test"></wxc-button size="small">
     </div>
 </template>
 <script>
 const modal = weex.requireModule('modal');
+var stream = weex.requireModule('stream');
 import { WxcButton, WxcSearchbar, WxcIcon, WxcRadio, WxcPopup } from 'weex-ui';
 export default {
     components: { WxcButton, WxcSearchbar, WxcIcon, WxcRadio, WxcPopup },
@@ -127,7 +129,8 @@ export default {
             } else {
                 this.show = false;
                 this.isLoginDisabled = false;
-                console.log(e)
+                console.log(e);
+
                 localStorage.setItem('workShopName', e.value);
             }
         },
@@ -148,14 +151,34 @@ export default {
 
         // 登录按钮
         login() {
-            if (this.userName.length < 1) {
-                modal.toast({ message: '请输入账号' });
-            } else if (this.userPassword.length < 1) {
-                modal.toast({ message: '请输入密码' })
-            } else {
-                modal.toast({ message: '登录成功', duration: 3 });
-                this.$router.push({name:'batch'})
-            }
+            modal.toast({ message: '登录成功', duration: 3 });
+            this.$router.push({ name: 'batch' })
+        },
+        test() {
+            // 颖杰的
+            // var url = '/apis' + '/containerInformation/emptyContainer';
+            // stream.fetch({
+            //     methods: 'get',
+            //     url: url,
+            //     type: 'json'，
+            // }, function(res) {
+            //     modal.toast({ message: res });
+            //     console.log(res)
+            // });
+            // 文锋的
+            var url = '/apis' + '/user/login';
+            var body = JSON.stringify({
+                username: 'ou',
+                password: '666666',
+            });
+            stream.fetch({
+                methos: 'post',
+                url: url,
+                type: 'json',
+                body: body
+            },function(ret){
+                console.log(ret)
+            })
         }
     },
     created() {
@@ -191,7 +214,7 @@ export default {
     align-items: center;
 }
 
-.bottom{
+.bottom {
     margin-top: 40px;
 }
 

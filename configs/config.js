@@ -50,7 +50,20 @@ const config = {
     // In our experience, they generally work as expected,
     // just be aware of this issue when enabling this option.
     cssSourceMap: false,
-    proxyTable: {},
+    // proxyTable: {},
+    proxyTable: {
+            proxy: {
+                '/apis': {
+                    // target: 'http://10.34.10.53:8200', // 颖杰本地接口域名
+                    target: 'http://http://10.34.10.25:8999', // 文锋本地接口域名
+                    secure: false, // 如果是https接口，需要配置这个参数
+                    changeOrigin: true, //是否跨域
+                    pathRewrite: {
+                        '^/apis': '/apis' //需要rewrite的,
+                    }
+                }
+            }
+        },
     autoOpenBrowser: false,
     errorOverlay: true,
     notifyOnErrors: true,
