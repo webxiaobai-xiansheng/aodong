@@ -25,15 +25,15 @@ export const router = new Router({
       path: '/',
       name: 'home',
       component: home,
-      // redirect: { name: 'batch' },
-      redirect: { name: 'popUp' },
+      redirect: { name: 'batch' },
+      // redirect: { name: 'popUp' },
       children: [
         // 批料待发间
-        // {
-        //     path: '/batch',
-        //     name: 'batch',
-        //     component: batch
-        // },
+        {
+            path: '/batch',
+            name: 'batch',
+            component: batch
+        },
         // 制粒间和总混间
         // {
         //   path: '/granulating',
@@ -77,11 +77,11 @@ export const router = new Router({
         //   component:jurisLogin
         // }
         // 输入信息
-        {
-          path: '/popUp',
-          name: 'popUp',
-          component: popUp
-        }
+        // {
+        //   path: '/popUp',
+        //   name: 'popUp',
+        //   component: popUp
+        // }
         
       ]
     }
