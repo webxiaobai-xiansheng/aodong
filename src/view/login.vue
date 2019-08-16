@@ -100,15 +100,16 @@ export default {
 
         // 点击“车间选择”按钮
         choseWorkShop(e) {
-            this.show = true;
-            this.hasAnimation = true;
+            if (e.disabled) {
+                return;
+            } else {
+                this.show = true;
+                this.hasAnimation = true;
+            }
         },
 
         // 选择车间
         wxcRadioListChecked(e) {
-            this.checkedInfo = e;
-            console.log(e.title);
-            console.log(e.title.length);
             if (e.title.length < 1) {
                 this.isChoseDisabled = true;
             } else {
@@ -117,11 +118,14 @@ export default {
         },
 
         // 选择车间--确认按钮
-        wxcChoseWorkShop() {
-            this.show = false;
-            this.isLoginDisabled = false;
+        wxcChoseWorkShop(e) {
+            if (e.disabled) {
+                return;
+            } else {
+                this.show = false;
+                this.isLoginDisabled = false;
+            }
         },
-
         // 关闭弹窗
         wxcMaskSetHidden() {
             this.show = false;
@@ -156,6 +160,7 @@ export default {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-top: 90px;
 }
 
 .input_box {
