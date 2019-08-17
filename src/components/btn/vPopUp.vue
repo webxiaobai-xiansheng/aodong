@@ -16,7 +16,7 @@
             <div class="inputBox">
                 <text class="input-title">批号</text>
                 <div class="input_box">
-                    <input v-model="userBatch " class="input_item" type="text">
+                    <input v-model="userBatch" class="input_item" type="text">
                 </div>
             </div>
             <div class="inputBox">
@@ -33,14 +33,14 @@
                 </div>
             </div>
             
-            <div class="inputBox">
+            <div class="inputBox" v-if="workshopName==='ZJ'">
                 <text class="input-title">物料名称</text>
                 <div class="input_box">
                     <input v-model="userMaterial" class="input_item" type="text">
                 </div>
             </div>
 
-            <div class="inputBox">
+            <div class="inputBox" v-if="workshopName!=='PBZ'||workshopName!=='LSBZ1'||workshopName!=='LSBZ2'">
                 <text class="input-title">检验状态</text>
                 <div class="input_box">
                     <text class="input_item" @click="onQalified">{{userQalified}}</text>
@@ -150,11 +150,16 @@
 </template>
 <script>
 const modal = weex.requireModule('modal');
+var stream = weex.requireModule('stream');
+const storage = weex.requireModule('storage');
 const navigator = weex.requireModule('navigator');
 import { WxcButton, WxcRadio, WxcPageCalendar, WxcPopup } from 'weex-ui';
 export default {
     components: { WxcButton,WxcRadio, WxcPageCalendar, WxcPopup },
     data: () => ({
+        // 车间名字
+        workshopName:'',
+        // 变量
         userBucket: '',
         userProduct:'',
         userBatch:'',
@@ -172,59 +177,7 @@ export default {
         showqualified: false,
         // 产品名称
         showproduct: false,
-        list: [{
-            title: '批料待发间',
-            value: 1
-        }, {
-            title: '制粒间',
-            value: 2
-        }, {
-            title: '总混间',
-            value: 3
-        }, {
-            title: '胶囊间A',
-            value: 4
-        }, {
-            title: '胶囊间B',
-            value: 5
-        }, {
-            title: '压片间',
-            value: 6
-        }, {
-            title: '包衣间',
-            value: 7
-        }, {
-            title: '铝塑包装A',
-            value: 8
-        }, {
-            title: '铝塑包装B',
-            value: 9
-        }, {
-            title: '铝塑包装C',
-            value: 10
-        }, {
-            title: '中间站',
-            value: 11
-        }, {
-            title: '清洗间',
-            value: 12
-        }],
-        status:[{
-            title: '原辅料',
-            value: 1
-        }, {
-            title: '未混颗粒',
-            value: 2
-        }, {
-            title: '已混颗粒',
-            value: 3
-        }, {
-            title: '待清洗',
-            value: 4
-        }, {
-            title: '已清洗',
-            value: 5
-        }],
+        list: [],
         qualified:[
           {
             title: '合格',
@@ -299,6 +252,12 @@ export default {
 
         isBottomShow: false,
     }),
+    created () {
+        storage.getItem('workShopName', event => {
+            this.workshopName = event.data;
+        });
+        this.onInit()
+    },
     methods: {
         // 桶编号
         onBucket() {
@@ -379,18 +338,79 @@ export default {
 
         // 提交按钮
         login() {
-            
+            let _this=this;
+
+            let url = 'http://10.34.10.25:8999/delivery/sendContainer';
+            let body = JSON.stringify({
+                functionNumber: _this.workshopName,
+                containerNumber:_this.userBucket,
+                productName:_this.userProduct,
+                lotNumber:_this.userBatch,
+                status:_this.userStatus,
+                inspectionStatus:_this.userQalified,
+                materialName:_this.userMaterial,
+                productDate:_this.userTime
+            });
+            stream.fetch({
+                method:"POST",
+                url:url,
+                headers:{'Content-Type':'application/json'},
+                body: body,
+                type:'json',
+            },function(ret){
+                if(ret.data.status===1){
+                   modal.toast({ message: ret.data.message, duration: 3 });
+                   this.$router.go(-1);
+                }
+                // if(ret.data.status===1){
+                //     modal.toast({ message: ret.data.message, duration: 3 });
+                //     _this.$router.push({name:'jurisLoginMessage'})
+                // }else{
+                //     modal.toast({ message: '登录失败！！！', duration: 3 });
+                // }
+            },function(progress) {
+                // console.log(progress)
+            })
+           this.$router.go(-1);
         },
         black(){
-            
+           this.$router.go(-1);
         },
         openBottomPopup () {
-        this.isBottomShow = true;
-      },
-      //非状态组件，需要在这里关闭
-      popupOverlayBottomClick () {
-        this.isBottomShow = false;
-      }
+           this.isBottomShow = true;
+        },
+        //非状态组件，需要在这里关闭
+        popupOverlayBottomClick () {
+            this.isBottomShow = false;
+        },
+        onInit() {
+            let _this=this;
+
+            let url = 'http://10.34.10.53:8200/functionRoomUseContainer/getFunctionRoomUseContainer';
+            let body = JSON.stringify({
+                functionRoomNumber: _this.workshopName
+            });
+            stream.fetch({
+                method:"POST",
+                url:url,
+                headers:{'Content-Type':'application/json'},
+                body: body,
+                type:'json',
+            },function(ret){
+                if(ret.data.status===1){
+                    _this.list=ret.data.data
+                }
+                // if(ret.data.status===1){
+                //     modal.toast({ message: ret.data.message, duration: 3 });
+                //     _this.$router.push({name:'jurisLoginMessage'})
+                // }else{
+                //     modal.toast({ message: '登录失败！！！', duration: 3 });
+                // }
+            },function(progress) {
+                // console.log(progress)
+            })
+            
+        },
     }
 }
 </script>

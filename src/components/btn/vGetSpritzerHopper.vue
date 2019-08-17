@@ -9,10 +9,53 @@
 
 
 <script>
+const modal = weex.requireModule('modal');
+var stream = weex.requireModule('stream');
+const storage = weex.requireModule('storage');
 export default {
+  data () {
+    return {
+      workshopName:''
+    }
+  },
+  created () {
+      storage.getItem('workShopName', event => {
+          this.workshopName = event.data;
+      });
+  },
   methods: {
     wxcButtonGetSpritzerHopper () {
-      this.$router.push({name:'popUp'})
+      let _this=this;
+
+      let url = 'http://10.34.10.53:8200/functionRoomUseContainer/getFunctionRoomUseContainer';
+      let body = JSON.stringify({
+          functionRoomNumber: _this.workshopName
+      });
+      stream.fetch({
+          method:"POST",
+          url:url,
+          headers:{'Content-Type':'application/json'},
+          body: body,
+          type:'json',
+      },function(ret){
+          console.log(ret)
+          if(ret.data.status===1){
+            if(ret.data.data.length>0){
+              this.$router.push({name:'popUp'})
+            }else{
+              modal.toast({ message: '该车间没有料斗', duration: 3 });
+            }
+          }
+          // if(ret.data.status===1){
+          //     modal.toast({ message: ret.data.message, duration: 3 });
+          //     _this.$router.push({name:'jurisLoginMessage'})
+          // }else{
+          //     modal.toast({ message: '登录失败！！！', duration: 3 });
+          // }
+      },function(progress) {
+          // console.log(progress)
+      })
+      
     }
   }
 }
@@ -32,33 +75,5 @@ export default {
   margin: 0 auto;
   color: #fff;
   font-size: 35px;
-}
-
-.inputBox{
-  display: flex;
-  flex-direction: row;
-  
-}
-.input_box {
-  flex: 2;
-  border-style: solid;
-  border-width: 1;
-  border-color: #333;
-  border-radius: 10;
-  margin-bottom: 40;
-  padding-left: 20;
-}
-
-.input_item {
-  
-  height: 90px;
-}
-
-.input-title{
-  flex: 1;
-  text-align: center;
-  font-size: 35px;
-  height: 90px;
-  line-height: 90px;
 }
 </style>

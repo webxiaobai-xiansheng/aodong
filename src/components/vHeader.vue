@@ -28,6 +28,15 @@ export default {
     minibarLeftButtonClick () {
     },
     minibarRightButtonClick () {
+      storage.removeItem('workShopName',event>{
+
+      }),
+      storage.removeItem('workShopTitle',event>{
+
+      }),
+      storage.removeItem('containerNum',event>{
+
+      }),
       modal.toast({ 'message': '退出成功', 'duration': 1 });
       this.$router.push({name:'login'})
     }

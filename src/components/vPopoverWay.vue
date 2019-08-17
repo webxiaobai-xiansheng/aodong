@@ -20,8 +20,8 @@
               :show="showBusiness"
               @wxcMaskSetHidden="wxcMaskBusiness">
       <div class="contentBox">
-          <div class="btn">
-            <text class="btn-txt">初始化界面</text>
+          <div class="btnNss" @click="onJurisLogin">
+            <text class="btn-txtNSS">初始化界面</text>
           </div>
           <v-weigh class="contentBox-btn"></v-weigh>
           <v-get-spritzer-hopper-rinses class="contentBox-btn"></v-get-spritzer-hopper-rinses>
@@ -79,6 +79,9 @@
       openNoAnimationMask (e) {
         this.showFunction = true;
         this.hasFunction = false;
+      },
+      onJurisLogin(){
+        this.$router.push({name:'jurisLoginMessage'})
       }
     }
   };
@@ -105,6 +108,22 @@
   color: #fff;
   font-size: 35px;
 }
+
+.btnNss{
+  display: flex;
+  justify-content: center;
+  background-color:#0099ff;
+  width: 200px;
+  height: 100px;
+  border-radius: 10px;
+}
+.btn-txtNSS{
+  text-align: center;
+  margin: 0 auto;
+  color: #fff;
+  font-size: 35px;
+}
+
 .content{
   height: 300px;
   flex-direction: row;

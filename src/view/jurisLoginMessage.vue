@@ -12,78 +12,80 @@
             </wxc-minibar>
             </div>
         </div>
-
-        <div class="login_input">
-            <div class="inputBox">
-                <text class="input-title">桶编号</text>
-                <div class="input_box">
-                    <input v-model="userBucket" class="input_item" type="text">
+        
+        <div class="login-txt">
+            <div class="login_input">
+                <div class="inputBox">
+                    <text class="input-title">桶编号</text>
+                    <div class="input_box">
+                        <input v-model="userBucket" class="input_item" type="text">
+                    </div>
                 </div>
+
+                <div class="inputBox">
+                    <text class="input-title">产品名称</text>
+                    <div class="input_box">
+                        <text class="input_item" @click="onProduct">{{userProduct}}</text>
+                    </div>
+                </div>
+                
+                <!-- <div class="inputBox">
+                    <text class="input-title">批号</text>
+                    <div class="input_box">
+                        <input v-model="userBatch " class="input_item" type="text">
+                    </div>
+                </div> -->
+
+                <div class="inputBox">
+                    <text class="input-title">容器容积</text>
+                    <div class="input_box">
+                        <input v-model="userVolume" class="input_item" type="text">
+                    </div>
+                </div>
+
+                <div class="inputBox">
+                    <text class="input-title">容器重量</text>
+                    <div class="input_box">
+                        <input v-model="userWeight" class="input_item" type="text">
+                    </div>
+                </div>
+
+                <!-- <div class="inputBox">
+                    <text class="input-title">日期</text>
+                    <div class="input_box">
+                        <text class="input_item" @click="showCalendar">{{userTime}}</text>
+                    </div>
+                </div> -->
+
+                <!-- <div class="inputBox">
+                    <text class="input-title">状态</text>
+                    <div class="input_box">
+                        <text class="input_item" @click="onStatus">{{userStatus}}</text>
+                    </div>
+                </div> -->
+                
+                <!-- <div class="inputBox">
+                    <text class="input-title">物料名称</text>
+                    <div class="input_box">
+                        <input v-model="userMaterial" class="input_item" type="text">
+                    </div>
+                </div> -->
+
+                <!-- <div class="inputBox">
+                    <text class="input-title">检验状态</text>
+                    <div class="input_box">
+                        <text class="input_item" @click="onQalified">{{userQalified}}</text>
+                    </div>
+                </div> -->
             </div>
 
-            <div class="inputBox">
-                <text class="input-title">产品名称</text>
-                <div class="input_box">
-                    <text class="input_item" @click="onProduct">{{userProduct}}</text>
-                </div>
-            </div>
-            
-            <!-- <div class="inputBox">
-                <text class="input-title">批号</text>
-                <div class="input_box">
-                    <input v-model="userBatch " class="input_item" type="text">
-                </div>
-            </div> -->
-
-            <div class="inputBox">
-                <text class="input-title">容器容积</text>
-                <div class="input_box">
-                    <input v-model="userVolume" class="input_item" type="text">
-                </div>
+            <div class="button_box">
+                <wxc-button text="确定" type="blue" @wxcButtonClicked="login"></wxc-button>
             </div>
 
-            <div class="inputBox">
-                <text class="input-title">容器重量</text>
-                <div class="input_box">
-                    <input v-model="userWeight" class="input_item" type="text">
-                </div>
+            <div class="button_box">
+                <wxc-button text="返回中间站" type="blue" @wxcButtonClicked="black"></wxc-button>
             </div>
-
-            <div class="inputBox">
-                <text class="input-title">日期</text>
-                <div class="input_box">
-                    <text class="input_item" @click="showCalendar">{{userTime}}</text>
-                </div>
-            </div>
-
-            <!-- <div class="inputBox">
-                <text class="input-title">状态</text>
-                <div class="input_box">
-                    <text class="input_item" @click="onStatus">{{userStatus}}</text>
-                </div>
-            </div> -->
-            
-            <!-- <div class="inputBox">
-                <text class="input-title">物料名称</text>
-                <div class="input_box">
-                    <input v-model="userMaterial" class="input_item" type="text">
-                </div>
-            </div> -->
-
-            <!-- <div class="inputBox">
-                <text class="input-title">检验状态</text>
-                <div class="input_box">
-                    <text class="input_item" @click="onQalified">{{userQalified}}</text>
-                </div>
-            </div> -->
-        </div>
-
-        <div class="button_box">
-            <wxc-button text="确定" type="blue" @wxcButtonClicked="login"></wxc-button>
-        </div>
-
-        <div class="button_box">
-            <wxc-button text="返回" type="blue" @wxcButtonClicked="black"></wxc-button>
         </div>
 
         <!-- 产品名称 -->
@@ -100,14 +102,14 @@
                         <wxc-radio :list="product" @wxcRadioListChecked="wxcRadioproduct"></wxc-radio>
                     </scroller>
                 </div>
-                <div class="button_box">
+                <div class="button_box button">
                     <wxc-button text="确定" type="blue" @wxcButtonClicked="wxcChoseproduct"></wxc-button size="small">
                 </div>
             </div>
         </wxc-popup>
 
         <!-- 日期 -->
-         <wxc-page-calendar :date-range="dateRange"
+         <!-- <wxc-page-calendar :date-range="dateRange"
                        :animationType="animationType"
                        :selected-date="selectedDate"
                        :is-range="isRange"
@@ -115,21 +117,23 @@
                        @wxcPageCalendarBackClicked="wxcPageCalendarBackClicked"
                        @wxcPageCalendarDateSelected="wxcPageCalendarDateSelected"
                        ref="wxcPageCalendar">
-        </wxc-page-calendar>
+        </wxc-page-calendar> -->
     </div>
 </template>
 <script>
 const modal = weex.requireModule('modal');
+const stream = weex.requireModule('stream');
 const navigator = weex.requireModule('navigator');
 import { WxcButton, WxcRadio, WxcPageCalendar, WxcMinibar, WxcPopup } from 'weex-ui';
 export default {
     components: { WxcButton, WxcRadio, WxcPageCalendar, WxcMinibar, WxcPopup },
     data: () => ({
-        userBucket: '',
-        userProduct:'',
-        userVolume:'',
-        userWeight:'',
-        userTime:'',
+        userBucket: '99',
+        userProduct:'空桶',
+        userVolume:'80L',
+        userWeight:'100kg',
+        binOrHopper:'',
+        // userTime:'2019-10-10',
         isWorkShopDisabled: true,
 
         // 产品名称
@@ -147,15 +151,15 @@ export default {
         ],
 
         // 时间参数
-        animationType: 'push',
-        currentDate: '',
-        selectedDate: ['2019-08-23', '2020-06-30'],
-        isRange: true,
-        calendarTitle: '选择日期',
-        dateRange: ['2019-08-23', '2020-06-30'],
-        minibarCfg: {
-            title: '日期选择'
-        }
+        // animationType: 'push',
+        // currentDate: '',
+        // selectedDate: ['2019-08-23', '2020-06-30'],
+        // isRange: true,
+        // calendarTitle: '选择日期',
+        // dateRange: ['2019-08-23', '2020-06-30'],
+        // minibarCfg: {
+        //     title: '日期选择'
+        // }
     }),
     methods: {
         // 产品名称
@@ -175,56 +179,63 @@ export default {
 
 
         // 时间
-        wxcPageCalendarDateSelected (e) {
-            this.userTime=e.date.join("")
-            this.selectedDate = e.date;
-            this.currentDate = e.date;
-        },
-        wxcPageCalendarBackClicked () {
-        },
-        showCalendar () {
-            this.isRange = false;
-            setTimeout(() => {
-            this.$refs['wxcPageCalendar'].show();
-            }, 10);
-        },
+        // wxcPageCalendarDateSelected (e) {
+        //     this.userTime=e.date.join("")
+        //     this.selectedDate = e.date;
+        //     this.currentDate = e.date;
+        // },
+        // wxcPageCalendarBackClicked () {
+        // },
+        // showCalendar () {
+        //     this.isRange = false;
+        //     setTimeout(() => {
+        //     this.$refs['wxcPageCalendar'].show();
+        //     }, 10);
+        // },
 
         // 登录按钮
         login() {
+            let _this=this;
             if(this.userBucket&&this.userProduct){
-
+                this.binOrHopper=this.userProduct==='空料斗'?'料斗':'料桶';
                 let url = 'http://10.34.10.53:8200/containerInformation/saveContainerInformation';
-                let body = toParams({
+
+                let body = JSON.stringify({
                     containerNumber: this.userBucket,
                     productName:this.userProduct,
                     containerVolume:this.userVolume,
                     containerWeight:this.userWeight,
-                    productDate:this.userTime,
-                    binOrHopper:this.userProduct
+                    // productDate:this.userTime,
+                    binOrHopper:this.binOrHopper
                 });
                 
                 stream.fetch({
                     method:"POST",
-                    type:'json',
                     url:url,
                     headers:{'Content-Type':'application/json'},
-                    body: body
+                    body: body,
+                    type:'json',
                 },function(ret){
                     console.log(ret)
-                    if(ret.status===1){
-                        modal.toast({ message: ret.message, duration: 3 });
+                    if(ret.data.status===1){
+                        _this.userBucket='',
+                        _this.userProduct='',
+                        _this.userVolume='',
+                        _this.userWeight='',
+                        _this.binOrHopper='',
+                        modal.toast({ message: ret.data.message, duration: 3 });
                     }else{
-                        modal.toast({ message: '登录失败！！！', duration: 3 });
+                        modal.toast({ message: '填写失败！！！', duration: 3 });
                     }
                 },function(progress) {
-                    console.log(progress)
-                }) 
+                    // console.log(progress)
+                })
             }else{
                 modal.toast({ message: '请选择产品名称和请输入桶编号', duration: 3 });
             }
         },
         black(){
-
+            this.$router.push({name:'wayStation'})
         },
         minibarLeftButtonClick () {
         },
@@ -257,7 +268,7 @@ export default {
     margin-bottom: 40px;
     padding-left: 20px;
 }
-.login_content {
+.login-txt{
     padding:20px;
     /* justify-content: center; */
     /* align-items: center; */
@@ -304,5 +315,8 @@ export default {
 
 .workShop-confirm {
     margin-top: 10px;
+}
+.button{
+    align-items: center;
 }
 </style>

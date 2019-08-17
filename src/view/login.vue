@@ -9,7 +9,8 @@
             </div>
         </div>
         <div class="button_box">
-            <wxc-button text="选择车间" :disabled="isWorkShopDisabled" type="blue" @wxcButtonClicked="choseWorkShop"></wxc-button>
+            <!-- <wxc-button text="选择车间" :disabled="isWorkShopDisabled" type="blue" @wxcButtonClicked="choseWorkShop"></wxc-button> -->
+            <wxc-button text="选择车间" type="blue" @wxcButtonClicked="choseWorkShop"></wxc-button>
         </div>
         <div class="button_box">
             <wxc-button text="登录" :disabled="isLoginDisabled" type="blue" @wxcButtonClicked="login"></wxc-button>
@@ -35,13 +36,12 @@
 const modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
 const storage = weex.requireModule('storage');
-const that = this;
 import { WxcButton, WxcRadio, WxcPopup } from 'weex-ui';
 export default {
     components: { WxcButton, WxcRadio, WxcPopup },
     data: () => ({
-        userName: '',
-        userPassword: '',
+        userName: 'zhangsan',
+        userPassword: 'zhangsan',
         isWorkShopDisabled: true,
         isLoginDisabled: true,
         isChoseDisabled: true,
@@ -123,10 +123,10 @@ export default {
                 var workShopTitle = e.title;
                 storage.setItem('workShopName', workShopName, event => {
                     console.log(event)
-                    console.log(event.data)
+                    // console.log(event.data)
                 });
                 storage.setItem('workShopTitle', workShopTitle, event => {
-                    console.log(event.data)
+                    // console.log(event.data)
                 });
             }
         },
@@ -148,6 +148,7 @@ export default {
 
         // 登录按钮
         login() {
+            let that=this;
             let url = 'http://10.34.10.25:8999/user/login';
             let body = JSON.stringify({
                 username: this.userName,
@@ -162,10 +163,10 @@ export default {
             }, function(ret) {
                 if (ret.status === 200) {
                     if (ret.data.status === 1) {
-                        modal.toast({ message: ret.message, duration: 3 });
                         storage.getItem('workShopName', event => {
-                            // this.workshopName = event.data;
+
                             let getName = event.data;
+
                             // 批料待发
                             if (getName === 'WL') {
                                 that.$router.push({ name: 'batch' });
@@ -195,11 +196,13 @@ export default {
                                 that.$router.push({ name: 'cleaning' });
                             }
                         });
+
+                        modal.toast({ message: ret.data.message, duration: 3 });
                     } else {
-                        modal.toast({ message: ret.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 3 });
                     }
                 } else {
-                    modal.toast({ message: ret.message, duration: 3 });
+                    modal.toast({ message: ret.data.message, duration: 3 });
                 }
 
             });

@@ -22,39 +22,41 @@
 const modal = weex.requireModule('modal');
 const stream = weex.requireModule('stream');
 const navigator = weex.requireModule('navigator');
-import { WxcButton} from 'weex-ui';
+import { WxcButton } from 'weex-ui';
 import toParams from  '../api/config';
 export default {
-    components: { WxcButton},
+    components: { WxcButton },
     data: () => ({
-        userName: 'aaa',
-        userPassword: 'aaa',
+        userName: 'admin',
+        userPassword: 'admin',
     }),
     methods: {
         // 登录按钮
         onLogin() {
+            let _this=this;
             if(this.userName&&this.userPassword){
                 let url = 'http://10.34.10.53:8200/admin/getAdmin';
-                let body = toParams({
+                let body = JSON.stringify({
                     username: this.userName,
-                    password: this.userPassword,
+                    password: this.userPassword
                 });
                 
                 stream.fetch({
                     method:"POST",
-                    type:'json',
                     url:url,
                     headers:{'Content-Type':'application/json'},
-                    body: body
+                    body: body,
+                    type:'json',
                 },function(ret){
                     console.log(ret)
-                    if(ret.status===1){
-                        modal.toast({ message: ret.message, duration: 3 });
+                    if(ret.data.status===1){
+                        modal.toast({ message: ret.data.message, duration: 3 });
+                        _this.$router.push({name:'jurisLoginMessage'})
                     }else{
                         modal.toast({ message: '登录失败！！！', duration: 3 });
                     }
                 },function(progress) {
-                    console.log(progress)
+                    // console.log(progress)
                 })
             }else{
                 modal.toast({ message: '请输入账号和密码', duration: 3 });

@@ -2389,78 +2389,74 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 Vue.use(_vueRouter2.default); /* global Vue */
 var router = exports.router = new _vueRouter2.default({
-  routes: [
-  // {
-  //   path: '/',
-  //   name: 'login',
-  //   component: login
-  // },
-  // {
-  //   path: '/',
-  //   name: 'home',
-  //   component: home,
-  //   redirect: { name: 'batch' },
-  //   children: [
-  //     // 批料待发间
-  //     {
-  //         path: '/batch',
-  //         name: 'batch',
-  //         component: batch
-  //     },
-  //     // 制粒间和总混间
-  //     {
-  //       path: '/granulating',
-  //       name: 'granulating',
-  //       component: granulating
-  //     },
-  //     // 胶囊间和压片间
-  //     {
-  //       path: '/capsule',
-  //       name: 'capsule',
-  //       component: capsule
-  //     },
-  //     // 包衣间
-  //     {
-  //       path: '/laggingCover',
-  //       name: 'laggingCover',
-  //       component: laggingCover
-  //     },
-  //     // 内包间
-  //     {
-  //       path: '/insourcing',
-  //       name: 'insourcing',
-  //       component: insourcing
-  //     },
-  //     // 中间站
-  //     {
-  //       path: '/wayStation',
-  //       name: 'wayStation',
-  //       component: wayStation
-  //     },
-  //     // 清洗间
-  //     {
-  //       path: '/cleaning',
-  //       name: 'cleaning',
-  //       component: cleaning
-  //     },
-  //     // 输入信息
-  //     {
-  //       path: '/popUp',
-  //       name: 'popUp',
-  //       component: popUp
-  //     }
-
-  //   ]
-  // },
+  routes: [{
+    path: '/',
+    name: 'login',
+    component: _login2.default
+  },
   // 权限登录
   {
-    path: '/',
+    path: '/jurisLogin',
     name: 'jurisLogin',
     component: _jurisLogin2.default
   }, {
     path: '/jurisLoginMessage',
     name: 'jurisLoginMessage',
     component: _jurisLoginMessage2.default
+  }, {
+    path: '/home',
+    name: 'home',
+    component: _home2.default,
+    redirect: { name: 'batch' },
+    children: [
+    // 批料待发间
+    {
+      path: '/batch',
+      name: 'batch',
+      component: _batch2.default
+    },
+    // 制粒间和总混间
+    {
+      path: '/granulating',
+      name: 'granulating',
+      component: _granulating2.default
+    },
+    // 胶囊间和压片间
+    {
+      path: '/capsule',
+      name: 'capsule',
+      component: _capsule2.default
+    },
+    // 包衣间
+    {
+      path: '/laggingCover',
+      name: 'laggingCover',
+      component: _laggingCover2.default
+    },
+    // 内包间
+    {
+      path: '/insourcing',
+      name: 'insourcing',
+      component: _insourcing2.default
+    },
+    // 中间站
+    {
+      path: '/wayStation',
+      name: 'wayStation',
+      component: _wayStation2.default
+    },
+    // 清洗间
+    {
+      path: '/cleaning',
+      name: 'cleaning',
+      component: _cleaning2.default
+    },
+    // 输入信息
+    {
+      path: '/popUp',
+      name: 'popUp',
+      component: _popUp2.default
+    }]
   }]
 });
 
@@ -5461,12 +5457,13 @@ var _weexUi = __webpack_require__(1);
 
 var modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
+var storage = weex.requireModule('storage');
 exports.default = {
-    components: { WxcButton: _weexUi.WxcButton, WxcSearchbar: _weexUi.WxcSearchbar, WxcIcon: _weexUi.WxcIcon, WxcRadio: _weexUi.WxcRadio, WxcPopup: _weexUi.WxcPopup },
+    components: { WxcButton: _weexUi.WxcButton, WxcRadio: _weexUi.WxcRadio, WxcPopup: _weexUi.WxcPopup },
     data: function data() {
         return {
-            userName: '',
-            userPassword: '',
+            userName: 'zhangsan',
+            userPassword: 'zhangsan',
             isWorkShopDisabled: true,
             isLoginDisabled: true,
             isChoseDisabled: true,
@@ -5493,13 +5490,13 @@ exports.default = {
                 title: '包衣间',
                 value: 'BY'
             }, {
-                title: '铝塑包装A',
+                title: '瓶装',
                 value: 'PBZ'
             }, {
-                title: '铝塑包装B',
+                title: '铝塑包装1',
                 value: 'LSBZ1'
             }, {
-                title: '铝塑包装C',
+                title: '铝塑包装2',
                 value: 'LSBZ2'
             }, {
                 title: '中间站',
@@ -5514,8 +5511,8 @@ exports.default = {
         // 账号、密码输入框输入内容后显示 “选择车间按钮”
         onInput: function onInput() {
             if (this.userName && this.userPassword) {
-                if (this.userName.length < 6) {
-                    modal.toast({ message: '账号长度为6位' });
+                if (this.userName.length < 8) {
+                    modal.toast({ message: '账号长度为8位' });
                     this.isWorkShopDisabled = true;
                 } else if (this.userPassword.length < 8) {
                     modal.toast({ message: '密码长度为8位' });
@@ -5536,7 +5533,6 @@ exports.default = {
             if (e.disabled) {
                 return;
             } else {
-                this.hasAnimation = true;
                 this.show = true;
             }
         },
@@ -5548,6 +5544,15 @@ exports.default = {
                 this.isChoseDisabled = true;
             } else {
                 this.isChoseDisabled = false;
+                var workShopName = e.value;
+                var workShopTitle = e.title;
+                storage.setItem('workShopName', workShopName, function (event) {
+                    console.log(event);
+                    // console.log(event.data)
+                });
+                storage.setItem('workShopTitle', workShopTitle, function (event) {
+                    // console.log(event.data)
+                });
             }
         },
 
@@ -5559,9 +5564,6 @@ exports.default = {
             } else {
                 this.show = false;
                 this.isLoginDisabled = false;
-                console.log(e);
-
-                localStorage.setItem('workShopName', e.value);
             }
         },
 
@@ -5570,48 +5572,66 @@ exports.default = {
         wxcMaskSetHidden: function wxcMaskSetHidden() {
             this.show = false;
         },
-        shouldShow: function shouldShow() {
-            var _this = this;
-
-            var show = this.show,
-                hasAnimation = this.hasAnimation;
-
-            hasAnimation && setTimeout(function () {
-                _this.appearOverlay(show);
-            }, 50);
-            return show;
-        },
 
 
         // 登录按钮
         login: function login() {
-            modal.toast({ message: '登录成功', duration: 3 });
-            this.$router.push({ name: 'batch' });
-        },
-        test: function test() {
-            // 颖杰的
-            // var url = '/apis' + '/containerInformation/emptyContainer';
-            // stream.fetch({
-            //     methods: 'get',
-            //     url: url,
-            //     type: 'json'，
-            // }, function(res) {
-            //     modal.toast({ message: res });
-            //     console.log(res)
-            // });
-            // 文锋的
-            var url = '/apis' + '/user/login';
+            var that = this;
+            var url = 'http://10.34.10.25:8999/user/login';
             var body = JSON.stringify({
-                username: 'ou',
-                password: '666666'
+                username: this.userName,
+                password: this.userPassword
             });
             stream.fetch({
-                methos: 'post',
-                url: url,
+                method: "POST",
                 type: 'json',
+                url: url,
+                headers: { 'Content-Type': 'application/json' },
                 body: body
             }, function (ret) {
-                console.log(ret);
+                if (ret.status === 200) {
+                    if (ret.data.status === 1) {
+                        storage.getItem('workShopName', function (event) {
+
+                            var getName = event.data;
+
+                            // 批料待发
+                            if (getName === 'WL') {
+                                that.$router.push({ name: 'batch' });
+                            }
+                            // 制粒间和总混间
+                            if (getName === 'ZL' || getName === 'ZH') {
+                                that.$router.push({ name: 'granulating' });
+                            }
+                            // 胶囊间1、胶囊间2、压片间
+                            if (getName === 'JN1' || getName === 'JN2' || getName === 'YP') {
+                                that.$router.push({ name: 'capsule' });
+                            }
+                            // 包衣间
+                            if (getName === 'BY') {
+                                that.$router.push({ name: 'laggingCover' });
+                            }
+                            // 瓶装、铝塑包装1、铝塑包装2（内包间）
+                            if (getName === 'PBZ' || getName === 'LSBZ1' || getName === 'LSBZ2') {
+                                that.$router.push({ name: 'insourcing' });
+                            }
+                            // 中间站
+                            if (getName === 'ZJ') {
+                                that.$router.push({ name: 'wayStation' });
+                            }
+                            // 清洗间（出口）
+                            if (getName === 'QXCK') {
+                                that.$router.push({ name: 'cleaning' });
+                            }
+                        });
+
+                        modal.toast({ message: ret.data.message, duration: 3 });
+                    } else {
+                        modal.toast({ message: ret.data.message, duration: 3 });
+                    }
+                } else {
+                    modal.toast({ message: ret.data.message, duration: 3 });
+                }
             });
         }
     },
@@ -22729,7 +22749,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "type": "text",
       "placeholder": "用户名称",
-      "maxlength": "6",
+      "maxlength": "8",
       "value": (_vm.userName)
     },
     on: {
@@ -22757,7 +22777,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('wxc-button', {
     attrs: {
       "text": "选择车间",
-      "disabled": _vm.isWorkShopDisabled,
       "type": "blue"
     },
     on: {
@@ -22812,15 +22831,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "wxcButtonClicked": _vm.wxcChoseWorkShop
     }
-  })], 1)])]), _c('wxc-button', {
-    attrs: {
-      "text": "测试接口",
-      "type": "blue"
-    },
-    on: {
-      "wxcButtonClicked": _vm.test
-    }
-  })], 1)
+  })], 1)])])], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
@@ -22996,18 +23007,28 @@ var modal = weex.requireModule('modal'); //
 //
 //
 
+var storage = weex.requireModule('storage');
 exports.default = {
   components: { WxcMinibar: _weexUi.WxcMinibar },
   data: function data() {
-    return {};
+    return {
+      workShopTitle: ''
+    };
   },
 
   methods: {
     minibarLeftButtonClick: function minibarLeftButtonClick() {},
     minibarRightButtonClick: function minibarRightButtonClick() {
-      modal.toast({ 'message': '退出成功', 'duration': 1 });
+      storage.removeItem('workShopName', event > {}), storage.removeItem('workShopTitle', event > {}), storage.removeItem('containerNum', event > {}), modal.toast({ 'message': '退出成功', 'duration': 1 });
       this.$router.push({ name: 'login' });
     }
+  },
+  created: function created() {
+    var _this = this;
+
+    storage.getItem('workShopTitle', function (event) {
+      _this.workShopTitle = event.data;
+    });
   }
 };
 
@@ -23041,7 +23062,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "slot": "middle"
     },
     slot: "middle"
-  }, [_vm._v("批料待发间")]), _c('text', {
+  }, [_vm._v(_vm._s(_vm.workShopTitle))]), _c('text', {
     staticStyle: {
       fontSize: "35px",
       color: "#fff"
@@ -23509,29 +23530,6 @@ module.exports = {
     "marginBottom": 0,
     "color": "#ffffff",
     "fontSize": "35"
-  },
-  "inputBox": {
-    "display": "flex",
-    "flexDirection": "row"
-  },
-  "input_box": {
-    "flex": 2,
-    "borderStyle": "solid",
-    "borderWidth": 1,
-    "borderColor": "#333333",
-    "borderRadius": 10,
-    "marginBottom": 40,
-    "paddingLeft": 20
-  },
-  "input_item": {
-    "height": "90"
-  },
-  "input-title": {
-    "flex": 1,
-    "textAlign": "center",
-    "fontSize": "35",
-    "height": "90",
-    "lineHeight": "90"
   }
 }
 
@@ -23556,10 +23554,55 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 
+var modal = weex.requireModule('modal');
+var stream = weex.requireModule('stream');
+var storage = weex.requireModule('storage');
 exports.default = {
+  data: function data() {
+    return {
+      workshopName: ''
+    };
+  },
+  created: function created() {
+    var _this2 = this;
+
+    storage.getItem('workShopName', function (event) {
+      _this2.workshopName = event.data;
+    });
+  },
+
   methods: {
     wxcButtonGetSpritzerHopper: function wxcButtonGetSpritzerHopper() {
-      this.$router.push({ name: 'popUp' });
+      var _this = this;
+
+      var url = 'http://10.34.10.53:8200/functionRoomUseContainer/getFunctionRoomUseContainer';
+      var body = JSON.stringify({
+        functionRoomNumber: _this.workshopName
+      });
+      stream.fetch({
+        method: "POST",
+        url: url,
+        headers: { 'Content-Type': 'application/json' },
+        body: body,
+        type: 'json'
+      }, function (ret) {
+        console.log(ret);
+        if (ret.data.status === 1) {
+          if (ret.data.data.length > 0) {
+            this.$router.push({ name: 'popUp' });
+          } else {
+            modal.toast({ message: '该车间没有料斗', duration: 3 });
+          }
+        }
+        // if(ret.data.status===1){
+        //     modal.toast({ message: ret.data.message, duration: 3 });
+        //     _this.$router.push({name:'jurisLoginMessage'})
+        // }else{
+        //     modal.toast({ message: '登录失败！！！', duration: 3 });
+        // }
+      }, function (progress) {
+        // console.log(progress)
+      });
     }
   }
 };
@@ -23610,7 +23653,7 @@ module.exports = {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 //
 //
@@ -23621,12 +23664,60 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 
+var modal = weex.requireModule('modal');
+var stream = weex.requireModule('stream');
+var storage = weex.requireModule('storage');
 exports.default = {
-  methods: {
-    wxcButtonEmptySpritzerHopper: function wxcButtonEmptySpritzerHopper(e) {
-      console.log(e);
+    data: function data() {
+        return {
+            // 车间名字
+            workshopName: '',
+            containerNum: ''
+        };
+    },
+    created: function created() {
+        var _this2 = this;
+
+        storage.getItem('workShopName', function (event) {
+            _this2.workshopName = event.data;
+        });
+        storage.getItem('containerNum', function (event) {
+            _this2.containerNum = event.data;
+        });
+    },
+
+    methods: {
+        wxcButtonEmptySpritzerHopper: function wxcButtonEmptySpritzerHopper(e) {
+            var _this = this;
+
+            var url = 'http://10.34.10.25:8999/obtain/getEmptyContainer';
+            var body = JSON.stringify({
+                containerNumber: _this.containerNum,
+                functionNumber: _this.workshopName
+            });
+            stream.fetch({
+                method: "POST",
+                url: url,
+                headers: { 'Content-Type': 'application/json' },
+                body: body,
+                type: 'json'
+            }, function (ret) {
+                if (ret.data.status === 1) {
+                    modal.toast({ message: ret.data.message, duration: 3 });
+                } else {
+                    modal.toast({ message: ret.data.message, duration: 3 });
+                }
+                // if(ret.data.status===1){
+                //     modal.toast({ message: ret.data.message, duration: 3 });
+                //     _this.$router.push({name:'jurisLoginMessage'})
+                // }else{
+                //     modal.toast({ message: '登录失败！！！', duration: 3 });
+                // }
+            }, function (progress) {
+                // console.log(progress)
+            });
+        }
     }
-  }
 };
 
 /***/ }),
@@ -24550,7 +24641,7 @@ module.exports = {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 //
 //
@@ -24561,12 +24652,60 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 
+var modal = weex.requireModule('modal');
+var stream = weex.requireModule('stream');
+var storage = weex.requireModule('storage');
 exports.default = {
-  methods: {
-    wxcButtonSpritzerHopper: function wxcButtonSpritzerHopper(e) {
-      console.log(e);
+    data: function data() {
+        return {
+            // 车间名字
+            workshopName: '',
+            containerNum: ''
+        };
+    },
+    created: function created() {
+        var _this2 = this;
+
+        storage.getItem('workShopName', function (event) {
+            _this2.workshopName = event.data;
+        });
+        storage.getItem('containerNum', function (event) {
+            _this2.containerNum = event.data;
+        });
+    },
+
+    methods: {
+        wxcButtonSpritzerHopper: function wxcButtonSpritzerHopper(e) {
+            var _this = this;
+
+            var url = 'http://10.34.10.25:8999/obtain/getStripContainer';
+            var body = JSON.stringify({
+                containerNumber: _this.containerNum,
+                functionNumber: _this.workshopName
+            });
+            stream.fetch({
+                method: "POST",
+                url: url,
+                headers: { 'Content-Type': 'application/json' },
+                body: body,
+                type: 'json'
+            }, function (ret) {
+                if (ret.data.status === 1) {
+                    modal.toast({ message: ret.data.message, duration: 3 });
+                } else {
+                    modal.toast({ message: ret.data.message, duration: 3 });
+                }
+                // if(ret.data.status===1){
+                //     modal.toast({ message: ret.data.message, duration: 3 });
+                //     _this.$router.push({name:'jurisLoginMessage'})
+                // }else{
+                //     modal.toast({ message: '登录失败！！！', duration: 3 });
+                // }
+            }, function (progress) {
+                // console.log(progress)
+            });
+        }
     }
-  }
 };
 
 /***/ }),
@@ -24604,6 +24743,26 @@ module.exports = {
     "marginBottom": 0,
     "color": "#ffffff",
     "fontSize": "35"
+  },
+  "mask-container": {
+    "justifyContent": "center",
+    "alignItems": "center"
+  },
+  "mask-content": {
+    "paddingTop": 20
+  },
+  "mask-title": {
+    "alignItems": "center"
+  },
+  "title": {
+    "fontSize": "28"
+  },
+  "button_box": {
+    "marginTop": "20",
+    "alignItems": "center"
+  },
+  "bottom": {
+    "marginTop": "40"
   }
 }
 
@@ -24615,38 +24774,146 @@ module.exports = {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
-//
-//
-//
-//
-//
-//
-//
-//
+
+var _weexUi = __webpack_require__(1);
 
 exports.default = {
-  methods: {
-    wxcButtonGetEmptySpritzerHopper: function wxcButtonGetEmptySpritzerHopper(e) {
-      console.log(e);
+    components: { WxcPopup: _weexUi.WxcPopup, WxcRadio: _weexUi.WxcRadio, WxcButton: _weexUi.WxcButton },
+    data: function data() {
+        return {
+            show: false,
+            isChoseDisabled: true,
+            emptyContainerList: [{
+                title: '空桶1',
+                value: 'A009'
+            }, {
+                title: '空桶2',
+                value: 'A000'
+            }, {
+                title: '空桶2',
+                value: 'A000'
+            }, {
+                title: '空桶2',
+                value: 'A000'
+            }]
+        };
+    },
+    methods: {
+        // 打开弹窗
+        wxcButtonGetEmptySpritzerHopper: function wxcButtonGetEmptySpritzerHopper(e) {
+            console.log(e);
+            if (e.disabled) {
+                return;
+            } else {
+                this.show = true;
+            }
+        },
+
+        // 关闭弹窗
+        wxcMaskSetHidden: function wxcMaskSetHidden() {
+            this.show = false;
+        },
+
+        // 选择空料斗
+        wxcSelectEmptyContainer: function wxcSelectEmptyContainer(e) {
+            if (e.title.length < 1) {
+                this.isChoseDisabled = true;
+            } else {
+                this.isChoseDisabled = false;
+            }
+        },
+
+
+        // 选择选择空料斗、料桶--确认按钮
+        wxcConfirmEmptyContainer: function wxcConfirmEmptyContainer(e) {
+            if (e.disabled) {
+                return;
+            } else {
+                this.show = false;
+            }
+        }
     }
-  }
-};
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 /* 315 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  return _c('div', [_c('div', {
     staticClass: ["btn"],
     on: {
       "click": _vm.wxcButtonGetEmptySpritzerHopper
     }
   }, [_c('text', {
     staticClass: ["btn-txt"]
-  }, [_vm._v("送空料斗")])])
+  }, [_vm._v("送空料斗")])]), _c('div', {
+    staticClass: ["mask-container"]
+  }, [_c('wxc-popup', {
+    attrs: {
+      "popupColor": "#fff",
+      "show": _vm.show,
+      "pos": "left",
+      "height": "400"
+    },
+    on: {
+      "wxcPopupOverlayClicked": _vm.wxcMaskSetHidden
+    }
+  }, [_c('div', {
+    staticClass: ["content", "mask-content"]
+  }, [_c('div', {
+    staticClass: ["mask-title"]
+  }, [_c('text', {
+    staticClass: ["title"]
+  }, [_vm._v("请选择空料斗或空料桶")])]), _c('div', {
+    staticClass: ["scroller-box"]
+  }, [_c('scroller', {
+    staticClass: ["scroller"]
+  }, [_c('wxc-radio', {
+    attrs: {
+      "list": _vm.emptyContainerList
+    },
+    on: {
+      "wxcRadioListChecked": _vm.wxcSelectEmptyContainer
+    }
+  })], 1)]), _c('div', {
+    staticClass: ["button_box", "bottom"]
+  }, [_c('wxc-button', {
+    attrs: {
+      "text": "确定",
+      "type": "blue",
+      "disabled": _vm.isChoseDisabled
+    },
+    on: {
+      "wxcButtonClicked": _vm.wxcConfirmEmptyContainer
+    }
+  })], 1)])])], 1)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
@@ -25190,7 +25457,7 @@ module.exports = {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 //
 //
@@ -25201,12 +25468,60 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 
+var modal = weex.requireModule('modal');
+var stream = weex.requireModule('stream');
+var storage = weex.requireModule('storage');
 exports.default = {
-  methods: {
-    wxcButtonEmptySpritzerTank: function wxcButtonEmptySpritzerTank(e) {
-      console.log(e);
+    data: function data() {
+        return {
+            // 车间名字
+            workshopName: '',
+            containerNum: ''
+        };
+    },
+    created: function created() {
+        var _this2 = this;
+
+        storage.getItem('workShopName', function (event) {
+            _this2.workshopName = event.data;
+        });
+        storage.getItem('containerNum', function (event) {
+            _this2.containerNum = event.data;
+        });
+    },
+
+    methods: {
+        wxcButtonEmptySpritzerTank: function wxcButtonEmptySpritzerTank(e) {
+            var _this = this;
+
+            var url = 'http://10.34.10.25:8999/obtain/getEmptyContainer';
+            var body = JSON.stringify({
+                containerNumber: _this.containerNum,
+                functionNumber: _this.workshopName
+            });
+            stream.fetch({
+                method: "POST",
+                url: url,
+                headers: { 'Content-Type': 'application/json' },
+                body: body,
+                type: 'json'
+            }, function (ret) {
+                if (ret.data.status === 1) {
+                    modal.toast({ message: ret.data.message, duration: 3 });
+                } else {
+                    modal.toast({ message: ret.data.message, duration: 3 });
+                }
+                // if(ret.data.status===1){
+                //     modal.toast({ message: ret.data.message, duration: 3 });
+                //     _this.$router.push({name:'jurisLoginMessage'})
+                // }else{
+                //     modal.toast({ message: '登录失败！！！', duration: 3 });
+                // }
+            }, function (progress) {
+                // console.log(progress)
+            });
+        }
     }
-  }
 };
 
 /***/ }),
@@ -25689,6 +26004,26 @@ module.exports = {
     "marginBottom": 0,
     "color": "#ffffff",
     "fontSize": "35"
+  },
+  "mask-container": {
+    "justifyContent": "center",
+    "alignItems": "center"
+  },
+  "mask-content": {
+    "paddingTop": 20
+  },
+  "mask-title": {
+    "alignItems": "center"
+  },
+  "title": {
+    "fontSize": "28"
+  },
+  "button_box": {
+    "marginTop": "20",
+    "alignItems": "center"
+  },
+  "bottom": {
+    "marginTop": "40"
   }
 }
 
@@ -25700,38 +26035,146 @@ module.exports = {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
-//
-//
-//
-//
-//
-//
-//
-//
+
+var _weexUi = __webpack_require__(1);
 
 exports.default = {
-  methods: {
-    wxcButtonGetEmptySpritzerTank: function wxcButtonGetEmptySpritzerTank(e) {
-      console.log(e);
+    components: { WxcPopup: _weexUi.WxcPopup, WxcRadio: _weexUi.WxcRadio, WxcButton: _weexUi.WxcButton },
+    data: function data() {
+        return {
+            show: false,
+            isChoseDisabled: true,
+            emptyContainerList: [{
+                title: '空桶1',
+                value: 'A009'
+            }, {
+                title: '空桶2',
+                value: 'A000'
+            }, {
+                title: '空桶2',
+                value: 'A000'
+            }, {
+                title: '空桶2',
+                value: 'A000'
+            }]
+        };
+    },
+    methods: {
+        // 打开弹窗
+        wxcButtonGetEmptySpritzerTank: function wxcButtonGetEmptySpritzerTank(e) {
+            console.log(e);
+            if (e.disabled) {
+                return;
+            } else {
+                this.show = true;
+            }
+        },
+
+        // 关闭弹窗
+        wxcMaskSetHidden: function wxcMaskSetHidden() {
+            this.show = false;
+        },
+
+        // 选择空料桶
+        wxcSelectEmptyContainer: function wxcSelectEmptyContainer(e) {
+            if (e.title.length < 1) {
+                this.isChoseDisabled = true;
+            } else {
+                this.isChoseDisabled = false;
+            }
+        },
+
+
+        // 选择选择空料斗、料桶--确认按钮
+        wxcConfirmEmptyContainer: function wxcConfirmEmptyContainer(e) {
+            if (e.disabled) {
+                return;
+            } else {
+                this.show = false;
+            }
+        }
     }
-  }
-};
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 /* 342 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  return _c('div', [_c('div', {
     staticClass: ["btn"],
     on: {
       "click": _vm.wxcButtonGetEmptySpritzerTank
     }
   }, [_c('text', {
     staticClass: ["btn-txt"]
-  }, [_vm._v("送空料桶")])])
+  }, [_vm._v("送空料桶")])]), _c('div', {
+    staticClass: ["mask-container"]
+  }, [_c('wxc-popup', {
+    attrs: {
+      "popupColor": "#fff",
+      "show": _vm.show,
+      "pos": "left",
+      "height": "400"
+    },
+    on: {
+      "wxcPopupOverlayClicked": _vm.wxcMaskSetHidden
+    }
+  }, [_c('div', {
+    staticClass: ["content", "mask-content"]
+  }, [_c('div', {
+    staticClass: ["mask-title"]
+  }, [_c('text', {
+    staticClass: ["title"]
+  }, [_vm._v("请选择空料斗或空料桶")])]), _c('div', {
+    staticClass: ["scroller-box"]
+  }, [_c('scroller', {
+    staticClass: ["scroller"]
+  }, [_c('wxc-radio', {
+    attrs: {
+      "list": _vm.emptyContainerList
+    },
+    on: {
+      "wxcRadioListChecked": _vm.wxcSelectEmptyContainer
+    }
+  })], 1)]), _c('div', {
+    staticClass: ["button_box", "bottom"]
+  }, [_c('wxc-button', {
+    attrs: {
+      "text": "确定",
+      "type": "blue",
+      "disabled": _vm.isChoseDisabled
+    },
+    on: {
+      "wxcButtonClicked": _vm.wxcConfirmEmptyContainer
+    }
+  })], 1)])])], 1)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
@@ -25765,7 +26208,7 @@ module.exports = {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 //
 //
@@ -25776,12 +26219,60 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 
+var modal = weex.requireModule('modal');
+var stream = weex.requireModule('stream');
+var storage = weex.requireModule('storage');
 exports.default = {
-  methods: {
-    wxcButtonEmptySpritzerTank: function wxcButtonEmptySpritzerTank(e) {
-      console.log(e);
+    data: function data() {
+        return {
+            // 车间名字
+            workshopName: '',
+            containerNum: ''
+        };
+    },
+    created: function created() {
+        var _this2 = this;
+
+        storage.getItem('workShopName', function (event) {
+            _this2.workshopName = event.data;
+        });
+        storage.getItem('containerNum', function (event) {
+            _this2.workshopName = event.data;
+        });
+    },
+
+    methods: {
+        wxcButtonEmptySpritzerTank: function wxcButtonEmptySpritzerTank(e) {
+            var _this = this;
+
+            var url = 'http://10.34.10.25:8999/obtain/getStripContainer';
+            var body = JSON.stringify({
+                containerNumber: _this.containerNum,
+                functionNumber: _this.workshopName
+            });
+            stream.fetch({
+                method: "POST",
+                url: url,
+                headers: { 'Content-Type': 'application/json' },
+                body: body,
+                type: 'json'
+            }, function (ret) {
+                if (ret.data.status === 1) {
+                    modal.toast({ message: ret.data.message, duration: 3 });
+                } else {
+                    modal.toast({ message: ret.data.message, duration: 3 });
+                }
+                // if(ret.data.status===1){
+                //     modal.toast({ message: ret.data.message, duration: 3 });
+                //     _this.$router.push({name:'jurisLoginMessage'})
+                // }else{
+                //     modal.toast({ message: '登录失败！！！', duration: 3 });
+                // }
+            }, function (progress) {
+                // console.log(progress)
+            });
+        }
     }
-  }
 };
 
 /***/ }),
@@ -25841,10 +26332,55 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 
+var modal = weex.requireModule('modal');
+var stream = weex.requireModule('stream');
+var storage = weex.requireModule('storage');
 exports.default = {
+  data: function data() {
+    return {
+      workshopName: ''
+    };
+  },
+  created: function created() {
+    var _this2 = this;
+
+    storage.getItem('workShopName', function (event) {
+      _this2.workshopName = event.data;
+    });
+  },
+
   methods: {
-    wxcButtonGetSpritzerTank: function wxcButtonGetSpritzerTank(e) {
-      this.$router.push({ name: 'popUp' });
+    wxcButtonGetSpritzerHopper: function wxcButtonGetSpritzerHopper() {
+      var _this = this;
+
+      var url = 'http://10.34.10.53:8200/functionRoomUseContainer/getFunctionRoomUseContainer';
+      var body = JSON.stringify({
+        functionRoomNumber: _this.workshopName
+      });
+      stream.fetch({
+        method: "POST",
+        url: url,
+        headers: { 'Content-Type': 'application/json' },
+        body: body,
+        type: 'json'
+      }, function (ret) {
+        console.log(ret);
+        if (ret.data.status === 1) {
+          if (ret.data.data.length > 0) {
+            this.$router.push({ name: 'popUp' });
+          } else {
+            modal.toast({ message: '该车间没有送料桶', duration: 3 });
+          }
+        }
+        // if(ret.data.status===1){
+        //     modal.toast({ message: ret.data.message, duration: 3 });
+        //     _this.$router.push({name:'jurisLoginMessage'})
+        // }else{
+        //     modal.toast({ message: '登录失败！！！', duration: 3 });
+        // }
+      }, function (progress) {
+        // console.log(progress)
+      });
     }
   }
 };
@@ -26340,7 +26876,7 @@ module.exports = {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 //
 //
@@ -26351,12 +26887,60 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 
+var modal = weex.requireModule('modal');
+var stream = weex.requireModule('stream');
+var storage = weex.requireModule('storage');
 exports.default = {
-  methods: {
-    wxcButtonGetSpritzerHopperBack: function wxcButtonGetSpritzerHopperBack(e) {
-      console.log(e);
+    data: function data() {
+        return {
+            // 车间名字
+            workshopName: '',
+            containerNum: ''
+        };
+    },
+    created: function created() {
+        var _this2 = this;
+
+        storage.getItem('workShopName', function (event) {
+            _this2.workshopName = event.data;
+        });
+        storage.getItem('containerNum', function (event) {
+            _this2.containerNum = event.data;
+        });
+    },
+
+    methods: {
+        wxcButtonGetSpritzerHopperBack: function wxcButtonGetSpritzerHopperBack(e) {
+            var _this = this;
+
+            var url = 'http://10.34.10.25:8999/delivery/sendEmptyContainer';
+            var body = JSON.stringify({
+                containerNumber: _this.containerNum,
+                functionNumber: _this.workshopName
+            });
+            stream.fetch({
+                method: "POST",
+                url: url,
+                headers: { 'Content-Type': 'application/json' },
+                body: body,
+                type: 'json'
+            }, function (ret) {
+                if (ret.data.status === 1) {
+                    modal.toast({ message: ret.data.message, duration: 3 });
+                } else {
+                    modal.toast({ message: ret.data.message, duration: 3 });
+                }
+                // if(ret.data.status===1){
+                //     modal.toast({ message: ret.data.message, duration: 3 });
+                //     _this.$router.push({name:'jurisLoginMessage'})
+                // }else{
+                //     modal.toast({ message: '登录失败！！！', duration: 3 });
+                // }
+            }, function (progress) {
+                // console.log(progress)
+            });
+        }
     }
-  }
 };
 
 /***/ }),
@@ -26738,6 +27322,21 @@ module.exports = {
     "color": "#ffffff",
     "fontSize": "35"
   },
+  "btnNss": {
+    "display": "flex",
+    "justifyContent": "center",
+    "backgroundColor": "#0099ff",
+    "width": "200",
+    "height": "100",
+    "borderRadius": "10"
+  },
+  "btn-txtNSS": {
+    "textAlign": "center",
+    "marginTop": 0,
+    "marginBottom": 0,
+    "color": "#ffffff",
+    "fontSize": "35"
+  },
   "content": {
     "height": "300",
     "flexDirection": "row",
@@ -26820,6 +27419,9 @@ exports.default = {
     openNoAnimationMask: function openNoAnimationMask(e) {
       this.showFunction = true;
       this.hasFunction = false;
+    },
+    onJurisLogin: function onJurisLogin() {
+      this.$router.push({ name: 'jurisLoginMessage' });
     }
   }
 };
@@ -27057,7 +27659,7 @@ module.exports = {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 //
 //
@@ -27068,12 +27670,38 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 
+var modal = weex.requireModule('modal');
+var stream = weex.requireModule('stream');
 exports.default = {
-  methods: {
-    wxcButtonWeigh: function wxcButtonWeigh(e) {
-      console.log(e);
+    methods: {
+        wxcButtonWeigh: function wxcButtonWeigh(e) {
+            var _this = this;
+
+            var url = 'http://10.34.10.25:8999/delivery/weighing';
+            var body = JSON.stringify({});
+            stream.fetch({
+                method: "POST",
+                url: url,
+                headers: { 'Content-Type': 'application/json' },
+                body: body,
+                type: 'json'
+            }, function (ret) {
+                if (ret.data.status === 1) {
+                    modal.toast({ message: ret.data.message, duration: 3 });
+                } else {
+                    modal.toast({ message: ret.data.message, duration: 3 });
+                }
+                // if(ret.data.status===1){
+                //     modal.toast({ message: ret.data.message, duration: 3 });
+                //     _this.$router.push({name:'jurisLoginMessage'})
+                // }else{
+                //     modal.toast({ message: '登录失败！！！', duration: 3 });
+                // }
+            }, function (progress) {
+                // console.log(progress)
+            });
+        }
     }
-  }
 };
 
 /***/ }),
@@ -27133,9 +27761,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: ["contentBox"]
   }, [_c('div', {
-    staticClass: ["btn"]
+    staticClass: ["btnNss"],
+    on: {
+      "click": _vm.onJurisLogin
+    }
   }, [_c('text', {
-    staticClass: ["btn-txt"]
+    staticClass: ["btn-txtNSS"]
   }, [_vm._v("初始化界面")])]), _c('v-weigh', {
     staticClass: ["contentBox-btn"]
   }), _c('v-get-spritzer-hopper-rinses', {
@@ -27615,35 +28246,37 @@ exports.default = {
     components: { WxcButton: _weexUi.WxcButton },
     data: function data() {
         return {
-            userName: 'aaa',
-            userPassword: 'aaa'
+            userName: 'admin',
+            userPassword: 'admin'
         };
     },
     methods: {
         // 登录按钮
         onLogin: function onLogin() {
+            var _this = this;
             if (this.userName && this.userPassword) {
                 var url = 'http://10.34.10.53:8200/admin/getAdmin';
-                var body = (0, _config2.default)({
+                var body = JSON.stringify({
                     username: this.userName,
                     password: this.userPassword
                 });
 
                 stream.fetch({
                     method: "POST",
-                    type: 'json',
                     url: url,
                     headers: { 'Content-Type': 'application/json' },
-                    body: body
+                    body: body,
+                    type: 'json'
                 }, function (ret) {
                     console.log(ret);
-                    if (ret.status === 1) {
-                        modal.toast({ message: ret.message, duration: 3 });
+                    if (ret.data.status === 1) {
+                        modal.toast({ message: ret.data.message, duration: 3 });
+                        _this.$router.push({ name: 'jurisLoginMessage' });
                     } else {
                         modal.toast({ message: '登录失败！！！', duration: 3 });
                     }
                 }, function (progress) {
-                    console.log(progress);
+                    // console.log(progress)
                 });
             } else {
                 modal.toast({ message: '请输入账号和密码', duration: 3 });
@@ -27808,7 +28441,7 @@ module.exports = {
     "marginBottom": "40",
     "paddingLeft": "20"
   },
-  "login_content": {
+  "login-txt": {
     "paddingTop": "20",
     "paddingRight": "20",
     "paddingBottom": "20",
@@ -27845,6 +28478,9 @@ module.exports = {
   },
   "workShop-confirm": {
     "marginTop": "10"
+  },
+  "button": {
+    "alignItems": "center"
   }
 }
 
@@ -27981,18 +28617,22 @@ var _weexUi = __webpack_require__(1);
 //
 //
 //
+//
+//
 
 var modal = weex.requireModule('modal');
+var stream = weex.requireModule('stream');
 var navigator = weex.requireModule('navigator');
 exports.default = {
     components: { WxcButton: _weexUi.WxcButton, WxcRadio: _weexUi.WxcRadio, WxcPageCalendar: _weexUi.WxcPageCalendar, WxcMinibar: _weexUi.WxcMinibar, WxcPopup: _weexUi.WxcPopup },
     data: function data() {
         return {
-            userBucket: '',
-            userProduct: '',
-            userVolume: '',
-            userWeight: '',
-            userTime: '',
+            userBucket: '99',
+            userProduct: '空桶',
+            userVolume: '80L',
+            userWeight: '100kg',
+            binOrHopper: '',
+            // userTime:'2019-10-10',
             isWorkShopDisabled: true,
 
             // 产品名称
@@ -28004,18 +28644,18 @@ exports.default = {
             }, {
                 title: '空料桶',
                 value: '空料桶'
-            }],
+            }]
 
             // 时间参数
-            animationType: 'push',
-            currentDate: '',
-            selectedDate: ['2019-08-23', '2020-06-30'],
-            isRange: true,
-            calendarTitle: '选择日期',
-            dateRange: ['2019-08-23', '2020-06-30'],
-            minibarCfg: {
-                title: '日期选择'
-            }
+            // animationType: 'push',
+            // currentDate: '',
+            // selectedDate: ['2019-08-23', '2020-06-30'],
+            // isRange: true,
+            // calendarTitle: '选择日期',
+            // dateRange: ['2019-08-23', '2020-06-30'],
+            // minibarCfg: {
+            //     title: '日期选择'
+            // }
         };
     },
     methods: {
@@ -28038,57 +28678,59 @@ exports.default = {
 
 
         // 时间
-        wxcPageCalendarDateSelected: function wxcPageCalendarDateSelected(e) {
-            this.userTime = e.date.join("");
-            this.selectedDate = e.date;
-            this.currentDate = e.date;
-        },
-        wxcPageCalendarBackClicked: function wxcPageCalendarBackClicked() {},
-        showCalendar: function showCalendar() {
-            var _this = this;
-
-            this.isRange = false;
-            setTimeout(function () {
-                _this.$refs['wxcPageCalendar'].show();
-            }, 10);
-        },
-
+        // wxcPageCalendarDateSelected (e) {
+        //     this.userTime=e.date.join("")
+        //     this.selectedDate = e.date;
+        //     this.currentDate = e.date;
+        // },
+        // wxcPageCalendarBackClicked () {
+        // },
+        // showCalendar () {
+        //     this.isRange = false;
+        //     setTimeout(() => {
+        //     this.$refs['wxcPageCalendar'].show();
+        //     }, 10);
+        // },
 
         // 登录按钮
         login: function login() {
+            var _this = this;
             if (this.userBucket && this.userProduct) {
-
+                this.binOrHopper = this.userProduct === '空料斗' ? '料斗' : '料桶';
                 var url = 'http://10.34.10.53:8200/containerInformation/saveContainerInformation';
-                var body = toParams({
+
+                var body = JSON.stringify({
                     containerNumber: this.userBucket,
                     productName: this.userProduct,
                     containerVolume: this.userVolume,
                     containerWeight: this.userWeight,
-                    productDate: this.userTime,
-                    binOrHopper: this.userProduct
+                    // productDate:this.userTime,
+                    binOrHopper: this.binOrHopper
                 });
 
                 stream.fetch({
                     method: "POST",
-                    type: 'json',
                     url: url,
                     headers: { 'Content-Type': 'application/json' },
-                    body: body
+                    body: body,
+                    type: 'json'
                 }, function (ret) {
                     console.log(ret);
-                    if (ret.status === 1) {
-                        modal.toast({ message: ret.message, duration: 3 });
+                    if (ret.data.status === 1) {
+                        _this.userBucket = '', _this.userProduct = '', _this.userVolume = '', _this.userWeight = '', _this.binOrHopper = '', modal.toast({ message: ret.data.message, duration: 3 });
                     } else {
-                        modal.toast({ message: '登录失败！！！', duration: 3 });
+                        modal.toast({ message: '填写失败！！！', duration: 3 });
                     }
                 }, function (progress) {
-                    console.log(progress);
+                    // console.log(progress)
                 });
             } else {
                 modal.toast({ message: '请选择产品名称和请输入桶编号', duration: 3 });
             }
         },
-        black: function black() {},
+        black: function black() {
+            this.$router.push({ name: 'wayStation' });
+        },
         minibarLeftButtonClick: function minibarLeftButtonClick() {},
         minibarRightButtonClick: function minibarRightButtonClick() {
             modal.toast({ 'message': '退出成功', 'duration': 1 });
@@ -28139,6 +28781,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     slot: "right"
   }, [_vm._v("退出")])])], 1)]), _c('div', {
+    staticClass: ["login-txt"]
+  }, [_c('div', {
     staticClass: ["login_input"]
   }, [_c('div', {
     staticClass: ["inputBox"]
@@ -28202,18 +28846,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.userWeight = $event.target.attr.value
       }
     }
-  })])]), _c('div', {
-    staticClass: ["inputBox"]
-  }, [_c('text', {
-    staticClass: ["input-title"]
-  }, [_vm._v("日期")]), _c('div', {
-    staticClass: ["input_box"]
-  }, [_c('text', {
-    staticClass: ["input_item"],
-    on: {
-      "click": _vm.showCalendar
-    }
-  }, [_vm._v(_vm._s(_vm.userTime))])])])]), _c('div', {
+  })])])]), _c('div', {
     staticClass: ["button_box"]
   }, [_c('wxc-button', {
     attrs: {
@@ -28227,13 +28860,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["button_box"]
   }, [_c('wxc-button', {
     attrs: {
-      "text": "返回",
+      "text": "返回中间站",
       "type": "blue"
     },
     on: {
       "wxcButtonClicked": _vm.black
     }
-  })], 1), _c('wxc-popup', {
+  })], 1)]), _c('wxc-popup', {
     attrs: {
       "popupColor": "#fff",
       "show": _vm.showproduct,
@@ -28258,7 +28891,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "wxcRadioListChecked": _vm.wxcRadioproduct
     }
   })], 1)]), _c('div', {
-    staticClass: ["button_box"]
+    staticClass: ["button_box", "button"]
   }, [_c('wxc-button', {
     attrs: {
       "text": "确定",
@@ -28267,20 +28900,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "wxcButtonClicked": _vm.wxcChoseproduct
     }
-  })], 1)])]), _c('wxc-page-calendar', {
-    ref: "wxcPageCalendar",
-    attrs: {
-      "dateRange": _vm.dateRange,
-      "animationType": _vm.animationType,
-      "selectedDate": _vm.selectedDate,
-      "isRange": _vm.isRange,
-      "minibarCfg": _vm.minibarCfg
-    },
-    on: {
-      "wxcPageCalendarBackClicked": _vm.wxcPageCalendarBackClicked,
-      "wxcPageCalendarDateSelected": _vm.wxcPageCalendarDateSelected
-    }
-  })], 1)
+  })], 1)])])], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
@@ -28648,11 +29268,16 @@ var _weexUi = __webpack_require__(1);
 //
 
 var modal = weex.requireModule('modal');
+var stream = weex.requireModule('stream');
+var storage = weex.requireModule('storage');
 var navigator = weex.requireModule('navigator');
 exports.default = {
     components: { WxcButton: _weexUi.WxcButton, WxcRadio: _weexUi.WxcRadio, WxcPageCalendar: _weexUi.WxcPageCalendar, WxcPopup: _weexUi.WxcPopup },
     data: function data() {
         return {
+            // 车间名字
+            workshopName: '',
+            // 变量
             userBucket: '',
             userProduct: '',
             userBatch: '',
@@ -28670,59 +29295,7 @@ exports.default = {
             showqualified: false,
             // 产品名称
             showproduct: false,
-            list: [{
-                title: '批料待发间',
-                value: 1
-            }, {
-                title: '制粒间',
-                value: 2
-            }, {
-                title: '总混间',
-                value: 3
-            }, {
-                title: '胶囊间A',
-                value: 4
-            }, {
-                title: '胶囊间B',
-                value: 5
-            }, {
-                title: '压片间',
-                value: 6
-            }, {
-                title: '包衣间',
-                value: 7
-            }, {
-                title: '铝塑包装A',
-                value: 8
-            }, {
-                title: '铝塑包装B',
-                value: 9
-            }, {
-                title: '铝塑包装C',
-                value: 10
-            }, {
-                title: '中间站',
-                value: 11
-            }, {
-                title: '清洗间',
-                value: 12
-            }],
-            status: [{
-                title: '原辅料',
-                value: 1
-            }, {
-                title: '未混颗粒',
-                value: 2
-            }, {
-                title: '已混颗粒',
-                value: 3
-            }, {
-                title: '待清洗',
-                value: 4
-            }, {
-                title: '已清洗',
-                value: 5
-            }],
+            list: [],
             qualified: [{
                 title: '合格',
                 value: 0
@@ -28782,6 +29355,15 @@ exports.default = {
             isBottomShow: false
         };
     },
+    created: function created() {
+        var _this2 = this;
+
+        storage.getItem('workShopName', function (event) {
+            _this2.workshopName = event.data;
+        });
+        this.onInit();
+    },
+
     methods: {
         // 桶编号
         onBucket: function onBucket() {
@@ -28861,18 +29443,55 @@ exports.default = {
         },
         wxcPageCalendarBackClicked: function wxcPageCalendarBackClicked() {},
         showCalendar: function showCalendar() {
-            var _this = this;
+            var _this3 = this;
 
             this.isRange = false;
             setTimeout(function () {
-                _this.$refs['wxcPageCalendar'].show();
+                _this3.$refs['wxcPageCalendar'].show();
             }, 10);
         },
 
 
         // 提交按钮
-        login: function login() {},
-        black: function black() {},
+        login: function login() {
+            var _this = this;
+
+            var url = 'http://10.34.10.25:8999/delivery/sendContainer';
+            var body = JSON.stringify({
+                functionNumber: _this.workshopName,
+                containerNumber: _this.userBucket,
+                productName: _this.userProduct,
+                lotNumber: _this.userBatch,
+                status: _this.userStatus,
+                inspectionStatus: _this.userQalified,
+                materialName: _this.userMaterial,
+                productDate: _this.userTime
+            });
+            stream.fetch({
+                method: "POST",
+                url: url,
+                headers: { 'Content-Type': 'application/json' },
+                body: body,
+                type: 'json'
+            }, function (ret) {
+                if (ret.data.status === 1) {
+                    modal.toast({ message: ret.data.message, duration: 3 });
+                    this.$router.go(-1);
+                }
+                // if(ret.data.status===1){
+                //     modal.toast({ message: ret.data.message, duration: 3 });
+                //     _this.$router.push({name:'jurisLoginMessage'})
+                // }else{
+                //     modal.toast({ message: '登录失败！！！', duration: 3 });
+                // }
+            }, function (progress) {
+                // console.log(progress)
+            });
+            this.$router.go(-1);
+        },
+        black: function black() {
+            this.$router.go(-1);
+        },
         openBottomPopup: function openBottomPopup() {
             this.isBottomShow = true;
         },
@@ -28880,6 +29499,33 @@ exports.default = {
         //非状态组件，需要在这里关闭
         popupOverlayBottomClick: function popupOverlayBottomClick() {
             this.isBottomShow = false;
+        },
+        onInit: function onInit() {
+            var _this = this;
+
+            var url = 'http://10.34.10.53:8200/functionRoomUseContainer/getFunctionRoomUseContainer';
+            var body = JSON.stringify({
+                functionRoomNumber: _this.workshopName
+            });
+            stream.fetch({
+                method: "POST",
+                url: url,
+                headers: { 'Content-Type': 'application/json' },
+                body: body,
+                type: 'json'
+            }, function (ret) {
+                if (ret.data.status === 1) {
+                    _this.list = ret.data.data;
+                }
+                // if(ret.data.status===1){
+                //     modal.toast({ message: ret.data.message, duration: 3 });
+                //     _this.$router.push({name:'jurisLoginMessage'})
+                // }else{
+                //     modal.toast({ message: '登录失败！！！', duration: 3 });
+                // }
+            }, function (progress) {
+                // console.log(progress)
+            });
         }
     }
 };
@@ -28954,7 +29600,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.onStatus
     }
-  }, [_vm._v(_vm._s(_vm.userStatus))])])]), _c('div', {
+  }, [_vm._v(_vm._s(_vm.userStatus))])])]), (_vm.workshopName === 'ZJ') ? _c('div', {
     staticClass: ["inputBox"]
   }, [_c('text', {
     staticClass: ["input-title"]
@@ -28971,7 +29617,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.userMaterial = $event.target.attr.value
       }
     }
-  })])]), _c('div', {
+  })])]) : _vm._e(), (_vm.workshopName !== 'PBZ' || _vm.workshopName !== 'LSBZ1' || _vm.workshopName !== 'LSBZ2') ? _c('div', {
     staticClass: ["inputBox"]
   }, [_c('text', {
     staticClass: ["input-title"]
@@ -28982,7 +29628,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.onQalified
     }
-  }, [_vm._v(_vm._s(_vm.userQalified))])])])]), _c('div', {
+  }, [_vm._v(_vm._s(_vm.userQalified))])])]) : _vm._e()]), _c('div', {
     staticClass: ["button_box"]
   }, [_c('wxc-button', {
     attrs: {

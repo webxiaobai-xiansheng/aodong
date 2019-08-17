@@ -24,9 +24,9 @@
     </div>
 </template>
 <script>
-import { WxcPopup, WxcRadio } from 'weex-ui';
+import { WxcPopup, WxcRadio, WxcButton } from 'weex-ui';
 export default {
-    components: { WxcPopup, WxcRadio },
+    components: { WxcPopup, WxcRadio, WxcButton },
     data: () => ({
         show: false,
         isChoseDisabled: true,
