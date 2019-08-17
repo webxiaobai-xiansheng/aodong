@@ -29,12 +29,14 @@
                 </div>
             </div>
         </wxc-popup>
-        <wxc-button text="测试接口" type="blue" @wxcButtonClicked="test"></wxc-button size="small">
+        <wxc-button text="test" type="blue" @wxcButtonClicked="test"></wxc-button size="small">
     </div>
 </template>
 <script>
 const modal = weex.requireModule('modal');
-const stream = weex.requireModule('stream');
+var stream = weex.requireModule('stream');
+var config = require('../../configs/config.js');
+const storage = weex.requireModule('storage');
 import { WxcButton, WxcSearchbar, WxcIcon, WxcRadio, WxcPopup } from 'weex-ui';
 export default {
     components: { WxcButton, WxcSearchbar, WxcIcon, WxcRadio, WxcPopup },
@@ -45,6 +47,7 @@ export default {
         isLoginDisabled: true,
         isChoseDisabled: true,
         show: false,
+        workshopName: '',
         list: [{
             title: '批料待发间',
             value: 'WL'
@@ -67,13 +70,13 @@ export default {
             title: '包衣间',
             value: 'BY'
         }, {
-            title: '铝塑包装A',
+            title: '瓶装',
             value: 'PBZ'
         }, {
-            title: '铝塑包装B',
+            title: '铝塑包装1',
             value: 'LSBZ1'
         }, {
-            title: '铝塑包装C',
+            title: '铝塑包装2',
             value: 'LSBZ2'
         }, {
             title: '中间站',
@@ -119,6 +122,11 @@ export default {
                 this.isChoseDisabled = true;
             } else {
                 this.isChoseDisabled = false;
+                var workShopName = e.value;
+                storage.setItem('workShopName', workShopName, event => {
+                    console.log(event)
+                    console.log(event.data)
+                });
             }
         },
 
@@ -129,9 +137,6 @@ export default {
             } else {
                 this.show = false;
                 this.isLoginDisabled = false;
-                console.log(e);
-
-                localStorage.setItem('workShopName', e.value);
             }
         },
 
@@ -151,38 +156,83 @@ export default {
 
         // 登录按钮
         login() {
-            modal.toast({ message: '登录成功', duration: 3 });
-            this.$router.push({ name: 'batch' })
-        },
-        test() {
-            // 颖杰的
-            // var url = '/apis' + '/containerInformation/emptyContainer';
-            // stream.fetch({
-            //     methods: 'get',
-            //     url: url,
-            //     type: 'json'，
-            // }, function(res) {
-            //     modal.toast({ message: res });
-            //     console.log(res)
-            // });
-            // 文锋的
-            var url = '/apis' + '/user/login';
-            var body = JSON.stringify({
+            let url = 'http://10.34.10.53:8200/admin/getAdmin';
+            let body = config.toParams({
                 username: 'ou',
-                password: '666666',
+                password: '666',
             });
             stream.fetch({
-                methos: 'post',
-                url: url,
+                method: "POST",
                 type: 'json',
+                url: url,
                 body: body
-            },function(ret){
+            }, function(ret) {
                 console.log(ret)
+                if (ret.status === 1) {
+                    modal.toast({ message: ret.message, duration: 3 });
+                    storage.getItem('workShopName', event => {
+                        // this.workshopName = event.data;
+                        let getName = event.data;
+                    });
+
+                    // 批料待发
+                    if (getName === 'WL') {
+                        this.$router.push({ name: 'batch' });
+                        // modal.toast({message:'批料待发'});
+                    }
+                    // 制粒间和总混间
+                    if (getName === 'ZL' || getName === 'ZH') {
+                        this.$router.push({ name: 'granulating' });
+                    }
+                    // 胶囊间1、胶囊间2、压片间
+                    if (getName === 'JN1' || getName === 'JN2' || getName === 'YP') {
+                        this.$router.push({ name: 'capsule' });
+                    }
+                    // 包衣间
+                    if (getName === 'BY') {
+                        this.$router.push({ name: 'laggingCover' });
+                    }
+                    // 瓶装、铝塑包装1、铝塑包装2（内包间）
+                    if (getName === 'PBZ' || getName === 'LSBZ1' || getName === 'LSBZ2') {
+                        this.$router.push({ name: 'insourcing' });
+                    }
+                    // 中间站
+                    if (getName === 'ZJ') {
+                        this.$router.push({ name: 'wayStation' });
+                    }
+                    // 清洗间（出口）
+                    if (getName === 'QXCK') {
+                        this.$router.push({ name: 'cleaning' });
+                    }
+                } else {
+                    modal.toast({ message: ret.message, duration: 3 });
+                }
+            });
+        },
+        test() {
+            let url = 'http://10.34.10.53:8200/admin/getAdmin';
+            let body = config.toParams({
+                username: 'ou',
+                password: '666',
+            });
+            stream.fetch({
+                method: "POST",
+                type: 'jsonp',
+                url: url,
+                timeout: 30000,
+                body: body
+            }, function(ret) {
+                console.log(ret)
+                if (ret.status === 1) {
+                    modal.toast({ message: ret.message, duration: 3 });
+                } else {
+                    modal.toast({ message: ret.message, duration: 3 });
+                }
             })
         }
     },
     created() {
-
+        console.log()
     }
 }
 </script>
