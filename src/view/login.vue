@@ -29,13 +29,13 @@
                 </div>
             </div>
         </wxc-popup>
-        <wxc-button text="test" type="blue" @wxcButtonClicked="test"></wxc-button size="small">
     </div>
 </template>
 <script>
 const modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
 const storage = weex.requireModule('storage');
+const that = this;
 import { WxcButton, WxcRadio, WxcPopup } from 'weex-ui';
 export default {
     components: { WxcButton, WxcRadio, WxcPopup },
@@ -120,8 +120,12 @@ export default {
             } else {
                 this.isChoseDisabled = false;
                 var workShopName = e.value;
+                var workShopTitle = e.title;
                 storage.setItem('workShopName', workShopName, event => {
                     console.log(event)
+                    console.log(event.data)
+                });
+                storage.setItem('workShopTitle', workShopTitle, event => {
                     console.log(event.data)
                 });
             }
@@ -164,31 +168,31 @@ export default {
                             let getName = event.data;
                             // 批料待发
                             if (getName === 'WL') {
-                                this.$router.push({ name: 'batch' });
+                                that.$router.push({ name: 'batch' });
                             }
                             // 制粒间和总混间
                             if (getName === 'ZL' || getName === 'ZH') {
-                                this.$router.push({ name: 'granulating' });
+                                that.$router.push({ name: 'granulating' });
                             }
                             // 胶囊间1、胶囊间2、压片间
                             if (getName === 'JN1' || getName === 'JN2' || getName === 'YP') {
-                                this.$router.push({ name: 'capsule' });
+                                that.$router.push({ name: 'capsule' });
                             }
                             // 包衣间
                             if (getName === 'BY') {
-                                this.$router.push({ name: 'laggingCover' });
+                                that.$router.push({ name: 'laggingCover' });
                             }
                             // 瓶装、铝塑包装1、铝塑包装2（内包间）
                             if (getName === 'PBZ' || getName === 'LSBZ1' || getName === 'LSBZ2') {
-                                this.$router.push({ name: 'insourcing' });
+                                that.$router.push({ name: 'insourcing' });
                             }
                             // 中间站
                             if (getName === 'ZJ') {
-                                this.$router.push({ name: 'wayStation' });
+                                that.$router.push({ name: 'wayStation' });
                             }
                             // 清洗间（出口）
                             if (getName === 'QXCK') {
-                                this.$router.push({ name: 'cleaning' });
+                                that.$router.push({ name: 'cleaning' });
                             }
                         });
                     } else {

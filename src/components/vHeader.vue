@@ -6,7 +6,7 @@
             leftButton=""
             @wxcMinibarLeftButtonClicked="minibarLeftButtonClick"
             @wxcMinibarRightButtonClicked="minibarRightButtonClick">
-          <text style="font-size: 35px;color:#fff;" slot="middle">{{workshopName}}</text>
+          <text style="font-size: 35px;color:#fff;" slot="middle">{{workShopTitle}}</text>
           <text slot="right" style="font-size: 35px;color:#fff;">退出</text>
       </wxc-minibar>
     </div>
@@ -21,7 +21,7 @@ export default {
   components: { WxcMinibar },
   data () {
     return {
-      workshopName:''
+      workShopTitle:''
     }
   },
   methods: {
@@ -33,8 +33,8 @@ export default {
     }
   },
   created () {
-    storage.getItem('workShopName', event => {
-      this.workshopName = event.data;
+    storage.getItem('workShopTitle', event => {
+      this.workShopTitle = event.data;
     });
   }
 }
