@@ -88,8 +88,8 @@ export default {
         // 账号、密码输入框输入内容后显示 “选择车间按钮”
         onInput() {
             if (this.userName && this.userPassword) {
-                if (this.userName.length < 6) {
-                    modal.toast({ message: '账号长度为6位' });
+                if (this.userName.length < 8) {
+                    modal.toast({ message: '账号长度为8位' });
                     this.isWorkShopDisabled = true;
                 } else if (this.userPassword.length < 8) {
                     modal.toast({ message: '密码长度为8位' });
