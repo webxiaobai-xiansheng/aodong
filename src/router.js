@@ -22,72 +22,66 @@ export const router = new Router({
     //   name: 'login',
     //   component: login
     // },
+    // {
+    //   path: '/',
+    //   name: 'home',
+    //   component: home,
+    //   redirect: { name: 'batch' },
+    //   children: [
+    //     // 批料待发间
+    //     {
+    //         path: '/batch',
+    //         name: 'batch',
+    //         component: batch
+    //     },
+    //     // 制粒间和总混间
+    //     {
+    //       path: '/granulating',
+    //       name: 'granulating',
+    //       component: granulating
+    //     },
+    //     // 胶囊间和压片间
+    //     {
+    //       path: '/capsule',
+    //       name: 'capsule',
+    //       component: capsule
+    //     },
+    //     // 包衣间
+    //     {
+    //       path: '/laggingCover',
+    //       name: 'laggingCover',
+    //       component: laggingCover
+    //     },
+    //     // 内包间
+    //     {
+    //       path: '/insourcing',
+    //       name: 'insourcing',
+    //       component: insourcing
+    //     },
+    //     // 中间站
+    //     {
+    //       path: '/wayStation',
+    //       name: 'wayStation',
+    //       component: wayStation
+    //     },
+    //     // 清洗间
+    //     {
+    //       path: '/cleaning',
+    //       name: 'cleaning',
+    //       component: cleaning
+    //     },
+    //     // 输入信息
+    //     {
+    //       path: '/popUp',
+    //       name: 'popUp',
+    //       component: popUp
+    //     }
+        
+    //   ]
+    // },
+    // 权限登录
     {
       path: '/',
-      name: 'home',
-      component: home,
-      redirect: { name: 'batch' },
-      // redirect: { name: 'popUp' },
-      children: [
-        // 批料待发间
-        {
-            path: '/batch',
-            name: 'batch',
-            component: batch
-        },
-        // 制粒间和总混间
-        // {
-        //   path: '/granulating',
-        //   name: 'granulating',
-        //   component: granulating
-        // },
-        // 胶囊间和压片间
-        // {
-        //   path: '/capsule',
-        //   name: 'capsule',
-        //   component: capsule
-        // },
-        // 包衣间
-        // {
-        //   path: '/laggingCover',
-        //   name: 'laggingCover',
-        //   component: laggingCover
-        // },
-        // 内包间
-        // {
-        //   path: '/insourcing',
-        //   name: 'insourcing',
-        //   component: insourcing
-        // },
-        // 中间站
-        // {
-        //   path: '/wayStation',
-        //   name: 'wayStation',
-        //   component: wayStation
-        // },
-        // 清洗间
-        // {
-        //   path: '/cleaning',
-        //   name: 'cleaning',
-        //   component: cleaning
-        // },
-        // 权限登录
-        // {
-        //   path: '/jurisLogin',
-        //   name: 'jurisLogin',
-        //   component:jurisLogin
-        // }
-        // 输入信息
-        // {
-        //   path: '/popUp',
-        //   name: 'popUp',
-        //   component: popUp
-        // }
-        
-      ]
-    },
-    {
-      path: '/jurisLogin',
       name: 'jurisLogin',
       component: jurisLogin
     },

@@ -1,7 +1,5 @@
 <template>
   <!-- 送空料桶清洗功能 -->
-  <!-- <wxc-button text="取料桶" type="blue" size="small"
-              @wxcButtonClicked="wxcButtonGetSpritzerTank"></wxc-button> -->
   <div class="btn" @click="wxcButtonGetSpritzerHopperRinse">
     <text class="btn-txt">送空料桶清洗</text>
   </div>
@@ -9,9 +7,7 @@
 
 
 <script>
-// import { WxcButton } from 'weex-ui'
 export default {
-  // components: { WxcButton },
   methods: {
     wxcButtonGetSpritzerHopperRinse (e) {
       console.log(e)

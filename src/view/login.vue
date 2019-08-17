@@ -34,7 +34,7 @@
 </template>
 <script>
 const modal = weex.requireModule('modal');
-var stream = weex.requireModule('stream');
+const stream = weex.requireModule('stream');
 import { WxcButton, WxcSearchbar, WxcIcon, WxcRadio, WxcPopup } from 'weex-ui';
 export default {
     components: { WxcButton, WxcSearchbar, WxcIcon, WxcRadio, WxcPopup },

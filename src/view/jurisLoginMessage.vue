@@ -28,6 +28,13 @@
                 </div>
             </div>
             
+            <!-- <div class="inputBox">
+                <text class="input-title">批号</text>
+                <div class="input_box">
+                    <input v-model="userBatch " class="input_item" type="text">
+                </div>
+            </div> -->
+
             <div class="inputBox">
                 <text class="input-title">容器容积</text>
                 <div class="input_box">
@@ -131,11 +138,11 @@ export default {
         product:[
           {
             title: '空料斗',
-            value: 0
+            value: '空料斗'
           },
           {
             title: '空料桶',
-            value: 1
+            value: '空料桶'
           }
         ],
 
@@ -184,7 +191,37 @@ export default {
 
         // 登录按钮
         login() {
-            
+            if(this.userBucket&&this.userProduct){
+
+                let url = 'http://10.34.10.53:8200/containerInformation/saveContainerInformation';
+                let body = toParams({
+                    containerNumber: this.userBucket,
+                    productName:this.userProduct,
+                    containerVolume:this.userVolume,
+                    containerWeight:this.userWeight,
+                    productDate:this.userTime,
+                    binOrHopper:this.userProduct
+                });
+                
+                stream.fetch({
+                    method:"POST",
+                    type:'json',
+                    url:url,
+                    headers:{'Content-Type':'application/json'},
+                    body: body
+                },function(ret){
+                    console.log(ret)
+                    if(ret.status===1){
+                        modal.toast({ message: ret.message, duration: 3 });
+                    }else{
+                        modal.toast({ message: '登录失败！！！', duration: 3 });
+                    }
+                },function(progress) {
+                    console.log(progress)
+                }) 
+            }else{
+                modal.toast({ message: '请选择产品名称和请输入桶编号', duration: 3 });
+            }
         },
         black(){
 

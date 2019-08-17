@@ -1,5 +1,5 @@
 <template>
-  <!-- 胶囊间 -->
+  <!-- 胶囊间和压片间 -->
   <div class="home">
     <v-popover-capsule></v-popover-capsule>
     <v-table class="table"></v-table>

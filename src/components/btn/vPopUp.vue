@@ -377,12 +377,12 @@ export default {
             }, 10);
         },
 
-        // 登录按钮
+        // 提交按钮
         login() {
             
         },
         black(){
-
+            
         },
         openBottomPopup () {
         this.isBottomShow = true;

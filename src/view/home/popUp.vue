@@ -2,7 +2,6 @@
   <!-- 输入信息 -->
   <div class="home">
     <v-pop-up></v-pop-up>
-    <!-- <text>你好！！！</text> -->
   </div>
 </template>
 

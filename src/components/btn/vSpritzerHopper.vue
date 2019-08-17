@@ -1,7 +1,5 @@
 <template>
   <!-- 取料斗功能 -->
-  <!-- <wxc-button text="取料斗" type="blue" size="small"
-              @wxcButtonClicked="wxcButtonSpritzerHopper"></wxc-button> -->
   <div class="btn" @click="wxcButtonSpritzerHopper">
     <text class="btn-txt">取料斗</text>
   </div>
@@ -9,9 +7,7 @@
 
 
 <script>
-// import { WxcButton } from 'weex-ui'
 export default {
-  // components: { WxcButton },
   methods: {
     wxcButtonSpritzerHopper (e) {
       console.log(e)

@@ -1,7 +1,5 @@
 <template>
   <!-- 开车功能 -->
-  <!-- <wxc-button text="车辆继续" type="blue" size="small"
-              @wxcButtonClicked="wxcButtonStart"></wxc-button> -->
   <div class="btn" @click="wxcButtonStart">
     <text class="btn-txt">车辆继续</text>
   </div>
@@ -9,9 +7,7 @@
 
 
 <script>
-// import { WxcButton } from 'weex-ui'
 export default {
-  // components: { WxcButton },
   methods: {
     wxcButtonStart (e) {
       console.log(e)
