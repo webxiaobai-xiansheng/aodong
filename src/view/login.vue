@@ -2,7 +2,7 @@
     <div class="login_content">
         <div class="login_input">
             <div class="user_name input_box">
-                <input v-model="userName" class="input_item" type="text" placeholder="用户名称" maxlength="6" @input="onInput" />
+                <input v-model="userName" class="input_item" type="text" placeholder="用户名称" maxlength="8" @input="onInput" />
             </div>
             <div class="user_password input_box">
                 <input v-model="userPassword" class="input_item" type="password" placeholder="密码" maxlength="8" @input="onInput">
