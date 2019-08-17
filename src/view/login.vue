@@ -35,11 +35,10 @@
 <script>
 const modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
-var config = require('../../configs/config.js');
 const storage = weex.requireModule('storage');
-import { WxcButton, WxcSearchbar, WxcIcon, WxcRadio, WxcPopup } from 'weex-ui';
+import { WxcButton, WxcRadio, WxcPopup } from 'weex-ui';
 export default {
-    components: { WxcButton, WxcSearchbar, WxcIcon, WxcRadio, WxcPopup },
+    components: { WxcButton, WxcRadio, WxcPopup },
     data: () => ({
         userName: '',
         userPassword: '',
@@ -47,7 +46,6 @@ export default {
         isLoginDisabled: true,
         isChoseDisabled: true,
         show: false,
-        workshopName: '',
         list: [{
             title: '批料待发间',
             value: 'WL'
@@ -111,7 +109,6 @@ export default {
             if (e.disabled) {
                 return;
             } else {
-                this.hasAnimation = true;
                 this.show = true;
             }
         },
@@ -145,94 +142,67 @@ export default {
             this.show = false;
         },
 
-        shouldShow() {
-            const { show, hasAnimation } = this;
-            hasAnimation &&
-                setTimeout(() => {
-                    this.appearOverlay(show);
-                }, 50);
-            return show;
-        },
-
         // 登录按钮
         login() {
-            let url = 'http://10.34.10.53:8200/admin/getAdmin';
-            let body = config.toParams({
-                username: 'ou',
-                password: '666',
+            let url = 'http://10.34.10.25:8999/user/login';
+            let body = JSON.stringify({
+                username: this.userName,
+                password: this.userPassword,
             });
             stream.fetch({
                 method: "POST",
                 type: 'json',
                 url: url,
+                headers: { 'Content-Type': 'application/json' },
                 body: body
             }, function(ret) {
-                console.log(ret)
-                if (ret.status === 1) {
+                if (ret.status === 200) {
+                    if (ret.data.status === 1) {
+                        modal.toast({ message: ret.message, duration: 3 });
+                        storage.getItem('workShopName', event => {
+                            // this.workshopName = event.data;
+                            let getName = event.data;
+                            // 批料待发
+                            if (getName === 'WL') {
+                                this.$router.push({ name: 'batch' });
+                            }
+                            // 制粒间和总混间
+                            if (getName === 'ZL' || getName === 'ZH') {
+                                this.$router.push({ name: 'granulating' });
+                            }
+                            // 胶囊间1、胶囊间2、压片间
+                            if (getName === 'JN1' || getName === 'JN2' || getName === 'YP') {
+                                this.$router.push({ name: 'capsule' });
+                            }
+                            // 包衣间
+                            if (getName === 'BY') {
+                                this.$router.push({ name: 'laggingCover' });
+                            }
+                            // 瓶装、铝塑包装1、铝塑包装2（内包间）
+                            if (getName === 'PBZ' || getName === 'LSBZ1' || getName === 'LSBZ2') {
+                                this.$router.push({ name: 'insourcing' });
+                            }
+                            // 中间站
+                            if (getName === 'ZJ') {
+                                this.$router.push({ name: 'wayStation' });
+                            }
+                            // 清洗间（出口）
+                            if (getName === 'QXCK') {
+                                this.$router.push({ name: 'cleaning' });
+                            }
+                        });
+                    } else {
+                        modal.toast({ message: ret.message, duration: 3 });
+                    }
+                } else {
                     modal.toast({ message: ret.message, duration: 3 });
-                    storage.getItem('workShopName', event => {
-                        // this.workshopName = event.data;
-                        let getName = event.data;
-                    });
+                }
 
-                    // 批料待发
-                    if (getName === 'WL') {
-                        this.$router.push({ name: 'batch' });
-                        // modal.toast({message:'批料待发'});
-                    }
-                    // 制粒间和总混间
-                    if (getName === 'ZL' || getName === 'ZH') {
-                        this.$router.push({ name: 'granulating' });
-                    }
-                    // 胶囊间1、胶囊间2、压片间
-                    if (getName === 'JN1' || getName === 'JN2' || getName === 'YP') {
-                        this.$router.push({ name: 'capsule' });
-                    }
-                    // 包衣间
-                    if (getName === 'BY') {
-                        this.$router.push({ name: 'laggingCover' });
-                    }
-                    // 瓶装、铝塑包装1、铝塑包装2（内包间）
-                    if (getName === 'PBZ' || getName === 'LSBZ1' || getName === 'LSBZ2') {
-                        this.$router.push({ name: 'insourcing' });
-                    }
-                    // 中间站
-                    if (getName === 'ZJ') {
-                        this.$router.push({ name: 'wayStation' });
-                    }
-                    // 清洗间（出口）
-                    if (getName === 'QXCK') {
-                        this.$router.push({ name: 'cleaning' });
-                    }
-                } else {
-                    modal.toast({ message: ret.message, duration: 3 });
-                }
             });
-        },
-        test() {
-            let url = 'http://10.34.10.53:8200/admin/getAdmin';
-            let body = config.toParams({
-                username: 'ou',
-                password: '666',
-            });
-            stream.fetch({
-                method: "POST",
-                type: 'jsonp',
-                url: url,
-                timeout: 30000,
-                body: body
-            }, function(ret) {
-                console.log(ret)
-                if (ret.status === 1) {
-                    modal.toast({ message: ret.message, duration: 3 });
-                } else {
-                    modal.toast({ message: ret.message, duration: 3 });
-                }
-            })
         }
     },
     created() {
-        console.log()
+        
     }
 }
 </script>
