@@ -3,14 +3,14 @@
   <div class="home">
     <v-popover-package></v-popover-package>
     <v-table class="table"></v-table>
-    <v-page></v-page>
+    <!-- <v-page></v-page> -->
   </div>
 </template>
 
 <script>
 import vPopoverPackage from '../../components/vPopoverPackage';
 import vTable from '../../components/vTable';
-import vPage from '../../components/btn/vPage';
+// import vPage from '../../components/btn/vPage';
 export default {
   data () {
     return {
@@ -20,7 +20,7 @@ export default {
   components: {
     vPopoverPackage,
     vTable,
-    vPage
+    // vPage
   },
   methods: {
     

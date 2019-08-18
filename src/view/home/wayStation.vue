@@ -3,7 +3,7 @@
   <div class="home">
     <v-popover-way></v-popover-way>
     <v-table class="table"></v-table>
-    <v-page></v-page>
+    <!-- <v-page></v-page> -->
   </div>
 </template>
 
@@ -20,7 +20,7 @@ export default {
   components: {
     vPopoverWay,
     vTable,
-    vPage
+    // vPage
   },
   methods: {
     

@@ -24,6 +24,7 @@
           <v-get-spritzer-hopper class="contentBox-btn"></v-get-spritzer-hopper>
           <v-spritzer-hopper class="contentBox-btn"></v-spritzer-hopper>
           <v-get-empty-spritzer-hopper class="contentBox-btn"></v-get-empty-spritzer-hopper>
+          <v-reset-container class="contentBox-btn"></v-reset-container>
       </div>
     </wxc-mask>
     <wxc-mask height="300"
