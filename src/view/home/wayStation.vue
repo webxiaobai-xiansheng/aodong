@@ -37,6 +37,7 @@
             </div>
       </div>
     </wxc-popup>
+    <!-- <v-page></v-page> -->
   </div>
 </template>
 
@@ -67,6 +68,7 @@ export default {
     this.$nextTick(function () {
         this.time=setInterval(this.timer, 1000);
     })
+    // vPage
   },
   methods: {
     timer(){

@@ -314,4 +314,8 @@ export default {
     align-items: center;
     justify-content: center;
 }
+.radio_box{
+    width:702;
+    flex-direction: row;
+}
 </style>

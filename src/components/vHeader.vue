@@ -1,44 +1,58 @@
 <template>
-  <div class="container" :style="{ height: height }">
-    <div class="demo">
-      <wxc-minibar
-            background-color="#009ff0"
-            leftButton=""
-            @wxcMinibarLeftButtonClicked="minibarLeftButtonClick"
-            @wxcMinibarRightButtonClicked="minibarRightButtonClick">
-          <text style="font-size: 35px;color:#fff;" slot="middle">{{workShopTitle}}</text>
-          <text slot="right" style="font-size: 35px;color:#fff;">退出</text>
-      </wxc-minibar>
+  <div class="header">
+    <div class="header-cont">
+      <div class="title">
+        <text class="title_txt">{{workShopTitle}}</text>
+      </div>
+      <div class="black" @click="minibarRightButtonClick">
+        <text class="title_txt">退出</text>
+      </div>
     </div>
+    <wxc-dialog title="退出登录"
+                content="确定要退出嘛？？？"
+                :show="show"
+                :single="false"
+                @wxcDialogCancelBtnClicked="wxcDialogCancelBtnClicked"
+                @wxcDialogConfirmBtnClicked="wxcDialogConfirmBtnClicked">
+    </wxc-dialog>
   </div>
 </template>
 
 <script>
-import { WxcMinibar } from 'weex-ui';
+import { WxcDialog } from 'weex-ui';
 const modal = weex.requireModule('modal');
 const storage = weex.requireModule('storage');
 export default {
-  components: { WxcMinibar },
+  components: { WxcDialog },
   data () {
     return {
-      workShopTitle:''
+      workShopTitle:'',
+      show:false,
     }
   },
   methods: {
-    minibarLeftButtonClick () {
+    openDialog () {
+      this.show = true;
     },
-    minibarRightButtonClick () {
-      storage.removeItem('workShopName',event>{
-
+    wxcDialogCancelBtnClicked () {
+      this.show = false;
+    },
+    wxcDialogConfirmBtnClicked () {
+      storage.removeItem('workShopName',event=>{
+        console.log(event.data); //undefined表示设置成功
       }),
-      storage.removeItem('workShopTitle',event>{
-
+      storage.removeItem('workShopTitle',event=>{
+        console.log(event.data); //undefined表示设置成功
       }),
-      storage.removeItem('containerNum',event>{
-
+      storage.removeItem('containerNum',event=>{
+        console.log(event.data); //undefined表示设置成功
       }),
       modal.toast({ 'message': '退出成功', 'duration': 1 });
+      this.show = false;
       this.$router.push({name:'login'})
+    },
+    minibarRightButtonClick () {
+      this.show = true;
     }
   },
   created () {
@@ -50,7 +64,29 @@ export default {
 </script>
 
 <style scoped>
-.demo{
+.header{
+  
+  background-color:#009ff0;
   margin-bottom: 20px;
+  text-align: center;
+  height: 80px;
+}
+.header-cont{
+  display: flex;
+  flex-direction: row;
+  justify-content: content;
+}
+.black{
+  flex: 1;
+  /* float: right; */
+}
+.title{
+  flex: 5;
+}
+.title_txt{
+  font-size: 36px;
+  line-height: 80px;
+  color: #fff;
+  text-align: center;
 }
 </style>

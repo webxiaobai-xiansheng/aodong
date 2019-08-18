@@ -53,6 +53,9 @@ export default {
         onInput() {
             if (this.resetContainerNum) {
                 this.isResetContainerDisabled = false;
+            } else {
+                this.isResetContainerDisabled = true;
+                modal.toast({message:'桶编号不能为空'})
             }
         },
 
