@@ -1,6 +1,9 @@
 <template>
     <div class="table_container">
-        <radio></radio>
+        <div class="radio_box">
+            <wxc-grid-select class="radio_item" :single="true" :cols="5" :customStyles="customStyles" :list="list" @select="params => onSelect(params)">
+            </wxc-grid-select>
+        </div>
         <scroller class="table_scroller" scroll-direction="horizontal">
             <table class="table">
                 <thead>
@@ -9,10 +12,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- <tr class="table_tr" v-for="(item,index) in tableBodyData" :key="index" @click="find(index)" :class="{'active':activeChose = index}"> -->
-                     <!-- <tr class="table_tr" v-for="(item,index) in tableBodyData" :key="index" @click="find(index)"  :class="[isActive?'active':'']"> -->
-                     <!-- <tr class="table_tr" v-for="(item,index) in tableBodyData" :key="index" @click="find(index)" :class="[ activeChose === 'index' ? 'active' : '' ]"> -->
-                     <tr class="table_tr" v-for="(item,index) in tableBodyData" :key="index" @click="find(index)" :class="[currentIndex === index ? 'active' : '']">
+                    <tr class="table_tr" v-for="(item,index) in tableBodyData" :key="index" @click="selectContainer(index)" :class="[currentIndex === index ? 'active' : '']">
                         <td class="table_td"><text>{{item.containerNumber}}</text></td>
                         <td class="table_td"><text>{{item.productName}}</text></td>
                         <td class="table_td"><text>{{item.lotNumber}}</text></td>
@@ -30,59 +30,192 @@
 </template>
 <script>
 const modal = weex.requireModule('modal');
-import { WxcButton, WxcGridSelect } from 'weex-ui';
-import radio from './vRadio.vue';
+var stream = weex.requireModule('stream');
+const storage = weex.requireModule('storage');
+import { WxcGridSelect } from 'weex-ui';
 export default {
-    components: { radio, WxcButton, WxcGridSelect },
+    components: { WxcGridSelect },
     data: () => ({
-        // activeChose:false,
-        currentIndex: 0,
-        // customStyles: {
-        //     width: '80px',
-        //     height: '50px',
-        //     backgroundColor: '#ccc',
-        //     checkedBackgroundColor: '#ffb200',
-        //     icon: ''
-        // },
+        currentIndex: -1,
         tableHeadData: ['编号', '产品名称', '批号', '状态', '检验状态', '物料名称', '容积容量', '桶重', '日期'],
-        tableBodyData: [{
-            containerNumber: 'A0001',
-            productName: '空料斗',
-            lotNumber: '无',
-            status: '已清洗',
-            inspectionStatus: '待检验',
-            materialName: '颗粒',
-            productDate: '2019-08-02',
-            containerVolume: '90L',
-            containerWeight: '80KG'
+        tableBodyData: [],
+        name: '',
+        customStyles: {
+            icon: '',
+            height: '50px',
+            backgroundColor: '#ccc',
+            checkedBackgroundColor: '#ffb200',
+        },
+        list: [],
+        emptyContainer: '',
+        container: '',
+        outdatedContainers: '',
+        //批料待发间
+        radio1: [{
+            title: '显示空料斗',
+            value: '空料斗'
+        }],
+        //制粒间、胶囊间、压片间
+        radio2: [{
+            title: '显示料斗',
+            value: '料斗'
         }, {
-            containerNumber: 'A0031',
-            productName: '空料斗',
-            lotNumber: '无',
-            status: '已清洗',
-            inspectionStatus: '待检验',
-            materialName: '颗粒',
-            productDate: '2019-08-02',
-            containerVolume: '90L',
-            containerWeight: '80KG'
+            title: '显示空料桶',
+            value: '空料桶'
+        }],
+        //总混间
+        radio3: [{
+            title: '显示料斗',
+            value: '料斗'
+        }, {
+            title: '显示空料斗',
+            value: '空料斗'
+        }],
+        // 包衣间
+        radio4: [{
+            title: '显示料桶',
+            value: '料桶'
+        }, {
+            title: '显示空料桶',
+            value: '空料桶'
+        }],
+        // 内包间
+        radio5: [{
+            title: '显示料桶',
+            value: '料桶'
+        }],
+        // 中间站
+        radio6: [{
+            title: '显示过期料斗、料桶',
+            value: '过期料斗、料桶'
         }]
     }),
     methods: {
-        find(index){
-            modal.toast({ message: index });
-            this.currentIndex = index;
+        // 点击table选择桶或者料斗
+        selectContainer(index) {
+            let that = this;
+            let containerNum;
+            if (index != this.currentIndex) {
+                this.currentIndex = index;
+                containerNum = that.tableBodyData[index].containerNumber;
+                storage.setItem('containerNum', containerNum, event => {
+                    console.log(event.data); //undefined表示设置成功
+                });
+            } else {
+                this.currentIndex = -1;
+                storage.removeItem('containerNum', event => {
+                    console.log(event.data); //undefined表示删除成功
+                });
+            }
+        },
+
+        // 初始化table和筛选table
+        initTable() {
+            let that = this;
+            let url = 'http://10.34.10.53:8200/containerInformation/getContainerInformation';
+            let body = JSON.stringify({
+                init: ''
+            });
+            stream.fetch({
+                method: "POST",
+                type: 'json',
+                url: url,
+                headers: { 'Content-Type': 'application/json' },
+                body: body
+            }, function(ret) {
+                console.log(ret)
+                let data = ret.data.data;
+                if (ret.status === 200) {
+                    if (ret.data.status === 1) {
+                        modal.toast({ message: ret.data.message });
+                        that.tableBodyData = data.list;
+                    } else {
+                        modal.toast({ message: ret.data.message });
+                    }
+                }
+            });
+        },
+
+        // 筛选---选择
+        onSelect({ selectIndex, checked, checkedList }) {
+            let that = this;
+            let url = 'http://10.34.10.53:8200/containerInformation/getContainerInformation';
+            that.tableBodyData = [];
+            let body = {};
+            if (checked === true) {
+                let containerName = checkedList[0].value;
+                if (containerName === '空料桶' || containerName === '空料斗') {
+                    body = JSON.stringify({
+                        emptyContainer: containerName,
+                    });
+                }
+                if (containerName === '料桶' || containerName === '料斗') {
+                    body = JSON.stringify({
+                        container: containerName,
+                    });
+                }
+                if (containerName === '过期料斗、料桶') {
+                    body = JSON.stringify({
+                        outdatedContainers: containerName,
+                    });
+                }
+            } else {
+                body = JSON.stringify({
+                    init: '',
+                });
+            }
+            stream.fetch({
+                method: "POST",
+                type: 'json',
+                url: url,
+                headers: { 'Content-Type': 'application/json' },
+                body: body
+            }, function(ret) {
+                console.log(ret)
+                let data = ret.data.data;
+                if (ret.status === 200) {
+                    if (ret.data.status === 1) {
+                        modal.toast({ message: ret.data.message });
+                        that.tableBodyData = data.list;
+                    } else {
+                        modal.toast({ message: ret.data.message });
+                    }
+                }
+            })
+        },
+        // 筛选按钮
+        showFilterButton() {
+            let that = this;
+            storage.getItem('workShopTitle', event => {
+                that.name = event.data;
+                that.name = '制粒间';
+                if (that.name === '批料待发间') {
+                    that.list = that.radio1;
+                }
+                if (that.name === '制粒间' || that.name === '胶囊间1' || that.name === '胶囊间2' || that.name === '压片间') {
+                    that.list = that.radio2;
+                }
+                if (that.name === '总混间') {
+                    that.list = that.radio3;
+                }
+                if (that.name === '包衣间') {
+                    that.list = that.radio4;
+                }
+                if (that.name === '瓶装' || that.name === '铝塑包装1' || that.name === '铝塑包装2') {
+                    that.list = that.radio5;
+                }
+                if (that.name === '中间站') {
+                    that.list = that.radio6;
+                    that.customStyles.width = '280px';
+                }
+            });
         }
+    },
+    created() {
+        this.initTable(); //初始化table
+        this.showFilterButton(); //筛选按钮
     }
 
 }
 </script>
 <style src='../styles/style.css'></style>
-<style scoped>
-.text-title {
-    font-size: 16px;
-}
-.button_radio{
-    width:80px;
-    height:50px;
-}
-</style>
