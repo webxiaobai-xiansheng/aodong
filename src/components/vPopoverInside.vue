@@ -25,6 +25,7 @@
           <v-get-spritzer-tank class="contentBox-btn"></v-get-spritzer-tank>
           <v-empty-spritzer-tank class="contentBox-btn"></v-empty-spritzer-tank>
           <v-reset-container class="contentBox-btn"></v-reset-container>
+          <v-container-location class="contentBox-btn"></v-container-location>
       </div>
     </wxc-mask>
     <wxc-mask height="300"
