@@ -29,33 +29,28 @@ export default {
   methods: {
     wxcButtonSpritzerHopper (e) {
         let _this=this;
-
-        let url = 'http://10.34.10.25:8999/obtain/getStripContainer';
-        let body = JSON.stringify({
-            containerNumber:_this.containerNum,
-            functionNumber:_this.workshopName
-        });
-        stream.fetch({
-            method:"POST",
-            url:url,
-            headers:{'Content-Type':'application/json'},
-            body: body,
-            type:'json',
-        },function(ret){
-            if(ret.data.status===1){
-                modal.toast({ message: ret.data.message, duration: 3 });
-            }else{
-               modal.toast({ message: ret.data.message, duration: 3 });
-            }
-            // if(ret.data.status===1){
-            //     modal.toast({ message: ret.data.message, duration: 3 });
-            //     _this.$router.push({name:'jurisLoginMessage'})
-            // }else{
-            //     modal.toast({ message: '登录失败！！！', duration: 3 });
-            // }
-        },function(progress) {
-            // console.log(progress)
-        })
+        if(this.containerNum!=='undefined'&&this.workshopName!=='undefined'){
+          let url = 'http://10.34.10.25:8999/obtain/getStripContainer';
+          let body = JSON.stringify({
+              containerNumber:_this.containerNum,
+              functionRoomNumber:_this.workshopName
+          });
+          stream.fetch({
+              method:"POST",
+              url:url,
+              headers:{'Content-Type':'application/json'},
+              body: body,
+              type:'json',
+          },function(ret){
+              if(ret.data.status===1){
+                  modal.toast({ message: ret.data.message, duration: 3 });
+              }else{
+                 modal.toast({ message: ret.data.message, duration: 3 });
+              }
+          })
+        }else{
+          modal.toast({ message: '请选择桶编号', duration: 3 });
+        }
     }
   }
 }

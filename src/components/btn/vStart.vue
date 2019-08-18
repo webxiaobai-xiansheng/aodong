@@ -7,10 +7,28 @@
 
 
 <script>
+const modal = weex.requireModule('modal');
+var stream = weex.requireModule('stream');
 export default {
   methods: {
-    wxcButtonStart (e) {
-      console.log(e)
+    wxcButtonStart () {
+      let _this=this;
+
+      let url = 'http://10.34.10.56:8088/agv/stopOrStart/0';
+      
+      stream.fetch({
+          method:"GET",
+          url:url,
+          type:'json',
+      },function(ret){
+
+          if(ret.data.status===1){
+              modal.toast({ message: ret.data.message, duration: 3 });
+          }else{
+            modal.toast({ message: ret.data.message, duration: 3 });
+          }
+      })
+      
     }
   }
 }

@@ -24,35 +24,52 @@
     </div>
 </template>
 <script>
+const modal = weex.requireModule('modal');
+var stream = weex.requireModule('stream');
+const storage = weex.requireModule('storage');
 import { WxcPopup, WxcRadio, WxcButton } from 'weex-ui';
 export default {
     components: { WxcPopup, WxcRadio, WxcButton },
     data: () => ({
         show: false,
         isChoseDisabled: true,
-        emptyContainerList: [{
-            title: '空桶1',
-            value: 'A009'
-        }, {
-            title: '空桶2',
-            value: 'A000'
-        }, {
-            title: '空桶2',
-            value: 'A000'
-        }, {
-            title: '空桶2',
-            value: 'A000'
-        }]
+        emptyContainerList: [],
+        workshopName:'',
+        containerNum:''
     }),
+    created () {
+        storage.getItem('workShopName', event => {
+          this.workshopName = event.data;
+        });
+    },
     methods: {
+        
         // 打开弹窗
         wxcButtonGetEmptySpritzerTank(e) {
-            console.log(e);
-            if (e.disabled) {
-                return;
-            } else {
-                this.show = true;
-            }
+            let _this=this;
+
+            let url = 'http://10.34.10.53:8200/functionRoomUseContainer/getFunctionRoomUseContainer';
+            let body = JSON.stringify({
+                functionRoomNumber: _this.workshopName
+            });
+            stream.fetch({
+                method:"POST",
+                url:url,
+                headers:{'Content-Type':'application/json'},
+                body: body,
+                type:'json',
+            },function(ret){
+                if(ret.data.status===1){
+                    if(ret.data.data.length>0){
+                        for (let i = 0; i < ret.data.data.length; i++) {
+                            _this.emptyContainerList.push({title:ret.data.data.containerNumber,value:ret.data.data.containerNumber})
+                        }
+                        this.show = true;
+                    }else{
+                        modal.toast({ message: '该车间没有送料桶', duration: 3 });
+                    }
+                }
+            })
         },
         // 关闭弹窗
         wxcMaskSetHidden() {
@@ -61,6 +78,7 @@ export default {
         // 选择空料桶
         wxcSelectEmptyContainer(e) {
             if (e.title.length < 1) {
+                this.containerNum=e.value
                 this.isChoseDisabled = true;
             } else {
                 this.isChoseDisabled = false;
@@ -69,9 +87,29 @@ export default {
 
         // 选择选择空料斗、料桶--确认按钮
         wxcConfirmEmptyContainer(e) {
-            if (e.disabled) {
-                return;
-            } else {
+            let _this=this;
+            if(this.containerNum!=='undefined'&&this.workshopName!=='undefined'){
+                let url = 'http://10.34.10.25:8999/delivery/sendContainerToCleaningRoom';
+                let body = JSON.stringify({
+                    containerNumber:_this.containerNum,
+                    functionRoomNumber:_this.workshopName
+                });
+                stream.fetch({
+                    method:"POST",
+                    url:url,
+                    headers:{'Content-Type':'application/json'},
+                    body: body,
+                    type:'json',
+                },function(ret){
+                    if(ret.data.status===1){
+                        modal.toast({ message: ret.data.message, duration: 3 });
+                    }else{
+                        modal.toast({ message: ret.data.message, duration: 3 });
+                    }
+                    this.show = false;
+                })
+            }else{
+                modal.toast({ message: '请选择桶编号', duration: 3 });
                 this.show = false;
             }
         }

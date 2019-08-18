@@ -1601,7 +1601,7 @@ __vue_styles__.push(__webpack_require__(293)
 __vue_exports__ = __webpack_require__(294)
 
 /* template */
-var __vue_template__ = __webpack_require__(299)
+var __vue_template__ = __webpack_require__(295)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -1638,14 +1638,14 @@ var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(300)
+__vue_styles__.push(__webpack_require__(296)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(301)
+__vue_exports__ = __webpack_require__(297)
 
 /* template */
-var __vue_template__ = __webpack_require__(302)
+var __vue_template__ = __webpack_require__(298)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -2074,14 +2074,14 @@ var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(310)
+__vue_styles__.push(__webpack_require__(306)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(311)
+__vue_exports__ = __webpack_require__(307)
 
 /* template */
-var __vue_template__ = __webpack_require__(312)
+var __vue_template__ = __webpack_require__(308)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -2118,14 +2118,14 @@ var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(313)
+__vue_styles__.push(__webpack_require__(309)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(314)
+__vue_exports__ = __webpack_require__(310)
 
 /* template */
-var __vue_template__ = __webpack_require__(315)
+var __vue_template__ = __webpack_require__(311)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -2162,14 +2162,14 @@ var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(328)
+__vue_styles__.push(__webpack_require__(324)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(329)
+__vue_exports__ = __webpack_require__(325)
 
 /* template */
-var __vue_template__ = __webpack_require__(330)
+var __vue_template__ = __webpack_require__(326)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -2206,14 +2206,14 @@ var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(343)
+__vue_styles__.push(__webpack_require__(339)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(344)
+__vue_exports__ = __webpack_require__(340)
 
 /* template */
-var __vue_template__ = __webpack_require__(345)
+var __vue_template__ = __webpack_require__(341)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -2250,14 +2250,14 @@ var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(346)
+__vue_styles__.push(__webpack_require__(342)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(347)
+__vue_exports__ = __webpack_require__(343)
 
 /* template */
-var __vue_template__ = __webpack_require__(348)
+var __vue_template__ = __webpack_require__(344)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -2299,7 +2299,7 @@ module.exports = __vue_exports__
 var _require = __webpack_require__(27),
     router = _require.router;
 
-var App = __webpack_require__(408);
+var App = __webpack_require__(404);
 /* eslint-disable no-new */
 
 // 路由导航守卫
@@ -2349,39 +2349,39 @@ var _batch = __webpack_require__(273);
 
 var _batch2 = _interopRequireDefault(_batch);
 
-var _granulating = __webpack_require__(304);
+var _granulating = __webpack_require__(300);
 
 var _granulating2 = _interopRequireDefault(_granulating);
 
-var _capsule = __webpack_require__(318);
+var _capsule = __webpack_require__(314);
 
 var _capsule2 = _interopRequireDefault(_capsule);
 
-var _laggingCover = __webpack_require__(333);
+var _laggingCover = __webpack_require__(329);
 
 var _laggingCover2 = _interopRequireDefault(_laggingCover);
 
-var _insourcing = __webpack_require__(351);
+var _insourcing = __webpack_require__(347);
 
 var _insourcing2 = _interopRequireDefault(_insourcing);
 
-var _wayStation = __webpack_require__(367);
+var _wayStation = __webpack_require__(363);
 
 var _wayStation2 = _interopRequireDefault(_wayStation);
 
-var _cleaning = __webpack_require__(383);
+var _cleaning = __webpack_require__(379);
 
 var _cleaning2 = _interopRequireDefault(_cleaning);
 
-var _jurisLogin = __webpack_require__(391);
+var _jurisLogin = __webpack_require__(387);
 
 var _jurisLogin2 = _interopRequireDefault(_jurisLogin);
 
-var _jurisLoginMessage = __webpack_require__(396);
+var _jurisLoginMessage = __webpack_require__(392);
 
 var _jurisLoginMessage2 = _interopRequireDefault(_jurisLoginMessage);
 
-var _popUp = __webpack_require__(400);
+var _popUp = __webpack_require__(396);
 
 var _popUp2 = _interopRequireDefault(_popUp);
 
@@ -5635,7 +5635,14 @@ exports.default = {
             });
         }
     },
-    created: function created() {}
+    created: function created() {
+        storage.getItem('workShopName', function (event) {
+            console.log(event.data);
+        });
+        storage.getItem('containerNum', function (event) {
+            console.log(event.data);
+        });
+    }
 };
 
 /***/ }),
@@ -23101,7 +23108,7 @@ __vue_styles__.push(__webpack_require__(274)
 __vue_exports__ = __webpack_require__(275)
 
 /* template */
-var __vue_template__ = __webpack_require__(303)
+var __vue_template__ = __webpack_require__(299)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -23422,10 +23429,24 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 
+var modal = weex.requireModule('modal');
+var stream = weex.requireModule('stream');
 exports.default = {
   methods: {
-    wxcButtonStop: function wxcButtonStop(e) {
-      console.log(e);
+    wxcButtonStop: function wxcButtonStop() {
+      var _this = this;
+      var url = 'http://10.34.10.56:8088/agv/stopOrStart/1';
+      stream.fetch({
+        method: "GET",
+        url: url,
+        type: 'json'
+      }, function (ret) {
+        if (ret.data.status === 1) {
+          modal.toast({ message: ret.data.message, duration: 3 });
+        } else {
+          modal.toast({ message: ret.data.message, duration: 3 });
+        }
+      });
     }
   }
 };
@@ -23487,10 +23508,27 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 
+var modal = weex.requireModule('modal');
+var stream = weex.requireModule('stream');
 exports.default = {
   methods: {
-    wxcButtonStart: function wxcButtonStart(e) {
-      console.log(e);
+    wxcButtonStart: function wxcButtonStart() {
+      var _this = this;
+
+      var url = 'http://10.34.10.56:8088/agv/stopOrStart/0';
+
+      stream.fetch({
+        method: "GET",
+        url: url,
+        type: 'json'
+      }, function (ret) {
+
+        if (ret.data.status === 1) {
+          modal.toast({ message: ret.data.message, duration: 3 });
+        } else {
+          modal.toast({ message: ret.data.message, duration: 3 });
+        }
+      });
     }
   }
 };
@@ -23586,7 +23624,6 @@ exports.default = {
         body: body,
         type: 'json'
       }, function (ret) {
-        console.log(ret);
         if (ret.data.status === 1) {
           if (ret.data.data.length > 0) {
             this.$router.push({ name: 'popUp' });
@@ -23594,14 +23631,6 @@ exports.default = {
             modal.toast({ message: '该车间没有料斗', duration: 3 });
           }
         }
-        // if(ret.data.status===1){
-        //     modal.toast({ message: ret.data.message, duration: 3 });
-        //     _this.$router.push({name:'jurisLoginMessage'})
-        // }else{
-        //     modal.toast({ message: '登录失败！！！', duration: 3 });
-        // }
-      }, function (progress) {
-        // console.log(progress)
       });
     }
   }
@@ -23689,33 +23718,22 @@ exports.default = {
     methods: {
         wxcButtonEmptySpritzerHopper: function wxcButtonEmptySpritzerHopper(e) {
             var _this = this;
-
-            var url = 'http://10.34.10.25:8999/obtain/getEmptyContainer';
-            var body = JSON.stringify({
-                containerNumber: _this.containerNum,
-                functionNumber: _this.workshopName
-            });
-            stream.fetch({
-                method: "POST",
-                url: url,
-                headers: { 'Content-Type': 'application/json' },
-                body: body,
-                type: 'json'
-            }, function (ret) {
-                if (ret.data.status === 1) {
-                    modal.toast({ message: ret.data.message, duration: 3 });
-                } else {
-                    modal.toast({ message: ret.data.message, duration: 3 });
-                }
-                // if(ret.data.status===1){
-                //     modal.toast({ message: ret.data.message, duration: 3 });
-                //     _this.$router.push({name:'jurisLoginMessage'})
-                // }else{
-                //     modal.toast({ message: '登录失败！！！', duration: 3 });
-                // }
-            }, function (progress) {
-                // console.log(progress)
-            });
+            if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
+                var url = 'http://10.34.10.25:8999/obtain/getEmptyContainer?containerNumber=' + _this.containerNum + '&functionRoomNumber=' + _this.workshopName;
+                stream.fetch({
+                    method: "GET",
+                    url: url,
+                    type: 'json'
+                }, function (ret) {
+                    if (ret.data.status === 1) {
+                        modal.toast({ message: ret.data.message, duration: 3 });
+                    } else {
+                        modal.toast({ message: ret.data.message, duration: 3 });
+                    }
+                });
+            } else {
+                modal.toast({ message: '请选择桶编号', duration: 3 });
+            }
         }
     }
 };
@@ -23752,14 +23770,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('text', {
     staticClass: ["btn-txt"]
-  }, [_vm._v("业务")])]), _c('div', {
+  }, [_vm._v("取/送桶")])]), _c('div', {
     staticClass: ["btn"],
     on: {
       "click": _vm.openNoAnimationMask
     }
   }, [_c('text', {
     staticClass: ["btn-txt"]
-  }, [_vm._v("功能")])])]), _c('wxc-mask', {
+  }, [_vm._v("车辆控制")])])]), _c('wxc-mask', {
     attrs: {
       "height": "300",
       "width": "500",
@@ -23855,12 +23873,19 @@ module.exports = {
 /***/ (function(module, exports) {
 
 module.exports = {
-  "text-title": {
-    "fontSize": "16"
+  "pageButton_box": {
+    "flexDirection": "row",
+    "justifyContent": "center",
+    "paddingLeft": "30",
+    "paddingRight": "30"
   },
-  "button_radio": {
-    "width": "80",
-    "height": "50"
+  "text_box": {
+    "width": "100",
+    "height": "70",
+    "backgroundColor": "#0f8ee8",
+    "borderRadius": "10",
+    "alignItems": "center",
+    "justifyContent": "center"
   }
 }
 
@@ -23877,12 +23902,16 @@ Object.defineProperty(exports, "__esModule", {
 
 var _weexUi = __webpack_require__(1);
 
-var _vRadio = __webpack_require__(295);
-
-var _vRadio2 = _interopRequireDefault(_vRadio);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -23915,210 +23944,279 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 
 var modal = weex.requireModule('modal');
+var stream = weex.requireModule('stream');
+var storage = weex.requireModule('storage');
 exports.default = {
-    components: { radio: _vRadio2.default, WxcButton: _weexUi.WxcButton, WxcGridSelect: _weexUi.WxcGridSelect },
+    components: { WxcGridSelect: _weexUi.WxcGridSelect, WxcButton: _weexUi.WxcButton },
     data: function data() {
         return {
-            // activeChose:false,
-            currentIndex: 0,
-            // customStyles: {
-            //     width: '80px',
-            //     height: '50px',
-            //     backgroundColor: '#ccc',
-            //     checkedBackgroundColor: '#ffb200',
-            //     icon: ''
-            // },
+            currentIndex: -1,
             tableHeadData: ['编号', '产品名称', '批号', '状态', '检验状态', '物料名称', '容积容量', '桶重', '日期'],
-            tableBodyData: [{
-                containerNumber: 'A0001',
-                productName: '空料斗',
-                lotNumber: '无',
-                status: '已清洗',
-                inspectionStatus: '待检验',
-                materialName: '颗粒',
-                productDate: '2019-08-02',
-                containerVolume: '90L',
-                containerWeight: '80KG'
-            }, {
-                containerNumber: 'A0031',
-                productName: '空料斗',
-                lotNumber: '无',
-                status: '已清洗',
-                inspectionStatus: '待检验',
-                materialName: '颗粒',
-                productDate: '2019-08-02',
-                containerVolume: '90L',
-                containerWeight: '80KG'
-            }]
-        };
-    },
-    methods: {
-        find: function find(index) {
-            modal.toast({ message: index });
-            this.currentIndex = index;
-        }
-    }
-
-};
-
-/***/ }),
-/* 295 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(296)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(297)
-
-/* template */
-var __vue_template__ = __webpack_require__(298)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "C:\\Users\\IBM\\Desktop\\aodong\\src\\components\\vRadio.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-1e59e695"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-/* 296 */
-/***/ (function(module, exports) {
-
-module.exports = {
-  "radio_box": {
-    "justifyContent": "center",
-    "flexDirection": "row"
-  }
-}
-
-/***/ }),
-/* 297 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _weexUi = __webpack_require__(1);
-
-exports.default = {
-    data: function data() {
-        return {
+            tableBodyData: [],
+            name: '',
             customStyles: {
                 icon: '',
                 height: '50px',
                 backgroundColor: '#ccc',
                 checkedBackgroundColor: '#ffb200'
             },
+            list: [],
+            emptyContainer: '',
+            container: '',
+            outdatedContainers: '',
             //批料待发间
             radio1: [{
                 title: '显示空料斗',
-                value: 'emptyContainer'
+                value: '空料斗'
             }],
-            //制粒间
+            //制粒间、胶囊间、压片间
             radio2: [{
                 title: '显示料斗',
-                value: 'container'
+                value: '料斗'
             }, {
                 title: '显示空料桶',
-                value: 'emptyContainer'
+                value: '空料桶'
             }],
             //总混间
             radio3: [{
                 title: '显示料斗',
-                value: 'container'
+                value: '料斗'
             }, {
                 title: '显示空料斗',
-                value: 'emptyContainer'
-            }],
-            // 胶囊间
-            radio4: [{
-                title: '显示料斗',
-                value: 'container'
-            }, {
-                title: '显示空料桶',
-                value: 'emptyContainer'
-            }],
-            // 压片间
-            radio5: [{
-                title: '显示料斗',
-                value: 'container'
-            }, {
-                title: '显示空料桶',
-                value: 'emptyContainer'
+                value: '空料斗'
             }],
             // 包衣间
-            radio6: [{
+            radio4: [{
                 title: '显示料桶',
-                value: 'container'
+                value: '料桶'
             }, {
                 title: '显示空料桶',
-                value: 'emptyContainer'
+                value: '空料桶'
             }],
             // 内包间
-            radio7: [{
+            radio5: [{
                 title: '显示料桶',
-                value: 'container'
+                value: '料桶'
             }],
             // 中间站
-            radio8: [{
+            radio6: [{
                 title: '显示过期料斗、料桶',
-                value: 'outdatedContainer'
-            }]
+                value: '过期料斗、料桶'
+            }],
+            isPreviewDisabled: false,
+            isNextDisabled: false,
+            currentPage: 1,
+            pageSize: 10,
+            pages: 0,
+            pageNum: 1
         };
     },
-    components: { WxcGridSelect: _weexUi.WxcGridSelect },
     methods: {
+        // 点击table选择桶或者料斗
+        selectContainer: function selectContainer(index) {
+            var that = this;
+            var containerNum = void 0;
+            if (index != this.currentIndex) {
+                this.currentIndex = index;
+                containerNum = that.tableBodyData[index].containerNumber;
+                storage.setItem('containerNum', containerNum, function (event) {
+                    console.log(event.data); //undefined表示设置成功
+                });
+            } else {
+                this.currentIndex = -1;
+                storage.removeItem('containerNum', function (event) {
+                    console.log(event.data); //undefined表示删除成功
+                });
+            }
+        },
+
+
+        // 初始化table和筛选table
+        initTable: function initTable() {
+            var that = this;
+            var url = 'http://10.34.10.53:8200/containerInformation/getContainerInformation';
+            var body = JSON.stringify({
+                init: '',
+                page: that.currentPage,
+                size: that.pageSize
+            });
+            stream.fetch({
+                method: "POST",
+                type: 'json',
+                url: url,
+                headers: { 'Content-Type': 'application/json' },
+                body: body
+            }, function (ret) {
+                console.log(ret);
+                var data = ret.data.data;
+                if (ret.status === 200) {
+                    if (ret.data.status === 1) {
+                        modal.toast({ message: ret.data.message });
+                        that.tableBodyData = data.list;
+                        that.pages = data.pages; //页数
+                        that.currentPage = data.pageNum; //当前页
+                        if (data.pageNum > 1) {
+                            if (data.pageNum === data.pages) {
+                                that.isPreviewDisabled = false;
+                                that.isNextDisabled = true;
+                            }
+                        }
+                        if (data.pageNum === 1) {
+                            that.isPreviewDisabled = true;
+                            that.isNextDisabled = false;
+                            if (data.pageNum === data.pages) {
+                                that.isPreviewDisabled = true;
+                                that.isNextDisabled = true;
+                            }
+                        }
+                    } else {
+                        modal.toast({ message: ret.data.message });
+                    }
+                }
+            });
+        },
+
+
+        // 筛选---选择
         onSelect: function onSelect(_ref) {
             var selectIndex = _ref.selectIndex,
                 checked = _ref.checked,
                 checkedList = _ref.checkedList;
 
-            console.log(checkedList[0].value); //emptyContainer
-            console.log(checkedList[0].title); //空料桶
+            var that = this;
+            var url = 'http://10.34.10.53:8200/containerInformation/getContainerInformation';
+            that.tableBodyData = [];
+            // that.currentPage = 1;
+            var body = {};
+            if (checked === true) {
+                var containerName = checkedList[0].value;
+                if (containerName === '空料桶' || containerName === '空料斗') {
+                    console.log(that.currentPage);
+                    body = JSON.stringify({
+                        emptyContainer: containerName,
+                        page: that.currentPage,
+                        size: that.pageSize
+                    });
+                }
+                if (containerName === '料桶' || containerName === '料斗') {
+                    body = JSON.stringify({
+                        container: containerName,
+                        page: that.currentPage,
+                        size: that.pageSize
+                    });
+                }
+                if (containerName === '过期料斗、料桶') {
+                    body = JSON.stringify({
+                        outdatedContainers: containerName,
+                        page: that.currentPage,
+                        size: that.pageSize
+                    });
+                }
+            } else {
+                body = JSON.stringify({
+                    init: '',
+                    page: that.currentPage,
+                    size: that.pageSize
+                });
+            }
+            stream.fetch({
+                method: "POST",
+                type: 'json',
+                url: url,
+                headers: { 'Content-Type': 'application/json' },
+                body: body
+            }, function (ret) {
+                var data = ret.data.data;
+                if (ret.status === 200) {
+                    if (ret.data.status === 1) {
+                        modal.toast({ message: ret.data.message });
+                        that.tableBodyData = data.list;
+                        that.pages = data.pages; //页数
+                        that.currentPage = data.pageNum; //当前页
+                        if (data.pageNum > 1) {
+                            if (data.pageNum === data.pages) {
+                                that.isPreviewDisabled = false;
+                                that.isNextDisabled = true;
+                            }
+                        }
+                        if (data.pageNum === 1) {
+                            that.isPreviewDisabled = true;
+                            that.isNextDisabled = false;
+                            if (data.pageNum === data.pages) {
+                                that.isPreviewDisabled = true;
+                                that.isNextDisabled = true;
+                            }
+                        }
+                    } else {
+                        modal.toast({ message: ret.data.message });
+                    }
+                }
+            });
+        },
+
+        // 筛选按钮
+        showFilterButton: function showFilterButton() {
+            var that = this;
+            storage.getItem('workShopTitle', function (event) {
+                that.name = event.data;
+                if (that.name === '批料待发间') {
+                    that.list = that.radio1;
+                }
+                if (that.name === '制粒间' || that.name === '胶囊间1' || that.name === '胶囊间2' || that.name === '压片间') {
+                    that.list = that.radio2;
+                }
+                if (that.name === '总混间') {
+                    that.list = that.radio3;
+                }
+                if (that.name === '包衣间') {
+                    that.list = that.radio4;
+                }
+                if (that.name === '瓶装' || that.name === '铝塑包装1' || that.name === '铝塑包装2') {
+                    that.list = that.radio5;
+                }
+                if (that.name === '中间站') {
+                    that.list = that.radio6;
+                    that.customStyles.width = '280px';
+                }
+            });
+        },
+
+        // 分页按钮--上一页
+        wxcButtonPreview: function wxcButtonPreview(e) {
+            var that = this;
+            if (e.disabled) {
+                return;
+            } else {
+                that.currentPage -= 1;
+                that.initTable();
+            }
+        },
+
+        // 分页按钮--下一页
+        wxcButtonNext: function wxcButtonNext(e) {
+            var that = this;
+            if (e.disabled) {
+                return;
+            } else {
+                that.currentPage += 1;
+                that.initTable();
+            }
         }
+    },
+    created: function created() {
+        this.initTable(); //初始化table
+        this.showFilterButton(); //筛选按钮
     }
-}; //
-//
-//
-//
-//
-//
+};
 
 /***/ }),
-/* 298 */
+/* 295 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  return _c('div', [_c('div', {
+    staticClass: ["table_container"]
+  }, [_c('div', {
     staticClass: ["radio_box"]
   }, [_c('wxc-grid-select', {
     staticClass: ["radio_item"],
@@ -24126,23 +24224,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "single": true,
       "cols": 5,
       "customStyles": _vm.customStyles,
-      "list": _vm.radio2
+      "list": _vm.list
     },
     on: {
       "select": function (params) { return _vm.onSelect(params); }
     }
-  })], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-/* 299 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["table_container"]
-  }, [_c('radio'), _c('scroller', {
+  })], 1), _c('scroller', {
     staticClass: ["table_scroller"],
     attrs: {
       "scrollDirection": "horizontal"
@@ -24162,7 +24249,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       class: [_vm.currentIndex === index ? 'active' : ''],
       on: {
         "click": function($event) {
-          _vm.find(index)
+          _vm.selectContainer(index)
         }
       }
     }, [_c('td', {
@@ -24184,12 +24271,38 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_c('text', [_vm._v(_vm._s(item.containerWeight))])]), _c('td', {
       staticClass: ["table_td"]
     }, [_c('text', [_vm._v(_vm._s(item.productDate))])])], 1)
-  }))], 1)], 1)], 1)
+  }))], 1)], 1)]), _c('div', {
+    staticClass: ["pageButton_box"]
+  }, [_c('wxc-button', {
+    attrs: {
+      "text": "上一页",
+      "type": "blue",
+      "size": "big",
+      "disabled": _vm.isPreviewDisabled
+    },
+    on: {
+      "wxcButtonClicked": _vm.wxcButtonPreview
+    }
+  }), _c('div', {
+    staticClass: ["text_box"]
+  }, [_c('text', {
+    staticClass: ["page-txt", "pageNum"]
+  }, [_vm._v(_vm._s(_vm.currentPage) + "/" + _vm._s(_vm.pages))])]), _c('wxc-button', {
+    attrs: {
+      "text": "下一页",
+      "type": "blue",
+      "size": "big",
+      "disabled": _vm.isNextDisabled
+    },
+    on: {
+      "wxcButtonClicked": _vm.wxcButtonNext
+    }
+  })], 1)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 300 */
+/* 296 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -24223,7 +24336,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 301 */
+/* 297 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24258,7 +24371,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 302 */
+/* 298 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -24289,7 +24402,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 303 */
+/* 299 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -24302,21 +24415,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 304 */
+/* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(305)
+__vue_styles__.push(__webpack_require__(301)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(306)
+__vue_exports__ = __webpack_require__(302)
 
 /* template */
-var __vue_template__ = __webpack_require__(317)
+var __vue_template__ = __webpack_require__(313)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -24346,7 +24459,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 305 */
+/* 301 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -24356,7 +24469,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 306 */
+/* 302 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24366,7 +24479,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _vPopoverMark = __webpack_require__(307);
+var _vPopoverMark = __webpack_require__(303);
 
 var _vPopoverMark2 = _interopRequireDefault(_vPopoverMark);
 
@@ -24402,21 +24515,21 @@ exports.default = {
 //
 
 /***/ }),
-/* 307 */
+/* 303 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(308)
+__vue_styles__.push(__webpack_require__(304)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(309)
+__vue_exports__ = __webpack_require__(305)
 
 /* template */
-var __vue_template__ = __webpack_require__(316)
+var __vue_template__ = __webpack_require__(312)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -24446,7 +24559,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 308 */
+/* 304 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -24496,7 +24609,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 309 */
+/* 305 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24612,7 +24725,7 @@ exports.default = {
 //
 
 /***/ }),
-/* 310 */
+/* 306 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -24634,7 +24747,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 311 */
+/* 307 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24677,39 +24790,34 @@ exports.default = {
     methods: {
         wxcButtonSpritzerHopper: function wxcButtonSpritzerHopper(e) {
             var _this = this;
-
-            var url = 'http://10.34.10.25:8999/obtain/getStripContainer';
-            var body = JSON.stringify({
-                containerNumber: _this.containerNum,
-                functionNumber: _this.workshopName
-            });
-            stream.fetch({
-                method: "POST",
-                url: url,
-                headers: { 'Content-Type': 'application/json' },
-                body: body,
-                type: 'json'
-            }, function (ret) {
-                if (ret.data.status === 1) {
-                    modal.toast({ message: ret.data.message, duration: 3 });
-                } else {
-                    modal.toast({ message: ret.data.message, duration: 3 });
-                }
-                // if(ret.data.status===1){
-                //     modal.toast({ message: ret.data.message, duration: 3 });
-                //     _this.$router.push({name:'jurisLoginMessage'})
-                // }else{
-                //     modal.toast({ message: '登录失败！！！', duration: 3 });
-                // }
-            }, function (progress) {
-                // console.log(progress)
-            });
+            if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
+                var url = 'http://10.34.10.25:8999/obtain/getStripContainer';
+                var body = JSON.stringify({
+                    containerNumber: _this.containerNum,
+                    functionRoomNumber: _this.workshopName
+                });
+                stream.fetch({
+                    method: "POST",
+                    url: url,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: body,
+                    type: 'json'
+                }, function (ret) {
+                    if (ret.data.status === 1) {
+                        modal.toast({ message: ret.data.message, duration: 3 });
+                    } else {
+                        modal.toast({ message: ret.data.message, duration: 3 });
+                    }
+                });
+            } else {
+                modal.toast({ message: '请选择桶编号', duration: 3 });
+            }
         }
     }
 };
 
 /***/ }),
-/* 312 */
+/* 308 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -24725,7 +24833,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 313 */
+/* 309 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -24767,7 +24875,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 314 */
+/* 310 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24779,36 +24887,81 @@ Object.defineProperty(exports, "__esModule", {
 
 var _weexUi = __webpack_require__(1);
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var modal = weex.requireModule('modal');
+var stream = weex.requireModule('stream');
+var storage = weex.requireModule('storage');
 exports.default = {
     components: { WxcPopup: _weexUi.WxcPopup, WxcRadio: _weexUi.WxcRadio, WxcButton: _weexUi.WxcButton },
     data: function data() {
         return {
             show: false,
             isChoseDisabled: true,
-            emptyContainerList: [{
-                title: '空桶1',
-                value: 'A009'
-            }, {
-                title: '空桶2',
-                value: 'A000'
-            }, {
-                title: '空桶2',
-                value: 'A000'
-            }, {
-                title: '空桶2',
-                value: 'A000'
-            }]
+            emptyContainerList: [],
+            workshopName: '',
+            containerNum: ''
         };
     },
+    created: function created() {
+        var _this2 = this;
+
+        storage.getItem('workShopName', function (event) {
+            _this2.workshopName = event.data;
+        });
+    },
+
     methods: {
         // 打开弹窗
         wxcButtonGetEmptySpritzerHopper: function wxcButtonGetEmptySpritzerHopper(e) {
-            console.log(e);
-            if (e.disabled) {
-                return;
-            } else {
-                this.show = true;
-            }
+            var _this = this;
+
+            var url = 'http://10.34.10.53:8200/functionRoomUseContainer/getFunctionRoomUseContainer';
+            var body = JSON.stringify({
+                functionRoomNumber: _this.workshopName
+            });
+            stream.fetch({
+                method: "POST",
+                url: url,
+                headers: { 'Content-Type': 'application/json' },
+                body: body,
+                type: 'json'
+            }, function (ret) {
+                if (ret.data.status === 1) {
+                    if (ret.data.data.length > 0) {
+                        for (var i = 0; i < ret.data.data.length; i++) {
+                            _this.emptyContainerList.push({ title: ret.data.data.containerNumber, value: ret.data.data.containerNumber });
+                        }
+                        this.show = true;
+                    } else {
+                        modal.toast({ message: '该车间没有送料桶', duration: 3 });
+                    }
+                }
+            });
         },
 
         // 关闭弹窗
@@ -24819,6 +24972,7 @@ exports.default = {
         // 选择空料斗
         wxcSelectEmptyContainer: function wxcSelectEmptyContainer(e) {
             if (e.title.length < 1) {
+                this.containerNum = e.value;
                 this.isChoseDisabled = true;
             } else {
                 this.isChoseDisabled = false;
@@ -24828,41 +24982,37 @@ exports.default = {
 
         // 选择选择空料斗、料桶--确认按钮
         wxcConfirmEmptyContainer: function wxcConfirmEmptyContainer(e) {
-            if (e.disabled) {
-                return;
+            var _this = this;
+            if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
+                var url = 'http://10.34.10.25:8999/delivery/sendContainerToCleaningRoom';
+                var body = JSON.stringify({
+                    containerNumber: _this.containerNum,
+                    functionRoomNumber: _this.workshopName
+                });
+                stream.fetch({
+                    method: "POST",
+                    url: url,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: body,
+                    type: 'json'
+                }, function (ret) {
+                    if (ret.data.status === 1) {
+                        modal.toast({ message: ret.data.message, duration: 3 });
+                    } else {
+                        modal.toast({ message: ret.data.message, duration: 3 });
+                    }
+                    this.show = false;
+                });
             } else {
+                modal.toast({ message: '请选择桶编号', duration: 3 });
                 this.show = false;
             }
         }
     }
-}; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+};
 
 /***/ }),
-/* 315 */
+/* 311 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -24918,7 +25068,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 316 */
+/* 312 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -24933,14 +25083,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('text', {
     staticClass: ["btn-txt"]
-  }, [_vm._v("业务")])]), _c('div', {
+  }, [_vm._v("取/送桶")])]), _c('div', {
     staticClass: ["btn"],
     on: {
       "click": _vm.openNoAnimationMask
     }
   }, [_c('text', {
     staticClass: ["btn-txt"]
-  }, [_vm._v("功能")])])]), _c('wxc-mask', {
+  }, [_vm._v("车辆控制")])])]), _c('wxc-mask', {
     attrs: {
       "height": "300",
       "width": "500",
@@ -24989,7 +25139,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 317 */
+/* 313 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -25002,21 +25152,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 318 */
+/* 314 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(319)
+__vue_styles__.push(__webpack_require__(315)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(320)
+__vue_exports__ = __webpack_require__(316)
 
 /* template */
-var __vue_template__ = __webpack_require__(332)
+var __vue_template__ = __webpack_require__(328)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -25046,7 +25196,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 319 */
+/* 315 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -25056,7 +25206,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 320 */
+/* 316 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25066,7 +25216,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _vPopoverCapsule = __webpack_require__(321);
+var _vPopoverCapsule = __webpack_require__(317);
 
 var _vPopoverCapsule2 = _interopRequireDefault(_vPopoverCapsule);
 
@@ -25102,21 +25252,21 @@ exports.default = {
 //
 
 /***/ }),
-/* 321 */
+/* 317 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(322)
+__vue_styles__.push(__webpack_require__(318)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(323)
+__vue_exports__ = __webpack_require__(319)
 
 /* template */
-var __vue_template__ = __webpack_require__(331)
+var __vue_template__ = __webpack_require__(327)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -25146,7 +25296,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 322 */
+/* 318 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -25196,7 +25346,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 323 */
+/* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25216,7 +25366,7 @@ var _vStart = __webpack_require__(5);
 
 var _vStart2 = _interopRequireDefault(_vStart);
 
-var _vGetSpritzerTankHopper = __webpack_require__(324);
+var _vGetSpritzerTankHopper = __webpack_require__(320);
 
 var _vGetSpritzerTankHopper2 = _interopRequireDefault(_vGetSpritzerTankHopper);
 
@@ -25319,21 +25469,21 @@ exports.default = {
 //
 
 /***/ }),
-/* 324 */
+/* 320 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(325)
+__vue_styles__.push(__webpack_require__(321)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(326)
+__vue_exports__ = __webpack_require__(322)
 
 /* template */
-var __vue_template__ = __webpack_require__(327)
+var __vue_template__ = __webpack_require__(323)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -25363,7 +25513,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 325 */
+/* 321 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -25385,7 +25535,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 326 */
+/* 322 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25403,16 +25553,52 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 
+var modal = weex.requireModule('modal');
+var stream = weex.requireModule('stream');
+var storage = weex.requireModule('storage');
 exports.default = {
+  data: function data() {
+    return {
+      workshopName: ''
+    };
+  },
+  created: function created() {
+    var _this2 = this;
+
+    storage.getItem('workShopName', function (event) {
+      _this2.workshopName = event.data;
+    });
+  },
+
   methods: {
-    wxcButtonGetSpritzerTankHopper: function wxcButtonGetSpritzerTankHopper(e) {
-      console.log(e);
+    wxcButtonGetSpritzerTankHopper: function wxcButtonGetSpritzerTankHopper() {
+      var _this = this;
+
+      var url = 'http://10.34.10.53:8200/functionRoomUseContainer/getFunctionRoomUseContainer';
+      var body = JSON.stringify({
+        functionRoomNumber: _this.workshopName
+      });
+      stream.fetch({
+        method: "POST",
+        url: url,
+        headers: { 'Content-Type': 'application/json' },
+        body: body,
+        type: 'json'
+      }, function (ret) {
+        if (ret.data.status === 1) {
+          if (ret.data.data.length > 0) {
+            this.$router.push({ name: 'popUp' });
+          } else {
+            modal.toast({ message: '该车间没有送料桶', duration: 3 });
+          }
+        }
+      });
     }
   }
 };
 
 /***/ }),
-/* 327 */
+/* 323 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -25428,7 +25614,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 328 */
+/* 324 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -25450,7 +25636,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 329 */
+/* 325 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25459,6 +25645,7 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+//
 //
 //
 //
@@ -25493,39 +25680,29 @@ exports.default = {
     methods: {
         wxcButtonEmptySpritzerTank: function wxcButtonEmptySpritzerTank(e) {
             var _this = this;
+            if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
 
-            var url = 'http://10.34.10.25:8999/obtain/getEmptyContainer';
-            var body = JSON.stringify({
-                containerNumber: _this.containerNum,
-                functionNumber: _this.workshopName
-            });
-            stream.fetch({
-                method: "POST",
-                url: url,
-                headers: { 'Content-Type': 'application/json' },
-                body: body,
-                type: 'json'
-            }, function (ret) {
-                if (ret.data.status === 1) {
-                    modal.toast({ message: ret.data.message, duration: 3 });
-                } else {
-                    modal.toast({ message: ret.data.message, duration: 3 });
-                }
-                // if(ret.data.status===1){
-                //     modal.toast({ message: ret.data.message, duration: 3 });
-                //     _this.$router.push({name:'jurisLoginMessage'})
-                // }else{
-                //     modal.toast({ message: '登录失败！！！', duration: 3 });
-                // }
-            }, function (progress) {
-                // console.log(progress)
-            });
+                var url = 'http://10.34.10.25:8999/obtain/getEmptyContainer?containerNumber=' + _this.containerNum + '&functionRoomNumber=' + _this.workshopName;
+                stream.fetch({
+                    method: "GET",
+                    url: url,
+                    type: 'json'
+                }, function (ret) {
+                    if (ret.data.status === 1) {
+                        modal.toast({ message: ret.data.message, duration: 3 });
+                    } else {
+                        modal.toast({ message: ret.data.message, duration: 3 });
+                    }
+                });
+            } else {
+                modal.toast({ message: '请选择桶编号', duration: 3 });
+            }
         }
     }
 };
 
 /***/ }),
-/* 330 */
+/* 326 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -25541,7 +25718,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 331 */
+/* 327 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -25556,14 +25733,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('text', {
     staticClass: ["btn-txt"]
-  }, [_vm._v("业务")])]), _c('div', {
+  }, [_vm._v("取/送桶")])]), _c('div', {
     staticClass: ["btn"],
     on: {
       "click": _vm.openNoAnimationMask
     }
   }, [_c('text', {
     staticClass: ["btn-txt"]
-  }, [_vm._v("功能")])])]), _c('wxc-mask', {
+  }, [_vm._v("车辆控制")])])]), _c('wxc-mask', {
     attrs: {
       "height": "300",
       "width": "500",
@@ -25612,7 +25789,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 332 */
+/* 328 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -25625,21 +25802,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 333 */
+/* 329 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(334)
+__vue_styles__.push(__webpack_require__(330)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(335)
+__vue_exports__ = __webpack_require__(331)
 
 /* template */
-var __vue_template__ = __webpack_require__(350)
+var __vue_template__ = __webpack_require__(346)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -25669,7 +25846,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 334 */
+/* 330 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -25679,7 +25856,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 335 */
+/* 331 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25689,7 +25866,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _vPopoverInside = __webpack_require__(336);
+var _vPopoverInside = __webpack_require__(332);
 
 var _vPopoverInside2 = _interopRequireDefault(_vPopoverInside);
 
@@ -25725,21 +25902,21 @@ exports.default = {
 //
 
 /***/ }),
-/* 336 */
+/* 332 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(337)
+__vue_styles__.push(__webpack_require__(333)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(338)
+__vue_exports__ = __webpack_require__(334)
 
 /* template */
-var __vue_template__ = __webpack_require__(349)
+var __vue_template__ = __webpack_require__(345)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -25769,7 +25946,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 337 */
+/* 333 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -25819,7 +25996,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 338 */
+/* 334 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25839,7 +26016,7 @@ var _vStart = __webpack_require__(5);
 
 var _vStart2 = _interopRequireDefault(_vStart);
 
-var _vGetEmptySpritzerTank = __webpack_require__(339);
+var _vGetEmptySpritzerTank = __webpack_require__(335);
 
 var _vGetEmptySpritzerTank2 = _interopRequireDefault(_vGetEmptySpritzerTank);
 
@@ -25942,21 +26119,21 @@ exports.default = {
 //
 
 /***/ }),
-/* 339 */
+/* 335 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(340)
+__vue_styles__.push(__webpack_require__(336)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(341)
+__vue_exports__ = __webpack_require__(337)
 
 /* template */
-var __vue_template__ = __webpack_require__(342)
+var __vue_template__ = __webpack_require__(338)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -25986,7 +26163,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 340 */
+/* 336 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -26028,7 +26205,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 341 */
+/* 337 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26040,36 +26217,82 @@ Object.defineProperty(exports, "__esModule", {
 
 var _weexUi = __webpack_require__(1);
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var modal = weex.requireModule('modal');
+var stream = weex.requireModule('stream');
+var storage = weex.requireModule('storage');
 exports.default = {
     components: { WxcPopup: _weexUi.WxcPopup, WxcRadio: _weexUi.WxcRadio, WxcButton: _weexUi.WxcButton },
     data: function data() {
         return {
             show: false,
             isChoseDisabled: true,
-            emptyContainerList: [{
-                title: '空桶1',
-                value: 'A009'
-            }, {
-                title: '空桶2',
-                value: 'A000'
-            }, {
-                title: '空桶2',
-                value: 'A000'
-            }, {
-                title: '空桶2',
-                value: 'A000'
-            }]
+            emptyContainerList: [],
+            workshopName: '',
+            containerNum: ''
         };
     },
+    created: function created() {
+        var _this2 = this;
+
+        storage.getItem('workShopName', function (event) {
+            _this2.workshopName = event.data;
+        });
+    },
+
     methods: {
+
         // 打开弹窗
         wxcButtonGetEmptySpritzerTank: function wxcButtonGetEmptySpritzerTank(e) {
-            console.log(e);
-            if (e.disabled) {
-                return;
-            } else {
-                this.show = true;
-            }
+            var _this = this;
+
+            var url = 'http://10.34.10.53:8200/functionRoomUseContainer/getFunctionRoomUseContainer';
+            var body = JSON.stringify({
+                functionRoomNumber: _this.workshopName
+            });
+            stream.fetch({
+                method: "POST",
+                url: url,
+                headers: { 'Content-Type': 'application/json' },
+                body: body,
+                type: 'json'
+            }, function (ret) {
+                if (ret.data.status === 1) {
+                    if (ret.data.data.length > 0) {
+                        for (var i = 0; i < ret.data.data.length; i++) {
+                            _this.emptyContainerList.push({ title: ret.data.data.containerNumber, value: ret.data.data.containerNumber });
+                        }
+                        this.show = true;
+                    } else {
+                        modal.toast({ message: '该车间没有送料桶', duration: 3 });
+                    }
+                }
+            });
         },
 
         // 关闭弹窗
@@ -26080,6 +26303,7 @@ exports.default = {
         // 选择空料桶
         wxcSelectEmptyContainer: function wxcSelectEmptyContainer(e) {
             if (e.title.length < 1) {
+                this.containerNum = e.value;
                 this.isChoseDisabled = true;
             } else {
                 this.isChoseDisabled = false;
@@ -26089,41 +26313,37 @@ exports.default = {
 
         // 选择选择空料斗、料桶--确认按钮
         wxcConfirmEmptyContainer: function wxcConfirmEmptyContainer(e) {
-            if (e.disabled) {
-                return;
+            var _this = this;
+            if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
+                var url = 'http://10.34.10.25:8999/delivery/sendContainerToCleaningRoom';
+                var body = JSON.stringify({
+                    containerNumber: _this.containerNum,
+                    functionRoomNumber: _this.workshopName
+                });
+                stream.fetch({
+                    method: "POST",
+                    url: url,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: body,
+                    type: 'json'
+                }, function (ret) {
+                    if (ret.data.status === 1) {
+                        modal.toast({ message: ret.data.message, duration: 3 });
+                    } else {
+                        modal.toast({ message: ret.data.message, duration: 3 });
+                    }
+                    this.show = false;
+                });
             } else {
+                modal.toast({ message: '请选择桶编号', duration: 3 });
                 this.show = false;
             }
         }
     }
-}; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+};
 
 /***/ }),
-/* 342 */
+/* 338 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -26179,7 +26399,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 343 */
+/* 339 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -26201,7 +26421,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 344 */
+/* 340 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26244,39 +26464,34 @@ exports.default = {
     methods: {
         wxcButtonEmptySpritzerTank: function wxcButtonEmptySpritzerTank(e) {
             var _this = this;
-
-            var url = 'http://10.34.10.25:8999/obtain/getStripContainer';
-            var body = JSON.stringify({
-                containerNumber: _this.containerNum,
-                functionNumber: _this.workshopName
-            });
-            stream.fetch({
-                method: "POST",
-                url: url,
-                headers: { 'Content-Type': 'application/json' },
-                body: body,
-                type: 'json'
-            }, function (ret) {
-                if (ret.data.status === 1) {
-                    modal.toast({ message: ret.data.message, duration: 3 });
-                } else {
-                    modal.toast({ message: ret.data.message, duration: 3 });
-                }
-                // if(ret.data.status===1){
-                //     modal.toast({ message: ret.data.message, duration: 3 });
-                //     _this.$router.push({name:'jurisLoginMessage'})
-                // }else{
-                //     modal.toast({ message: '登录失败！！！', duration: 3 });
-                // }
-            }, function (progress) {
-                // console.log(progress)
-            });
+            if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
+                var url = 'http://10.34.10.25:8999/obtain/getStripContainer';
+                var body = JSON.stringify({
+                    containerNumber: _this.containerNum,
+                    functionRoomNumber: _this.workshopName
+                });
+                stream.fetch({
+                    method: "POST",
+                    url: url,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: body,
+                    type: 'json'
+                }, function (ret) {
+                    if (ret.data.status === 1) {
+                        modal.toast({ message: ret.data.message, duration: 3 });
+                    } else {
+                        modal.toast({ message: ret.data.message, duration: 3 });
+                    }
+                });
+            } else {
+                modal.toast({ message: '请选择桶编号', duration: 3 });
+            }
         }
     }
 };
 
 /***/ }),
-/* 345 */
+/* 341 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -26292,7 +26507,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 346 */
+/* 342 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -26314,7 +26529,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 347 */
+/* 343 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26364,7 +26579,6 @@ exports.default = {
         body: body,
         type: 'json'
       }, function (ret) {
-        console.log(ret);
         if (ret.data.status === 1) {
           if (ret.data.data.length > 0) {
             this.$router.push({ name: 'popUp' });
@@ -26372,21 +26586,13 @@ exports.default = {
             modal.toast({ message: '该车间没有送料桶', duration: 3 });
           }
         }
-        // if(ret.data.status===1){
-        //     modal.toast({ message: ret.data.message, duration: 3 });
-        //     _this.$router.push({name:'jurisLoginMessage'})
-        // }else{
-        //     modal.toast({ message: '登录失败！！！', duration: 3 });
-        // }
-      }, function (progress) {
-        // console.log(progress)
       });
     }
   }
 };
 
 /***/ }),
-/* 348 */
+/* 344 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -26402,7 +26608,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 349 */
+/* 345 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -26417,14 +26623,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('text', {
     staticClass: ["btn-txt"]
-  }, [_vm._v("业务")])]), _c('div', {
+  }, [_vm._v("取/送桶")])]), _c('div', {
     staticClass: ["btn"],
     on: {
       "click": _vm.openNoAnimationMask
     }
   }, [_c('text', {
     staticClass: ["btn-txt"]
-  }, [_vm._v("功能")])])]), _c('wxc-mask', {
+  }, [_vm._v("车辆控制")])])]), _c('wxc-mask', {
     attrs: {
       "height": "300",
       "width": "500",
@@ -26473,7 +26679,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 350 */
+/* 346 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -26486,21 +26692,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 351 */
+/* 347 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(352)
+__vue_styles__.push(__webpack_require__(348)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(353)
+__vue_exports__ = __webpack_require__(349)
 
 /* template */
-var __vue_template__ = __webpack_require__(366)
+var __vue_template__ = __webpack_require__(362)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -26530,7 +26736,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 352 */
+/* 348 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -26540,7 +26746,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 353 */
+/* 349 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26550,7 +26756,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _vPopoverPackage = __webpack_require__(354);
+var _vPopoverPackage = __webpack_require__(350);
 
 var _vPopoverPackage2 = _interopRequireDefault(_vPopoverPackage);
 
@@ -26586,21 +26792,21 @@ exports.default = {
 //
 
 /***/ }),
-/* 354 */
+/* 350 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(355)
+__vue_styles__.push(__webpack_require__(351)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(356)
+__vue_exports__ = __webpack_require__(352)
 
 /* template */
-var __vue_template__ = __webpack_require__(365)
+var __vue_template__ = __webpack_require__(361)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -26630,7 +26836,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 355 */
+/* 351 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -26680,7 +26886,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 356 */
+/* 352 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26700,11 +26906,11 @@ var _vStart = __webpack_require__(5);
 
 var _vStart2 = _interopRequireDefault(_vStart);
 
-var _vGetSpritzerHopperBack = __webpack_require__(357);
+var _vGetSpritzerHopperBack = __webpack_require__(353);
 
 var _vGetSpritzerHopperBack2 = _interopRequireDefault(_vGetSpritzerHopperBack);
 
-var _vGetSpritzerHopperRinse = __webpack_require__(361);
+var _vGetSpritzerHopperRinse = __webpack_require__(357);
 
 var _vGetSpritzerHopperRinse2 = _interopRequireDefault(_vGetSpritzerHopperRinse);
 
@@ -26803,6 +27009,158 @@ exports.default = {
 //
 
 /***/ }),
+/* 353 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(354)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(355)
+
+/* template */
+var __vue_template__ = __webpack_require__(356)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "C:\\Users\\IBM\\Desktop\\aodong\\src\\components\\btn\\vGetSpritzerHopperBack.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-28c72732"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 354 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "btn": {
+    "display": "flex",
+    "justifyContent": "center",
+    "backgroundColor": "#0099ff",
+    "width": "200",
+    "height": "100",
+    "borderRadius": "10"
+  },
+  "btn-txt": {
+    "textAlign": "center",
+    "marginTop": 0,
+    "marginBottom": 0,
+    "color": "#ffffff",
+    "fontSize": "35"
+  }
+}
+
+/***/ }),
+/* 355 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+
+var modal = weex.requireModule('modal');
+var stream = weex.requireModule('stream');
+var storage = weex.requireModule('storage');
+exports.default = {
+    data: function data() {
+        return {
+            // 车间名字
+            workshopName: '',
+            containerNum: ''
+        };
+    },
+    created: function created() {
+        var _this2 = this;
+
+        storage.getItem('workShopName', function (event) {
+            _this2.workshopName = event.data;
+        });
+        storage.getItem('containerNum', function (event) {
+            _this2.containerNum = event.data;
+        });
+    },
+
+    methods: {
+        wxcButtonGetSpritzerHopperBack: function wxcButtonGetSpritzerHopperBack(e) {
+            var _this = this;
+            if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
+                var url = 'http://10.34.10.25:8999/delivery/sendEmptyContainer';
+                var body = JSON.stringify({
+                    containerNumber: _this.containerNum,
+                    functionRoomNumber: _this.workshopName
+                });
+                stream.fetch({
+                    method: "POST",
+                    url: url,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: body,
+                    type: 'json'
+                }, function (ret) {
+                    if (ret.data.status === 1) {
+                        modal.toast({ message: ret.data.message, duration: 3 });
+                    } else {
+                        modal.toast({ message: ret.data.message, duration: 3 });
+                    }
+                });
+            } else {
+                modal.toast({ message: '请选择桶编号', duration: 3 });
+            }
+        }
+    }
+};
+
+/***/ }),
+/* 356 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["btn"],
+    on: {
+      "click": _vm.wxcButtonGetSpritzerHopperBack
+    }
+  }, [_c('text', {
+    staticClass: ["btn-txt"]
+  }, [_vm._v("送空料桶回中间站")])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
 /* 357 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -26829,10 +27187,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "C:\\Users\\IBM\\Desktop\\aodong\\src\\components\\btn\\vGetSpritzerHopperBack.vue"
+__vue_options__.__file = "C:\\Users\\IBM\\Desktop\\aodong\\src\\components\\btn\\vGetSpritzerHopperRinse.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-28c72732"
+__vue_options__._scopeId = "data-v-6c408224"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -26910,150 +27268,36 @@ exports.default = {
     },
 
     methods: {
-        wxcButtonGetSpritzerHopperBack: function wxcButtonGetSpritzerHopperBack(e) {
+        wxcButtonGetSpritzerHopperRinse: function wxcButtonGetSpritzerHopperRinse(e) {
             var _this = this;
-
-            var url = 'http://10.34.10.25:8999/delivery/sendEmptyContainer';
-            var body = JSON.stringify({
-                containerNumber: _this.containerNum,
-                functionNumber: _this.workshopName
-            });
-            stream.fetch({
-                method: "POST",
-                url: url,
-                headers: { 'Content-Type': 'application/json' },
-                body: body,
-                type: 'json'
-            }, function (ret) {
-                if (ret.data.status === 1) {
-                    modal.toast({ message: ret.data.message, duration: 3 });
-                } else {
-                    modal.toast({ message: ret.data.message, duration: 3 });
-                }
-                // if(ret.data.status===1){
-                //     modal.toast({ message: ret.data.message, duration: 3 });
-                //     _this.$router.push({name:'jurisLoginMessage'})
-                // }else{
-                //     modal.toast({ message: '登录失败！！！', duration: 3 });
-                // }
-            }, function (progress) {
-                // console.log(progress)
-            });
+            if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
+                var url = 'http://10.34.10.25:8999/delivery/sendContainerToCleaningRoom';
+                var body = JSON.stringify({
+                    containerNumber: _this.containerNum,
+                    functionRoomNumber: _this.workshopName
+                });
+                stream.fetch({
+                    method: "POST",
+                    url: url,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: body,
+                    type: 'json'
+                }, function (ret) {
+                    if (ret.data.status === 1) {
+                        modal.toast({ message: ret.data.message, duration: 3 });
+                    } else {
+                        modal.toast({ message: ret.data.message, duration: 3 });
+                    }
+                });
+            } else {
+                modal.toast({ message: '请选择桶编号', duration: 3 });
+            }
         }
     }
 };
 
 /***/ }),
 /* 360 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["btn"],
-    on: {
-      "click": _vm.wxcButtonGetSpritzerHopperBack
-    }
-  }, [_c('text', {
-    staticClass: ["btn-txt"]
-  }, [_vm._v("送空料桶回中间站")])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-/* 361 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(362)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(363)
-
-/* template */
-var __vue_template__ = __webpack_require__(364)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "C:\\Users\\IBM\\Desktop\\aodong\\src\\components\\btn\\vGetSpritzerHopperRinse.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-6c408224"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-/* 362 */
-/***/ (function(module, exports) {
-
-module.exports = {
-  "btn": {
-    "display": "flex",
-    "justifyContent": "center",
-    "backgroundColor": "#0099ff",
-    "width": "200",
-    "height": "100",
-    "borderRadius": "10"
-  },
-  "btn-txt": {
-    "textAlign": "center",
-    "marginTop": 0,
-    "marginBottom": 0,
-    "color": "#ffffff",
-    "fontSize": "35"
-  }
-}
-
-/***/ }),
-/* 363 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-//
-//
-//
-//
-//
-//
-//
-//
-
-exports.default = {
-  methods: {
-    wxcButtonGetSpritzerHopperRinse: function wxcButtonGetSpritzerHopperRinse(e) {
-      console.log(e);
-    }
-  }
-};
-
-/***/ }),
-/* 364 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -27069,7 +27313,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 365 */
+/* 361 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -27084,14 +27328,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('text', {
     staticClass: ["btn-txt"]
-  }, [_vm._v("业务")])]), _c('div', {
+  }, [_vm._v("取/送桶")])]), _c('div', {
     staticClass: ["btn"],
     on: {
       "click": _vm.openNoAnimationMask
     }
   }, [_c('text', {
     staticClass: ["btn-txt"]
-  }, [_vm._v("功能")])])]), _c('wxc-mask', {
+  }, [_vm._v("车辆控制")])])]), _c('wxc-mask', {
     attrs: {
       "height": "300",
       "width": "500",
@@ -27140,7 +27384,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 366 */
+/* 362 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -27153,21 +27397,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 367 */
+/* 363 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(368)
+__vue_styles__.push(__webpack_require__(364)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(369)
+__vue_exports__ = __webpack_require__(365)
 
 /* template */
-var __vue_template__ = __webpack_require__(382)
+var __vue_template__ = __webpack_require__(378)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -27197,17 +27441,84 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 368 */
+/* 364 */
 /***/ (function(module, exports) {
 
 module.exports = {
   "table": {
     "marginBottom": "40"
+  },
+  "inputBox": {
+    "display": "flex",
+    "flexDirection": "row"
+  },
+  "input-title": {
+    "flex": 1,
+    "lineHeight": "60",
+    "textAlign": "center",
+    "fontSize": "30"
+  },
+  "input_box": {
+    "flex": 3,
+    "borderStyle": "solid",
+    "borderWidth": "1",
+    "borderColor": "#333333",
+    "borderRadius": "10",
+    "marginBottom": "40",
+    "paddingLeft": "20"
+  },
+  "login-txt": {
+    "paddingTop": "20",
+    "paddingRight": "20",
+    "paddingBottom": "20",
+    "paddingLeft": "20"
+  },
+  "input_item": {
+    "height": "60",
+    "lineHeight": "60",
+    "fontSize": "30"
+  },
+  "button_box": {
+    "display": "flex",
+    "flexDirection": "row",
+    "justifyContent": "space-around",
+    "marginTop": "20"
+  },
+  "mask-content": {
+    "paddingTop": 20
+  },
+  "mask-title": {
+    "paddingTop": "20",
+    "paddingRight": 0,
+    "paddingBottom": "20",
+    "paddingLeft": 0,
+    "alignItems": "center"
+  },
+  "title": {
+    "fontSize": "28"
+  },
+  "mask-btns": {
+    "alignItems": "center",
+    "justifyContent": "center",
+    "flexDirection": "row"
+  },
+  "scroller-box": {
+    "height": 606,
+    "top": 0,
+    "right": 0,
+    "left": 0,
+    "bottom": 0
+  },
+  "workShop-confirm": {
+    "marginTop": "10"
+  },
+  "button": {
+    "alignItems": "center"
   }
 }
 
 /***/ }),
-/* 369 */
+/* 365 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27217,7 +27528,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _vPopoverWay = __webpack_require__(370);
+var _vPopoverWay = __webpack_require__(366);
 
 var _vPopoverWay2 = _interopRequireDefault(_vPopoverWay);
 
@@ -27229,45 +27540,114 @@ var _vPage = __webpack_require__(7);
 
 var _vPage2 = _interopRequireDefault(_vPage);
 
+var _weexUi = __webpack_require__(1);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 exports.default = {
   data: function data() {
-    return {};
+    return {
+      functionNumber: '',
+      containerNumber: '',
+      productName: '',
+      showproduct: false,
+      count: 1,
+      time: ''
+    };
   },
 
   components: {
     vPopoverWay: _vPopoverWay2.default,
     vTable: _vTable2.default,
-    vPage: _vPage2.default
+    vPage: _vPage2.default,
+    WxcButton: _weexUi.WxcButton,
+    WxcPopup: _weexUi.WxcPopup
   },
-  methods: {}
-}; //
-//
-//
-//
-//
-//
-//
-//
-//
+  created: function created() {
+    this.$nextTick(function () {
+      this.time = setInterval(this.timer, 1000);
+    });
+  },
+
+  methods: {
+    timer: function timer() {
+      this.showproduct = true;
+      if (this.count > 0) {
+        this.count++;
+        console.log(this.count);
+        clearInterval(this.time);
+      }
+    },
+    wxcChoseAllow: function wxcChoseAllow() {
+      this.showproduct = false;
+      setInterval(this.timer, 60000);
+    },
+    wxcChoseRefuse: function wxcChoseRefuse() {
+      this.showproduct = false;
+      setInterval(this.timer, 60000);
+    }
+  }
+};
 
 /***/ }),
-/* 370 */
+/* 366 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(371)
+__vue_styles__.push(__webpack_require__(367)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(372)
+__vue_exports__ = __webpack_require__(368)
 
 /* template */
-var __vue_template__ = __webpack_require__(381)
+var __vue_template__ = __webpack_require__(377)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -27297,7 +27677,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 371 */
+/* 367 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -27362,7 +27742,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 372 */
+/* 368 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27382,11 +27762,11 @@ var _vStart = __webpack_require__(5);
 
 var _vStart2 = _interopRequireDefault(_vStart);
 
-var _vGetSpritzerHopperRinses = __webpack_require__(373);
+var _vGetSpritzerHopperRinses = __webpack_require__(369);
 
 var _vGetSpritzerHopperRinses2 = _interopRequireDefault(_vGetSpritzerHopperRinses);
 
-var _vWeigh = __webpack_require__(377);
+var _vWeigh = __webpack_require__(373);
 
 var _vWeigh2 = _interopRequireDefault(_vWeigh);
 
@@ -27477,6 +27857,158 @@ exports.default = {
 //
 
 /***/ }),
+/* 369 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(370)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(371)
+
+/* template */
+var __vue_template__ = __webpack_require__(372)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "C:\\Users\\IBM\\Desktop\\aodong\\src\\components\\btn\\vGetSpritzerHopperRinses.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-75c3bff5"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 370 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "btn": {
+    "display": "flex",
+    "justifyContent": "center",
+    "backgroundColor": "#0099ff",
+    "width": "200",
+    "height": "100",
+    "borderRadius": "10"
+  },
+  "btn-txt": {
+    "textAlign": "center",
+    "marginTop": 0,
+    "marginBottom": 0,
+    "color": "#ffffff",
+    "fontSize": "35"
+  }
+}
+
+/***/ }),
+/* 371 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+
+var modal = weex.requireModule('modal');
+var stream = weex.requireModule('stream');
+var storage = weex.requireModule('storage');
+exports.default = {
+    data: function data() {
+        return {
+            // 车间名字
+            workshopName: '',
+            containerNum: ''
+        };
+    },
+    created: function created() {
+        var _this2 = this;
+
+        storage.getItem('workShopName', function (event) {
+            _this2.workshopName = event.data;
+        });
+        storage.getItem('containerNum', function (event) {
+            _this2.containerNum = event.data;
+        });
+    },
+
+    methods: {
+        wxcButtonGetSpritzerHopperRinses: function wxcButtonGetSpritzerHopperRinses(e) {
+            var _this = this;
+            if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
+                var url = 'http://10.34.10.25:8999/delivery/sendContainerFormZJToCleaningRoom';
+                var body = JSON.stringify({
+                    containerNumber: _this.containerNum,
+                    functionRoomNumber: _this.workshopName
+                });
+                stream.fetch({
+                    method: "POST",
+                    url: url,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: body,
+                    type: 'json'
+                }, function (ret) {
+                    if (ret.data.status === 1) {
+                        modal.toast({ message: ret.data.message, duration: 3 });
+                    } else {
+                        modal.toast({ message: ret.data.message, duration: 3 });
+                    }
+                });
+            } else {
+                modal.toast({ message: '请选择桶编号', duration: 3 });
+            }
+        }
+    }
+};
+
+/***/ }),
+/* 372 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["btn"],
+    on: {
+      "click": _vm.wxcButtonGetSpritzerHopperRinses
+    }
+  }, [_c('text', {
+    staticClass: ["btn-txt"]
+  }, [_vm._v("送过期料斗和料桶清洗")])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
 /* 373 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -27503,10 +28035,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "C:\\Users\\IBM\\Desktop\\aodong\\src\\components\\btn\\vGetSpritzerHopperRinses.vue"
+__vue_options__.__file = "C:\\Users\\IBM\\Desktop\\aodong\\src\\components\\btn\\vWeigh.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-75c3bff5"
+__vue_options__._scopeId = "data-v-690acdd4"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -27550,115 +28082,6 @@ module.exports = {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-//
-//
-//
-//
-//
-//
-//
-//
-
-exports.default = {
-  methods: {
-    wxcButtonGetSpritzerHopperRinses: function wxcButtonGetSpritzerHopperRinses(e) {
-      console.log(e);
-    }
-  }
-};
-
-/***/ }),
-/* 376 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["btn"],
-    on: {
-      "click": _vm.wxcButtonGetSpritzerHopperRinses
-    }
-  }, [_c('text', {
-    staticClass: ["btn-txt"]
-  }, [_vm._v("送过期料斗和料桶清洗")])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-/* 377 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(378)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(379)
-
-/* template */
-var __vue_template__ = __webpack_require__(380)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "C:\\Users\\IBM\\Desktop\\aodong\\src\\components\\btn\\vWeigh.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-690acdd4"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-/* 378 */
-/***/ (function(module, exports) {
-
-module.exports = {
-  "btn": {
-    "display": "flex",
-    "justifyContent": "center",
-    "backgroundColor": "#0099ff",
-    "width": "200",
-    "height": "100",
-    "borderRadius": "10"
-  },
-  "btn-txt": {
-    "textAlign": "center",
-    "marginTop": 0,
-    "marginBottom": 0,
-    "color": "#ffffff",
-    "fontSize": "35"
-  }
-}
-
-/***/ }),
-/* 379 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
     value: true
 });
 //
@@ -27691,21 +28114,13 @@ exports.default = {
                 } else {
                     modal.toast({ message: ret.data.message, duration: 3 });
                 }
-                // if(ret.data.status===1){
-                //     modal.toast({ message: ret.data.message, duration: 3 });
-                //     _this.$router.push({name:'jurisLoginMessage'})
-                // }else{
-                //     modal.toast({ message: '登录失败！！！', duration: 3 });
-                // }
-            }, function (progress) {
-                // console.log(progress)
             });
         }
     }
 };
 
 /***/ }),
-/* 380 */
+/* 376 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -27721,7 +28136,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 381 */
+/* 377 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -27736,14 +28151,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('text', {
     staticClass: ["btn-txt"]
-  }, [_vm._v("业务")])]), _c('div', {
+  }, [_vm._v("取/送桶")])]), _c('div', {
     staticClass: ["btn"],
     on: {
       "click": _vm.openNoAnimationMask
     }
   }, [_c('text', {
     staticClass: ["btn-txt"]
-  }, [_vm._v("功能")])])]), _c('wxc-mask', {
+  }, [_vm._v("车辆控制")])])]), _c('wxc-mask', {
     attrs: {
       "height": "300",
       "width": "500",
@@ -27795,7 +28210,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 382 */
+/* 378 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -27803,26 +28218,83 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["home"]
   }, [_c('v-popover-way'), _c('v-table', {
     staticClass: ["table"]
-  }), _c('v-page')], 1)
+  }), _c('v-page'), _c('wxc-popup', {
+    attrs: {
+      "popupColor": "#fff",
+      "show": _vm.showproduct,
+      "pos": "bottom",
+      "height": "500"
+    }
+  }, [_c('div', {
+    staticClass: ["demo-content"]
+  }, [_c('div', {
+    staticClass: ["mask-title"]
+  }, [_c('text', {
+    staticClass: ["title"]
+  }, [_vm._v("复核")])]), _c('div', {
+    staticClass: ["inputBox"]
+  }, [_c('text', {
+    staticClass: ["input-title"]
+  }, [_vm._v("功能间")]), _c('div', {
+    staticClass: ["input_box"]
+  }, [_c('text', {
+    staticClass: ["input_item"]
+  }, [_vm._v(_vm._s(_vm.functionNumber))])])]), _c('div', {
+    staticClass: ["inputBox"]
+  }, [_c('text', {
+    staticClass: ["input-title"]
+  }, [_vm._v("编号")]), _c('div', {
+    staticClass: ["input_box"]
+  }, [_c('text', {
+    staticClass: ["input_item"]
+  }, [_vm._v(_vm._s(_vm.containerNumber))])])]), _c('div', {
+    staticClass: ["inputBox"]
+  }, [_c('text', {
+    staticClass: ["input-title"]
+  }, [_vm._v("产品名称")]), _c('div', {
+    staticClass: ["input_box"]
+  }, [_c('text', {
+    staticClass: ["input_item"]
+  }, [_vm._v(_vm._s(_vm.productName))])])]), _c('div', {
+    staticClass: ["button_box"]
+  }, [_c('wxc-button', {
+    attrs: {
+      "text": "允许",
+      "type": "blue",
+      "size": "medium"
+    },
+    on: {
+      "wxcButtonClicked": _vm.wxcChoseAllow
+    }
+  }), _c('wxc-button', {
+    attrs: {
+      "text": "拒绝",
+      "type": "blue",
+      "size": "medium"
+    },
+    on: {
+      "wxcButtonClicked": _vm.wxcChoseRefuse
+    }
+  })], 1)])])], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 383 */
+/* 379 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(384)
+__vue_styles__.push(__webpack_require__(380)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(385)
+__vue_exports__ = __webpack_require__(381)
 
 /* template */
-var __vue_template__ = __webpack_require__(390)
+var __vue_template__ = __webpack_require__(386)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -27852,7 +28324,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 384 */
+/* 380 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -27913,7 +28385,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 385 */
+/* 381 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27923,7 +28395,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _vCleaning = __webpack_require__(386);
+var _vCleaning = __webpack_require__(382);
 
 var _vCleaning2 = _interopRequireDefault(_vCleaning);
 
@@ -27958,21 +28430,21 @@ exports.default = {
 //
 
 /***/ }),
-/* 386 */
+/* 382 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(387)
+__vue_styles__.push(__webpack_require__(383)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(388)
+__vue_exports__ = __webpack_require__(384)
 
 /* template */
-var __vue_template__ = __webpack_require__(389)
+var __vue_template__ = __webpack_require__(385)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -28002,7 +28474,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 387 */
+/* 383 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -28014,7 +28486,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 388 */
+/* 384 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28050,7 +28522,7 @@ exports.default = {
 //
 
 /***/ }),
-/* 389 */
+/* 385 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -28063,7 +28535,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 390 */
+/* 386 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -28099,21 +28571,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 391 */
+/* 387 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(392)
+__vue_styles__.push(__webpack_require__(388)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(393)
+__vue_exports__ = __webpack_require__(389)
 
 /* template */
-var __vue_template__ = __webpack_require__(395)
+var __vue_template__ = __webpack_require__(391)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -28143,7 +28615,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 392 */
+/* 388 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -28200,7 +28672,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 393 */
+/* 389 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28212,7 +28684,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _weexUi = __webpack_require__(1);
 
-var _config = __webpack_require__(394);
+var _config = __webpack_require__(390);
 
 var _config2 = _interopRequireDefault(_config);
 
@@ -28291,7 +28763,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 394 */
+/* 390 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28313,7 +28785,7 @@ function toParams(obj) {
 exports.default = toParams;
 
 /***/ }),
-/* 395 */
+/* 391 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -28374,21 +28846,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 396 */
+/* 392 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(397)
+__vue_styles__.push(__webpack_require__(393)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(398)
+__vue_exports__ = __webpack_require__(394)
 
 /* template */
-var __vue_template__ = __webpack_require__(399)
+var __vue_template__ = __webpack_require__(395)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -28418,7 +28890,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 397 */
+/* 393 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -28485,7 +28957,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 398 */
+/* 394 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28740,7 +29212,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 399 */
+/* 395 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -28905,21 +29377,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 400 */
+/* 396 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(401)
+__vue_styles__.push(__webpack_require__(397)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(402)
+__vue_exports__ = __webpack_require__(398)
 
 /* template */
-var __vue_template__ = __webpack_require__(407)
+var __vue_template__ = __webpack_require__(403)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -28949,7 +29421,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 401 */
+/* 397 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -28959,7 +29431,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 402 */
+/* 398 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28969,7 +29441,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _vPopUp = __webpack_require__(403);
+var _vPopUp = __webpack_require__(399);
 
 var _vPopUp2 = _interopRequireDefault(_vPopUp);
 
@@ -28993,21 +29465,21 @@ exports.default = {
 //
 
 /***/ }),
-/* 403 */
+/* 399 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(404)
+__vue_styles__.push(__webpack_require__(400)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(405)
+__vue_exports__ = __webpack_require__(401)
 
 /* template */
-var __vue_template__ = __webpack_require__(406)
+var __vue_template__ = __webpack_require__(402)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -29037,7 +29509,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 404 */
+/* 400 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -29104,7 +29576,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 405 */
+/* 401 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29340,7 +29812,6 @@ exports.default = {
                 title: '复方丹参片',
                 value: 11
             }],
-            // checkedInfo: { title: '选项2', value: 2 },
             // 时间参数
             animationType: 'push',
             currentDate: '',
@@ -29352,7 +29823,10 @@ exports.default = {
                 title: '日期选择'
             },
 
-            isBottomShow: false
+            isBottomShow: false,
+            // 定时器测试
+            count: 0,
+            time: ''
         };
     },
     created: function created() {
@@ -29452,6 +29926,16 @@ exports.default = {
         },
 
 
+        // 定时器
+        timer: function timer() {
+            this.count++;
+            console.log(this.count);
+            if (this.count > 10) {
+                clearInterval(this.time);
+            }
+        },
+
+
         // 提交按钮
         login: function login() {
             var _this = this;
@@ -29476,16 +29960,9 @@ exports.default = {
             }, function (ret) {
                 if (ret.data.status === 1) {
                     modal.toast({ message: ret.data.message, duration: 3 });
-                    this.$router.go(-1);
+                    _this.$router.go(-1);
+                    _this.time = setInterval(this.timer, 1000);
                 }
-                // if(ret.data.status===1){
-                //     modal.toast({ message: ret.data.message, duration: 3 });
-                //     _this.$router.push({name:'jurisLoginMessage'})
-                // }else{
-                //     modal.toast({ message: '登录失败！！！', duration: 3 });
-                // }
-            }, function (progress) {
-                // console.log(progress)
             });
             this.$router.go(-1);
         },
@@ -29517,21 +29994,13 @@ exports.default = {
                 if (ret.data.status === 1) {
                     _this.list = ret.data.data;
                 }
-                // if(ret.data.status===1){
-                //     modal.toast({ message: ret.data.message, duration: 3 });
-                //     _this.$router.push({name:'jurisLoginMessage'})
-                // }else{
-                //     modal.toast({ message: '登录失败！！！', duration: 3 });
-                // }
-            }, function (progress) {
-                // console.log(progress)
             });
         }
     }
 };
 
 /***/ }),
-/* 406 */
+/* 402 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -29802,7 +30271,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 407 */
+/* 403 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -29813,21 +30282,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 408 */
+/* 404 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(409)
+__vue_styles__.push(__webpack_require__(405)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(410)
+__vue_exports__ = __webpack_require__(406)
 
 /* template */
-var __vue_template__ = __webpack_require__(411)
+var __vue_template__ = __webpack_require__(407)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -29857,7 +30326,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 409 */
+/* 405 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -29907,7 +30376,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 410 */
+/* 406 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29931,7 +30400,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 411 */
+/* 407 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;

@@ -3,10 +3,10 @@
     <!-- 内包间 -->
     <div class="btns">
       <div class="btn" @click="openMask">
-        <text class="btn-txt">业务</text>
+        <text class="btn-txt">取/送桶</text>
       </div>
       <div class="btn" @click="openNoAnimationMask">
-        <text class="btn-txt">功能</text>
+        <text class="btn-txt">车辆控制</text>
       </div>
     </div>
     <wxc-mask height="300"

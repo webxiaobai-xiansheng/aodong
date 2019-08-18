@@ -6,6 +6,7 @@
 </template>
 
 
+
 <script>
 const modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
@@ -15,7 +16,7 @@ export default {
     return {
       // 车间名字
       workshopName:'',
-      containerNum :''
+      containerNum:''
     }
   },
   created () {
@@ -29,33 +30,23 @@ export default {
   methods: {
     wxcButtonEmptySpritzerTank (e) {
         let _this=this;
+        if(this.containerNum!=='undefined'&&this.workshopName!=='undefined'){
 
-        let url = 'http://10.34.10.25:8999/obtain/getEmptyContainer';
-        let body = JSON.stringify({
-            containerNumber:_this.containerNum,
-            functionNumber:_this.workshopName
-        });
-        stream.fetch({
-            method:"POST",
-            url:url,
-            headers:{'Content-Type':'application/json'},
-            body: body,
-            type:'json',
-        },function(ret){
-            if(ret.data.status===1){
-                modal.toast({ message: ret.data.message, duration: 3 });
-            }else{
-               modal.toast({ message: ret.data.message, duration: 3 });
-            }
-            // if(ret.data.status===1){
-            //     modal.toast({ message: ret.data.message, duration: 3 });
-            //     _this.$router.push({name:'jurisLoginMessage'})
-            // }else{
-            //     modal.toast({ message: '登录失败！！！', duration: 3 });
-            // }
-        },function(progress) {
-            // console.log(progress)
-        })
+          let url = 'http://10.34.10.25:8999/obtain/getEmptyContainer?containerNumber='+_this.containerNum+'&functionRoomNumber='+_this.workshopName;
+          stream.fetch({
+              method:"GET",
+              url:url,
+              type:'json',
+          },function(ret){
+              if(ret.data.status===1){
+                  modal.toast({ message: ret.data.message, duration: 3 });
+              }else{
+                 modal.toast({ message: ret.data.message, duration: 3 });
+              }
+          })
+        }else{
+           modal.toast({ message: '请选择桶编号', duration: 3 });
+        }
     }
   }
 }

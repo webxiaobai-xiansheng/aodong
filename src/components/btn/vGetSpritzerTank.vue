@@ -36,7 +36,6 @@ export default {
           body: body,
           type:'json',
       },function(ret){
-          console.log(ret)
           if(ret.data.status===1){
             if(ret.data.data.length>0){
               this.$router.push({name:'popUp'})
@@ -44,14 +43,6 @@ export default {
               modal.toast({ message: '该车间没有送料桶', duration: 3 });
             }
           }
-          // if(ret.data.status===1){
-          //     modal.toast({ message: ret.data.message, duration: 3 });
-          //     _this.$router.push({name:'jurisLoginMessage'})
-          // }else{
-          //     modal.toast({ message: '登录失败！！！', duration: 3 });
-          // }
-      },function(progress) {
-          // console.log(progress)
       })
       
     }

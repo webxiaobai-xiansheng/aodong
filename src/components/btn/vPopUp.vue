@@ -238,7 +238,6 @@ export default {
             value: 11
           },
         ],
-        // checkedInfo: { title: '选项2', value: 2 },
         // 时间参数
         animationType: 'push',
         currentDate: '',
@@ -251,6 +250,9 @@ export default {
         },
 
         isBottomShow: false,
+        // 定时器测试
+        count:0,
+        time:''
     }),
     created () {
         storage.getItem('workShopName', event => {
@@ -336,6 +338,15 @@ export default {
             }, 10);
         },
 
+        // 定时器
+        timer(){
+            this.count++;
+            console.log(this.count)
+            if (this.count > 10) {
+                clearInterval(this.time)
+            }
+        },
+
         // 提交按钮
         login() {
             let _this=this;
@@ -360,16 +371,9 @@ export default {
             },function(ret){
                 if(ret.data.status===1){
                    modal.toast({ message: ret.data.message, duration: 3 });
-                   this.$router.go(-1);
+                   _this.$router.go(-1);
+                   _this.time=setInterval(this.timer, 1000);
                 }
-                // if(ret.data.status===1){
-                //     modal.toast({ message: ret.data.message, duration: 3 });
-                //     _this.$router.push({name:'jurisLoginMessage'})
-                // }else{
-                //     modal.toast({ message: '登录失败！！！', duration: 3 });
-                // }
-            },function(progress) {
-                // console.log(progress)
             })
            this.$router.go(-1);
         },
@@ -400,14 +404,6 @@ export default {
                 if(ret.data.status===1){
                     _this.list=ret.data.data
                 }
-                // if(ret.data.status===1){
-                //     modal.toast({ message: ret.data.message, duration: 3 });
-                //     _this.$router.push({name:'jurisLoginMessage'})
-                // }else{
-                //     modal.toast({ message: '登录失败！！！', duration: 3 });
-                // }
-            },function(progress) {
-                // console.log(progress)
             })
             
         },
@@ -418,7 +414,6 @@ export default {
 .inputBox{
     display: flex;
     flex-direction: row;
-    /* justify-content: space-between; */
 }
 .input-title{
     flex: 1;
@@ -428,7 +423,6 @@ export default {
 }
 .input_box {
     flex:3;
-    /* flex-direction: row; */
     border-style: solid;
     border-width: 1px;
     border-color: #333;
@@ -438,9 +432,6 @@ export default {
 }
 .login_content {
     padding:20px;
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* flex-direction: column; */
 }
 
 

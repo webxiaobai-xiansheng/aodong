@@ -209,7 +209,12 @@ export default {
         }
     },
     created() {
-        
+      storage.getItem('workShopName', event => {
+          console.log(event.data);
+      });
+      storage.getItem('containerNum', event => {
+          console.log(event.data);
+      });
     }
 }
 </script>
