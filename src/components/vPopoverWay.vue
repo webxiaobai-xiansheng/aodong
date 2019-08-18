@@ -25,6 +25,7 @@
           </div>
           <v-weigh class="contentBox-btn"></v-weigh>
           <v-get-spritzer-hopper-rinses class="contentBox-btn"></v-get-spritzer-hopper-rinses>
+          <v-container-location class="contentBox-btn"></v-container-location>
       </div>
     </wxc-mask>
     <wxc-mask height="300"
@@ -55,8 +56,9 @@
   import vGetSpritzerHopperRinses from './btn/vGetSpritzerHopperRinses.vue';
   // 称重
   import vWeigh from './btn/vWeigh.vue';
+  import vContainerLocation from './btn/vContainerLocation.vue';
   export default {
-    components: { WxcMask,vStop,vStart,vGetSpritzerHopperRinses,vWeigh },
+    components: { WxcMask,vStop,vStart,vGetSpritzerHopperRinses,vWeigh,vContainerLocation },
     data: () => ({
       showBusiness: false,
       showFunction:false,

@@ -14,7 +14,7 @@
                         <input v-model="ContainerNum" class="input_item" type="text" placeholder="请输入桶的编号" @input="onInputContainer">
                     </div>
                     <div class="input_box">
-                        <input v-model="LocationNum" class="input_item" type="text" placeholder="请输入库位的编号" @input="onInputContainer">
+                        <input v-model="LocationNum" class="input_item" type="text" placeholder="请输入库位二维码的编号" @input="onInputContainer">
                     </div>
                     <div class="button_box bottom">
                         <wxc-button text="确定" type="blue" :disabled="isDisabled" @wxcButtonClicked="wxcConfirmContainer"></wxc-button size="small">
@@ -71,7 +71,7 @@ export default {
         showTable: false,
         isDisabled: true,
         isCheckDisabled: true,
-        tableHeadData: ['编号', '桶号', '二维码号'],
+        tableHeadData: ['编号', '桶号', '库位二维码编号'],
         tableBodyData: [],
         isPreviewDisabled: false,
         isNextDisabled: false,
@@ -108,7 +108,7 @@ export default {
                 if (!this.ContainerNum) {
                     modal.toast({ message: '桶编号不能为空' });
                 } else if (!this.LocationNum) {
-                    modal.toast({ message: '库位号不能为空' });
+                    modal.toast({ message: '库位二维码编号不能为空' });
                 }
             }
         },
@@ -119,7 +119,7 @@ export default {
                 return;
             } else {
                 let that = this;
-                let url = 'http://10.34.10.53:8200/containerFunctionLocation/saveContainerFunctionLocation';
+                let url = 'http://10.34.10.126:8200/containerFunctionLocation/saveContainerFunctionLocation';
                 let body = JSON.stringify({
                     containerFunctionNumber: that.ContainerNum,
                     containerFunctionQrCodeNumber: that.LocationNum
@@ -154,7 +154,7 @@ export default {
         // 初始化table和筛选table
         initTable() {
             let that = this;
-            let url = 'http://10.34.10.53:8200/containerFunctionLocation/getAllContainerFunctionLocation';
+            let url = 'http://10.34.10.126:8200/containerFunctionLocation/getAllContainerFunctionLocation';
             let body = JSON.stringify({
                 page: that.currentPage,
                 size: that.pageSize
@@ -221,7 +221,7 @@ export default {
     }
 }
 </script>
-<style src='../styles/style.css'></style>
+<style src='../../styles/style.css'></style>
 <style scoped>
 .btn {
     display: flex;

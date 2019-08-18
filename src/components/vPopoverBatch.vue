@@ -9,7 +9,7 @@
         <text class="btn-txt">车辆控制</text>
       </div>
     </div>
-    <wxc-mask height="300"
+    <wxc-mask height="500"
               width="500"
               border-radius="0"
               duration="200"
@@ -20,12 +20,11 @@
               :show="showBusiness"
               @wxcMaskSetHidden="wxcMaskBusiness">
       <div class="content">
-        <div class="content-btn">
-          <v-empty-spritzer-hopper></v-empty-spritzer-hopper>
-          <v-get-spritzer-hopper></v-get-spritzer-hopper>
+        <!-- <div class="content-btn"> -->
+          <v-empty-spritzer-hopper class="contentBox-btn"></v-empty-spritzer-hopper>
+          <v-get-spritzer-hopper class="contentBox-btn"></v-get-spritzer-hopper>
           <v-reset-container class="contentBox-btn"></v-reset-container>
-          <v-container-location class="contentBox-btn"></v-container-location>
-        </div>
+        <!-- </div> -->
       </div>
     </wxc-mask>
     <wxc-mask height="300"
@@ -54,8 +53,9 @@
   import vStart from './btn/vStart.vue';
   import vGetSpritzerHopper from './btn/vGetSpritzerHopper.vue';
   import vEmptySpritzerHopper from './btn/vEmptySpritzerHopper.vue';
+  import vResetContainer from './btn/vResetContainer.vue';
   export default {
-    components: { WxcMask,vStop,vStart,vGetSpritzerHopper,vEmptySpritzerHopper},
+    components: { WxcMask,vStop,vStart,vGetSpritzerHopper,vEmptySpritzerHopper,vResetContainer},
     data: () => ({
       showBusiness: false,
       showFunction:false,
@@ -109,9 +109,15 @@
   font-size: 35px;
 }
 .content{
-  height: 300px;
+  height: 500px;
+  width: 500px;
+  display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.contentBox-btn{
+  margin-bottom: 20px;
 }
 .content-btn{
   display: flex;

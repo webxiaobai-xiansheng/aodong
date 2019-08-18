@@ -9,7 +9,7 @@
         <text class="btn-txt">车辆控制</text>
       </div>
     </div>
-    <wxc-mask height="300"
+    <wxc-mask height="500"
               width="500"
               border-radius="0"
               duration="200"
@@ -25,7 +25,6 @@
           <v-get-spritzer-tank class="contentBox-btn"></v-get-spritzer-tank>
           <v-get-spritzer-hopper-rinse class="contentBox-btn"></v-get-spritzer-hopper-rinse>
           <v-reset-container class="contentBox-btn"></v-reset-container>
-          <v-container-location class="contentBox-btn"></v-container-location>
       </div>
     </wxc-mask>
     <wxc-mask height="300"
@@ -60,8 +59,9 @@
   import vSpritzerTank from './btn/vSpritzerTank.vue';
   // 送料桶
   import vGetSpritzerTank from './btn/vGetSpritzerTank.vue';
+  import vResetContainer from './btn/vResetContainer.vue';
   export default {
-    components: { WxcMask,vStop,vStart,vGetSpritzerHopperBack,vGetSpritzerHopperRinse,vSpritzerTank,vGetSpritzerTank},
+    components: { WxcMask,vStop,vStart,vGetSpritzerHopperBack,vGetSpritzerHopperRinse,vSpritzerTank,vGetSpritzerTank,vResetContainer},
     data: () => ({
       showBusiness: false,
       showFunction:false,
@@ -116,7 +116,7 @@
   justify-content: center;
 }
 .contentBox{
-  height: 300px;
+  height: 500px;
   width: 500px;
   display: flex;
   flex-direction: row;

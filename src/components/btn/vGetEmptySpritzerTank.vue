@@ -48,7 +48,7 @@ export default {
         wxcButtonGetEmptySpritzerTank(e) {
             let _this=this;
 
-            let url = 'http://10.34.10.53:8200/functionRoomUseContainer/getFunctionRoomUseContainer';
+            let url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer';
             let body = JSON.stringify({
                 functionRoomNumber: _this.workshopName
             });
@@ -89,7 +89,7 @@ export default {
         wxcConfirmEmptyContainer(e) {
             let _this=this;
             if(this.containerNum!=='undefined'&&this.workshopName!=='undefined'){
-                let url = 'http://10.34.10.25:8999/delivery/sendContainerToCleaningRoom';
+                let url = 'http://10.34.10.126:8999/delivery/sendContainerToCleaningRoom';
                 let body = JSON.stringify({
                     containerNumber:_this.containerNum,
                     functionRoomNumber:_this.workshopName

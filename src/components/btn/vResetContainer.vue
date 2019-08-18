@@ -65,7 +65,7 @@ export default {
                 return;
             } else {
                 let that = this;
-                let url = 'http://10.34.10.25:8999/obtain/workshopBucketManagement';
+                let url = 'http://10.34.10.126:8999/obtain/workshopBucketManagement';
                 storage.getItem('workShopName', event => {
                     console.log(event.data);
                     that.functionRoomNumber = event.data;

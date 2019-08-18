@@ -24,6 +24,6 @@ export default {
 
 <style scoped>
 .table{
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
 }
 </style>

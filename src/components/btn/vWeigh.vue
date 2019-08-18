@@ -14,7 +14,7 @@ export default {
     wxcButtonWeigh (e) {
         let _this=this;
 
-        let url = 'http://10.34.10.25:8999/delivery/weighing';
+        let url = 'http://10.34.10.126:8999/delivery/weighing';
         let body = JSON.stringify({
 
         });

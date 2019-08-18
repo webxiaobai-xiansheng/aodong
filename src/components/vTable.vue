@@ -31,11 +31,11 @@
         </div>
         <!-- 页码功能 -->
         <div class="pageButton_box">
-            <wxc-button text="上一页" type="blue" size="big" :disabled="isPreviewDisabled" @wxcButtonClicked="wxcButtonPreview"></wxc-button>
+            <wxc-button text="上一页" type="blue" size="medium" :disabled="isPreviewDisabled" @wxcButtonClicked="wxcButtonPreview"></wxc-button>
             <div class="text_box">
                 <text class="page-txt pageNum">{{currentPage}}/{{pages}}</text>
             </div>
-            <wxc-button text="下一页" type="blue" size="big" :disabled="isNextDisabled" @wxcButtonClicked="wxcButtonNext"></wxc-button>
+            <wxc-button text="下一页" type="blue" size="medium" :disabled="isNextDisabled" @wxcButtonClicked="wxcButtonNext"></wxc-button>
         </div>
     </div>
 </template>
@@ -106,7 +106,18 @@ export default {
         pageSize: 10,
         pages: 0,
         pageNum: 1,
+        btext:'1'
     }),
+    watch: {
+       btext:function (val) {
+           this.initTable()
+       }
+    },
+    updated () {
+        eventVue.$on("myFun",(message)=>{   //这里最好用箭头函数，不然this指向有问题
+                 this.btext = message      
+            })
+    },
     methods: {
         // 点击table选择桶或者料斗
         selectContainer(index) {
@@ -129,7 +140,7 @@ export default {
         // 初始化table和筛选table
         initTable() {
             let that = this;
-            let url = 'http://10.34.10.53:8200/containerInformation/getContainerInformation';
+            let url = 'http://10.34.10.126:8200/containerInformation/getContainerInformation';
             let body = JSON.stringify({
                 init: '',
                 page: that.currentPage,
@@ -174,7 +185,7 @@ export default {
         // 筛选---选择
         onSelect({ selectIndex, checked, checkedList }) {
             let that = this;
-            let url = 'http://10.34.10.53:8200/containerInformation/getContainerInformation';
+            let url = 'http://10.34.10.126:8200/containerInformation/getContainerInformation';
             that.tableBodyData = [];
             // that.currentPage = 1;
             let body = {};
@@ -303,13 +314,13 @@ export default {
     flex-direction: row;
     justify-content: space-around;
     justify-content: center;
-    padding-left: 30px;
-    padding-right: 30px;
+    /* padding-left: 30px; */
+    /* padding-right: 30px; */
 }
 
 .text_box {
     width: 100px;
-    height: 70px;
+    height: 60px;
     background-color: #0f8ee8;
     border-radius: 10px;
     align-items: center;

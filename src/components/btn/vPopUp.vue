@@ -351,7 +351,7 @@ export default {
         login() {
             let _this=this;
 
-            let url = 'http://10.34.10.25:8999/delivery/sendContainer';
+            let url = 'http://10.34.10.126:8999/delivery/sendContainer';
             let body = JSON.stringify({
                 functionNumber: _this.workshopName,
                 containerNumber:_this.userBucket,
@@ -390,9 +390,9 @@ export default {
         onInit() {
             let _this=this;
 
-            let url = 'http://10.34.10.53:8200/functionRoomUseContainer/getFunctionRoomUseContainer';
+            let url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer/'+this.workshopName;
             let body = JSON.stringify({
-                functionRoomNumber: _this.workshopName
+                // functionRoomNumber: _this.workshopName
             });
             stream.fetch({
                 method:"POST",

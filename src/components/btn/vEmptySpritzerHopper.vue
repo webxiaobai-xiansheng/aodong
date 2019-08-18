@@ -15,7 +15,8 @@ export default {
     return {
       // 车间名字
       workshopName:'',
-      containerNum:''
+      containerNum:'',
+      'msg':"1"
     }
   },
   created () {
@@ -30,7 +31,7 @@ export default {
     wxcButtonEmptySpritzerHopper (e) {
         let _this=this;
         if(this.containerNum!=='undefined'&&this.workshopName!=='undefined'){
-          let url = 'http://10.34.10.25:8999/obtain/getEmptyContainer?containerNumber='+_this.containerNum+'&functionRoomNumber='+_this.workshopName;
+          let url = 'http://10.34.10.126:8999/obtain/getEmptyContainer?containerNumber='+_this.containerNum+'&functionRoomNumber='+_this.workshopName;
           stream.fetch({
               method:"GET",
               url:url,
@@ -38,6 +39,7 @@ export default {
           },function(ret){
               if(ret.data.status===1){
                   modal.toast({ message: ret.data.message, duration: 3 });
+                  // eventVue.$emit("myFun",_this.msg) 
               }else{
                  modal.toast({ message: ret.data.message, duration: 3 });
               }

@@ -149,7 +149,7 @@ export default {
         // 登录按钮
         login() {
             let that=this;
-            let url = 'http://10.34.10.25:8999/user/login';
+            let url = 'http://10.34.10.126:8999/user/login';
             let body = JSON.stringify({
                 username: this.userName,
                 password: this.userPassword,

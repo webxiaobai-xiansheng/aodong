@@ -3,7 +3,7 @@
   <div class="home">
     <v-popover-way></v-popover-way>
     <v-table class="table"></v-table>
-    <v-page></v-page>
+    <!-- <v-page></v-page> -->
 
     <wxc-popup popup-color="#fff"
                :show="showproduct"
@@ -44,7 +44,7 @@
 <script>
 import vPopoverWay from '../../components/vPopoverWay';
 import vTable from '../../components/vTable';
-import vPage from '../../components/btn/vPage';
+// import vPage from '../../components/btn/vPage';
 import { WxcButton, WxcPopup } from 'weex-ui';
 export default {
   data () {
@@ -60,33 +60,33 @@ export default {
   components: {
     vPopoverWay,
     vTable,
-    vPage,
+    // vPage,
     WxcButton,
     WxcPopup
   },
   created () {
-    this.$nextTick(function () {
-        this.time=setInterval(this.timer, 1000);
-    })
+    // this.$nextTick(function () {
+    //     this.time=setInterval(this.timer, 1000);
+    // })
     // vPage
   },
   methods: {
-    timer(){
-      this.showproduct=true;
-      if (this.count > 0) {
-          this.count++;
-          console.log(this.count)
-          clearInterval(this.time)
+    // timer(){
+    //   this.showproduct=true;
+    //   if (this.count > 0) {
+    //       this.count++;
+    //       console.log(this.count)
+    //       clearInterval(this.time)
           
-      }
-    },
+    //   }
+    // },
     wxcChoseAllow(){
       this.showproduct=false;
-      setInterval(this.timer, 60000);
+      // setInterval(this.timer, 60000);
     },
     wxcChoseRefuse(){
       this.showproduct=false;
-      setInterval(this.timer, 60000);
+      // setInterval(this.timer, 60000);
     }
   }
 }
@@ -94,7 +94,7 @@ export default {
 
 <style scoped>
 .table{
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
 }
 .inputBox{
     display: flex;
