@@ -22,7 +22,8 @@
                             <td class="table_td"><text>{{item.materialName}}</text></td>
                             <td class="table_td"><text>{{item.containerVolume}}</text></td>
                             <td class="table_td"><text>{{item.containerWeight}}</text></td>
-                            <td class="table_td"><text>{{item.productDate}}</text></td>
+                            <!-- <td class="table_td"><text>{{item.productDate}}</text></td> -->
+                            <td class="table_td"><text>{{(item.productDate).slice(0,11)}}</text></td>
                         </tr>
                     </tbody>
                 </table>
