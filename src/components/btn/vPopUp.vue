@@ -280,9 +280,10 @@ export default {
         storage.getItem('workShopName', event => {
             this.workshopName = event.data;
         });
-        storage.getItem('tongArr', event => {
-            this.list = JSON.parse(event.data);
-        });
+        // storage.getItem('tongArr', event => {
+        //     this.list = JSON.parse(event.data);
+        // });
+        this.onInit();
     },
     methods: {
         // 桶编号
@@ -415,7 +416,9 @@ export default {
             let _this=this;
             let name = this.workshopName;
             console.log(name)
+            modal.toast({ message: '你是'+name, duration: 10 });
             let url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber='+name;
+            // modal.toast({ message: url, duration: 3 });
             // let body = JSON.stringify({
             //     // functionRoomNumber: _this.workshopName
             // });

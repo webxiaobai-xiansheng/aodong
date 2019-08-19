@@ -30657,9 +30657,10 @@ exports.default = {
         storage.getItem('workShopName', function (event) {
             _this2.workshopName = event.data;
         });
-        storage.getItem('tongArr', function (event) {
-            _this2.list = JSON.parse(event.data);
-        });
+        // storage.getItem('tongArr', event => {
+        //     this.list = JSON.parse(event.data);
+        // });
+        this.onInit();
     },
 
     methods: {
@@ -30805,7 +30806,9 @@ exports.default = {
             var _this = this;
             var name = this.workshopName;
             console.log(name);
+            modal.toast({ message: '你是' + name, duration: 10 });
             var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + name;
+            // modal.toast({ message: url, duration: 3 });
             // let body = JSON.stringify({
             //     // functionRoomNumber: _this.workshopName
             // });
