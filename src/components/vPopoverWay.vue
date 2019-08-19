@@ -25,7 +25,7 @@
           </div>
           <v-weigh class="contentBox-btn"></v-weigh>
           <v-get-spritzer-hopper-rinses class="contentBox-btn"></v-get-spritzer-hopper-rinses>
-          <div class="btnNss" @click="onJurisLogin">
+          <div class="btnNss" @click="onContainerLogin">
             <text class="btn-txtNSS">桶/库位绑定</text>
           </div>
       </div>
@@ -85,6 +85,9 @@
       },
       onJurisLogin(){
         this.$router.push({name:'jurisLogin'})
+      },
+      onContainerLogin() {
+        this.$router.push({name:'containerLogin'})
       }
     }
   };
