@@ -9,7 +9,7 @@
       </div>
     </div>
     <wxc-dialog title="退出登录"
-                content="确定要退出嘛？？？"
+                content="确定退出？"
                 :show="show"
                 :single="false"
                 @wxcDialogCancelBtnClicked="wxcDialogCancelBtnClicked"
