@@ -47,26 +47,26 @@ export default {
         // 打开弹窗
         wxcButtonGetEmptySpritzerTank(e) {
             let _this=this;
-
-            let url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer';
-            let body = JSON.stringify({
-                functionRoomNumber: _this.workshopName
-            });
+            let arr=[];
+            let url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber='+this.workshopName;
             stream.fetch({
-                method:"POST",
+                method:"GET",
                 url:url,
-                headers:{'Content-Type':'application/json'},
-                body: body,
                 type:'json',
             },function(ret){
                 if(ret.data.status===1){
                     if(ret.data.data.length>0){
-                        for (let i = 0; i < ret.data.data.length; i++) {
-                            _this.emptyContainerList.push({title:ret.data.data.containerNumber,value:ret.data.data.containerNumber})
-                        }
-                        this.show = true;
+                    let arrData=ret.data.data;
+                    for (let i = 0; i < arrData.length; i++) {
+                        arr.push({title:arrData[i].containerNumber,value:arrData[i].containerNumber})
+                    }
+
+                    storage.setItem('tongArr',JSON.stringify(arr), event => {
+                        console.log(event)
+                    });
+                    _this.$router.push({name:'popUp'})
                     }else{
-                        modal.toast({ message: '该车间没有送料桶', duration: 3 });
+                    modal.toast({ message: '该车间没有料桶', duration: 3 });
                     }
                 }
             })

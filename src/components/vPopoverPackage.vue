@@ -60,6 +60,7 @@
   // 送料桶
   import vGetSpritzerTank from './btn/vGetSpritzerTank.vue';
   import vResetContainer from './btn/vResetContainer.vue';
+  const storage = weex.requireModule('storage');
   export default {
     components: { WxcMask,vStop,vStart,vGetSpritzerHopperBack,vGetSpritzerHopperRinse,vSpritzerTank,vGetSpritzerTank,vResetContainer},
     data: () => ({
@@ -76,6 +77,9 @@
         this.hasBusiness = true;
       },
       wxcMaskBusiness () {
+        storage.removeItem('tongArr', event => {
+            
+        });
         this.showBusiness = false;
       },
       wxcMaskFunction(){

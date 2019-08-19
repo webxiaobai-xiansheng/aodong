@@ -280,7 +280,9 @@ export default {
         storage.getItem('workShopName', event => {
             this.workshopName = event.data;
         });
-        this.onInit()
+        storage.getItem('tongArr', event => {
+            this.list = JSON.parse(event.data);
+        });
     },
     methods: {
         // 桶编号
@@ -410,28 +412,28 @@ export default {
             this.isBottomShow = false;
         },
         onInit() {
-            // modal.toast({message:'有桶的编号'})
             let _this=this;
-            _this.list.push({title:'1',value:'1'})
-
-            let url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer/'+this.workshopName;
-            let body = JSON.stringify({
-                // functionRoomNumber: _this.workshopName
-            });
+            let name = this.workshopName;
+            console.log(name)
+            let url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber='+name;
+            // let body = JSON.stringify({
+            //     // functionRoomNumber: _this.workshopName
+            // });
             stream.fetch({
-                method:"POST",
+                method:"GET",
                 url:url,
-                headers:{'Content-Type':'application/json'},
-                body: body,
+                // headers:{'Content-Type':'application/json'},
+                // body: body,
                 type:'json',
             },function(ret){
                 console.log(ret)
 
                 if(ret.data.status===1){
                     // console.log(ret.data.data)
-                    // for (let i = 0; i < ret.data.data.length; i++) {
-                    //     _this.list.push({title:ret.data.data[i].containerNumber,value:ret.data.data[i].containerNumber})
-                    // }
+                    let arrData=ret.data.data;
+                    for (let i = 0; i < arrData.length; i++) {
+                        _this.list.push({title:arrData[i].containerNumber,value:arrData[i].containerNumber})
+                    }
                     
                     // console.log(_this.list)
                 }

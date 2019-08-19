@@ -23394,6 +23394,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 
+var storage = weex.requireModule('storage');
 exports.default = {
   components: { WxcMask: _weexUi.WxcMask, vStop: _vStop2.default, vStart: _vStart2.default, vGetSpritzerHopper: _vGetSpritzerHopper2.default, vEmptySpritzerHopper: _vEmptySpritzerHopper2.default, vResetContainer: _vResetContainer2.default },
   data: function data() {
@@ -23404,6 +23405,7 @@ exports.default = {
       isFalse: false,
       hasBusiness: true,
       hasFunction: true
+
     };
   },
   methods: {
@@ -23412,6 +23414,7 @@ exports.default = {
       this.hasBusiness = true;
     },
     wxcMaskBusiness: function wxcMaskBusiness() {
+      storage.removeItem('tongArr', function (event) {});
       this.showBusiness = false;
     },
     wxcMaskFunction: function wxcMaskFunction() {
@@ -23652,20 +23655,23 @@ exports.default = {
   methods: {
     wxcButtonGetSpritzerHopper: function wxcButtonGetSpritzerHopper() {
       var _this = this;
-
-      var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer/' + this.workshopName;
-      var body = JSON.stringify({
-        // functionRoomNumber: _this.workshopName
-      });
+      var arr = [];
+      var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
       stream.fetch({
-        method: "POST",
+        method: "GET",
         url: url,
-        headers: { 'Content-Type': 'application/json' },
-        body: body,
         type: 'json'
       }, function (ret) {
         if (ret.data.status === 1) {
           if (ret.data.data.length > 0) {
+            var arrData = ret.data.data;
+            for (var i = 0; i < arrData.length; i++) {
+              arr.push({ title: arrData[i].containerNumber, value: arrData[i].containerNumber });
+            }
+
+            storage.setItem('tongArr', JSON.stringify(arr), function (event) {
+              console.log(event);
+            });
             _this.$router.push({ name: 'popUp' });
           } else {
             modal.toast({ message: '该车间没有料斗', duration: 3 });
@@ -24888,6 +24894,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 
+var storage = weex.requireModule('storage');
 exports.default = {
   components: { WxcMask: _weexUi.WxcMask, vStop: _vStop2.default, vStart: _vStart2.default, vGetSpritzerHopper: _vGetSpritzerHopper2.default, vEmptySpritzerHopper: _vEmptySpritzerHopper2.default, vSpritzerHopper: _vSpritzerHopper2.default, vGetEmptySpritzerHopper: _vGetEmptySpritzerHopper2.default, vResetContainer: _vResetContainer2.default },
   data: function data() {
@@ -24906,6 +24913,7 @@ exports.default = {
       this.hasBusiness = true;
     },
     wxcMaskBusiness: function wxcMaskBusiness() {
+      storage.removeItem('tongArr', function (event) {});
       this.showBusiness = false;
     },
     wxcMaskFunction: function wxcMaskFunction() {
@@ -25133,26 +25141,26 @@ exports.default = {
         // 打开弹窗
         wxcButtonGetEmptySpritzerHopper: function wxcButtonGetEmptySpritzerHopper(e) {
             var _this = this;
-
-            var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer/' + this.workshopName;
-            var body = JSON.stringify({
-                // functionRoomNumber: _this.workshopName
-            });
+            var arr = [];
+            var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
             stream.fetch({
-                method: "POST",
+                method: "GET",
                 url: url,
-                headers: { 'Content-Type': 'application/json' },
-                body: body,
                 type: 'json'
             }, function (ret) {
                 if (ret.data.status === 1) {
                     if (ret.data.data.length > 0) {
-                        for (var i = 0; i < ret.data.data.length; i++) {
-                            _this.emptyContainerList.push({ title: ret.data.data.containerNumber, value: ret.data.data.containerNumber });
+                        var arrData = ret.data.data;
+                        for (var i = 0; i < arrData.length; i++) {
+                            arr.push({ title: arrData[i].containerNumber, value: arrData[i].containerNumber });
                         }
-                        this.show = true;
+
+                        storage.setItem('tongArr', JSON.stringify(arr), function (event) {
+                            console.log(event);
+                        });
+                        _this.$router.push({ name: 'popUp' });
                     } else {
-                        modal.toast({ message: '该车间没有送料桶', duration: 3 });
+                        modal.toast({ message: '该车间没有料斗', duration: 3 });
                     }
                 }
             });
@@ -25632,6 +25640,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 
+var storage = weex.requireModule('storage');
+// 取料斗
+
+// 送料斗或料桶
 exports.default = {
   components: { WxcMask: _weexUi.WxcMask, vStop: _vStop2.default, vStart: _vStart2.default, vGetSpritzerTankHopper: _vGetSpritzerTankHopper2.default, vEmptySpritzerTank: _vEmptySpritzerTank2.default, vSpritzerHopper: _vSpritzerHopper2.default, vGetEmptySpritzerHopper: _vGetEmptySpritzerHopper2.default, vResetContainer: _vResetContainer2.default },
   data: function data() {
@@ -25650,6 +25662,7 @@ exports.default = {
       this.hasBusiness = true;
     },
     wxcMaskBusiness: function wxcMaskBusiness() {
+      storage.removeItem('tongArr', function (event) {});
       this.showBusiness = false;
     },
     wxcMaskFunction: function wxcMaskFunction() {
@@ -25661,9 +25674,6 @@ exports.default = {
     }
   }
 };
-// 取料斗
-
-// 送料斗或料桶
 
 /***/ }),
 /* 320 */
@@ -26285,6 +26295,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 
+var storage = weex.requireModule('storage');
+// 取料桶
+
+// 送空料桶
 exports.default = {
   components: { WxcMask: _weexUi.WxcMask, vStop: _vStop2.default, vStart: _vStart2.default, vGetEmptySpritzerTank: _vGetEmptySpritzerTank2.default, vEmptySpritzerTank: _vEmptySpritzerTank2.default, vSpritzerTank: _vSpritzerTank2.default, vGetSpritzerTank: _vGetSpritzerTank2.default, vResetContainer: _vResetContainer2.default },
   data: function data() {
@@ -26303,6 +26317,7 @@ exports.default = {
       this.hasBusiness = true;
     },
     wxcMaskBusiness: function wxcMaskBusiness() {
+      storage.removeItem('tongArr', function (event) {});
       this.showBusiness = false;
     },
     wxcMaskFunction: function wxcMaskFunction() {
@@ -26314,9 +26329,6 @@ exports.default = {
     }
   }
 };
-// 取料桶
-
-// 送空料桶
 
 /***/ }),
 /* 335 */
@@ -26470,26 +26482,26 @@ exports.default = {
         // 打开弹窗
         wxcButtonGetEmptySpritzerTank: function wxcButtonGetEmptySpritzerTank(e) {
             var _this = this;
-
-            var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer';
-            var body = JSON.stringify({
-                functionRoomNumber: _this.workshopName
-            });
+            var arr = [];
+            var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
             stream.fetch({
-                method: "POST",
+                method: "GET",
                 url: url,
-                headers: { 'Content-Type': 'application/json' },
-                body: body,
                 type: 'json'
             }, function (ret) {
                 if (ret.data.status === 1) {
                     if (ret.data.data.length > 0) {
-                        for (var i = 0; i < ret.data.data.length; i++) {
-                            _this.emptyContainerList.push({ title: ret.data.data.containerNumber, value: ret.data.data.containerNumber });
+                        var arrData = ret.data.data;
+                        for (var i = 0; i < arrData.length; i++) {
+                            arr.push({ title: arrData[i].containerNumber, value: arrData[i].containerNumber });
                         }
-                        this.show = true;
+
+                        storage.setItem('tongArr', JSON.stringify(arr), function (event) {
+                            console.log(event);
+                        });
+                        _this.$router.push({ name: 'popUp' });
                     } else {
-                        modal.toast({ message: '该车间没有送料桶', duration: 3 });
+                        modal.toast({ message: '该车间没有料桶', duration: 3 });
                     }
                 }
             });
@@ -26765,25 +26777,28 @@ exports.default = {
   },
 
   methods: {
-    wxcButtonGetSpritzerHopper: function wxcButtonGetSpritzerHopper() {
+    wxcButtonGetSpritzerTank: function wxcButtonGetSpritzerTank() {
       var _this = this;
-
-      var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer/' + this.workshopName;
-      var body = JSON.stringify({
-        // functionRoomNumber: _this.workshopName
-      });
+      var arr = [];
+      var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
       stream.fetch({
-        method: "POST",
+        method: "GET",
         url: url,
-        headers: { 'Content-Type': 'application/json' },
-        body: body,
         type: 'json'
       }, function (ret) {
         if (ret.data.status === 1) {
           if (ret.data.data.length > 0) {
-            this.$router.push({ name: 'popUp' });
+            var arrData = ret.data.data;
+            for (var i = 0; i < arrData.length; i++) {
+              arr.push({ title: arrData[i].containerNumber, value: arrData[i].containerNumber });
+            }
+
+            storage.setItem('tongArr', JSON.stringify(arr), function (event) {
+              console.log(event);
+            });
+            _this.$router.push({ name: 'popUp' });
           } else {
-            modal.toast({ message: '该车间没有送料桶', duration: 3 });
+            modal.toast({ message: '该车间没有料桶', duration: 3 });
           }
         }
       });
@@ -27182,6 +27197,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 
+var storage = weex.requireModule('storage');
+// 取料桶
+
+// 送空料桶回中间站
 exports.default = {
   components: { WxcMask: _weexUi.WxcMask, vStop: _vStop2.default, vStart: _vStart2.default, vGetSpritzerHopperBack: _vGetSpritzerHopperBack2.default, vGetSpritzerHopperRinse: _vGetSpritzerHopperRinse2.default, vSpritzerTank: _vSpritzerTank2.default, vGetSpritzerTank: _vGetSpritzerTank2.default, vResetContainer: _vResetContainer2.default },
   data: function data() {
@@ -27200,6 +27219,7 @@ exports.default = {
       this.hasBusiness = true;
     },
     wxcMaskBusiness: function wxcMaskBusiness() {
+      storage.removeItem('tongArr', function (event) {});
       this.showBusiness = false;
     },
     wxcMaskFunction: function wxcMaskFunction() {
@@ -27211,9 +27231,6 @@ exports.default = {
     }
   }
 };
-// 取料桶
-
-// 送空料桶回中间站
 
 /***/ }),
 /* 353 */
@@ -28033,6 +28050,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 
+var storage = weex.requireModule('storage');
+// 送过期料斗和料桶清洗
 exports.default = {
   components: { WxcMask: _weexUi.WxcMask, vStop: _vStop2.default, vStart: _vStart2.default, vGetSpritzerHopperRinses: _vGetSpritzerHopperRinses2.default, vWeigh: _vWeigh2.default, vContainerLocation: _vContainerLocation2.default },
   data: function data() {
@@ -28051,6 +28070,7 @@ exports.default = {
       this.hasBusiness = true;
     },
     wxcMaskBusiness: function wxcMaskBusiness() {
+      storage.removeItem('tongArr', function (event) {});
       this.showBusiness = false;
     },
     wxcMaskFunction: function wxcMaskFunction() {
@@ -28061,11 +28081,10 @@ exports.default = {
       this.hasFunction = false;
     },
     onJurisLogin: function onJurisLogin() {
-      this.$router.push({ name: 'jurisLoginMessage' });
+      this.$router.push({ name: 'jurisLogin' });
     }
   }
 };
-// 送过期料斗和料桶清洗
 
 /***/ }),
 /* 369 */
@@ -30638,7 +30657,9 @@ exports.default = {
         storage.getItem('workShopName', function (event) {
             _this2.workshopName = event.data;
         });
-        this.onInit();
+        storage.getItem('tongArr', function (event) {
+            _this2.list = JSON.parse(event.data);
+        });
     },
 
     methods: {
@@ -30781,28 +30802,28 @@ exports.default = {
             this.isBottomShow = false;
         },
         onInit: function onInit() {
-            // modal.toast({message:'有桶的编号'})
             var _this = this;
-            _this.list.push({ title: '1', value: '1' });
-
-            var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer/' + this.workshopName;
-            var body = JSON.stringify({
-                // functionRoomNumber: _this.workshopName
-            });
+            var name = this.workshopName;
+            console.log(name);
+            var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + name;
+            // let body = JSON.stringify({
+            //     // functionRoomNumber: _this.workshopName
+            // });
             stream.fetch({
-                method: "POST",
+                method: "GET",
                 url: url,
-                headers: { 'Content-Type': 'application/json' },
-                body: body,
+                // headers:{'Content-Type':'application/json'},
+                // body: body,
                 type: 'json'
             }, function (ret) {
                 console.log(ret);
 
                 if (ret.data.status === 1) {
                     // console.log(ret.data.data)
-                    // for (let i = 0; i < ret.data.data.length; i++) {
-                    //     _this.list.push({title:ret.data.data[i].containerNumber,value:ret.data.data[i].containerNumber})
-                    // }
+                    var arrData = ret.data.data;
+                    for (var i = 0; i < arrData.length; i++) {
+                        _this.list.push({ title: arrData[i].containerNumber, value: arrData[i].containerNumber });
+                    }
 
                     // console.log(_this.list)
                 }
