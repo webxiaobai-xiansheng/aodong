@@ -175,6 +175,12 @@ export default {
                                 that.isNextDisabled = true;
                             }
                         }
+                        if (data.list===''||data.list==='undefined') {
+                            that.currentPage = 0;
+                            that.pages = 0;
+                            that.isPreviewDisabled = true;
+                            that.isNextDisabled = true;
+                        }
                     } else {
                         modal.toast({ message: ret.data.message });
                     }
@@ -247,6 +253,12 @@ export default {
                                 that.isPreviewDisabled = true;
                                 that.isNextDisabled = true;
                             }
+                        }
+                        if (data.list ==='' || data.list === 'undefined') {
+                            that.currentPage = 0;
+                            that.pages = 0;
+                            that.isPreviewDisabled = true;
+                            that.isNextDisabled = true;
                         }
                     } else {
                         modal.toast({ message: ret.data.message });

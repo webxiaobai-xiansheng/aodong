@@ -13,8 +13,11 @@
                     <div class="input_box">
                         <input v-model="resetContainerNum" class="input_item" type="text" placeholder="请输入桶的编号" @input="onInput">
                     </div>
-                    <div class="button_box bottom">
+                    <div class="button_box">
                         <wxc-button text="确定" type="blue" :disabled="isResetContainerDisabled" @wxcButtonClicked="wxcConfirmContainer"></wxc-button size="small">
+                    </div>
+                    <div class="button_box">
+                        <wxc-button text="返回" type="blue" @wxcButtonClicked="onBlack"></wxc-button size="small">
                     </div>
                 </div>
             </wxc-popup>
@@ -93,6 +96,9 @@ export default {
                 });
                 this.show = false;
             }
+        },
+        onBlack() {
+            this.show = false;
         }
     }
 }
