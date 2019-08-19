@@ -58,6 +58,7 @@ export default {
                         for (let i = 0; i < ret.data.data.length; i++) {
                             _this.emptyContainerList.push({title:ret.data.data[i].containerNumber,value:ret.data.data[i].containerNumber})
                         }
+                        _this.show=true;
                     }else{
                         modal.toast({ message: '该车间没有料斗', duration: 3 });
                     }
@@ -95,6 +96,8 @@ export default {
                     type:'json',
                 },function(ret){
                     if(ret.data.status===1){
+                        const Steve = new BroadcastChannel('Avengers')
+                        Steve.postMessage('Assemble!')
                         modal.toast({ message: ret.data.message, duration: 3 });
                     }else{
                         modal.toast({ message: ret.data.message, duration: 3 });

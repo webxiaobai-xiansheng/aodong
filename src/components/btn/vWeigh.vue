@@ -26,6 +26,8 @@ export default {
             type:'json',
         },function(ret){
             if(ret.data.status===1){
+                const Steve = new BroadcastChannel('Avengers')
+                Steve.postMessage('Assemble!')
                 modal.toast({ message: ret.data.message, duration: 3 });
             }else{
                modal.toast({ message: ret.data.message, duration: 3 });

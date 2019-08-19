@@ -9,20 +9,15 @@
             </div>
         </div>
         <div class="button_box">
-            <!-- <wxc-button text="选择车间" :disabled="isWorkShopDisabled" type="blue" @wxcButtonClicked="choseWorkShop"></wxc-button> -->
             <wxc-button text="选择车间" type="blue" @wxcButtonClicked="choseWorkShop"></wxc-button>
         </div>
         <div class="button_box">
             <wxc-button text="登录" :disabled="isLoginDisabled" type="blue" @wxcButtonClicked="login"></wxc-button>
         </div>
-
-        <!-- <div style="align-items: center;justify-content: center">
-            <text style="color: #000000">{{p}}</text>
-            <button text="播放" @click="play"></button>
-            <button text="暂停" @click="pause" style="margin-top: 20px"></button>
-            <button text="停止" @click="stop" style="margin-top: 20px"></button>
-            <button text="seek" @click="seek" style="margin-top: 20px"></button>
-        </div> -->
+        
+            <!-- <video class="video" src="http://flv2.bn.netease.com/videolib3/1611/01/XGqSL5981/SD/XGqSL5981-mobile.mp4"  autoplay play-status='play'
+                @start="onstart" @pause="onpause" @finish="onfinish" @fail="onfail"></video>
+            <text class="info">state: {{state}}</text> -->
 
         <wxc-popup popup-color="#fff" :show="show" @wxcPopupOverlayClicked="wxcMaskSetHidden" pos="left" height="400">
             <div class="content mask-content">
@@ -46,7 +41,6 @@ const modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
 const storage = weex.requireModule('storage');
 import { WxcButton, WxcRadio, WxcPopup } from 'weex-ui';
-// import Nat from 'natjs'
 export default {
     components: { WxcButton, WxcRadio, WxcPopup },
     data: () => ({
@@ -93,7 +87,11 @@ export default {
         }, {
             title: '清洗间',
             value: 'QXCK'
-        }]
+        }],
+
+        // state: '----',
+        // src:'../img/XGqSL5981-mobile.mp4',
+        // time:""
     }),
     methods: {
         // 账号、密码输入框输入内容后显示 “选择车间按钮”
@@ -219,33 +217,22 @@ export default {
             });
         },
 
+        // onstart (event) {
+        //     this.state = 'onstart'
+        // },
+        // onpause (event) {
+        //     this.state = 'onpause'
+        // },
+        // onfinish (event) {
+        //     this.state = 'onfinish'
+        // },
+        // onfail (event) {
+        //     this.state = 'onfinish'
+        // },
+        
+        // timer(){
 
-        // play(){
-        //         let audio=weex.requireModule('audio')
-        //         audio.setUrl({url:'../img/view.mp3',autoPlay:true})
-        //     },
-        //     pause(){
-        //         let audio=weex.requireModule('audio')
-        //         audio.pause()
-        //     },
-        //     stop(){
-        //         let audio=weex.requireModule('audio')
-        //         audio.stop()
-        //     },
-        //     seek(){
-        //         let audio=weex.requireModule('audio')
-        //         audio.seek(112160)
-        //     },
-        //     onLoad(p){
-        //         let audio=weex.requireModule('audio')
-        //         audio.setOnPlaying((res)=>{
-        //             this.p=res;
-        //         })
-        //         audio.setOnCompletion((res)=>{
-        //             this.p='播放完毕';
-        //         })
-        //     },
-
+        // }
     },
     created() {
       storage.getItem('workShopName', event => {
@@ -254,7 +241,9 @@ export default {
       storage.getItem('containerNum', event => {
           console.log(event.data);
       });
-    //   Nat.audio.pause()
+    //   this.$nextTick(function () {
+    //     this.time=setInterval(this.onstart, 20000);
+    //   })
     }
 }
 </script>
@@ -320,4 +309,18 @@ export default {
 .workShop-confirm {
     margin-top: 10px;
 }
+
+.video {
+    width: 630px;
+    height: 350px;
+    margin-top: 60px;
+    margin-left: 60px;
+    /* opacity: 0; */
+  }
+  .info {
+    margin-top: 40px;
+    font-size: 40px;
+    text-align: center;
+    opacity: 0;
+  }
 </style>

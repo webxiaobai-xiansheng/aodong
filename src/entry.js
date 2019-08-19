@@ -22,5 +22,9 @@ const App = require('@/index.vue')
 // })
 // import Nat from 'natjs'
 // Nat.audio.play('../img/view.mp3')
+// const storage = weex.requireModule('storage');
+// storage.setItem('btext','1',event => {
+
+// });
 new Vue(Vue.util.extend({el: '#root', router}, App))
 router.push('/')

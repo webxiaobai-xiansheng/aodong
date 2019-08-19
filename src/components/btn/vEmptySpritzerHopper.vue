@@ -10,13 +10,13 @@
 const modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
 const storage = weex.requireModule('storage');
+
 export default {
   data () {
     return {
       // 车间名字
       workshopName:'',
       containerNum:'',
-      'msg':"1"
     }
   },
   created () {
@@ -38,8 +38,10 @@ export default {
               type:'json',
           },function(ret){
               if(ret.data.status===1){
+                  // 订阅者
+                  const Steve = new BroadcastChannel('Avengers')
+                  Steve.postMessage('Assemble!')
                   modal.toast({ message: ret.data.message, duration: 3 });
-                  // eventVue.$emit("myFun",_this.msg) 
               }else{
                  modal.toast({ message: ret.data.message, duration: 3 });
               }

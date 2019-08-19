@@ -22,7 +22,8 @@
             <div class="inputBox">
                 <text class="input-title">日期</text>
                 <div class="input_box">
-                    <text class="input_item" @click="showCalendar">{{userTime}}</text>
+                    <text class="input_item" @click="pickDateHandle">{{userTime}}</text>
+                    <!-- <text class="input_item" @click="showCalendar">{{userTime}}</text> -->
                 </div>
             </div>
 
@@ -137,7 +138,7 @@
         </wxc-popup>
 
         <!-- 日期 -->
-         <wxc-page-calendar :date-range="dateRange"
+         <!-- <wxc-page-calendar :date-range="dateRange"
                        :animationType="animationType"
                        :selected-date="selectedDate"
                        :is-range="isRange"
@@ -145,7 +146,7 @@
                        @wxcPageCalendarBackClicked="wxcPageCalendarBackClicked"
                        @wxcPageCalendarDateSelected="wxcPageCalendarDateSelected"
                        ref="wxcPageCalendar">
-        </wxc-page-calendar>
+        </wxc-page-calendar> -->
     </div>
 </template>
 <script>
@@ -153,6 +154,7 @@ const modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
 const storage = weex.requireModule('storage');
 const navigator = weex.requireModule('navigator');
+const picker = weex.requireModule('picker');
 import { WxcButton, WxcRadio, WxcPageCalendar, WxcPopup } from 'weex-ui';
 export default {
     components: { WxcButton,WxcRadio, WxcPageCalendar, WxcPopup },
@@ -187,6 +189,10 @@ export default {
             title: '不合格',
             value: '不合格'
           },
+          {
+            title: '待验',
+            value: '待验'
+          }
         ],
         status:[
           {
@@ -261,15 +267,15 @@ export default {
           },
         ],
         // 时间参数
-        animationType: 'push',
-        currentDate: '',
-        selectedDate: ['2019-08-23', '2020-06-30'],
-        isRange: true,
-        calendarTitle: '选择日期',
-        dateRange: ['2019-08-23', '2020-06-30'],
-        minibarCfg: {
-            title: '日期选择'
-        },
+        // animationType: 'push',
+        // currentDate: '',
+        // selectedDate: ['2019-08-23', '2020-06-30'],
+        // isRange: false,
+        // calendarTitle: '选择日期',
+        // // dateRange: ['1949-10-23', '3020-06-30'],
+        // minibarCfg: {
+        //     title: '日期选择'
+        // },
 
         isBottomShow: false,
         // 定时器测试
@@ -279,12 +285,8 @@ export default {
     created () {
         storage.getItem('workShopName', event => {
             this.workshopName = event.data;
-            // modal.toast({ message: '你是'+this.workshopName, duration: 10 });
             this.onInit();
         });
-        // storage.getItem('tongArr', event => {
-        //     this.list = JSON.parse(event.data);
-        // });
     },
     methods: {
         // 桶编号
@@ -396,8 +398,10 @@ export default {
                 type:'json',
             },function(ret){
                 if(ret.data.status===1){
+                   const Steve = new BroadcastChannel('Avengers')
+                   Steve.postMessage('Assemble!')
                    modal.toast({ message: ret.data.message, duration: 3 });
-                   _this.$router.go(-1);
+                //    _this.$router.go(-1);
                    _this.time=setInterval(this.timer, 1000);
                 }
             })
@@ -412,6 +416,18 @@ export default {
         //非状态组件，需要在这里关闭
         popupOverlayBottomClick () {
             this.isBottomShow = false;
+        },
+        pickDateHandle() {
+            const _this = this;
+            picker.pickDate(
+                {
+                value: this.userTime,
+
+                },
+                ret => {
+                if (ret.result === 'success') _this.userTime = ret.data;
+                }
+            );
         },
         onInit() {
             let _this=this;

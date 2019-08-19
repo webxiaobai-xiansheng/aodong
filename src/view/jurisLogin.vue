@@ -15,7 +15,6 @@
         <div class="button_box">
             <wxc-button text="返回" type="blue" @wxcButtonClicked="onBlack"></wxc-button>
         </div>
-
     </div>
 </template>
 <script>

@@ -2341,6 +2341,10 @@ var App = __webpack_require__(412);
 // })
 // import Nat from 'natjs'
 // Nat.audio.play('../img/view.mp3')
+// const storage = weex.requireModule('storage');
+// storage.setItem('btext','1',event => {
+
+// });
 new Vue(Vue.util.extend({ el: '#root', router: router }, App));
 router.push('/');
 
@@ -5446,6 +5450,18 @@ module.exports = {
   },
   "workShop-confirm": {
     "marginTop": "10"
+  },
+  "video": {
+    "width": "630",
+    "height": "350",
+    "marginTop": "60",
+    "marginLeft": "60"
+  },
+  "info": {
+    "marginTop": "40",
+    "fontSize": "40",
+    "textAlign": "center",
+    "opacity": 0
   }
 }
 
@@ -5500,17 +5516,10 @@ var _weexUi = __webpack_require__(1);
 //
 //
 //
-//
-//
-//
-//
-//
 
 var modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
 var storage = weex.requireModule('storage');
-
-// import Nat from 'natjs'
 exports.default = {
     components: { WxcButton: _weexUi.WxcButton, WxcRadio: _weexUi.WxcRadio, WxcPopup: _weexUi.WxcPopup },
     data: function data() {
@@ -5559,6 +5568,10 @@ exports.default = {
                 title: '清洗间',
                 value: 'QXCK'
             }]
+
+            // state: '----',
+            // src:'../img/XGqSL5981-mobile.mp4',
+            // time:""
         };
     },
     methods: {
@@ -5696,7 +5709,9 @@ exports.default = {
         storage.getItem('containerNum', function (event) {
             console.log(event.data);
         });
-        //   Nat.audio.pause()
+        //   this.$nextTick(function () {
+        //     this.time=setInterval(this.onstart, 20000);
+        //   })
     }
 };
 
@@ -23157,7 +23172,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("退出")])])]), _c('wxc-dialog', {
     attrs: {
       "title": "退出登录",
-      "content": "确定要退出嘛？？？",
+      "content": "确定退出？",
       "show": _vm.show,
       "single": false
     },
@@ -23785,13 +23800,13 @@ Object.defineProperty(exports, "__esModule", {
 var modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
 var storage = weex.requireModule('storage');
+
 exports.default = {
     data: function data() {
         return {
             // 车间名字
             workshopName: '',
-            containerNum: '',
-            'msg': "1"
+            containerNum: ''
         };
     },
     created: function created() {
@@ -23816,8 +23831,10 @@ exports.default = {
                     type: 'json'
                 }, function (ret) {
                     if (ret.data.status === 1) {
+                        // 订阅者
+                        var Steve = new BroadcastChannel('Avengers');
+                        Steve.postMessage('Assemble!');
                         modal.toast({ message: ret.data.message, duration: 3 });
-                        // eventVue.$emit("myFun",_this.msg) 
                     } else {
                         modal.toast({ message: ret.data.message, duration: 3 });
                     }
@@ -23937,6 +23954,9 @@ var _weexUi = __webpack_require__(1);
 //
 //
 //
+//
+//
+//
 
 var stream = weex.requireModule('stream');
 var storage = weex.requireModule('storage');
@@ -24005,6 +24025,8 @@ exports.default = {
                     var data = ret.data.data;
                     if (ret.status === 200) {
                         if (ret.data.status === 1) {
+                            var Steve = new BroadcastChannel('Avengers');
+                            Steve.postMessage('Assemble!');
                             modal.toast({ message: ret.data.message });
                         } else {
                             modal.toast({ message: ret.data.message });
@@ -24013,6 +24035,9 @@ exports.default = {
                 });
                 this.show = false;
             }
+        },
+        onBlack: function onBlack() {
+            this.show = false;
         }
     }
 };
@@ -24062,7 +24087,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }, _vm.onInput]
     }
   })]), _c('div', {
-    staticClass: ["button_box", "bottom"]
+    staticClass: ["button_box"]
   }, [_c('wxc-button', {
     attrs: {
       "text": "确定",
@@ -24071,6 +24096,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     on: {
       "wxcButtonClicked": _vm.wxcConfirmContainer
+    }
+  })], 1), _c('div', {
+    staticClass: ["button_box"]
+  }, [_c('wxc-button', {
+    attrs: {
+      "text": "返回",
+      "type": "blue"
+    },
+    on: {
+      "wxcButtonClicked": _vm.onBlack
     }
   })], 1)])])], 1)])
 },staticRenderFns: []}
@@ -24276,6 +24311,7 @@ var _weexUi = __webpack_require__(1);
 var modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
 var storage = weex.requireModule('storage');
+var Stark = new BroadcastChannel('Avengers');
 exports.default = {
     components: { WxcGridSelect: _weexUi.WxcGridSelect, WxcButton: _weexUi.WxcButton },
     data: function data() {
@@ -24339,19 +24375,9 @@ exports.default = {
             pageSize: 10,
             pages: 0,
             pageNum: 1,
-            btext: '1'
+            btext: ''
         };
     },
-    // watch: {
-    //    btext:function (val) {
-    //        this.initTable()
-    //    }
-    // },
-    // updated () {
-    //     eventVue.$on("myFun",(message)=>{   //这里最好用箭头函数，不然this指向有问题
-    //              this.btext = message      
-    //         })
-    // },
     methods: {
         // 点击table选择桶或者料斗
         selectContainer: function selectContainer(index) {
@@ -24409,6 +24435,12 @@ exports.default = {
                                 that.isPreviewDisabled = true;
                                 that.isNextDisabled = true;
                             }
+                        }
+                        if (data.list === '' || data.list === 'undefined') {
+                            that.currentPage = 0;
+                            that.pages = 0;
+                            that.isPreviewDisabled = true;
+                            that.isNextDisabled = true;
                         }
                     } else {
                         modal.toast({ message: ret.data.message });
@@ -24488,6 +24520,12 @@ exports.default = {
                                 that.isNextDisabled = true;
                             }
                         }
+                        if (data.list === '' || data.list === 'undefined') {
+                            that.currentPage = 0;
+                            that.pages = 0;
+                            that.isPreviewDisabled = true;
+                            that.isNextDisabled = true;
+                        }
                     } else {
                         modal.toast({ message: ret.data.message });
                     }
@@ -24545,8 +24583,24 @@ exports.default = {
         }
     },
     created: function created() {
+        var _this = this;
+
         this.initTable(); //初始化table
         this.showFilterButton(); //筛选按钮
+        this.$nextTick(function () {
+            this.time = setInterval(this.timer, 20000);
+        });
+        storage.getItem('workShopName', function (event) {
+            _this.btext = event.data;
+        });
+    },
+    mounted: function mounted() {
+        var self = this;
+        Stark.onmessage = function (event) {
+            if (event.data === 'Assemble!') {
+                self.initTable();
+            }
+        };
     }
 };
 
@@ -25047,6 +25101,8 @@ exports.default = {
                     type: 'json'
                 }, function (ret) {
                     if (ret.data.status === 1) {
+                        var Steve = new BroadcastChannel('Avengers');
+                        Steve.postMessage('Assemble!');
                         modal.toast({ message: ret.data.message, duration: 3 });
                     } else {
                         modal.toast({ message: ret.data.message, duration: 3 });
@@ -25194,6 +25250,7 @@ exports.default = {
                         for (var i = 0; i < ret.data.data.length; i++) {
                             _this.emptyContainerList.push({ title: ret.data.data[i].containerNumber, value: ret.data.data[i].containerNumber });
                         }
+                        _this.show = true;
                     } else {
                         modal.toast({ message: '该车间没有料斗', duration: 3 });
                     }
@@ -25234,6 +25291,8 @@ exports.default = {
                     type: 'json'
                 }, function (ret) {
                     if (ret.data.status === 1) {
+                        var Steve = new BroadcastChannel('Avengers');
+                        Steve.postMessage('Assemble!');
                         modal.toast({ message: ret.data.message, duration: 3 });
                     } else {
                         modal.toast({ message: ret.data.message, duration: 3 });
@@ -25898,6 +25957,7 @@ Object.defineProperty(exports, "__esModule", {
 var modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
 var storage = weex.requireModule('storage');
+var Steve = new BroadcastChannel('Avengers');
 exports.default = {
     data: function data() {
         return {
@@ -25929,6 +25989,8 @@ exports.default = {
                     type: 'json'
                 }, function (ret) {
                     if (ret.data.status === 1) {
+                        var _Steve = new BroadcastChannel('Avengers');
+                        _Steve.postMessage('Assemble!');
                         modal.toast({ message: ret.data.message, duration: 3 });
                     } else {
                         modal.toast({ message: ret.data.message, duration: 3 });
@@ -26524,6 +26586,7 @@ exports.default = {
                         for (var i = 0; i < ret.data.data.length; i++) {
                             _this.emptyContainerList.push({ title: ret.data.data[i].containerNumber, value: ret.data.data[i].containerNumber });
                         }
+                        _this.show = true;
                     } else {
                         modal.toast({ message: '该车间没有料桶', duration: 3 });
                     }
@@ -26564,6 +26627,8 @@ exports.default = {
                     type: 'json'
                 }, function (ret) {
                     if (ret.data.status === 1) {
+                        var Steve = new BroadcastChannel('Avengers');
+                        Steve.postMessage('Assemble!');
                         modal.toast({ message: ret.data.message, duration: 3 });
                     } else {
                         modal.toast({ message: ret.data.message, duration: 3 });
@@ -26714,6 +26779,8 @@ exports.default = {
                     type: 'json'
                 }, function (ret) {
                     if (ret.data.status === 1) {
+                        var Steve = new BroadcastChannel('Avengers');
+                        Steve.postMessage('Assemble!');
                         modal.toast({ message: ret.data.message, duration: 3 });
                     } else {
                         modal.toast({ message: ret.data.message, duration: 3 });
@@ -27369,6 +27436,8 @@ exports.default = {
                     type: 'json'
                 }, function (ret) {
                     if (ret.data.status === 1) {
+                        var Steve = new BroadcastChannel('Avengers');
+                        Steve.postMessage('Assemble!');
                         modal.toast({ message: ret.data.message, duration: 3 });
                     } else {
                         modal.toast({ message: ret.data.message, duration: 3 });
@@ -27521,6 +27590,8 @@ exports.default = {
                     type: 'json'
                 }, function (ret) {
                     if (ret.data.status === 1) {
+                        var Steve = new BroadcastChannel('Avengers');
+                        Steve.postMessage('Assemble!');
                         modal.toast({ message: ret.data.message, duration: 3 });
                     } else {
                         modal.toast({ message: ret.data.message, duration: 3 });
@@ -27853,7 +27924,7 @@ exports.default = {
         timer: function timer() {
             var _this = this;
 
-            var url = 'http://10.34.10.24:8999/agvTask/getReviewTask';
+            var url = 'http://10.34.10.126:8999/agvTask/getReviewTask';
             // let body = JSON.stringify({
             //     containerNumber:_this.containerNum,
             //     functionRoomNumber:_this.workshopName
@@ -27883,7 +27954,7 @@ exports.default = {
         wxcChoseAllow: function wxcChoseAllow() {
             var _this = this;
 
-            var url = 'http://10.34.10.24:8999/obtain/reviewVerify';
+            var url = 'http://10.34.10.126:8999/obtain/reviewVerify';
             var body = JSON.stringify({
                 taskId: _this.id,
                 functionNumber: _this.functionNumber,
@@ -27909,7 +27980,7 @@ exports.default = {
         wxcChoseRefuse: function wxcChoseRefuse() {
             var _this = this;
 
-            var url = 'http://10.34.10.24:8999/obtain/reviewRefuse';
+            var url = 'http://10.34.10.126:8999/obtain/reviewRefuse';
             var body = JSON.stringify({
                 taskId: _this.id,
                 functionNumber: _this.functionNumber,
@@ -28162,9 +28233,6 @@ exports.default = {
 //
 //
 //
-//
-//
-//
 
 /***/ }),
 /* 370 */
@@ -28290,6 +28358,8 @@ exports.default = {
                     type: 'json'
                 }, function (ret) {
                     if (ret.data.status === 1) {
+                        var Steve = new BroadcastChannel('Avengers');
+                        Steve.postMessage('Assemble!');
                         modal.toast({ message: ret.data.message, duration: 3 });
                     } else {
                         modal.toast({ message: ret.data.message, duration: 3 });
@@ -28420,6 +28490,8 @@ exports.default = {
                 type: 'json'
             }, function (ret) {
                 if (ret.data.status === 1) {
+                    var Steve = new BroadcastChannel('Avengers');
+                    Steve.postMessage('Assemble!');
                     modal.toast({ message: ret.data.message, duration: 3 });
                 } else {
                     modal.toast({ message: ret.data.message, duration: 3 });
@@ -28503,7 +28575,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('text', {
     staticClass: ["btn-txtNSS"]
-  }, [_vm._v("桶/库位绑定")])]), _vm._v("\n<<<<<<< HEAD\n          "), _vm._v("\n=======\n>>>>>>> d8663f56af950fbc2d424b29195402c1aecb55ba\n      ")], 1)]), _c('wxc-mask', {
+  }, [_vm._v("桶/库位绑定")])])], 1)]), _c('wxc-mask', {
     attrs: {
       "height": "300",
       "width": "500",
@@ -29007,7 +29079,6 @@ var _config2 = _interopRequireDefault(_config);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//
 //
 //
 //
@@ -30029,11 +30100,13 @@ var _weexUi = __webpack_require__(1);
 //
 //
 //
+//
 
 var modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
 var storage = weex.requireModule('storage');
 var navigator = weex.requireModule('navigator');
+var picker = weex.requireModule('picker');
 exports.default = {
     components: { WxcButton: _weexUi.WxcButton, WxcRadio: _weexUi.WxcRadio, WxcPageCalendar: _weexUi.WxcPageCalendar, WxcPopup: _weexUi.WxcPopup },
     data: function data() {
@@ -30065,6 +30138,9 @@ exports.default = {
             }, {
                 title: '不合格',
                 value: '不合格'
+            }, {
+                title: '待验',
+                value: '待验'
             }],
             status: [{
                 title: '原辅料',
@@ -30120,15 +30196,15 @@ exports.default = {
                 value: '复方丹参片'
             }],
             // 时间参数
-            animationType: 'push',
-            currentDate: '',
-            selectedDate: ['2019-08-23', '2020-06-30'],
-            isRange: true,
-            calendarTitle: '选择日期',
-            dateRange: ['2019-08-23', '2020-06-30'],
-            minibarCfg: {
-                title: '日期选择'
-            },
+            // animationType: 'push',
+            // currentDate: '',
+            // selectedDate: ['2019-08-23', '2020-06-30'],
+            // isRange: false,
+            // calendarTitle: '选择日期',
+            // // dateRange: ['1949-10-23', '3020-06-30'],
+            // minibarCfg: {
+            //     title: '日期选择'
+            // },
 
             isBottomShow: false,
             // 定时器测试
@@ -30141,12 +30217,8 @@ exports.default = {
 
         storage.getItem('workShopName', function (event) {
             _this2.workshopName = event.data;
-            // modal.toast({ message: '你是'+this.workshopName, duration: 10 });
             _this2.onInit();
         });
-        // storage.getItem('tongArr', event => {
-        //     this.list = JSON.parse(event.data);
-        // });
     },
 
     methods: {
@@ -30270,8 +30342,10 @@ exports.default = {
                 type: 'json'
             }, function (ret) {
                 if (ret.data.status === 1) {
+                    var Steve = new BroadcastChannel('Avengers');
+                    Steve.postMessage('Assemble!');
                     modal.toast({ message: ret.data.message, duration: 3 });
-                    _this.$router.go(-1);
+                    //    _this.$router.go(-1);
                     _this.time = setInterval(this.timer, 1000);
                 }
             });
@@ -30287,6 +30361,15 @@ exports.default = {
         //非状态组件，需要在这里关闭
         popupOverlayBottomClick: function popupOverlayBottomClick() {
             this.isBottomShow = false;
+        },
+        pickDateHandle: function pickDateHandle() {
+            var _this = this;
+            picker.pickDate({
+                value: this.userTime
+
+            }, function (ret) {
+                if (ret.result === 'success') _this.userTime = ret.data;
+            });
         },
         onInit: function onInit() {
             var _this = this;
@@ -30377,7 +30460,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('text', {
     staticClass: ["input_item"],
     on: {
-      "click": _vm.showCalendar
+      "click": _vm.pickDateHandle
     }
   }, [_vm._v(_vm._s(_vm.userTime))])])]), _c('div', {
     staticClass: ["inputBox"]
@@ -30574,20 +30657,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "wxcButtonClicked": _vm.wxcChoseproduct
     }
-  })], 1)])]), _c('wxc-page-calendar', {
-    ref: "wxcPageCalendar",
-    attrs: {
-      "dateRange": _vm.dateRange,
-      "animationType": _vm.animationType,
-      "selectedDate": _vm.selectedDate,
-      "isRange": _vm.isRange,
-      "minibarCfg": _vm.minibarCfg
-    },
-    on: {
-      "wxcPageCalendarBackClicked": _vm.wxcPageCalendarBackClicked,
-      "wxcPageCalendarDateSelected": _vm.wxcPageCalendarDateSelected
-    }
-  })], 1)
+  })], 1)])])], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 

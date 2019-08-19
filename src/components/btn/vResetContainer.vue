@@ -88,6 +88,8 @@ export default {
                     let data = ret.data.data;
                     if (ret.status === 200) {
                         if (ret.data.status === 1) {
+                            const Steve = new BroadcastChannel('Avengers')
+                            Steve.postMessage('Assemble!')
                             modal.toast({ message: ret.data.message });
                         } else {
                             modal.toast({ message: ret.data.message });

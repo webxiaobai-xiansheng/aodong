@@ -28,10 +28,7 @@
           <div class="btnNss" @click="onJurisLogin">
             <text class="btn-txtNSS">桶/库位绑定</text>
           </div>
-<<<<<<< HEAD
           <!-- <v-container-location class="contentBox-btn"></v-container-location> -->
-=======
->>>>>>> d8663f56af950fbc2d424b29195402c1aecb55ba
       </div>
     </wxc-mask>
     <wxc-mask height="300"

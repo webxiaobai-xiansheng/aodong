@@ -43,6 +43,7 @@
 const modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
 const storage = weex.requireModule('storage');
+const Stark = new BroadcastChannel('Avengers')
 import { WxcGridSelect, WxcButton } from 'weex-ui';
 export default {
     components: { WxcGridSelect, WxcButton },
@@ -106,18 +107,8 @@ export default {
         pageSize: 10,
         pages: 0,
         pageNum: 1,
-        btext:'1'
+        btext:''
     }),
-    // watch: {
-    //    btext:function (val) {
-    //        this.initTable()
-    //    }
-    // },
-    // updated () {
-    //     eventVue.$on("myFun",(message)=>{   //这里最好用箭头函数，不然this指向有问题
-    //              this.btext = message      
-    //         })
-    // },
     methods: {
         // 点击table选择桶或者料斗
         selectContainer(index) {
@@ -316,8 +307,21 @@ export default {
     created() {
         this.initTable(); //初始化table
         this.showFilterButton(); //筛选按钮
+        this.$nextTick(function () {
+            this.time=setInterval(this.timer, 20000);
+        })
+        storage.getItem('workShopName', event => {
+            this.btext = event.data;
+        });
+    },
+    mounted() {
+        let self = this;
+        Stark.onmessage = function (event) { 
+           if(event.data==='Assemble!'){
+                self.initTable()
+           }
+        }
     }
-
 }
 </script>
 <style src='../styles/style.css'></style>
