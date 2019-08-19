@@ -279,11 +279,12 @@ export default {
     created () {
         storage.getItem('workShopName', event => {
             this.workshopName = event.data;
+            // modal.toast({ message: '你是'+this.workshopName, duration: 10 });
+            this.onInit();
         });
         // storage.getItem('tongArr', event => {
         //     this.list = JSON.parse(event.data);
         // });
-        this.onInit();
     },
     methods: {
         // 桶编号
@@ -414,10 +415,10 @@ export default {
         },
         onInit() {
             let _this=this;
-            let name = this.workshopName;
-            console.log(name)
-            modal.toast({ message: '你是'+name, duration: 10 });
-            let url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber='+name;
+            // let name = this.workshopName;
+            // console.log(name)
+            // // modal.toast({ message: '你是'+name, duration: 10 });
+            let url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber='+this.workshopName;
             // modal.toast({ message: url, duration: 3 });
             // let body = JSON.stringify({
             //     // functionRoomNumber: _this.workshopName
@@ -429,13 +430,12 @@ export default {
                 // body: body,
                 type:'json',
             },function(ret){
-                console.log(ret)
+                // console.log(ret)
 
                 if(ret.data.status===1){
                     // console.log(ret.data.data)
-                    let arrData=ret.data.data;
-                    for (let i = 0; i < arrData.length; i++) {
-                        _this.list.push({title:arrData[i].containerNumber,value:arrData[i].containerNumber})
+                    for (let i = 0; i < ret.data.data.length; i++) {
+                        _this.list.push({title:ret.data.data[i].containerNumber,value:ret.data.data[i].containerNumber})
                     }
                     
                     // console.log(_this.list)

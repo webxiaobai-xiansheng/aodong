@@ -23404,6 +23404,7 @@ exports.default = {
       isFalse: false,
       hasBusiness: true,
       hasFunction: true
+
     };
   },
   methods: {
@@ -23422,7 +23423,6 @@ exports.default = {
       this.hasFunction = false;
     },
     onpen: function onpen() {
-      console.log(1);
       this.showBusiness = false;
     }
   }
@@ -23652,16 +23652,10 @@ exports.default = {
   methods: {
     wxcButtonGetSpritzerHopper: function wxcButtonGetSpritzerHopper() {
       var _this = this;
-
-      var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer/' + this.workshopName;
-      var body = JSON.stringify({
-        // functionRoomNumber: _this.workshopName
-      });
+      var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
       stream.fetch({
-        method: "POST",
+        method: "GET",
         url: url,
-        headers: { 'Content-Type': 'application/json' },
-        body: body,
         type: 'json'
       }, function (ret) {
         if (ret.data.status === 1) {
@@ -25133,26 +25127,20 @@ exports.default = {
         // 打开弹窗
         wxcButtonGetEmptySpritzerHopper: function wxcButtonGetEmptySpritzerHopper(e) {
             var _this = this;
-
-            var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer/' + this.workshopName;
-            var body = JSON.stringify({
-                // functionRoomNumber: _this.workshopName
-            });
+            var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
             stream.fetch({
-                method: "POST",
+                method: "GET",
                 url: url,
-                headers: { 'Content-Type': 'application/json' },
-                body: body,
                 type: 'json'
             }, function (ret) {
                 if (ret.data.status === 1) {
                     if (ret.data.data.length > 0) {
+                        // _this.$router.push({name:'popUp'})
                         for (var i = 0; i < ret.data.data.length; i++) {
-                            _this.emptyContainerList.push({ title: ret.data.data.containerNumber, value: ret.data.data.containerNumber });
+                            _this.emptyContainerList.push({ title: ret.data.data[i].containerNumber, value: ret.data.data[i].containerNumber });
                         }
-                        this.show = true;
                     } else {
-                        modal.toast({ message: '该车间没有送料桶', duration: 3 });
+                        modal.toast({ message: '该车间没有料斗', duration: 3 });
                     }
                 }
             });
@@ -26470,26 +26458,19 @@ exports.default = {
         // 打开弹窗
         wxcButtonGetEmptySpritzerTank: function wxcButtonGetEmptySpritzerTank(e) {
             var _this = this;
-
-            var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer';
-            var body = JSON.stringify({
-                functionRoomNumber: _this.workshopName
-            });
+            var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
             stream.fetch({
-                method: "POST",
+                method: "GET",
                 url: url,
-                headers: { 'Content-Type': 'application/json' },
-                body: body,
                 type: 'json'
             }, function (ret) {
                 if (ret.data.status === 1) {
                     if (ret.data.data.length > 0) {
                         for (var i = 0; i < ret.data.data.length; i++) {
-                            _this.emptyContainerList.push({ title: ret.data.data.containerNumber, value: ret.data.data.containerNumber });
+                            _this.emptyContainerList.push({ title: ret.data.data[i].containerNumber, value: ret.data.data[i].containerNumber });
                         }
-                        this.show = true;
                     } else {
-                        modal.toast({ message: '该车间没有送料桶', duration: 3 });
+                        modal.toast({ message: '该车间没有料桶', duration: 3 });
                     }
                 }
             });
@@ -26765,25 +26746,19 @@ exports.default = {
   },
 
   methods: {
-    wxcButtonGetSpritzerHopper: function wxcButtonGetSpritzerHopper() {
+    wxcButtonGetSpritzerTank: function wxcButtonGetSpritzerTank() {
       var _this = this;
-
-      var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer/' + this.workshopName;
-      var body = JSON.stringify({
-        // functionRoomNumber: _this.workshopName
-      });
+      var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
       stream.fetch({
-        method: "POST",
+        method: "GET",
         url: url,
-        headers: { 'Content-Type': 'application/json' },
-        body: body,
         type: 'json'
       }, function (ret) {
         if (ret.data.status === 1) {
           if (ret.data.data.length > 0) {
-            this.$router.push({ name: 'popUp' });
+            _this.$router.push({ name: 'popUp' });
           } else {
-            modal.toast({ message: '该车间没有送料桶', duration: 3 });
+            modal.toast({ message: '该车间没有料桶', duration: 3 });
           }
         }
       });
@@ -28061,7 +28036,7 @@ exports.default = {
       this.hasFunction = false;
     },
     onJurisLogin: function onJurisLogin() {
-      this.$router.push({ name: 'jurisLoginMessage' });
+      this.$router.push({ name: 'jurisLogin' });
     }
   }
 };
@@ -30637,8 +30612,12 @@ exports.default = {
 
         storage.getItem('workShopName', function (event) {
             _this2.workshopName = event.data;
+            // modal.toast({ message: '你是'+this.workshopName, duration: 10 });
+            _this2.onInit();
         });
-        this.onInit();
+        // storage.getItem('tongArr', event => {
+        //     this.list = JSON.parse(event.data);
+        // });
     },
 
     methods: {
@@ -30782,25 +30761,30 @@ exports.default = {
         },
         onInit: function onInit() {
             var _this = this;
-
-            var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer/' + this.workshopName;
-            var body = JSON.stringify({
-                // functionRoomNumber: _this.workshopName
-            });
+            // let name = this.workshopName;
+            // console.log(name)
+            // // modal.toast({ message: '你是'+name, duration: 10 });
+            var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+            // modal.toast({ message: url, duration: 3 });
+            // let body = JSON.stringify({
+            //     // functionRoomNumber: _this.workshopName
+            // });
             stream.fetch({
-                method: "POST",
+                method: "GET",
                 url: url,
-                headers: { 'Content-Type': 'application/json' },
-                body: body,
+                // headers:{'Content-Type':'application/json'},
+                // body: body,
                 type: 'json'
             }, function (ret) {
                 // console.log(ret)
+
                 if (ret.data.status === 1) {
                     // console.log(ret.data.data)
                     for (var i = 0; i < ret.data.data.length; i++) {
                         _this.list.push({ title: ret.data.data[i].containerNumber, value: ret.data.data[i].containerNumber });
                     }
-                    console.log(_this.list);
+
+                    // console.log(_this.list)
                 }
             });
         }

@@ -56,7 +56,6 @@
   import vSpritzerHopper from './btn/vSpritzerHopper.vue';
   import vGetEmptySpritzerHopper from './btn/vGetEmptySpritzerHopper.vue';
   import vResetContainer from './btn/vResetContainer.vue';
-  const storage = weex.requireModule('storage');
   export default {
     components: { WxcMask,vStop,vStart,vGetSpritzerHopper,vEmptySpritzerHopper,vSpritzerHopper,vGetEmptySpritzerHopper,vResetContainer},
     data: () => ({
@@ -71,13 +70,8 @@
       openMask (e) {
         this.showBusiness = true;
         this.hasBusiness = true;
-
-        
       },
       wxcMaskBusiness () {
-        storage.removeItem('tongArr', event => {
-            
-        });
         this.showBusiness = false;
       },
       wxcMaskFunction(){
