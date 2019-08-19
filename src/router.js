@@ -12,6 +12,7 @@ import cleaning from '@/view/home/cleaning';
 import jurisLogin from '@/view/jurisLogin';
 import jurisLoginMessage from '@/view/jurisLoginMessage';
 import popUp from '@/view/home/popUp';
+import containerLoginMessage from '@/view/containerLoginMessage';
 
 Vue.use(Router)
 
@@ -32,6 +33,11 @@ export const router = new Router({
       path: '/jurisLoginMessage',
       name: 'jurisLoginMessage',
       component: jurisLoginMessage
+    },
+    {
+      path: '/containerLoginMessage',
+      name: 'containerLoginMessage',
+      component: containerLoginMessage
     },
     {
       path: '/home',

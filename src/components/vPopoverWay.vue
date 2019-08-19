@@ -20,12 +20,25 @@
               :show="showBusiness"
               @wxcMaskSetHidden="wxcMaskBusiness">
       <div class="contentBox">
-          <div class="btnNss" @click="onJurisLogin">
+          <!-- <div class="btnNss" @click="onJurisLogin">
             <text class="btn-txtNSS">初始化界面</text>
-          </div>
+          </div> -->
+          <router-link :to="{name: 'onJurisLogin',params:{id:0}}">
+            <div class="btnNss">
+              <text class="btn-txtNSS">初始化界面</text>
+            </div>
+          </router-link>
           <v-weigh class="contentBox-btn"></v-weigh>
           <v-get-spritzer-hopper-rinses class="contentBox-btn"></v-get-spritzer-hopper-rinses>
-          <v-container-location class="contentBox-btn"></v-container-location>
+          <!-- <div class="btnNss" @click="onJurisLogin">
+            <text class="btn-txtNSS">桶/库位绑定</text>
+          </div> -->
+          <router-link :to="{name: 'onJurisLogin',params:{id:1}}">
+            <div class="btnNss">
+              <text class="btn-txtNSS">桶/库位绑定</text>
+            </div>
+          </router-link>
+          <!-- <v-container-location class="contentBox-btn"></v-container-location> -->
       </div>
     </wxc-mask>
     <wxc-mask height="300"

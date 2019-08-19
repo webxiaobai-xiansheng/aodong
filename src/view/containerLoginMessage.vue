@@ -1,30 +1,39 @@
 <template>
-    <!-- 桶/库位绑定 -->
-    <div>
-        <div class="btn" @click="wxcButtonContainerLocation">
-            <text class="btn-txt">桶/库位绑定</text>
+    <div class="login_content">
+        <div class="container" :style="{ height: height }">
+            <div class="demo">
+                <wxc-minibar background-color="#009ff0" leftButton="" @wxcMinibarLeftButtonClicked="minibarLeftButtonClick" @wxcMinibarRightButtonClicked="minibarRightButtonClick">
+                    <text style="font-size: 35px;color:#fff;" slot="middle">桶/库位绑定</text>
+                    <text slot="right" style="font-size: 35px;color:#fff;">退出</text>
+                </wxc-minibar>
+            </div>
         </div>
-        <div class="mask-container">
-            <wxc-popup popup-color="#fff" :show="show" @wxcPopupOverlayClicked="wxcMaskSetHidden" pos="left" height="400">
-                <div class="content mask-content">
-                    <div class="mask-title">
-                        <text class="title">桶/库位绑定</text>
-                    </div>
+        <div class="login-txt">
+            <div class="login_input">
+                <div class="inputBox">
+                    <text class="input-title">桶编号</text>
                     <div class="input_box">
                         <input v-model="ContainerNum" class="input_item" type="text" placeholder="请输入桶的编号" @input="onInputContainer">
                     </div>
+                </div>
+                <div class="inputBox">
+                    <text class="input-title">请输入库位二维码的编号</text>
                     <div class="input_box">
                         <input v-model="LocationNum" class="input_item" type="text" placeholder="请输入库位二维码的编号" @input="onInputContainer">
                     </div>
-                    <div class="button_box bottom">
-                        <wxc-button text="确定" type="blue" :disabled="isDisabled" @wxcButtonClicked="wxcConfirmContainer"></wxc-button size="small">
-                    </div>
-                    <div class="button_box bottom">
-                        <wxc-button text="查看" type="blue" :disabled="isCheckDisabled" @wxcButtonClicked="wxcCheckList"></wxc-button size="small">
-                    </div>
                 </div>
-            </wxc-popup>
+            </div>
+            <div class="button_box">
+                <wxc-button text="确定" type="blue" @wxcButtonClicked="wxcConfirmContainer"></wxc-button>
+            </div>
+            <div class="button_box">
+                <wxc-button text="查看" type="blue" :disabled="isCheckDisabled" @wxcButtonClicked="wxcCheckList"></wxc-button>
+            </div>
+            <div class="button_box">
+                <wxc-button text="返回中间站" type="blue" @wxcButtonClicked="black"></wxc-button>
+            </div>
         </div>
+        <!-- 列表 -->
         <div class="mask-container">
             <wxc-popup popup-color="#fff" :show="showTable" @wxcPopupOverlayClicked="wxcMaskTableHidden" pos="left" height="400">
                 <div class="table_box">
@@ -58,18 +67,14 @@
     </div>
 </template>
 <script>
-const stream = weex.requireModule('stream');
-const storage = weex.requireModule('storage');
 const modal = weex.requireModule('modal');
-import { WxcPopup, WxcButton } from 'weex-ui';
+const stream = weex.requireModule('stream');
+import { WxcButton, WxcRadio, WxcPageCalendar, WxcMinibar, WxcPopup } from 'weex-ui';
 export default {
-    components: { WxcPopup, WxcButton },
+    components: { WxcButton, WxcRadio, WxcPageCalendar, WxcMinibar, WxcPopup },
     data: () => ({
         ContainerNum: '',
         LocationNum: '',
-        show: false,
-        showTable: false,
-        isDisabled: true,
         isCheckDisabled: true,
         tableHeadData: ['编号', '桶号', '库位二维码编号'],
         tableBodyData: [],
@@ -81,24 +86,6 @@ export default {
         pageNum: 1
     }),
     methods: {
-        // 打开弹窗
-        wxcButtonContainerLocation(e) {
-            if (e.disabled) {
-                return;
-            } else {
-                this.show = true;
-            }
-        },
-        // 关闭弹窗
-        wxcMaskSetHidden() {
-            this.show = false;
-        },
-
-        // 关闭弹窗---列表
-        wxcMaskTableHidden() {
-            this.showTable = false;
-        },
-
         //输入桶编号和库位编号
         onInputContainer() {
             if (this.ContainerNum && this.LocationNum) {
@@ -113,7 +100,7 @@ export default {
             }
         },
 
-        // 确认按钮
+        // 确定绑定按钮
         wxcConfirmContainer(e) {
             if (e.disabled) {
                 return;
@@ -145,7 +132,14 @@ export default {
                 // this.show = false;
             }
         },
-
+        black() {
+            this.$router.push({ name: 'wayStation' })
+        },
+        minibarLeftButtonClick() {},
+        minibarRightButtonClick() {
+            modal.toast({ 'message': '退出成功', 'duration': 1 });
+            this.$router.push({ name: 'login' })
+        },
         // 打开列表弹窗
         wxcCheckList() {
             this.showTable = true;
@@ -217,31 +211,51 @@ export default {
                 that.currentPage += 1;
                 that.initTable();
             }
-        },
+        }
     }
 }
 </script>
-<style src='../../styles/style.css'></style>
 <style scoped>
-.btn {
+.inputBox {
     display: flex;
-    justify-content: center;
-    background-color: #0099ff;
-    width: 200px;
-    height: 100px;
-    border-radius: 10px;
+    flex-direction: row;
+    /* justify-content: space-between; */
 }
 
-.btn-txt {
+.input-title {
+    flex: 1;
+    line-height: 60px;
     text-align: center;
-    margin: 0 auto;
-    color: #fff;
-    font-size: 35px;
+    font-size: 30px;
 }
 
-.mask-container {
-    justify-content: center;
-    align-items: center;
+.input_box {
+    flex: 3;
+    /* flex-direction: row; */
+    border-style: solid;
+    border-width: 1px;
+    border-color: #333;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    padding-left: 20px;
+}
+
+.login-txt {
+    padding: 20px;
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* flex-direction: column; */
+}
+
+
+.input_item {
+    height: 60px;
+    line-height: 60px;
+    font-size: 30px;
+}
+
+.button_box {
+    margin-top: 20px;
 }
 
 .mask-content {
@@ -256,80 +270,26 @@ export default {
     font-size: 28px;
 }
 
-.mask-title {
+.mask-btns {
     align-items: center;
-}
-
-.title {
-    font-size: 28px;
-}
-
-.button_box {
-    margin-top: 20px;
-    align-items: center;
-}
-
-.bottom {
-    margin-top: 40px;
-}
-
-.input_box {
-    margin-bottom: 20;
-    margin-top: 20;
-    align-items: center;
-}
-
-.input_item {
-    width: 690px;
-    height: 90px;
-    border-style: solid;
-    border-width: 1;
-    border-color: #333;
-    border-radius: 10;
-    padding-left: 20;
-}
-
-/**/
-.table_container {
-    align-items: center;
-    margin-top: 20px;
-}
-
-.table {
-    width: 702;
-    border-style: solid;
-    border-color: #333;
-    border-width: 1px;
-    overflow-x: scroll;
-}
-
-.table_tr {
+    justify-content: center;
     flex-direction: row;
 }
 
-.active {
-    background-color: #ffb200;
+.scroller-box {
+    height: 606;
+    position: absolute !important;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
 }
 
-.table_th {
-    width: 234;
-    height: 60;
-    border-style: solid;
-    border-color: #333;
-    border-right-width: 1px;
-    justify-content: center;
-    align-items: center;
-    background-color: #ccc;
+.workShop-confirm {
+    margin-top: 10px;
 }
 
-.table_td {
-    width: 234;
-    height: 60;
-    border-style: solid;
-    border-color: #333;
-    border-right-width: 1px;
-    border-top-width: 1px;
-    justify-content: center;
+.button {
     align-items: center;
 }
 </style>
