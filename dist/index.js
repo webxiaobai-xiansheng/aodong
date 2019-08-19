@@ -23971,6 +23971,14 @@ exports.default = {
             isResetContainerDisabled: true
         };
     },
+    created: function created() {
+        var _this = this;
+
+        storage.getItem('workShopName', function (event) {
+            _this.functionRoomNumber = event.data;
+        });
+    },
+
     methods: {
         // 打开弹窗
         wxcButtonResetContainer: function wxcButtonResetContainer(e) {
@@ -24006,10 +24014,6 @@ exports.default = {
             } else {
                 var that = this;
                 var url = 'http://10.34.10.126:8999/obtain/workshopBucketManagement';
-                storage.getItem('workShopName', function (event) {
-                    console.log(event.data);
-                    that.functionRoomNumber = event.data;
-                });
                 var body = JSON.stringify({
                     functionRoomNumber: that.functionRoomNumber,
                     containerNumber: that.resetContainerNum
@@ -24025,8 +24029,6 @@ exports.default = {
                     var data = ret.data.data;
                     if (ret.status === 200) {
                         if (ret.data.status === 1) {
-                            var Steve = new BroadcastChannel('Avengers');
-                            Steve.postMessage('Assemble!');
                             modal.toast({ message: ret.data.message });
                         } else {
                             modal.toast({ message: ret.data.message });
@@ -24379,6 +24381,7 @@ exports.default = {
         };
     },
     methods: {
+
         // 点击table选择桶或者料斗
         selectContainer: function selectContainer(index) {
             var that = this;
@@ -24436,7 +24439,7 @@ exports.default = {
                                 that.isNextDisabled = true;
                             }
                         }
-                        if (data.list === '' || data.list === 'undefined') {
+                        if (data.list.length === 0) {
                             that.currentPage = 0;
                             that.pages = 0;
                             that.isPreviewDisabled = true;
@@ -24520,7 +24523,7 @@ exports.default = {
                                 that.isNextDisabled = true;
                             }
                         }
-                        if (data.list === '' || data.list === 'undefined') {
+                        if (data.list.length === 0) {
                             that.currentPage = 0;
                             that.pages = 0;
                             that.isPreviewDisabled = true;
@@ -25265,18 +25268,24 @@ exports.default = {
 
         // 选择空料斗
         wxcSelectEmptyContainer: function wxcSelectEmptyContainer(e) {
-            if (e.title.length < 1) {
-                this.containerNum = e.value;
-                this.isChoseDisabled = true;
-            } else {
-                this.isChoseDisabled = false;
-            }
+            console.log(e);
+            console.log(e.title);
+            // if (e.title.length < 1) {
+            //     this.containerNum=e.value;
+            //     console.log(this.containerNum)
+            //     this.isChoseDisabled = true;
+            // } else {
+            //     this.isChoseDisabled = false;
+            // }
+            this.isChoseDisabled = false;
+            this.containerNum = e.value;
         },
 
 
         // 选择选择空料斗、料桶--确认按钮
         wxcConfirmEmptyContainer: function wxcConfirmEmptyContainer(e) {
             var _this = this;
+            console.log(this.containerNum);
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
                 var url = 'http://10.34.10.126:8999/delivery/sendContainerToCleaningRoom';
                 var body = JSON.stringify({
@@ -25297,12 +25306,12 @@ exports.default = {
                     } else {
                         modal.toast({ message: ret.data.message, duration: 3 });
                     }
-                    this.show = false;
+                    // this.show = false;
                 });
             } else {
                 modal.toast({ message: '请选择桶编号', duration: 3 });
-                this.show = false;
             }
+            this.show = false;
         }
     }
 };
@@ -26601,12 +26610,13 @@ exports.default = {
 
         // 选择空料桶
         wxcSelectEmptyContainer: function wxcSelectEmptyContainer(e) {
-            if (e.title.length < 1) {
-                this.containerNum = e.value;
-                this.isChoseDisabled = true;
-            } else {
-                this.isChoseDisabled = false;
-            }
+            // if (e.title.length < 1) {
+            //     this.isChoseDisabled = true;
+            // } else {
+            //     this.isChoseDisabled = false;
+            // }
+            this.isChoseDisabled = false;
+            this.containerNum = e.value;
         },
 
 
@@ -26633,12 +26643,12 @@ exports.default = {
                     } else {
                         modal.toast({ message: ret.data.message, duration: 3 });
                     }
-                    this.show = false;
                 });
             } else {
                 modal.toast({ message: '请选择桶编号', duration: 3 });
-                this.show = false;
+                // _this.show = false;
             }
+            this.show = false;
         }
     }
 };
@@ -28176,6 +28186,9 @@ exports.default = {
     },
     onJurisLogin: function onJurisLogin() {
       this.$router.push({ name: 'jurisLogin' });
+    },
+    onContainerLogin: function onContainerLogin() {
+      this.$router.push({ name: 'containerLogin' });
     }
   }
 };
@@ -28571,7 +28584,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('div', {
     staticClass: ["btnNss"],
     on: {
-      "click": _vm.onJurisLogin
+      "click": _vm.onContainerLogin
     }
   }, [_c('text', {
     staticClass: ["btn-txtNSS"]

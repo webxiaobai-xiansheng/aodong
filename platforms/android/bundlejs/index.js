@@ -23971,6 +23971,14 @@ exports.default = {
             isResetContainerDisabled: true
         };
     },
+    created: function created() {
+        var _this = this;
+
+        storage.getItem('workShopName', function (event) {
+            _this.functionRoomNumber = event.data;
+        });
+    },
+
     methods: {
         // 打开弹窗
         wxcButtonResetContainer: function wxcButtonResetContainer(e) {
@@ -24006,10 +24014,6 @@ exports.default = {
             } else {
                 var that = this;
                 var url = 'http://10.34.10.126:8999/obtain/workshopBucketManagement';
-                storage.getItem('workShopName', function (event) {
-                    console.log(event.data);
-                    that.functionRoomNumber = event.data;
-                });
                 var body = JSON.stringify({
                     functionRoomNumber: that.functionRoomNumber,
                     containerNumber: that.resetContainerNum
@@ -24025,8 +24029,6 @@ exports.default = {
                     var data = ret.data.data;
                     if (ret.status === 200) {
                         if (ret.data.status === 1) {
-                            var Steve = new BroadcastChannel('Avengers');
-                            Steve.postMessage('Assemble!');
                             modal.toast({ message: ret.data.message });
                         } else {
                             modal.toast({ message: ret.data.message });
@@ -24379,6 +24381,7 @@ exports.default = {
         };
     },
     methods: {
+
         // 点击table选择桶或者料斗
         selectContainer: function selectContainer(index) {
             var that = this;
@@ -24436,7 +24439,7 @@ exports.default = {
                                 that.isNextDisabled = true;
                             }
                         }
-                        if (data.list === '' || data.list === 'undefined') {
+                        if (data.list.length === 0) {
                             that.currentPage = 0;
                             that.pages = 0;
                             that.isPreviewDisabled = true;
@@ -24520,7 +24523,7 @@ exports.default = {
                                 that.isNextDisabled = true;
                             }
                         }
-                        if (data.list === '' || data.list === 'undefined') {
+                        if (data.list.length === 0) {
                             that.currentPage = 0;
                             that.pages = 0;
                             that.isPreviewDisabled = true;
@@ -25250,6 +25253,7 @@ exports.default = {
                         for (var i = 0; i < ret.data.data.length; i++) {
                             _this.emptyContainerList.push({ title: ret.data.data[i].containerNumber, value: ret.data.data[i].containerNumber });
                         }
+                        _this.show = true;
                     } else {
                         modal.toast({ message: '该车间没有料斗', duration: 3 });
                     }
@@ -26585,6 +26589,7 @@ exports.default = {
                         for (var i = 0; i < ret.data.data.length; i++) {
                             _this.emptyContainerList.push({ title: ret.data.data[i].containerNumber, value: ret.data.data[i].containerNumber });
                         }
+                        _this.show = true;
                     } else {
                         modal.toast({ message: '该车间没有料桶', duration: 3 });
                     }
@@ -28174,6 +28179,9 @@ exports.default = {
     },
     onJurisLogin: function onJurisLogin() {
       this.$router.push({ name: 'jurisLogin' });
+    },
+    onContainerLogin: function onContainerLogin() {
+      this.$router.push({ name: 'containerLogin' });
     }
   }
 };
@@ -28569,7 +28577,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('div', {
     staticClass: ["btnNss"],
     on: {
-      "click": _vm.onJurisLogin
+      "click": _vm.onContainerLogin
     }
   }, [_c('text', {
     staticClass: ["btn-txtNSS"]
@@ -30194,15 +30202,15 @@ exports.default = {
                 value: '复方丹参片'
             }],
             // 时间参数
-            animationType: 'push',
-            currentDate: '',
-            selectedDate: ['2019-08-23', '2020-06-30'],
-            isRange: false,
-            calendarTitle: '选择日期',
-            // dateRange: ['1949-10-23', '3020-06-30'],
-            minibarCfg: {
-                title: '日期选择'
-            },
+            // animationType: 'push',
+            // currentDate: '',
+            // selectedDate: ['2019-08-23', '2020-06-30'],
+            // isRange: false,
+            // calendarTitle: '选择日期',
+            // // dateRange: ['1949-10-23', '3020-06-30'],
+            // minibarCfg: {
+            //     title: '日期选择'
+            // },
 
             isBottomShow: false,
             // 定时器测试
@@ -30343,7 +30351,7 @@ exports.default = {
                     var Steve = new BroadcastChannel('Avengers');
                     Steve.postMessage('Assemble!');
                     modal.toast({ message: ret.data.message, duration: 3 });
-                    _this.$router.go(-1);
+                    //    _this.$router.go(-1);
                     _this.time = setInterval(this.timer, 1000);
                 }
             });

@@ -71,17 +71,23 @@ export default {
         },
         // 选择空料斗
         wxcSelectEmptyContainer(e) {
-            if (e.title.length < 1) {
-                this.containerNum=e.value
-                this.isChoseDisabled = true;
-            } else {
-                this.isChoseDisabled = false;
-            }
+            console.log(e)
+            console.log(e.title);
+            // if (e.title.length < 1) {
+            //     this.containerNum=e.value;
+            //     console.log(this.containerNum)
+            //     this.isChoseDisabled = true;
+            // } else {
+            //     this.isChoseDisabled = false;
+            // }
+            this.isChoseDisabled = false;
+            this.containerNum=e.value;
         },
 
         // 选择选择空料斗、料桶--确认按钮
         wxcConfirmEmptyContainer(e) {
             let _this=this;
+            console.log(this.containerNum)
             if(this.containerNum!=='undefined'&&this.workshopName!=='undefined'){
                 let url = 'http://10.34.10.126:8999/delivery/sendContainerToCleaningRoom';
                 let body = JSON.stringify({
@@ -102,12 +108,12 @@ export default {
                     }else{
                         modal.toast({ message: ret.data.message, duration: 3 });
                     }
-                    this.show = false;
+                    // this.show = false;
                 })
             }else{
                 modal.toast({ message: '请选择桶编号', duration: 3 });
-                this.show = false;
             }
+            this.show = false;
         }
     }
 }

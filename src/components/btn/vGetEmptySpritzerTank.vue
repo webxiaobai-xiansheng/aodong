@@ -71,12 +71,13 @@ export default {
         },
         // 选择空料桶
         wxcSelectEmptyContainer(e) {
-            if (e.title.length < 1) {
-                this.containerNum=e.value
-                this.isChoseDisabled = true;
-            } else {
-                this.isChoseDisabled = false;
-            }
+            // if (e.title.length < 1) {
+                //     this.isChoseDisabled = true;
+            // } else {
+                //     this.isChoseDisabled = false;
+            // }
+            this.isChoseDisabled = false;
+            this.containerNum=e.value
         },
 
         // 选择选择空料斗、料桶--确认按钮
@@ -102,12 +103,12 @@ export default {
                     }else{
                         modal.toast({ message: ret.data.message, duration: 3 });
                     }
-                    this.show = false;
                 })
             }else{
                 modal.toast({ message: '请选择桶编号', duration: 3 });
-                this.show = false;
+                // _this.show = false;
             }
+            this.show =false;
         }
     }
 }
