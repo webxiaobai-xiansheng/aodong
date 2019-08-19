@@ -55,8 +55,8 @@ export default {
       functionNumber:'',
       containerNumber:'',
       productName:'',
+      id:'',
       showproduct:false,
-      count:1,
       time:''
     }
   },
@@ -69,49 +69,93 @@ export default {
   },
   created () {
     this.$nextTick(function () {
-        this.time=setInterval(this.timer, 1000);
+        this.time=setInterval(this.timer, 20000);
     })
   },
   methods: {
     timer(){
-      this.showproduct=true;
       let _this=this;
-      if(this.containerNum!=='undefined'&&this.workshopName!=='undefined'){
-        let url = 'http://10.34.10.25:8999/agvTask/getReviewTask';
-        // let body = JSON.stringify({
-        //     containerNumber:_this.containerNum,
-        //     functionRoomNumber:_this.workshopName
-        // });
-        stream.fetch({
-            method:"POST",
-            url:url,
-            headers:{'Content-Type':'application/json'},
-            body: body,
-            type:'json',
-        },function(ret){
-            if(ret.data.status===1){
-                modal.toast({ message: ret.data.message, duration: 3 });
-            }else{
-                modal.toast({ message: ret.data.message, duration: 3 });
-            }
-        })
-      }else{
-        modal.toast({ message: '请选择桶编号', duration: 3 });
-      }
-      if (this.count > 0) {
-          this.count++;
-          console.log(this.count)
-          clearInterval(this.time)
-          
-      }
+
+      let url = 'http://10.34.10.24:8999/agvTask/getReviewTask';
+      // let body = JSON.stringify({
+      //     containerNumber:_this.containerNum,
+      //     functionRoomNumber:_this.workshopName
+      // });
+      stream.fetch({
+          method:"GET",
+          url:url,
+          // headers:{'Content-Type':'application/json'},
+          // body: body,
+          type:'json',
+      },function(ret){
+        console.log(ret)
+          if(ret.data.status===1){
+              if(ret.data.message==='没有需要复核任务'){
+
+              }else if(ret.data.message==='有未复核通过任务'){
+                clearInterval(_this.time);
+                _this.showproduct=true;
+                _this.functionNumber=ret.data.data.functionNumber;
+                _this.containerNumber=ret.data.data.containerNumber;
+                _this.productName=ret.data.data.drugName;
+                _this.id=ret.data.data.taskId;
+              }
+          }else{
+              modal.toast({ message: ret.data.message, duration: 3 });
+          }
+      })
     },
     wxcChoseAllow(){
-      this.showproduct=false;
-      // setInterval(this.timer, 60000);
+      let _this=this;
+
+      let url = 'http://10.34.10.24:8999/obtain/reviewVerify';
+      let body = JSON.stringify({
+          taskId:_this.id,
+          functionNumber:_this.functionNumber,
+          containerNumber:_this.containerNumber,
+          drugName:_this.productName
+      });
+      stream.fetch({
+          method:"POST",
+          url:url,
+          headers:{'Content-Type':'application/json'},
+          body: body,
+          type:'json',
+      },function(ret){
+          if(ret.data.status===1){
+              modal.toast({ message: ret.data.message, duration: 3 });
+             _this.showproduct=false;
+            setInterval(_this.timer, 20000);
+          }else{
+              modal.toast({ message: ret.data.message, duration: 3 });
+          }
+      })
     },
     wxcChoseRefuse(){
-      this.showproduct=false;
-      // setInterval(this.timer, 60000);
+      let _this=this;
+
+      let url = 'http://10.34.10.24:8999/obtain/reviewRefuse';
+      let body = JSON.stringify({
+          taskId:_this.id,
+          functionNumber:_this.functionNumber,
+          containerNumber:_this.containerNumber,
+          drugName:_this.productName
+      });
+      stream.fetch({
+          method:"POST",
+          url:url,
+          headers:{'Content-Type':'application/json'},
+          body: body,
+          type:'json',
+      },function(ret){
+          if(ret.data.status===1){
+              modal.toast({ message: ret.data.message, duration: 3 });
+             _this.showproduct=false;
+            setInterval(_this.timer, 20000);
+          }else{
+              modal.toast({ message: ret.data.message, duration: 3 });
+          }
+      })
     }
   }
 }

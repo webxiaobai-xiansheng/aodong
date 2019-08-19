@@ -10,7 +10,7 @@
         </div>
 
         <div class="button_box">
-            <wxc-button text="初始化界面登录" type="blue" @wxcButtonClicked="onLogin"></wxc-button>
+            <wxc-button text="桶/库位绑定登录" type="blue" @wxcButtonClicked="onLogin"></wxc-button>
         </div>
         <div class="button_box">
             <wxc-button text="返回" type="blue" @wxcButtonClicked="onBlack"></wxc-button>
@@ -51,7 +51,7 @@ export default {
                     console.log(ret)
                     if(ret.data.status===1){
                         modal.toast({ message: ret.data.message, duration: 3 });
-                        _this.$router.push({name:'jurisLoginMessage'});
+                        _this.$router.push({name:'containerLoginMessage'});
                     }else{
                         modal.toast({ message: '登录失败！！！', duration: 3 });
                     }

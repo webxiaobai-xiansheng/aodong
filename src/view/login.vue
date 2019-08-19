@@ -254,7 +254,7 @@ export default {
       storage.getItem('containerNum', event => {
           console.log(event.data);
       });
-      Nat.audio.pause()
+    //   Nat.audio.pause()
     }
 }
 </script>

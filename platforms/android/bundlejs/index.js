@@ -24061,7 +24061,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('text', {
     staticClass: ["btn-txt"]
-  }, [_vm._v("取/送桶")])]), _c('div', {
+  }, [_vm._v("桶管理")])]), _c('div', {
     staticClass: ["btn"],
     on: {
       "click": _vm.openNoAnimationMask
@@ -25289,7 +25289,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('text', {
     staticClass: ["btn-txt"]
-  }, [_vm._v("取/送桶")])]), _c('div', {
+  }, [_vm._v("桶管理")])]), _c('div', {
     staticClass: ["btn"],
     on: {
       "click": _vm.openNoAnimationMask
@@ -25942,7 +25942,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('text', {
     staticClass: ["btn-txt"]
-  }, [_vm._v("取/送桶")])]), _c('div', {
+  }, [_vm._v("桶管理")])]), _c('div', {
     staticClass: ["btn"],
     on: {
       "click": _vm.openNoAnimationMask
@@ -26822,7 +26822,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('text', {
     staticClass: ["btn-txt"]
-  }, [_vm._v("取/送桶")])]), _c('div', {
+  }, [_vm._v("桶管理")])]), _c('div', {
     staticClass: ["btn"],
     on: {
       "click": _vm.openNoAnimationMask
@@ -27534,7 +27534,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('text', {
     staticClass: ["btn-txt"]
-  }, [_vm._v("取/送桶")])]), _c('div', {
+  }, [_vm._v("桶管理")])]), _c('div', {
     staticClass: ["btn"],
     on: {
       "click": _vm.openNoAnimationMask
@@ -28942,7 +28942,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('text', {
     staticClass: ["btn-txt"]
-  }, [_vm._v("取/送桶")])]), _c('div', {
+  }, [_vm._v("桶管理")])]), _c('div', {
     staticClass: ["btn"],
     on: {
       "click": _vm.openNoAnimationMask

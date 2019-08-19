@@ -13,7 +13,8 @@ import cleaning from '@/view/home/cleaning';
 import jurisLogin from '@/view/jurisLogin';
 import jurisLoginMessage from '@/view/jurisLoginMessage';
 import popUp from '@/view/home/popUp';
-import containerLoginMessage from '@/view/containerLoginMessage';
+import containerLogin from '@/view/containerLogin'; //桶/库位绑定登录
+import containerLoginMessage from '@/view/containerLoginMessage'; //桶/库位绑定页面
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export const router = new Router({
       path: '/jurisLoginMessage',
       name: 'jurisLoginMessage',
       component: jurisLoginMessage
+    },
+    {
+      path: '/containerLogin',
+      name: 'containerLogin',
+      component: containerLogin
     },
     {
       path: '/containerLoginMessage',

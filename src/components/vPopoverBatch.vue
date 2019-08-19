@@ -3,7 +3,7 @@
     <!-- 批料待发间 -->
     <div class="btns">
       <div class="btn" @click="openMask">
-        <text class="btn-txt">取/送桶</text>
+        <text class="btn-txt">桶管理</text>
       </div>
       <div class="btn" @click="openNoAnimationMask">
         <text class="btn-txt">车辆控制</text>

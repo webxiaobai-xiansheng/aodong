@@ -3,7 +3,7 @@
     <!-- 中间站 -->
     <div class="btns">
       <div class="btn" @click="openMask">
-        <text class="btn-txt">取/送桶</text>
+        <text class="btn-txt">桶管理</text>
       </div>
       <div class="btn" @click="openNoAnimationMask">
         <text class="btn-txt">车辆控制</text>
@@ -28,7 +28,10 @@
           <div class="btnNss" @click="onJurisLogin">
             <text class="btn-txtNSS">桶/库位绑定</text>
           </div>
+<<<<<<< HEAD
           <!-- <v-container-location class="contentBox-btn"></v-container-location> -->
+=======
+>>>>>>> d8663f56af950fbc2d424b29195402c1aecb55ba
       </div>
     </wxc-mask>
     <wxc-mask height="300"
@@ -59,9 +62,8 @@
   import vGetSpritzerHopperRinses from './btn/vGetSpritzerHopperRinses.vue';
   // 称重
   import vWeigh from './btn/vWeigh.vue';
-  import vContainerLocation from './btn/vContainerLocation.vue';
   export default {
-    components: { WxcMask,vStop,vStart,vGetSpritzerHopperRinses,vWeigh,vContainerLocation },
+    components: { WxcMask,vStop,vStart,vGetSpritzerHopperRinses,vWeigh },
     data: () => ({
       showBusiness: false,
       showFunction:false,
