@@ -62,6 +62,8 @@
                     </div>
                     <wxc-button text="下一页" type="blue" size="big" :disabled="isNextDisabled" @wxcButtonClicked="wxcButtonNext"></wxc-button>
                 </div>
+                <!-- 返回按钮 -->
+                <wxc-button text="返回" type="blue" size="big" @wxcButtonClicked="onBlack"></wxc-button>
             </wxc-popup>
         </div>
     </div>
@@ -211,6 +213,10 @@ export default {
                 that.currentPage += 1;
                 that.initTable();
             }
+        },
+        // 返回
+        onBlack() {
+            this.showTable = false;
         }
     }
 }
@@ -291,5 +297,60 @@ export default {
 
 .button {
     align-items: center;
+}
+/*table*/
+.table_container {
+    align-items: center;
+    margin-top: 20px;
+}
+
+.table {
+    width: 702;
+    border-style: solid;
+    border-color: #333;
+    border-width: 1px;
+    overflow-x: scroll;
+}
+
+.table_tr {
+    flex-direction: row;
+}
+
+.table_th {
+    width: 234;
+    height: 60;
+    border-style: solid;
+    border-color: #333;
+    border-right-width: 1px;
+    justify-content: center;
+    align-items: center;
+    background-color: #ccc;
+}
+
+.table_td {
+    width: 234;
+    height: 60;
+    border-style: solid;
+    border-color: #333;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    justify-content: center;
+    align-items: center;
+}
+/*分页*/
+.pageButton_box {
+    flex-direction: row;
+    justify-content: space-around;
+    justify-content: center;
+    /* padding-left: 30px; */
+    /* padding-right: 30px; */
+}
+.text_box {
+    width: 100px;
+    height: 60px;
+    background-color: #0f8ee8;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
 }
 </style>
