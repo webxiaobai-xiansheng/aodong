@@ -51,14 +51,7 @@ export default {
                     console.log(ret)
                     if(ret.data.status===1){
                         modal.toast({ message: ret.data.message, duration: 3 });
-                        let id = this.$route.params.id;
-                        if (id===0) {
-                            _this.$router.push({name:'jurisLoginMessage'});
-                        }
-                        if (id===1) {
-                            _this.$router.push({name:'containerLoginMessage'});
-                        }
-                        
+                        _this.$router.push({name:'jurisLoginMessage'});
                     }else{
                         modal.toast({ message: '登录失败！！！', duration: 3 });
                     }

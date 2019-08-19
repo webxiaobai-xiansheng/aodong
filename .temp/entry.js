@@ -23,6 +23,7 @@ const App = require('@/index.vue')
 //     //     }
 //     // }
 // })
-
+// import Nat from 'natjs'
+// Nat.audio.play('../img/view.mp3')
 new Vue(Vue.util.extend({el: '#root', router}, App))
 router.push('/')

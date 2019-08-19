@@ -15,6 +15,15 @@
         <div class="button_box">
             <wxc-button text="登录" :disabled="isLoginDisabled" type="blue" @wxcButtonClicked="login"></wxc-button>
         </div>
+
+        <!-- <div style="align-items: center;justify-content: center">
+            <text style="color: #000000">{{p}}</text>
+            <button text="播放" @click="play"></button>
+            <button text="暂停" @click="pause" style="margin-top: 20px"></button>
+            <button text="停止" @click="stop" style="margin-top: 20px"></button>
+            <button text="seek" @click="seek" style="margin-top: 20px"></button>
+        </div> -->
+
         <wxc-popup popup-color="#fff" :show="show" @wxcPopupOverlayClicked="wxcMaskSetHidden" pos="left" height="400">
             <div class="content mask-content">
                 <div class="mask-title">
@@ -37,6 +46,7 @@ const modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
 const storage = weex.requireModule('storage');
 import { WxcButton, WxcRadio, WxcPopup } from 'weex-ui';
+// import Nat from 'natjs'
 export default {
     components: { WxcButton, WxcRadio, WxcPopup },
     data: () => ({
@@ -46,6 +56,7 @@ export default {
         isLoginDisabled: true,
         isChoseDisabled: true,
         show: false,
+        p:'',
         list: [{
             title: '批料待发间',
             value: 'WL'
@@ -206,7 +217,35 @@ export default {
                 }
 
             });
-        }
+        },
+
+
+        // play(){
+        //         let audio=weex.requireModule('audio')
+        //         audio.setUrl({url:'../img/view.mp3',autoPlay:true})
+        //     },
+        //     pause(){
+        //         let audio=weex.requireModule('audio')
+        //         audio.pause()
+        //     },
+        //     stop(){
+        //         let audio=weex.requireModule('audio')
+        //         audio.stop()
+        //     },
+        //     seek(){
+        //         let audio=weex.requireModule('audio')
+        //         audio.seek(112160)
+        //     },
+        //     onLoad(p){
+        //         let audio=weex.requireModule('audio')
+        //         audio.setOnPlaying((res)=>{
+        //             this.p=res;
+        //         })
+        //         audio.setOnCompletion((res)=>{
+        //             this.p='播放完毕';
+        //         })
+        //     },
+
     },
     created() {
       storage.getItem('workShopName', event => {
@@ -215,6 +254,7 @@ export default {
       storage.getItem('containerNum', event => {
           console.log(event.data);
       });
+      Nat.audio.pause()
     }
 }
 </script>

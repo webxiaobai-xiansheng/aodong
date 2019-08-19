@@ -42,6 +42,9 @@
 </template>
 
 <script>
+const modal = weex.requireModule('modal');
+const stream = weex.requireModule('stream');
+const navigator = weex.requireModule('navigator');
 import vPopoverWay from '../../components/vPopoverWay';
 import vTable from '../../components/vTable';
 // import vPage from '../../components/btn/vPage';
@@ -65,21 +68,43 @@ export default {
     WxcPopup
   },
   created () {
-    // this.$nextTick(function () {
-    //     this.time=setInterval(this.timer, 1000);
-    // })
-    // vPage
+    this.$nextTick(function () {
+        this.time=setInterval(this.timer, 1000);
+    })
   },
   methods: {
-    // timer(){
-    //   this.showproduct=true;
-    //   if (this.count > 0) {
-    //       this.count++;
-    //       console.log(this.count)
-    //       clearInterval(this.time)
+    timer(){
+      this.showproduct=true;
+      let _this=this;
+      if(this.containerNum!=='undefined'&&this.workshopName!=='undefined'){
+        let url = 'http://10.34.10.25:8999/agvTask/getReviewTask';
+        // let body = JSON.stringify({
+        //     containerNumber:_this.containerNum,
+        //     functionRoomNumber:_this.workshopName
+        // });
+        stream.fetch({
+            method:"POST",
+            url:url,
+            headers:{'Content-Type':'application/json'},
+            body: body,
+            type:'json',
+        },function(ret){
+            if(ret.data.status===1){
+                modal.toast({ message: ret.data.message, duration: 3 });
+            }else{
+                modal.toast({ message: ret.data.message, duration: 3 });
+            }
+        })
+      }else{
+        modal.toast({ message: '请选择桶编号', duration: 3 });
+      }
+      if (this.count > 0) {
+          this.count++;
+          console.log(this.count)
+          clearInterval(this.time)
           
-    //   }
-    // },
+      }
+    },
     wxcChoseAllow(){
       this.showproduct=false;
       // setInterval(this.timer, 60000);

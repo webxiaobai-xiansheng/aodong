@@ -13,7 +13,7 @@ import cleaning from '@/view/home/cleaning';
 import jurisLogin from '@/view/jurisLogin';
 import jurisLoginMessage from '@/view/jurisLoginMessage';
 import popUp from '@/view/home/popUp';
-import containerLoginMessage from '@/view/containerLoginMessage'
+import containerLoginMessage from '@/view/containerLoginMessage';
 
 Vue.use(Router)
 

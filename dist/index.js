@@ -2299,7 +2299,7 @@ module.exports = __vue_exports__
 var _require = __webpack_require__(27),
     router = _require.router;
 
-var App = __webpack_require__(409);
+var App = __webpack_require__(413);
 /* eslint-disable no-new */
 
 // 路由导航守卫
@@ -2317,7 +2317,8 @@ var App = __webpack_require__(409);
 //     //     }
 //     // }
 // })
-
+// import Nat from 'natjs'
+// Nat.audio.play('../img/view.mp3')
 new Vue(Vue.util.extend({ el: '#root', router: router }, App));
 router.push('/');
 
@@ -2385,9 +2386,15 @@ var _popUp = __webpack_require__(401);
 
 var _popUp2 = _interopRequireDefault(_popUp);
 
+var _containerLoginMessage = __webpack_require__(409);
+
+var _containerLoginMessage2 = _interopRequireDefault(_containerLoginMessage);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-Vue.use(_vueRouter2.default); /* global Vue */
+/* global Vue */
+Vue.use(_vueRouter2.default);
+
 var router = exports.router = new _vueRouter2.default({
   routes: [{
     path: '/',
@@ -2403,6 +2410,10 @@ var router = exports.router = new _vueRouter2.default({
     path: '/jurisLoginMessage',
     name: 'jurisLoginMessage',
     component: _jurisLoginMessage2.default
+  }, {
+    path: '/containerLoginMessage',
+    name: 'containerLoginMessage',
+    component: _containerLoginMessage2.default
   }, {
     path: '/home',
     name: 'home',
@@ -5454,10 +5465,21 @@ var _weexUi = __webpack_require__(1);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
 var storage = weex.requireModule('storage');
+
+// import Nat from 'natjs'
 exports.default = {
     components: { WxcButton: _weexUi.WxcButton, WxcRadio: _weexUi.WxcRadio, WxcPopup: _weexUi.WxcPopup },
     data: function data() {
@@ -5468,6 +5490,7 @@ exports.default = {
             isLoginDisabled: true,
             isChoseDisabled: true,
             show: false,
+            p: '',
             list: [{
                 title: '批料待发间',
                 value: 'WL'
@@ -5642,6 +5665,7 @@ exports.default = {
         storage.getItem('containerNum', function (event) {
             console.log(event.data);
         });
+        Nat.audio.pause();
     }
 };
 
@@ -27721,6 +27745,54 @@ var _weexUi = __webpack_require__(1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var modal = weex.requireModule('modal');
+var stream = weex.requireModule('stream');
+var navigator = weex.requireModule('navigator');
+// import vPage from '../../components/btn/vPage';
 exports.default = {
   data: function data() {
     return {
@@ -27741,22 +27813,43 @@ exports.default = {
     WxcPopup: _weexUi.WxcPopup
   },
   created: function created() {
-    // this.$nextTick(function () {
-    //     this.time=setInterval(this.timer, 1000);
-    // })
-    // vPage
+    this.$nextTick(function () {
+      this.time = setInterval(this.timer, 1000);
+    });
   },
 
   methods: {
-    // timer(){
-    //   this.showproduct=true;
-    //   if (this.count > 0) {
-    //       this.count++;
-    //       console.log(this.count)
-    //       clearInterval(this.time)
-
-    //   }
-    // },
+    timer: function timer() {
+      this.showproduct = true;
+      var _this = this;
+      if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
+        var url = 'http://10.34.10.25:8999/agvTask/getReviewTask';
+        // let body = JSON.stringify({
+        //     containerNumber:_this.containerNum,
+        //     functionRoomNumber:_this.workshopName
+        // });
+        stream.fetch({
+          method: "POST",
+          url: url,
+          headers: { 'Content-Type': 'application/json' },
+          body: body,
+          type: 'json'
+        }, function (ret) {
+          if (ret.data.status === 1) {
+            modal.toast({ message: ret.data.message, duration: 3 });
+          } else {
+            modal.toast({ message: ret.data.message, duration: 3 });
+          }
+        });
+      } else {
+        modal.toast({ message: '请选择桶编号', duration: 3 });
+      }
+      if (this.count > 0) {
+        this.count++;
+        console.log(this.count);
+        clearInterval(this.time);
+      }
+    },
     wxcChoseAllow: function wxcChoseAllow() {
       this.showproduct = false;
       // setInterval(this.timer, 60000);
@@ -27767,50 +27860,6 @@ exports.default = {
     }
   }
 };
-// import vPage from '../../components/btn/vPage';
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /***/ }),
 /* 366 */
@@ -27957,6 +28006,9 @@ var _vContainerLocation2 = _interopRequireDefault(_vContainerLocation);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // 称重
+//
+//
+//
 //
 //
 //
@@ -28683,7 +28735,7 @@ exports.default = {
             this.initTable();
         },
 
-        // 初始化table和筛选table
+        // 初始化table
         initTable: function initTable() {
             var that = this;
             var url = 'http://10.34.10.126:8200/containerFunctionLocation/getAllContainerFunctionLocation';
@@ -28950,9 +29002,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["contentBox-btn"]
   }), _c('v-get-spritzer-hopper-rinses', {
     staticClass: ["contentBox-btn"]
-  }), _c('v-container-location', {
-    staticClass: ["contentBox-btn"]
-  })], 1)]), _c('wxc-mask', {
+  }), _c('div', {
+    staticClass: ["btnNss"],
+    on: {
+      "click": _vm.onJurisLogin
+    }
+  }, [_c('text', {
+    staticClass: ["btn-txtNSS"]
+  }, [_vm._v("桶/库位绑定")])])], 1)]), _c('wxc-mask', {
     attrs: {
       "height": "300",
       "width": "500",
@@ -31100,6 +31157,529 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
+__vue_options__.__file = "C:\\Users\\IBM\\Desktop\\aodong\\src\\view\\containerLoginMessage.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-0edfe38e"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 410 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "inputBox": {
+    "display": "flex",
+    "flexDirection": "row"
+  },
+  "input-title": {
+    "flex": 1,
+    "lineHeight": "60",
+    "textAlign": "center",
+    "fontSize": "30"
+  },
+  "input_box": {
+    "flex": 3,
+    "borderStyle": "solid",
+    "borderWidth": "1",
+    "borderColor": "#333333",
+    "borderRadius": "10",
+    "marginBottom": "40",
+    "paddingLeft": "20"
+  },
+  "login-txt": {
+    "paddingTop": "20",
+    "paddingRight": "20",
+    "paddingBottom": "20",
+    "paddingLeft": "20"
+  },
+  "input_item": {
+    "height": "60",
+    "lineHeight": "60",
+    "fontSize": "30"
+  },
+  "button_box": {
+    "marginTop": "20"
+  },
+  "mask-content": {
+    "paddingTop": 20
+  },
+  "mask-title": {
+    "alignItems": "center"
+  },
+  "title": {
+    "fontSize": "28"
+  },
+  "mask-btns": {
+    "alignItems": "center",
+    "justifyContent": "center",
+    "flexDirection": "row"
+  },
+  "scroller-box": {
+    "height": 606,
+    "top": 0,
+    "right": 0,
+    "left": 0,
+    "bottom": 0
+  },
+  "workShop-confirm": {
+    "marginTop": "10"
+  },
+  "button": {
+    "alignItems": "center"
+  }
+}
+
+/***/ }),
+/* 411 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _weexUi = __webpack_require__(1);
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var modal = weex.requireModule('modal');
+var stream = weex.requireModule('stream');
+exports.default = {
+    components: { WxcButton: _weexUi.WxcButton, WxcRadio: _weexUi.WxcRadio, WxcPageCalendar: _weexUi.WxcPageCalendar, WxcMinibar: _weexUi.WxcMinibar, WxcPopup: _weexUi.WxcPopup },
+    data: function data() {
+        return {
+            ContainerNum: '',
+            LocationNum: '',
+            isCheckDisabled: true,
+            tableHeadData: ['编号', '桶号', '库位二维码编号'],
+            tableBodyData: [],
+            isPreviewDisabled: false,
+            isNextDisabled: false,
+            currentPage: 1,
+            pageSize: 10,
+            pages: 0,
+            pageNum: 1
+        };
+    },
+    methods: {
+        //输入桶编号和库位编号
+        onInputContainer: function onInputContainer() {
+            if (this.ContainerNum && this.LocationNum) {
+                this.isDisabled = false;
+            } else {
+                this.isDisabled = true;
+                if (!this.ContainerNum) {
+                    modal.toast({ message: '桶编号不能为空' });
+                } else if (!this.LocationNum) {
+                    modal.toast({ message: '库位二维码编号不能为空' });
+                }
+            }
+        },
+
+
+        // 确定绑定按钮
+        wxcConfirmContainer: function wxcConfirmContainer(e) {
+            if (e.disabled) {
+                return;
+            } else {
+                var that = this;
+                var url = 'http://10.34.10.126:8200/containerFunctionLocation/saveContainerFunctionLocation';
+                var body = JSON.stringify({
+                    containerFunctionNumber: that.ContainerNum,
+                    containerFunctionQrCodeNumber: that.LocationNum
+                });
+                stream.fetch({
+                    method: "POST",
+                    type: 'json',
+                    url: url,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: body
+                }, function (ret) {
+                    console.log(ret);
+                    var data = ret.data.data;
+                    if (ret.status === 200) {
+                        if (ret.data.status === 1) {
+                            modal.toast({ message: ret.data.message });
+                            that.isCheckDisabled = false;
+                        } else {
+                            modal.toast({ message: ret.data.message });
+                        }
+                    }
+                });
+                // this.show = false;
+            }
+        },
+        black: function black() {
+            this.$router.push({ name: 'wayStation' });
+        },
+        minibarLeftButtonClick: function minibarLeftButtonClick() {},
+        minibarRightButtonClick: function minibarRightButtonClick() {
+            modal.toast({ 'message': '退出成功', 'duration': 1 });
+            this.$router.push({ name: 'login' });
+        },
+
+        // 打开列表弹窗
+        wxcCheckList: function wxcCheckList() {
+            this.showTable = true;
+            this.initTable();
+        },
+
+        // 初始化table
+        initTable: function initTable() {
+            var that = this;
+            var url = 'http://10.34.10.126:8200/containerFunctionLocation/getAllContainerFunctionLocation';
+            var body = JSON.stringify({
+                page: that.currentPage,
+                size: that.pageSize
+            });
+            stream.fetch({
+                method: "POST",
+                type: 'json',
+                url: url,
+                headers: { 'Content-Type': 'application/json' },
+                body: body
+            }, function (ret) {
+                console.log(ret);
+                var data = ret.data.data;
+                if (ret.status === 200) {
+                    if (ret.data.status === 1) {
+                        modal.toast({ message: ret.data.message });
+                        that.tableBodyData = data.list;
+                        if (data.list && data.list != '') {
+                            that.isCheckDisabled = false;
+                        }
+                        that.pages = data.pages; //页数
+                        that.currentPage = data.pageNum; //当前页
+                        if (data.pageNum > 1) {
+                            if (data.pageNum === data.pages) {
+                                that.isPreviewDisabled = false;
+                                that.isNextDisabled = true;
+                            }
+                        }
+                        if (data.pageNum === 1) {
+                            that.isPreviewDisabled = true;
+                            that.isNextDisabled = false;
+                            if (data.pageNum === data.pages) {
+                                that.isPreviewDisabled = true;
+                                that.isNextDisabled = true;
+                            }
+                        }
+                    } else {
+                        modal.toast({ message: ret.data.message });
+                    }
+                }
+            });
+        },
+
+
+        // 分页按钮--上一页
+        wxcButtonPreview: function wxcButtonPreview(e) {
+            var that = this;
+            if (e.disabled) {
+                return;
+            } else {
+                that.currentPage -= 1;
+                that.initTable();
+            }
+        },
+
+        // 分页按钮--下一页
+        wxcButtonNext: function wxcButtonNext(e) {
+            var that = this;
+            if (e.disabled) {
+                return;
+            } else {
+                that.currentPage += 1;
+                that.initTable();
+            }
+        }
+    }
+};
+
+/***/ }),
+/* 412 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["login_content"]
+  }, [_c('div', {
+    staticClass: ["container"],
+    style: {
+      height: _vm.height
+    }
+  }, [_c('div', {
+    staticClass: ["demo"]
+  }, [_c('wxc-minibar', {
+    attrs: {
+      "backgroundColor": "#009ff0",
+      "leftButton": ""
+    },
+    on: {
+      "wxcMinibarLeftButtonClicked": _vm.minibarLeftButtonClick,
+      "wxcMinibarRightButtonClicked": _vm.minibarRightButtonClick
+    }
+  }, [_c('text', {
+    staticStyle: {
+      fontSize: "35px",
+      color: "#fff"
+    },
+    attrs: {
+      "slot": "middle"
+    },
+    slot: "middle"
+  }, [_vm._v("桶/库位绑定")]), _c('text', {
+    staticStyle: {
+      fontSize: "35px",
+      color: "#fff"
+    },
+    attrs: {
+      "slot": "right"
+    },
+    slot: "right"
+  }, [_vm._v("退出")])])], 1)]), _c('div', {
+    staticClass: ["login-txt"]
+  }, [_c('div', {
+    staticClass: ["login_input"]
+  }, [_c('div', {
+    staticClass: ["inputBox"]
+  }, [_c('text', {
+    staticClass: ["input-title"]
+  }, [_vm._v("桶编号")]), _c('div', {
+    staticClass: ["input_box"]
+  }, [_c('input', {
+    staticClass: ["input_item"],
+    attrs: {
+      "type": "text",
+      "placeholder": "请输入桶的编号",
+      "value": (_vm.ContainerNum)
+    },
+    on: {
+      "input": [function($event) {
+        _vm.ContainerNum = $event.target.attr.value
+      }, _vm.onInputContainer]
+    }
+  })])]), _c('div', {
+    staticClass: ["inputBox"]
+  }, [_c('text', {
+    staticClass: ["input-title"]
+  }, [_vm._v("请输入库位二维码的编号")]), _c('div', {
+    staticClass: ["input_box"]
+  }, [_c('input', {
+    staticClass: ["input_item"],
+    attrs: {
+      "type": "text",
+      "placeholder": "请输入库位二维码的编号",
+      "value": (_vm.LocationNum)
+    },
+    on: {
+      "input": [function($event) {
+        _vm.LocationNum = $event.target.attr.value
+      }, _vm.onInputContainer]
+    }
+  })])])]), _c('div', {
+    staticClass: ["button_box"]
+  }, [_c('wxc-button', {
+    attrs: {
+      "text": "确定",
+      "type": "blue"
+    },
+    on: {
+      "wxcButtonClicked": _vm.wxcConfirmContainer
+    }
+  })], 1), _c('div', {
+    staticClass: ["button_box"]
+  }, [_c('wxc-button', {
+    attrs: {
+      "text": "查看",
+      "type": "blue",
+      "disabled": _vm.isCheckDisabled
+    },
+    on: {
+      "wxcButtonClicked": _vm.wxcCheckList
+    }
+  })], 1), _c('div', {
+    staticClass: ["button_box"]
+  }, [_c('wxc-button', {
+    attrs: {
+      "text": "返回中间站",
+      "type": "blue"
+    },
+    on: {
+      "wxcButtonClicked": _vm.black
+    }
+  })], 1)]), _c('div', {
+    staticClass: ["mask-container"]
+  }, [_c('wxc-popup', {
+    attrs: {
+      "popupColor": "#fff",
+      "show": _vm.showTable,
+      "pos": "left",
+      "height": "400"
+    },
+    on: {
+      "wxcPopupOverlayClicked": _vm.wxcMaskTableHidden
+    }
+  }, [_c('div', {
+    staticClass: ["table_box"]
+  }, [_c('div', {
+    staticClass: ["table_container"]
+  }, [_c('table', {
+    staticClass: ["table"]
+  }, [_c('thead', [_c('tr', {
+    staticClass: ["table_tr"]
+  }, _vm._l((_vm.tableHeadData), function(theadItem) {
+    return _c('th', {
+      staticClass: ["table_th", "long"]
+    }, [_c('text', [_vm._v(_vm._s(theadItem))])])
+  }))], 1), _c('tbody', _vm._l((_vm.tableBodyData), function(item, index) {
+    return _c('tr', {
+      staticClass: ["table_tr"]
+    }, [_c('td', {
+      staticClass: ["table_td", "long"]
+    }, [_c('text', [_vm._v(_vm._s(item.id))])]), _c('td', {
+      staticClass: ["table_td", "long"]
+    }, [_c('text', [_vm._v(_vm._s(item.containerFunctionNumber))])]), _c('td', {
+      staticClass: ["table_td", "long"]
+    }, [_c('text', [_vm._v(_vm._s(item.containerFunctionQrCodeNumber))])])], 1)
+  }))], 1)], 1)]), _c('div', {
+    staticClass: ["pageButton_box"]
+  }, [_c('wxc-button', {
+    attrs: {
+      "text": "上一页",
+      "type": "blue",
+      "size": "big",
+      "disabled": _vm.isPreviewDisabled
+    },
+    on: {
+      "wxcButtonClicked": _vm.wxcButtonPreview
+    }
+  }), _c('div', {
+    staticClass: ["text_box"]
+  }, [_c('text', {
+    staticClass: ["page-txt", "pageNum"]
+  }, [_vm._v(_vm._s(_vm.currentPage) + "/" + _vm._s(_vm.pages))])]), _c('wxc-button', {
+    attrs: {
+      "text": "下一页",
+      "type": "blue",
+      "size": "big",
+      "disabled": _vm.isNextDisabled
+    },
+    on: {
+      "wxcButtonClicked": _vm.wxcButtonNext
+    }
+  })], 1)])], 1)])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 413 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(414)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(415)
+
+/* template */
+var __vue_template__ = __webpack_require__(416)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
 __vue_options__.__file = "C:\\Users\\IBM\\Desktop\\aodong\\src\\index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
@@ -31118,7 +31698,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 410 */
+/* 414 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -31168,7 +31748,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 411 */
+/* 415 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31192,7 +31772,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 412 */
+/* 416 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
