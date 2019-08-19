@@ -110,6 +110,7 @@ export default {
         btext:''
     }),
     methods: {
+        
         // 点击table选择桶或者料斗
         selectContainer(index) {
             let that = this;
@@ -166,7 +167,7 @@ export default {
                                 that.isNextDisabled = true;
                             }
                         }
-                        if (data.list===''||data.list==='undefined') {
+                        if (data.list.length === 0) {
                             that.currentPage = 0;
                             that.pages = 0;
                             that.isPreviewDisabled = true;
@@ -245,7 +246,7 @@ export default {
                                 that.isNextDisabled = true;
                             }
                         }
-                        if (data.list ==='' || data.list === 'undefined') {
+                        if (data.list.length === 0) {
                             that.currentPage = 0;
                             that.pages = 0;
                             that.isPreviewDisabled = true;
