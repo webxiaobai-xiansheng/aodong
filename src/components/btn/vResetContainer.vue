@@ -33,10 +33,15 @@ export default {
     components: { WxcPopup, WxcButton },
     data: () => ({
         resetContainerNum: '',
-        functionRoomNumber:'',
+        functionRoomNumber: '',
         show: false,
         isResetContainerDisabled: true,
     }),
+    created() {
+        storage.getItem('workShopName', event => {
+            this.functionRoomNumber = event.data;
+        });
+    },
     methods: {
         // 打开弹窗
         wxcButtonResetContainer(e) {
@@ -58,7 +63,7 @@ export default {
                 this.isResetContainerDisabled = false;
             } else {
                 this.isResetContainerDisabled = true;
-                modal.toast({message:'桶编号不能为空'})
+                modal.toast({ message: '桶编号不能为空' })
             }
         },
 
@@ -69,10 +74,6 @@ export default {
             } else {
                 let that = this;
                 let url = 'http://10.34.10.126:8999/obtain/workshopBucketManagement';
-                storage.getItem('workShopName', event => {
-                    console.log(event.data);
-                    that.functionRoomNumber = event.data;
-                });
                 let body = JSON.stringify({
                     functionRoomNumber: that.functionRoomNumber,
                     containerNumber: that.resetContainerNum
@@ -88,8 +89,6 @@ export default {
                     let data = ret.data.data;
                     if (ret.status === 200) {
                         if (ret.data.status === 1) {
-                            const Steve = new BroadcastChannel('Avengers')
-                            Steve.postMessage('Assemble!')
                             modal.toast({ message: ret.data.message });
                         } else {
                             modal.toast({ message: ret.data.message });
