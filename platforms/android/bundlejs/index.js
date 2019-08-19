@@ -25268,18 +25268,24 @@ exports.default = {
 
         // 选择空料斗
         wxcSelectEmptyContainer: function wxcSelectEmptyContainer(e) {
-            if (e.title.length < 1) {
-                this.containerNum = e.value;
-                this.isChoseDisabled = true;
-            } else {
-                this.isChoseDisabled = false;
-            }
+            console.log(e);
+            console.log(e.title);
+            // if (e.title.length < 1) {
+            //     this.containerNum=e.value;
+            //     console.log(this.containerNum)
+            //     this.isChoseDisabled = true;
+            // } else {
+            //     this.isChoseDisabled = false;
+            // }
+            this.isChoseDisabled = false;
+            this.containerNum = e.value;
         },
 
 
         // 选择选择空料斗、料桶--确认按钮
         wxcConfirmEmptyContainer: function wxcConfirmEmptyContainer(e) {
             var _this = this;
+            console.log(this.containerNum);
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
                 var url = 'http://10.34.10.126:8999/delivery/sendContainerToCleaningRoom';
                 var body = JSON.stringify({
@@ -25300,12 +25306,12 @@ exports.default = {
                     } else {
                         modal.toast({ message: ret.data.message, duration: 3 });
                     }
-                    this.show = false;
+                    // this.show = false;
                 });
             } else {
                 modal.toast({ message: '请选择桶编号', duration: 3 });
-                this.show = false;
             }
+            this.show = false;
         }
     }
 };
@@ -26604,12 +26610,13 @@ exports.default = {
 
         // 选择空料桶
         wxcSelectEmptyContainer: function wxcSelectEmptyContainer(e) {
-            if (e.title.length < 1) {
-                this.containerNum = e.value;
-                this.isChoseDisabled = true;
-            } else {
-                this.isChoseDisabled = false;
-            }
+            // if (e.title.length < 1) {
+            //     this.isChoseDisabled = true;
+            // } else {
+            //     this.isChoseDisabled = false;
+            // }
+            this.isChoseDisabled = false;
+            this.containerNum = e.value;
         },
 
 
@@ -26636,12 +26643,12 @@ exports.default = {
                     } else {
                         modal.toast({ message: ret.data.message, duration: 3 });
                     }
-                    this.show = false;
                 });
             } else {
                 modal.toast({ message: '请选择桶编号', duration: 3 });
-                this.show = false;
+                // _this.show = false;
             }
+            this.show = false;
         }
     }
 };
@@ -28796,33 +28803,80 @@ var _vCleaning2 = _interopRequireDefault(_vCleaning);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var modal = weex.requireModule('modal');
+var stream = weex.requireModule('stream');
+var storage = weex.requireModule('storage');
 exports.default = {
   data: function data() {
-    return {};
+    return {
+      // 车间名字
+      workshopName: '',
+      containerNum: ''
+    };
+  },
+  created: function created() {
+    var _this2 = this;
+
+    storage.getItem('workShopName', function (event) {
+      _this2.workshopName = event.data;
+    });
+    // storage.getItem('containerNum', event => {
+    //     this.workshopName = event.data;
+    // });
   },
 
   components: {
     vCleaning: _vCleaning2.default
   },
-  methods: {}
-}; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+  methods: {
+    onClack: function onClack() {
+      var _this = this;
+      if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
+        var url = 'http://10.34.10.126:8999/delivery/sendEmptyContainer';
+        var body = JSON.stringify({
+          containerNumber: _this.containerNum,
+          functionRoomNumber: _this.workshopName
+        });
+        stream.fetch({
+          method: "POST",
+          url: url,
+          headers: { 'Content-Type': 'application/json' },
+          body: body,
+          type: 'json'
+        }, function (ret) {
+          if (ret.data.status === 1) {
+            var Steve = new BroadcastChannel('Avengers');
+            Steve.postMessage('Assemble!');
+            modal.toast({ message: ret.data.message, duration: 3 });
+          } else {
+            modal.toast({ message: ret.data.message, duration: 3 });
+          }
+        });
+      } else {
+        modal.toast({ message: '请输入桶编号', duration: 3 });
+      }
+    }
+  }
+};
 
 /***/ }),
 /* 383 */
@@ -28938,9 +28992,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["home"]
   }, [_c('v-cleaning', {
     staticClass: ["cheBtn"]
-  }), _vm._m(0), _vm._m(1)], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  }), _c('div', {
     staticClass: ["inputBox"]
   }, [_c('text', {
     staticClass: ["input-title"]
@@ -28951,18 +29003,25 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "type": "text",
       "placeholder": "编号",
-      "maxlength": "6"
+      "maxlength": "6",
+      "value": (_vm.containerNum)
+    },
+    on: {
+      "input": function($event) {
+        _vm.containerNum = $event.target.attr.value
+      }
     }
-  })])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  })])]), _c('div', {
     staticClass: ["btns"]
   }, [_c('div', {
     staticClass: ["btn"]
   }, [_c('text', {
-    staticClass: ["btn-txt"]
-  }, [_vm._v("确认")])])])
-}]}
+    staticClass: ["btn-txt"],
+    on: {
+      "click": _vm.onClack
+    }
+  }, [_vm._v("确认")])])])], 1)
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 
 /***/ }),
@@ -31039,6 +31098,58 @@ module.exports = {
   },
   "button": {
     "alignItems": "center"
+  },
+  "table_container": {
+    "alignItems": "center",
+    "marginTop": "20"
+  },
+  "table": {
+    "width": 702,
+    "borderStyle": "solid",
+    "borderColor": "#333333",
+    "borderWidth": "1",
+    "overflowX": "scroll"
+  },
+  "table_tr": {
+    "flexDirection": "row"
+  },
+  "table_th": {
+    "width": 234,
+    "height": 60,
+    "borderStyle": "solid",
+    "borderColor": "#333333",
+    "borderRightWidth": "1",
+    "justifyContent": "center",
+    "alignItems": "center",
+    "backgroundColor": "#cccccc"
+  },
+  "table_td": {
+    "width": 234,
+    "height": 60,
+    "borderStyle": "solid",
+    "borderColor": "#333333",
+    "borderRightWidth": "1",
+    "borderTopWidth": "1",
+    "justifyContent": "center",
+    "alignItems": "center"
+  },
+  "mask-container": {
+    "display": "flex",
+    "flexDirection": "row",
+    "justifyContent": "center"
+  },
+  "pageButton_box": {
+    "flexDirection": "row",
+    "justifyContent": "center",
+    "marginTop": "20"
+  },
+  "text_box": {
+    "width": "100",
+    "height": "70",
+    "backgroundColor": "#0f8ee8",
+    "borderRadius": "10",
+    "alignItems": "center",
+    "justifyContent": "center"
   }
 }
 
@@ -31055,6 +31166,10 @@ Object.defineProperty(exports, "__esModule", {
 
 var _weexUi = __webpack_require__(1);
 
+//
+//
+//
+//
 //
 //
 //
@@ -31274,6 +31389,17 @@ exports.default = {
                 that.currentPage += 1;
                 that.initTable();
             }
+        },
+
+        // 返回
+        onBlack: function onBlack() {
+            // modal.toast({message:'陈工'})
+            this.$router.push({ name: 'wayStation' });
+        },
+
+        // 关闭popup
+        wxcMaskTableHidden: function wxcMaskTableHidden() {
+            this.showTable = false;
         }
     }
 };
@@ -31345,7 +31471,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["inputBox"]
   }, [_c('text', {
     staticClass: ["input-title"]
-  }, [_vm._v("请输入库位二维码的编号")]), _c('div', {
+  }, [_vm._v("库位二维码")]), _c('div', {
     staticClass: ["input_box"]
   }, [_c('input', {
     staticClass: ["input_item"],
@@ -31374,8 +31500,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('wxc-button', {
     attrs: {
       "text": "查看",
-      "type": "blue",
-      "disabled": _vm.isCheckDisabled
+      "type": "blue"
     },
     on: {
       "wxcButtonClicked": _vm.wxcCheckList
@@ -31449,6 +31574,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     on: {
       "wxcButtonClicked": _vm.wxcButtonNext
+    }
+  })], 1), _c('div', {
+    staticClass: ["pageButton_box"]
+  }, [_c('wxc-button', {
+    attrs: {
+      "text": "返回",
+      "type": "blue",
+      "size": "big"
+    },
+    on: {
+      "wxcButtonClicked": _vm.onBlack
     }
   })], 1)])], 1)])
 },staticRenderFns: []}

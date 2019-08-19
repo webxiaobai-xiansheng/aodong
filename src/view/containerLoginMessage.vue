@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="inputBox">
-                    <text class="input-title">请输入库位二维码的编号</text>
+                    <text class="input-title">库位二维码</text>
                     <div class="input_box">
                         <input v-model="LocationNum" class="input_item" type="text" placeholder="请输入库位二维码的编号" @input="onInputContainer">
                     </div>
@@ -27,7 +27,7 @@
                 <wxc-button text="确定" type="blue" @wxcButtonClicked="wxcConfirmContainer"></wxc-button>
             </div>
             <div class="button_box">
-                <wxc-button text="查看" type="blue" :disabled="isCheckDisabled" @wxcButtonClicked="wxcCheckList"></wxc-button>
+                <wxc-button text="查看" type="blue" @wxcButtonClicked="wxcCheckList"></wxc-button>
             </div>
             <div class="button_box">
                 <wxc-button text="返回中间站" type="blue" @wxcButtonClicked="black"></wxc-button>
@@ -63,7 +63,9 @@
                     <wxc-button text="下一页" type="blue" size="big" :disabled="isNextDisabled" @wxcButtonClicked="wxcButtonNext"></wxc-button>
                 </div>
                 <!-- 返回按钮 -->
-                <wxc-button text="返回" type="blue" size="big" @wxcButtonClicked="onBlack"></wxc-button>
+                <div class="pageButton_box">
+                    <wxc-button text="返回" type="blue" size="big" @wxcButtonClicked="onBlack"></wxc-button>
+                </div>
             </wxc-popup>
         </div>
     </div>
@@ -216,6 +218,11 @@ export default {
         },
         // 返回
         onBlack() {
+            // modal.toast({message:'陈工'})
+            this.$router.push({name:'wayStation'})
+        },
+        // 关闭popup
+        wxcMaskTableHidden(){
             this.showTable = false;
         }
     }
@@ -338,16 +345,22 @@ export default {
     align-items: center;
 }
 /*分页*/
+.mask-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
 .pageButton_box {
     flex-direction: row;
     justify-content: space-around;
     justify-content: center;
     /* padding-left: 30px; */
     /* padding-right: 30px; */
+    margin-top:20px;
 }
 .text_box {
     width: 100px;
-    height: 60px;
+    height: 70px;
     background-color: #0f8ee8;
     border-radius: 10px;
     align-items: center;

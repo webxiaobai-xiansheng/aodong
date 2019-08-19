@@ -5,30 +5,69 @@
     <div class="inputBox">
       <text class="input-title">编号</text>
       <div class="input_box">
-        <input class="input_item" type="text" placeholder="编号" maxlength="6"/>  
+        <input class="input_item" type="text" placeholder="编号" maxlength="6" v-model="containerNum"/>  
       </div>
     </div>
     <div class="btns">
       <div class="btn">
-        <text class="btn-txt">确认</text>
+        <text class="btn-txt" @click="onClack">确认</text>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+const modal = weex.requireModule('modal');
+var stream = weex.requireModule('stream');
+const storage = weex.requireModule('storage');
 import vCleaning from '../../components/vCleaning';
 export default {
   data () {
     return {
-      
+      // 车间名字
+      workshopName:'',
+      containerNum:''
     }
+  },
+  created () {
+      storage.getItem('workShopName', event => {
+          this.workshopName = event.data;
+      });
+      // storage.getItem('containerNum', event => {
+      //     this.workshopName = event.data;
+      // });
   },
   components: {
     vCleaning
   },
   methods: {
-    
+    onClack(){
+      let _this=this;
+        if(this.containerNum!=='undefined'&&this.workshopName!=='undefined'){
+          let url = 'http://10.34.10.126:8999/delivery/sendEmptyContainer';
+          let body = JSON.stringify({
+              containerNumber:_this.containerNum,
+              functionRoomNumber:_this.workshopName
+          });
+          stream.fetch({
+              method:"POST",
+              url:url,
+              headers:{'Content-Type':'application/json'},
+              body: body,
+              type:'json',
+          },function(ret){
+              if(ret.data.status===1){
+                  const Steve = new BroadcastChannel('Avengers')
+                  Steve.postMessage('Assemble!')
+                  modal.toast({ message: ret.data.message, duration: 3 });
+              }else{
+                 modal.toast({ message: ret.data.message, duration: 3 });
+              }
+          })
+        }else{
+          modal.toast({ message: '请输入桶编号', duration: 3 });
+        }
+    }
   }
 }
 </script>
