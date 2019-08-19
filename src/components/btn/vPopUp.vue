@@ -181,61 +181,83 @@ export default {
         qualified:[
           {
             title: '合格',
-            value: 0
+            value: '合格'
           },
           {
             title: '不合格',
-            value: 1
+            value: '不合格'
           },
+        ],
+        status:[
+          {
+            title: '原辅料',
+            value: '原辅料'
+          },
+          {
+            title: '未混颗粒',
+            value: '未混颗粒'
+          },
+          {
+            title: '已混颗粒',
+            value: '已混颗粒'
+          },
+          {
+            title: '待清洗',
+            value: '待清洗'
+          },
+          {
+            title: '已清洗',
+            value: '已清洗'
+          }
         ],
         product:[
           {
             title: '心脑舒通胶囊',
-            value: 0
+            value: '心脑舒通胶囊'
           },
           {
             title: '心脑舒通片',
-            value: 1
+            value: '心脑舒通片'
           },
           {
             title: '复方益肝灵片',
-            value: 2
+            value: '复方益肝灵片'
           },
           {
             title: '心清脑止痛胶囊',
-            value: 3
+            value: '心清脑止痛胶囊'
           },
           {
             title: '豨桐胶囊',
-            value: 4
+            value: '豨桐胶囊'
           },
           {
             title: '甘草锌胶囊',
-            value: 5
+            value: '甘草锌胶囊'
           },
           {
             title: '清眩降压片',
-            value: 6
+            value: '清眩降压片'
           },
           {
             title: '通便灵胶囊',
-            value: 7
+            value: '通便灵胶囊'
           },
           {
             title: '乳酸左氧氟沙星胶囊',
-            value: 8
+            value: '乳酸左氧氟沙星胶囊'
           },
           {
             title: '六味地黄胶囊',
-            value: 9
+            value: '六味地黄胶囊'
           },
           {
             title: '维格列汀片',
-            value: 10
+            value: '维格列汀片'
           },
           {
             title: '复方丹参片',
-            value: 11
+            value: '复方丹参片'
           },
         ],
         // 时间参数
@@ -388,7 +410,9 @@ export default {
             this.isBottomShow = false;
         },
         onInit() {
+            // modal.toast({message:'有桶的编号'})
             let _this=this;
+            _this.list.push({title:'1',value:'1'})
 
             let url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer/'+this.workshopName;
             let body = JSON.stringify({
@@ -401,8 +425,15 @@ export default {
                 body: body,
                 type:'json',
             },function(ret){
+                console.log(ret)
+
                 if(ret.data.status===1){
-                    _this.list=ret.data.data
+                    // console.log(ret.data.data)
+                    // for (let i = 0; i < ret.data.data.length; i++) {
+                    //     _this.list.push({title:ret.data.data[i].containerNumber,value:ret.data.data[i].containerNumber})
+                    // }
+                    
+                    // console.log(_this.list)
                 }
             })
             

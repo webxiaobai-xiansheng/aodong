@@ -108,16 +108,16 @@ export default {
         pageNum: 1,
         btext:'1'
     }),
-    watch: {
-       btext:function (val) {
-           this.initTable()
-       }
-    },
-    updated () {
-        eventVue.$on("myFun",(message)=>{   //这里最好用箭头函数，不然this指向有问题
-                 this.btext = message      
-            })
-    },
+    // watch: {
+    //    btext:function (val) {
+    //        this.initTable()
+    //    }
+    // },
+    // updated () {
+    //     eventVue.$on("myFun",(message)=>{   //这里最好用箭头函数，不然this指向有问题
+    //              this.btext = message      
+    //         })
+    // },
     methods: {
         // 点击table选择桶或者料斗
         selectContainer(index) {

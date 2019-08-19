@@ -40,7 +40,7 @@ export default {
       },function(ret){
           if(ret.data.status===1){
             if(ret.data.data.length>0){
-              this.$router.push({name:'popUp'})
+              _this.$router.push({name:'popUp'})
             }else{
               modal.toast({ message: '该车间没有料斗', duration: 3 });
             }
