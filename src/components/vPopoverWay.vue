@@ -57,7 +57,6 @@
   // 称重
   import vWeigh from './btn/vWeigh.vue';
   import vContainerLocation from './btn/vContainerLocation.vue';
-    const storage = weex.requireModule('storage');
   export default {
     components: { WxcMask,vStop,vStart,vGetSpritzerHopperRinses,vWeigh,vContainerLocation },
     data: () => ({
@@ -74,9 +73,6 @@
         this.hasBusiness = true;
       },
       wxcMaskBusiness () {
-        storage.removeItem('tongArr', event => {
-            
-        });
         this.showBusiness = false;
       },
       wxcMaskFunction(){

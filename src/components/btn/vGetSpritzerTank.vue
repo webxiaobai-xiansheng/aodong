@@ -24,7 +24,6 @@ export default {
   methods: {
     wxcButtonGetSpritzerTank () {
       let _this=this;
-      let arr=[];
       let url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber='+this.workshopName;
       stream.fetch({
           method:"GET",
@@ -33,14 +32,6 @@ export default {
       },function(ret){
           if(ret.data.status===1){
             if(ret.data.data.length>0){
-              let arrData=ret.data.data;
-              for (let i = 0; i < arrData.length; i++) {
-                arr.push({title:arrData[i].containerNumber,value:arrData[i].containerNumber})
-              }
-
-              storage.setItem('tongArr',JSON.stringify(arr), event => {
-                console.log(event)
-              });
               _this.$router.push({name:'popUp'})
             }else{
               modal.toast({ message: '该车间没有料桶', duration: 3 });
