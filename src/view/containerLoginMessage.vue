@@ -271,7 +271,11 @@ export default {
 .button_box {
     margin-top: 20px;
 }
-
+.mask-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .mask-content {
     padding-top: 20;
 }

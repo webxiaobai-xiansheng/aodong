@@ -149,7 +149,7 @@ export default {
         // 筛选---选择
         onSelect({ selectIndex, checked, checkedList }) {
             let that = this;
-            let url = 'http://10.34.10.126:8200/containerInformation/getAllContainerInformation';
+            let url = 'http://10.34.10.126:8200/containerInformation/getContainerInformation';
             that.tableBodyData = [];
             // that.currentPage = 1;
             let body = {};
