@@ -30,7 +30,7 @@
                 <wxc-button text="查看" type="blue" @wxcButtonClicked="wxcCheckList"></wxc-button>
             </div>
             <div class="button_box">
-                <wxc-button text="返回中间站" type="blue" @wxcButtonClicked="black"></wxc-button>
+                <wxc-button text="返回中间站" type="blue" @wxcButtonClicked="onBlack"></wxc-button>
             </div>
         </div>
         <!-- 列表 -->
@@ -64,7 +64,7 @@
                 </div>
                 <!-- 返回按钮 -->
                 <div class="pageButton_box">
-                    <wxc-button text="返回" type="blue" size="big" @wxcButtonClicked="onBlack"></wxc-button>
+                    <wxc-button text="返回" type="blue" size="big" @wxcButtonClicked="back"></wxc-button>
                 </div>
             </wxc-popup>
         </div>
@@ -87,7 +87,8 @@ export default {
         currentPage: 1,
         pageSize: 10,
         pages: 0,
-        pageNum: 1
+        pageNum: 1,
+        showTable: false
     }),
     methods: {
         //输入桶编号和库位编号
@@ -135,9 +136,6 @@ export default {
                 });
                 // this.show = false;
             }
-        },
-        black() {
-            this.$router.push({ name: 'wayStation' })
         },
         minibarLeftButtonClick() {},
         minibarRightButtonClick() {
@@ -216,13 +214,16 @@ export default {
                 that.initTable();
             }
         },
-        // 返回
+        // 返回中间站
         onBlack() {
-            // modal.toast({message:'陈工'})
-            this.$router.push({name:'wayStation'})
+            this.$router.push({ name: 'wayStation' })
+        },
+        // 返回上一页
+        back() {
+            this.showTable = false;
         },
         // 关闭popup
-        wxcMaskTableHidden(){
+        wxcMaskTableHidden() {
             this.showTable = false;
         }
     }
@@ -305,6 +306,7 @@ export default {
 .button {
     align-items: center;
 }
+
 /*table*/
 .table_container {
     align-items: center;
@@ -344,19 +346,15 @@ export default {
     justify-content: center;
     align-items: center;
 }
+
 /*分页*/
-.mask-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
 .pageButton_box {
     flex-direction: row;
     justify-content: space-around;
     justify-content: center;
-    /* padding-left: 30px; */
-    /* padding-right: 30px; */
     margin-top:20px;
+    width:400px;
+    background-color: orange;
 }
 .text_box {
     width: 100px;

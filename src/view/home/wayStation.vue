@@ -2,7 +2,8 @@
   <!-- 中间站 -->
   <div class="home">
     <v-popover-way></v-popover-way>
-    <v-table class="table"></v-table>
+    <!-- <v-table class="table"></v-table> -->
+    <way-table class="table"></way-table>
     <!-- <v-page></v-page> -->
 
     <wxc-popup popup-color="#fff"
@@ -44,9 +45,9 @@
 <script>
 const modal = weex.requireModule('modal');
 const stream = weex.requireModule('stream');
-const navigator = weex.requireModule('navigator');
 import vPopoverWay from '../../components/vPopoverWay';
-import vTable from '../../components/vTable';
+import wayTable from '../../components/wayTable';
+// import vTable from '../../components/vTable';
 // import vPage from '../../components/btn/vPage';
 import { WxcButton, WxcPopup } from 'weex-ui';
 export default {
@@ -62,8 +63,9 @@ export default {
   },
   components: {
     vPopoverWay,
-    vTable,
+    // vTable,
     // vPage,
+    wayTable,
     WxcButton,
     WxcPopup
   },
