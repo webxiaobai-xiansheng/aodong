@@ -151,7 +151,6 @@ export default {
             let that = this;
             let url = 'http://10.34.10.126:8200/containerInformation/getContainerInformation';
             that.tableBodyData = [];
-            // that.currentPage = 1;
             let body = {};
             if (checked === true) {
                 let containerName = checkedList[0].value;

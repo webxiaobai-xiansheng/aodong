@@ -1,6 +1,6 @@
 <template>
     <div class="login_content">
-        <div class="container" :style="{ height: height }">
+        <div class="container">
             <div class="demo">
                 <wxc-minibar background-color="#009ff0" leftButton="" @wxcMinibarLeftButtonClicked="minibarLeftButtonClick" @wxcMinibarRightButtonClicked="minibarRightButtonClick">
                     <text style="font-size: 35px;color:#fff;" slot="middle">桶/库位绑定</text>
@@ -357,8 +357,8 @@ export default {
     justify-content: space-around;
     justify-content: center;
     margin-top:20px;
-    width:400px;
-    background-color: orange;
+    /* width:400px; */
+    /* background-color: orange; */
 }
 .text_box {
     width: 100px;

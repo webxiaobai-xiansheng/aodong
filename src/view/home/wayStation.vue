@@ -2,9 +2,7 @@
   <!-- 中间站 -->
   <div class="home">
     <v-popover-way></v-popover-way>
-    <!-- <v-table class="table"></v-table> -->
     <way-table class="table"></way-table>
-    <!-- <v-page></v-page> -->
 
     <wxc-popup popup-color="#fff"
                :show="showproduct"
@@ -38,7 +36,6 @@
             </div>
       </div>
     </wxc-popup>
-    <!-- <v-page></v-page> -->
   </div>
 </template>
 
@@ -47,8 +44,6 @@ const modal = weex.requireModule('modal');
 const stream = weex.requireModule('stream');
 import vPopoverWay from '../../components/vPopoverWay';
 import wayTable from '../../components/wayTable';
-// import vTable from '../../components/vTable';
-// import vPage from '../../components/btn/vPage';
 import { WxcButton, WxcPopup } from 'weex-ui';
 export default {
   data () {
@@ -63,8 +58,6 @@ export default {
   },
   components: {
     vPopoverWay,
-    // vTable,
-    // vPage,
     wayTable,
     WxcButton,
     WxcPopup
@@ -79,15 +72,9 @@ export default {
       let _this=this;
 
       let url = 'http://10.34.10.126:8999/agvTask/getReviewTask';
-      // let body = JSON.stringify({
-      //     containerNumber:_this.containerNum,
-      //     functionRoomNumber:_this.workshopName
-      // });
       stream.fetch({
           method:"GET",
           url:url,
-          // headers:{'Content-Type':'application/json'},
-          // body: body,
           type:'json',
       },function(ret){
         console.log(ret)
@@ -164,13 +151,9 @@ export default {
 </script>
 
 <style scoped>
-.table{
-  /* margin-bottom: 40px; */
-}
 .inputBox{
     display: flex;
     flex-direction: row;
-    /* justify-content: space-between; */
 }
 .input-title{
     flex: 1;
@@ -180,7 +163,6 @@ export default {
 }
 .input_box {
     flex:3;
-    /* flex-direction: row; */
     border-style: solid;
     border-width: 1px;
     border-color: #333;
@@ -190,9 +172,6 @@ export default {
 }
 .login-txt{
     padding:20px;
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* flex-direction: column; */
 }
 
 
