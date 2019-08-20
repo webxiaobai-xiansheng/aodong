@@ -111,7 +111,7 @@ export default {
                 return;
             } else {
                 let that = this;
-                let url = 'http://10.34.10.126:8200/containerFunctionLocation/saveContainerFunctionLocation';
+                let url = 'http://10.34.10.126:8200/containerFunctionLocation/getAllContainerFunctionLocation';
                 let body = JSON.stringify({
                     containerFunctionNumber: that.ContainerNum,
                     containerFunctionQrCodeNumber: that.LocationNum
