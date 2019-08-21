@@ -23,7 +23,7 @@ export default {
           this.workshopName = event.data;
       });
       storage.getItem('containerNum', event => {
-          this.workshopName = event.data;
+          this.containerNum = event.data;
       });
   },
   methods: {

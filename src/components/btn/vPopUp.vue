@@ -164,8 +164,8 @@ export default {
         // 变量
         userBucket: '',
         userProduct:'',
-        userBatch:'',
-        userTime:'',
+        userBatch:'1231',
+        userTime:'2019-08-21',
         userStatus:'',
         userMaterial:'',
         userQalified:'',
@@ -208,12 +208,16 @@ export default {
             value: '已混颗粒'
           },
           {
-            title: '待清洗',
-            value: '待清洗'
+            title: '胶囊',
+            value: '胶囊'
           },
           {
-            title: '已清洗',
-            value: '已清洗'
+            title: '素片',
+            value: '素片'
+          },
+          {
+            title: '包衣片',
+            value: '包衣片'
           }
         ],
         product:[

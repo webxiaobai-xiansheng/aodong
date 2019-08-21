@@ -5491,16 +5491,6 @@ var _weexUi = __webpack_require__(1);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 var modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
@@ -5701,9 +5691,8 @@ exports.default = {
         storage.getItem('containerNum', function (event) {
             console.log(event.data);
         });
-        //   this.$nextTick(function () {
-        //     this.time=setInterval(this.onstart, 20000);
-        //   })
+
+        //   this.music()
     }
 };
 
@@ -26790,7 +26779,7 @@ exports.default = {
             _this2.workshopName = event.data;
         });
         storage.getItem('containerNum', function (event) {
-            _this2.workshopName = event.data;
+            _this2.containerNum = event.data;
         });
     },
 
@@ -30733,8 +30722,8 @@ exports.default = {
             // 变量
             userBucket: '',
             userProduct: '',
-            userBatch: '',
-            userTime: '',
+            userBatch: '1231',
+            userTime: '2019-08-21',
             userStatus: '',
             userMaterial: '',
             userQalified: '',
@@ -30769,11 +30758,14 @@ exports.default = {
                 title: '已混颗粒',
                 value: '已混颗粒'
             }, {
-                title: '待清洗',
-                value: '待清洗'
+                title: '胶囊',
+                value: '胶囊'
             }, {
-                title: '已清洗',
-                value: '已清洗'
+                title: '素片',
+                value: '素片'
+            }, {
+                title: '包衣片',
+                value: '包衣片'
             }],
             product: [{
                 title: '心脑舒通胶囊',

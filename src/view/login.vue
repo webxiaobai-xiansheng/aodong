@@ -14,16 +14,6 @@
         <div class="button_box">
             <wxc-button text="登录" :disabled="isLoginDisabled" type="blue" @wxcButtonClicked="login"></wxc-button>
         </div>
-        
-         <!-- <div style="align-items: center;justify-content: center">
-
-            <button text="播放" @click="play"></button>
-            <button text="暂停" @click="pause" style="margin-top: 20px"></button>
-            <button text="停止" @click="stop" style="margin-top: 20px"></button>
-            <button text="seek" @click="seek" style="margin-top: 20px"></button>
-
-
-        </div> -->
 
         <wxc-popup popup-color="#fff" :show="show" @wxcPopupOverlayClicked="wxcMaskSetHidden" pos="left" height="400">
             <div class="content mask-content">
@@ -229,33 +219,23 @@ export default {
             });
         },
 
-        // play(){
-        //     let audio=weex.requireModule('audio')
-        //     console.log(audio)
-        //     audio.setUrl({url:'http://59.110.169.246/img/1.mp3',autoPlay:true})
-        // },
-        // pause(){
-        //     let audio=weex.requireModule('audio')
-        //     audio.pause()
-        // },
-        // stop(){
-        //     let audio=weex.requireModule('audio')
-        //     audio.stop()
-        // },
-        // seek(){
-        //     let audio=weex.requireModule('audio')
-        //     audio.seek(112160)
-        // },
-        // onLoad(p){
-        //     let audio=weex.requireModule('audio')
-        //     audio.setOnPlaying((res)=>{
-        //         this.p=res;
-        //     })
-        //     audio.setOnCompletion((res)=>{
-        //         this.p='播放完毕';
-        //     })
-        // },
+        // music(){
+        //     let _this=this;
 
+        //     let url = 'http://10.34.10.24:8999/video/getVideo';
+        //     stream.fetch({
+        //         method:"GET",
+        //         url:url,
+        //         type:'json',
+        //     },function(ret){
+        //         console.log(ret)
+        //         if(ret.data.status===1){
+                    
+        //         }else{
+                   
+        //         }
+        //     })
+        // }
     },
     created() {
       storage.getItem('workShopName', event => {
@@ -264,9 +244,8 @@ export default {
       storage.getItem('containerNum', event => {
           console.log(event.data);
       });
-    //   this.$nextTick(function () {
-    //     this.time=setInterval(this.onstart, 20000);
-    //   })
+      
+    //   this.music()
     }
 }
 </script>
