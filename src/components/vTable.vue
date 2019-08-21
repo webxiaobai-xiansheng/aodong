@@ -189,6 +189,7 @@ export default {
             let body = {};
             if (checked === true) {
                 let containerName = checkedList[0].value;
+                that.currentIndex = -1;
                 if (containerName === '空料桶' || containerName === '空料斗') {
                     console.log(that.currentPage)
                     body = JSON.stringify({

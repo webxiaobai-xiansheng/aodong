@@ -149,10 +149,11 @@ export default {
         // 筛选---选择
         onSelect({ selectIndex, checked, checkedList }) {
             let that = this;
-            let url = 'http://10.34.10.126:8200/containerInformation/getAllContainerInformation';
+            let url = 'http://10.34.10.126:8200/containerInformation/getAllOverdueNotUsed';
             that.tableBodyData = [];
             let body = {};
             if (checked === true) {
+                that.currentIndex = -1;
                 let containerName = checkedList[0].value;
                 if (containerName === '空料桶' || containerName === '空料斗') {
                     console.log(that.currentPage)
