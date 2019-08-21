@@ -54,6 +54,7 @@
   import vGetSpritzerHopper from './btn/vGetSpritzerHopper.vue';
   import vEmptySpritzerHopper from './btn/vEmptySpritzerHopper.vue';
   import vResetContainer from './btn/vResetContainer.vue';
+  const Stark = new BroadcastChannel('Avengers');
   export default {
     components: { WxcMask,vStop,vStart,vGetSpritzerHopper,vEmptySpritzerHopper,vResetContainer},
     data: () => ({
@@ -83,6 +84,14 @@
       onpen(){
         this.showBusiness=false
       }
+    },
+    mounted() {
+        let self = this;
+        Stark.onmessage = function (event) { 
+           if(event.data==='Assemble!'){
+                self.showBusiness=false
+           }
+        }
     }
   };
 </script>

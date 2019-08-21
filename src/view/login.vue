@@ -15,9 +15,15 @@
             <wxc-button text="登录" :disabled="isLoginDisabled" type="blue" @wxcButtonClicked="login"></wxc-button>
         </div>
         
-            <!-- <video class="video" src="http://flv2.bn.netease.com/videolib3/1611/01/XGqSL5981/SD/XGqSL5981-mobile.mp4"  autoplay play-status='play'
-                @start="onstart" @pause="onpause" @finish="onfinish" @fail="onfail"></video>
-            <text class="info">state: {{state}}</text> -->
+         <!-- <div style="align-items: center;justify-content: center">
+
+            <button text="播放" @click="play"></button>
+            <button text="暂停" @click="pause" style="margin-top: 20px"></button>
+            <button text="停止" @click="stop" style="margin-top: 20px"></button>
+            <button text="seek" @click="seek" style="margin-top: 20px"></button>
+
+
+        </div> -->
 
         <wxc-popup popup-color="#fff" :show="show" @wxcPopupOverlayClicked="wxcMaskSetHidden" pos="left" height="400">
             <div class="content mask-content">
@@ -41,6 +47,8 @@ const modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
 const storage = weex.requireModule('storage');
 import { WxcButton, WxcRadio, WxcPopup } from 'weex-ui';
+// const audio = new Audio('http://59.110.169.246/img/1.mp3');
+
 export default {
     components: { WxcButton, WxcRadio, WxcPopup },
     data: () => ({
@@ -157,6 +165,7 @@ export default {
 
         // 登录按钮
         login() {
+            // let audio = new Audio('http://59.110.169.246/img/1.mp3');
             let that=this;
             let url = 'http://10.34.10.126:8999/user/login';
             let body = JSON.stringify({
@@ -172,6 +181,8 @@ export default {
             }, function(ret) {
                 if (ret.status === 200) {
                     if (ret.data.status === 1) {
+                        // modal.toast({ message: ret.data.message, duration: 100 });
+                        
                         storage.getItem('workShopName', event => {
 
                             let getName = event.data;
@@ -205,8 +216,9 @@ export default {
                                 that.$router.push({ name: 'cleaning' });
                             }
                         });
-
+ 
                         modal.toast({ message: ret.data.message, duration: 3 });
+                        // audio.play();
                     } else {
                         modal.toast({ message: ret.data.message, duration: 3 });
                     }
@@ -217,22 +229,33 @@ export default {
             });
         },
 
-        // onstart (event) {
-        //     this.state = 'onstart'
+        // play(){
+        //     let audio=weex.requireModule('audio')
+        //     console.log(audio)
+        //     audio.setUrl({url:'http://59.110.169.246/img/1.mp3',autoPlay:true})
         // },
-        // onpause (event) {
-        //     this.state = 'onpause'
+        // pause(){
+        //     let audio=weex.requireModule('audio')
+        //     audio.pause()
         // },
-        // onfinish (event) {
-        //     this.state = 'onfinish'
+        // stop(){
+        //     let audio=weex.requireModule('audio')
+        //     audio.stop()
         // },
-        // onfail (event) {
-        //     this.state = 'onfinish'
+        // seek(){
+        //     let audio=weex.requireModule('audio')
+        //     audio.seek(112160)
         // },
-        
-        // timer(){
+        // onLoad(p){
+        //     let audio=weex.requireModule('audio')
+        //     audio.setOnPlaying((res)=>{
+        //         this.p=res;
+        //     })
+        //     audio.setOnCompletion((res)=>{
+        //         this.p='播放完毕';
+        //     })
+        // },
 
-        // }
     },
     created() {
       storage.getItem('workShopName', event => {

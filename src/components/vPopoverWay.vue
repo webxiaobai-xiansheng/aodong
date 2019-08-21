@@ -59,6 +59,7 @@
   import vGetSpritzerHopperRinses from './btn/vGetSpritzerHopperRinses.vue';
   // 称重
   import vWeigh from './btn/vWeigh.vue';
+  const Stark = new BroadcastChannel('Avengers');
   export default {
     components: { WxcMask,vStop,vStart,vGetSpritzerHopperRinses,vWeigh },
     data: () => ({
@@ -90,6 +91,14 @@
       onContainerLogin() {
         this.$router.push({name:'containerLogin'})
       }
+    },
+    mounted() {
+        let self = this;
+        Stark.onmessage = function (event) { 
+           if(event.data==='Assemble!'){
+                self.showBusiness=false
+           }
+        }
     }
   };
 </script>

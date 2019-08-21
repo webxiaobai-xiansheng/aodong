@@ -2324,27 +2324,6 @@ var _require = __webpack_require__(28),
 var App = __webpack_require__(417);
 /* eslint-disable no-new */
 
-// 路由导航守卫
-// router.beforeEach((to, from, next) => {
-//   console.log(to)
-//   console.log(from)
-//     // let mycookie = sessionStorage.getItem('mycookie') || '';
-//     // if (mycookie) {
-//     //     next()
-//     // } else {
-//     //     if (to.path != '/login') {
-//     //         next({ path: '/login' })
-//     //     } else {
-//     //         next()
-//     //     }
-//     // }
-// })
-// import Nat from 'natjs'
-// Nat.audio.play('../img/view.mp3')
-// const storage = weex.requireModule('storage');
-// storage.setItem('btext','1',event => {
-
-// });
 new Vue(Vue.util.extend({ el: '#root', router: router }, App));
 router.push('/');
 
@@ -5516,10 +5495,19 @@ var _weexUi = __webpack_require__(1);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 var modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
 var storage = weex.requireModule('storage');
+
+// const audio = new Audio('http://59.110.169.246/img/1.mp3');
+
 exports.default = {
     components: { WxcButton: _weexUi.WxcButton, WxcRadio: _weexUi.WxcRadio, WxcPopup: _weexUi.WxcPopup },
     data: function data() {
@@ -5643,6 +5631,7 @@ exports.default = {
 
         // 登录按钮
         login: function login() {
+            // let audio = new Audio('http://59.110.169.246/img/1.mp3');
             var that = this;
             var url = 'http://10.34.10.126:8999/user/login';
             var body = JSON.stringify({
@@ -5658,6 +5647,8 @@ exports.default = {
             }, function (ret) {
                 if (ret.status === 200) {
                     if (ret.data.status === 1) {
+                        // modal.toast({ message: ret.data.message, duration: 100 });
+
                         storage.getItem('workShopName', function (event) {
 
                             var getName = event.data;
@@ -5693,6 +5684,7 @@ exports.default = {
                         });
 
                         modal.toast({ message: ret.data.message, duration: 3 });
+                        // audio.play();
                     } else {
                         modal.toast({ message: ret.data.message, duration: 3 });
                     }
@@ -23464,6 +23456,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 
+var Stark = new BroadcastChannel('Avengers');
 exports.default = {
   components: { WxcMask: _weexUi.WxcMask, vStop: _vStop2.default, vStart: _vStart2.default, vGetSpritzerHopper: _vGetSpritzerHopper2.default, vEmptySpritzerHopper: _vEmptySpritzerHopper2.default, vResetContainer: _vResetContainer2.default },
   data: function data() {
@@ -23495,6 +23488,14 @@ exports.default = {
     onpen: function onpen() {
       this.showBusiness = false;
     }
+  },
+  mounted: function mounted() {
+    var self = this;
+    Stark.onmessage = function (event) {
+      if (event.data === 'Assemble!') {
+        self.showBusiness = false;
+      }
+    };
   }
 };
 
@@ -24994,6 +24995,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 
+var Stark = new BroadcastChannel('Avengers');
 exports.default = {
   components: { WxcMask: _weexUi.WxcMask, vStop: _vStop2.default, vStart: _vStart2.default, vGetSpritzerHopper: _vGetSpritzerHopper2.default, vEmptySpritzerHopper: _vEmptySpritzerHopper2.default, vSpritzerHopper: _vSpritzerHopper2.default, vGetEmptySpritzerHopper: _vGetEmptySpritzerHopper2.default, vResetContainer: _vResetContainer2.default },
   data: function data() {
@@ -25021,6 +25023,14 @@ exports.default = {
       this.showFunction = true;
       this.hasFunction = false;
     }
+  },
+  mounted: function mounted() {
+    var self = this;
+    Stark.onmessage = function (event) {
+      if (event.data === 'Assemble!') {
+        self.showBusiness = false;
+      }
+    };
   }
 };
 
@@ -25743,6 +25753,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 
+var Stark = new BroadcastChannel('Avengers');
+// 取料斗
+
+// 送料斗或料桶
 exports.default = {
   components: { WxcMask: _weexUi.WxcMask, vStop: _vStop2.default, vStart: _vStart2.default, vGetSpritzerTankHopper: _vGetSpritzerTankHopper2.default, vEmptySpritzerTank: _vEmptySpritzerTank2.default, vSpritzerHopper: _vSpritzerHopper2.default, vGetEmptySpritzerHopper: _vGetEmptySpritzerHopper2.default, vResetContainer: _vResetContainer2.default },
   data: function data() {
@@ -25770,11 +25784,16 @@ exports.default = {
       this.showFunction = true;
       this.hasFunction = false;
     }
+  },
+  mounted: function mounted() {
+    var self = this;
+    Stark.onmessage = function (event) {
+      if (event.data === 'Assemble!') {
+        self.showBusiness = false;
+      }
+    };
   }
 };
-// 取料斗
-
-// 送料斗或料桶
 
 /***/ }),
 /* 321 */
@@ -26393,6 +26412,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 
+var Stark = new BroadcastChannel('Avengers');
+// 取料桶
+
+// 送空料桶
 exports.default = {
   components: { WxcMask: _weexUi.WxcMask, vStop: _vStop2.default, vStart: _vStart2.default, vGetEmptySpritzerTank: _vGetEmptySpritzerTank2.default, vEmptySpritzerTank: _vEmptySpritzerTank2.default, vSpritzerTank: _vSpritzerTank2.default, vGetSpritzerTank: _vGetSpritzerTank2.default, vResetContainer: _vResetContainer2.default },
   data: function data() {
@@ -26420,11 +26443,16 @@ exports.default = {
       this.showFunction = true;
       this.hasFunction = false;
     }
+  },
+  mounted: function mounted() {
+    var self = this;
+    Stark.onmessage = function (event) {
+      if (event.data === 'Assemble!') {
+        self.showBusiness = false;
+      }
+    };
   }
 };
-// 取料桶
-
-// 送空料桶
 
 /***/ }),
 /* 336 */
@@ -27283,6 +27311,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 
+var Stark = new BroadcastChannel('Avengers');
+// 取料桶
+
+// 送空料桶回中间站
 exports.default = {
   components: { WxcMask: _weexUi.WxcMask, vStop: _vStop2.default, vStart: _vStart2.default, vGetSpritzerHopperBack: _vGetSpritzerHopperBack2.default, vGetSpritzerHopperRinse: _vGetSpritzerHopperRinse2.default, vSpritzerTank: _vSpritzerTank2.default, vGetSpritzerTank: _vGetSpritzerTank2.default, vResetContainer: _vResetContainer2.default },
   data: function data() {
@@ -27310,11 +27342,16 @@ exports.default = {
       this.showFunction = true;
       this.hasFunction = false;
     }
+  },
+  mounted: function mounted() {
+    var self = this;
+    Stark.onmessage = function (event) {
+      if (event.data === 'Assemble!') {
+        self.showBusiness = false;
+      }
+    };
   }
 };
-// 取料桶
-
-// 送空料桶回中间站
 
 /***/ }),
 /* 354 */
@@ -27892,6 +27929,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
 
 var modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
@@ -27943,6 +27981,11 @@ exports.default = {
                     modal.toast({ message: ret.data.message, duration: 3 });
                 }
             });
+        },
+
+        //非状态组件，需要在这里关闭
+        popupOverlayBottomClick: function popupOverlayBottomClick() {
+            this.showproduct = false;
         },
         wxcChoseAllow: function wxcChoseAllow() {
             var _this = this;
@@ -28140,41 +28183,7 @@ var _vWeigh2 = _interopRequireDefault(_vWeigh);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // 送过期料斗和料桶清洗
-exports.default = {
-  components: { WxcMask: _weexUi.WxcMask, vStop: _vStop2.default, vStart: _vStart2.default, vGetSpritzerHopperRinses: _vGetSpritzerHopperRinses2.default, vWeigh: _vWeigh2.default },
-  data: function data() {
-    return {
-      showBusiness: false,
-      showFunction: false,
-      overlayCanClose: true,
-      isFalse: false,
-      hasBusiness: true,
-      hasFunction: true
-    };
-  },
-  methods: {
-    openMask: function openMask(e) {
-      this.showBusiness = true;
-      this.hasBusiness = true;
-    },
-    wxcMaskBusiness: function wxcMaskBusiness() {
-      this.showBusiness = false;
-    },
-    wxcMaskFunction: function wxcMaskFunction() {
-      this.showFunction = false;
-    },
-    openNoAnimationMask: function openNoAnimationMask(e) {
-      this.showFunction = true;
-      this.hasFunction = false;
-    },
-    onJurisLogin: function onJurisLogin() {
-      this.$router.push({ name: 'jurisLogin' });
-    },
-    onContainerLogin: function onContainerLogin() {
-      this.$router.push({ name: 'containerLogin' });
-    }
-  }
-};
+var Stark = new BroadcastChannel('Avengers');
 // 称重
 //
 //
@@ -28229,6 +28238,50 @@ exports.default = {
 //
 //
 //
+
+exports.default = {
+  components: { WxcMask: _weexUi.WxcMask, vStop: _vStop2.default, vStart: _vStart2.default, vGetSpritzerHopperRinses: _vGetSpritzerHopperRinses2.default, vWeigh: _vWeigh2.default },
+  data: function data() {
+    return {
+      showBusiness: false,
+      showFunction: false,
+      overlayCanClose: true,
+      isFalse: false,
+      hasBusiness: true,
+      hasFunction: true
+    };
+  },
+  methods: {
+    openMask: function openMask(e) {
+      this.showBusiness = true;
+      this.hasBusiness = true;
+    },
+    wxcMaskBusiness: function wxcMaskBusiness() {
+      this.showBusiness = false;
+    },
+    wxcMaskFunction: function wxcMaskFunction() {
+      this.showFunction = false;
+    },
+    openNoAnimationMask: function openNoAnimationMask(e) {
+      this.showFunction = true;
+      this.hasFunction = false;
+    },
+    onJurisLogin: function onJurisLogin() {
+      this.$router.push({ name: 'jurisLogin' });
+    },
+    onContainerLogin: function onContainerLogin() {
+      this.$router.push({ name: 'containerLogin' });
+    }
+  },
+  mounted: function mounted() {
+    var self = this;
+    Stark.onmessage = function (event) {
+      if (event.data === 'Assemble!') {
+        self.showBusiness = false;
+      }
+    };
+  }
+};
 
 /***/ }),
 /* 370 */
@@ -28884,7 +28937,7 @@ exports.default = {
                 checkedList = _ref.checkedList;
 
             var that = this;
-            var url = 'http://10.34.10.126:8200/containerInformation/getContainerInformation';
+            var url = 'http://10.34.10.126:8200/containerInformation/getAllContainerInformation';
             that.tableBodyData = [];
             var body = {};
             if (checked === true) {
@@ -29122,6 +29175,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "show": _vm.showproduct,
       "pos": "bottom",
       "height": "500"
+    },
+    on: {
+      "wxcPopupOverlayClicked": _vm.popupOverlayBottomClick
     }
   }, [_c('div', {
     staticClass: ["demo-content"]
@@ -31777,7 +31833,7 @@ exports.default = {
                 return;
             } else {
                 var that = this;
-                var url = 'http://10.34.10.126:8200/containerFunctionLocation/saveContainerFunctionLocation';
+                var url = 'http://10.34.10.126:8200/containerFunctionLocation/getAllContainerFunctionLocation';
                 var body = JSON.stringify({
                     containerFunctionNumber: that.ContainerNum,
                     containerFunctionQrCodeNumber: that.LocationNum

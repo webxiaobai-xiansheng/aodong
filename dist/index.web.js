@@ -25616,10 +25616,19 @@ var _weexUi = __webpack_require__(4);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 var modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
 var storage = weex.requireModule('storage');
+
+// const audio = new Audio('http://59.110.169.246/img/1.mp3');
+
 exports.default = {
     components: { WxcButton: _weexUi.WxcButton, WxcRadio: _weexUi.WxcRadio, WxcPopup: _weexUi.WxcPopup },
     data: function data() {
@@ -25743,6 +25752,7 @@ exports.default = {
 
         // 登录按钮
         login: function login() {
+            // let audio = new Audio('http://59.110.169.246/img/1.mp3');
             var that = this;
             var url = 'http://10.34.10.126:8999/user/login';
             var body = JSON.stringify({
@@ -25758,6 +25768,8 @@ exports.default = {
             }, function (ret) {
                 if (ret.status === 200) {
                     if (ret.data.status === 1) {
+                        // modal.toast({ message: ret.data.message, duration: 100 });
+
                         storage.getItem('workShopName', function (event) {
 
                             var getName = event.data;
@@ -25793,6 +25805,7 @@ exports.default = {
                         });
 
                         modal.toast({ message: ret.data.message, duration: 3 });
+                        // audio.play();
                     } else {
                         modal.toast({ message: ret.data.message, duration: 3 });
                     }
@@ -48134,23 +48147,17 @@ exports.default = {
   methods: {
     wxcButtonGetSpritzerTankHopper: function wxcButtonGetSpritzerTankHopper() {
       var _this = this;
-
-      var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer/' + this.workshopName;
-      var body = JSON.stringify({
-        // functionRoomNumber: _this.workshopName
-      });
+      var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
       stream.fetch({
-        method: "POST",
+        method: "GET",
         url: url,
-        headers: { 'Content-Type': 'application/json' },
-        body: body,
         type: 'json'
       }, function (ret) {
         if (ret.data.status === 1) {
           if (ret.data.data.length > 0) {
-            this.$router.push({ name: 'popUp' });
+            _this.$router.push({ name: 'popUp' });
           } else {
-            modal.toast({ message: '该车间没有送料桶', duration: 3 });
+            modal.toast({ message: '该车间没有料斗和料桶', duration: 3 });
           }
         }
       });
@@ -50575,6 +50582,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
 
 var modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
@@ -50626,6 +50634,11 @@ exports.default = {
                     modal.toast({ message: ret.data.message, duration: 3 });
                 }
             });
+        },
+
+        //非状态组件，需要在这里关闭
+        popupOverlayBottomClick: function popupOverlayBottomClick() {
+            this.showproduct = false;
         },
         wxcChoseAllow: function wxcChoseAllow() {
             var _this = this;
@@ -51687,7 +51700,7 @@ exports.default = {
                 checkedList = _ref.checkedList;
 
             var that = this;
-            var url = 'http://10.34.10.126:8200/containerInformation/getContainerInformation';
+            var url = 'http://10.34.10.126:8200/containerInformation/getAllContainerInformation';
             that.tableBodyData = [];
             var body = {};
             if (checked === true) {
@@ -52024,7 +52037,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "popup-color": "#fff",
       "show": _vm.showproduct,
       "pos": "bottom",
-      "height": "500"
+      "height": "500",
+      "data-evt-wxcPopupOverlayClicked": ""
+    },
+    on: {
+      "wxcPopupOverlayClicked": _vm.popupOverlayBottomClick
     }
   }, [_c('div', {
     staticClass: "demo-content weex-ct weex-div",
@@ -55098,7 +55115,7 @@ exports.default = {
                 return;
             } else {
                 var that = this;
-                var url = 'http://10.34.10.126:8200/containerFunctionLocation/saveContainerFunctionLocation';
+                var url = 'http://10.34.10.126:8200/containerFunctionLocation/getAllContainerFunctionLocation';
                 var body = JSON.stringify({
                     containerFunctionNumber: that.ContainerNum,
                     containerFunctionQrCodeNumber: that.LocationNum

@@ -60,6 +60,7 @@
   // 送空料斗
   import vGetEmptySpritzerHopper from './btn/vGetEmptySpritzerHopper.vue';
   import vResetContainer from './btn/vResetContainer.vue';
+  const Stark = new BroadcastChannel('Avengers');
   export default {
     components: { WxcMask,vStop,vStart,vGetSpritzerTankHopper,vEmptySpritzerTank,vSpritzerHopper,vGetEmptySpritzerHopper,vResetContainer},
     data: () => ({
@@ -85,6 +86,14 @@
         this.showFunction = true;
         this.hasFunction = false;
       }
+    },
+    mounted() {
+        let self = this;
+        Stark.onmessage = function (event) { 
+           if(event.data==='Assemble!'){
+                self.showBusiness=false
+           }
+        }
     }
   };
 </script>

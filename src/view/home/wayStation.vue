@@ -7,6 +7,7 @@
     <wxc-popup popup-color="#fff"
                :show="showproduct"
                pos="bottom"
+               @wxcPopupOverlayClicked="popupOverlayBottomClick"
                height="500">
       <div class="demo-content">
             <div class="mask-title">
@@ -93,6 +94,10 @@ export default {
               modal.toast({ message: ret.data.message, duration: 3 });
           }
       })
+    },
+    //非状态组件，需要在这里关闭
+    popupOverlayBottomClick () {
+        this.showproduct = false;
     },
     wxcChoseAllow(){
       let _this=this;
