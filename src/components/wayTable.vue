@@ -123,14 +123,18 @@ export default {
                             if (data.pageNum === data.pages) {
                                 that.isPreviewDisabled = false;
                                 that.isNextDisabled = true;
+                            } else {
+                                that.isPreviewDisabled = false;
+                                that.isNextDisabled = false;
                             }
                         }
                         if (data.pageNum === 1) {
-                            that.isPreviewDisabled = true;
-                            that.isNextDisabled = false;
                             if (data.pageNum === data.pages) {
                                 that.isPreviewDisabled = true;
                                 that.isNextDisabled = true;
+                            } else {
+                                that.isPreviewDisabled = true;
+                                that.isNextDisabled = false;
                             }
                         }
                         if (data.list.length === 0) {
@@ -141,6 +145,10 @@ export default {
                         }
                     } else {
                         modal.toast({ message: ret.data.message });
+                        that.currentPage = 0;
+                        that.pages = 0;
+                        that.isPreviewDisabled = true;
+                        that.isNextDisabled = true;
                     }
                 }
             });
@@ -202,14 +210,18 @@ export default {
                             if (data.pageNum === data.pages) {
                                 that.isPreviewDisabled = false;
                                 that.isNextDisabled = true;
+                            } else {
+                                that.isPreviewDisabled = false;
+                                that.isNextDisabled = false;
                             }
                         }
                         if (data.pageNum === 1) {
-                            that.isPreviewDisabled = true;
-                            that.isNextDisabled = false;
                             if (data.pageNum === data.pages) {
                                 that.isPreviewDisabled = true;
                                 that.isNextDisabled = true;
+                            } else {
+                                that.isPreviewDisabled = true;
+                                that.isNextDisabled = false;
                             }
                         }
                         if (data.list.length === 0) {
@@ -220,6 +232,10 @@ export default {
                         }
                     } else {
                         modal.toast({ message: ret.data.message });
+                        that.currentPage = 0;
+                        that.pages = 0;
+                        that.isPreviewDisabled = true;
+                        that.isNextDisabled = true;
                     }
                 }
             })

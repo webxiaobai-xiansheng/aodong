@@ -1,17 +1,20 @@
 <template>
     <div class="login_content">
+        <text class="page_title">欢迎回来，请登录！</text>
         <div class="login_input">
             <div class="user_name input_box">
+                <text class="iconfont login-icon">&#xe605;</text>
                 <input v-model="userName" class="input_item" type="text" placeholder="用户名称" maxlength="8" @input="onInput" />
             </div>
             <div class="user_password input_box">
+                <text class="iconfont login-icon">&#xe600;</text>
                 <input v-model="userPassword" class="input_item" type="password" placeholder="密码" maxlength="8" @input="onInput">
             </div>
         </div>
         <div class="button_box">
             <wxc-button text="选择车间" type="blue" @wxcButtonClicked="choseWorkShop"></wxc-button>
         </div>
-        <div class="button_box">
+        <div class="button_box bottom">
             <wxc-button text="登录" :disabled="isLoginDisabled" type="blue" @wxcButtonClicked="login"></wxc-button>
         </div>
 
@@ -244,6 +247,11 @@ export default {
       storage.getItem('containerNum', event => {
           console.log(event.data);
       });
+      let domModule = weex.requireModule('dom');
+      domModule.addRule('fontFace', {
+          'fontFamily': "iconfont",
+          'src': "url('http://at.alicdn.com/t/font_1141918_gqt9dsrnysk.ttf')"
+      });
       
     //   this.music()
     }
@@ -254,7 +262,13 @@ export default {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 90px;
+    margin-top: 80px;
+}
+
+.page_title{
+    margin-bottom: 80px;
+    font-size: 40px;
+    color:#333;
 }
 
 .input_box {
@@ -264,21 +278,22 @@ export default {
     border-color: #333;
     border-radius: 10;
     margin-bottom: 40;
-    padding-left: 20;
+    padding-left: 10;
+    width:700px;
 }
 
 .input_item {
     width: 670px;
     height: 90px;
+    margin-left: 10px;
 }
 
 .button_box {
-    margin-top: 20px;
     align-items: center;
 }
 
 .bottom {
-    margin-top: 40px;
+    margin-top: 70px;
 }
 
 .mask-content {
@@ -318,11 +333,22 @@ export default {
     margin-top: 60px;
     margin-left: 60px;
     /* opacity: 0; */
-  }
-  .info {
+}
+
+.info {
     margin-top: 40px;
     font-size: 40px;
     text-align: center;
     opacity: 0;
-  }
+}
+
+.iconfont {
+    font-family: iconfont;
+}
+
+.login-icon {
+    padding-top: 25px;
+    font-size: 40px;
+    color:#ccc;
+}
 </style>

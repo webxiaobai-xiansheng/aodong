@@ -2,9 +2,11 @@
     <div class="login_content">
         <div class="login_input">
             <div class="user_name input_box">
+                <text class="iconfont login-icon">&#xe605;</text>
                 <input v-model="userName" class="input_item" type="text" placeholder="用户名称"/>
             </div>
             <div class="user_password input_box">
+                <text class="iconfont login-icon">&#xe600;</text>
                 <input v-model="userPassword" class="input_item" type="password" placeholder="密码">
             </div>
         </div>
@@ -65,6 +67,13 @@ export default {
         onBlack(){
             this.$router.go(-1);
         }
+    },
+    created() {
+        let domModule = weex.requireModule('dom');
+        domModule.addRule('fontFace', {
+            'fontFamily': "iconfont",
+            'src': "url('http://at.alicdn.com/t/font_1141918_gqt9dsrnysk.ttf')"
+        });
     }
 }
 </script>
@@ -129,5 +138,14 @@ export default {
 
 .workShop-confirm {
     margin-top: 10px;
+}
+.iconfont {
+    font-family: iconfont;
+}
+
+.login-icon {
+    padding-top: 25px;
+    font-size: 40px;
+    color:#ccc;
 }
 </style>
