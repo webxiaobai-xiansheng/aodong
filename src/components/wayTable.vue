@@ -157,89 +157,65 @@ export default {
         // 筛选---选择
         onSelect({ selectIndex, checked, checkedList }) {
             let that = this;
-            let url = 'http://10.34.10.126:8200/containerInformation/getAllOverdueNotUsed';
             that.tableBodyData = [];
             let body = {};
             if (checked === true) {
+                let url = 'http://10.34.10.126:8200/containerInformation/getAllOverdueNotUsed';
                 that.currentIndex = -1;
                 let containerName = checkedList[0].value;
-                if (containerName === '空料桶' || containerName === '空料斗') {
-                    console.log(that.currentPage)
-                    body = JSON.stringify({
-                        emptyContainer: containerName,
-                        page: that.currentPage,
-                        size: that.pageSize
-                    });
-                }
-                if (containerName === '料桶' || containerName === '料斗') {
-                    body = JSON.stringify({
-                        container: containerName,
-                        page: that.currentPage,
-                        size: that.pageSize
-                    });
-                }
-                if (containerName === '过期料斗、料桶') {
-                    body = JSON.stringify({
-                        outdatedContainers: containerName,
-                        page: that.currentPage,
-                        size: that.pageSize
-                    });
-                }
-            } else {
                 body = JSON.stringify({
-                    init: '',
+                    outdatedContainers: containerName,
                     page: that.currentPage,
                     size: that.pageSize
                 });
-            }
-            stream.fetch({
-                method: "POST",
-                type: 'json',
-                url: url,
-                headers: { 'Content-Type': 'application/json' },
-                body: body
-            }, function(ret) {
-                let data = ret.data.data;
-                if (ret.status === 200) {
-                    if (ret.data.status === 1) {
-                        modal.toast({ message: ret.data.message });
-                        that.tableBodyData = data.list;
-                        that.pages = data.pages; //页数
-                        that.currentPage = data.pageNum; //当前页
-                        if (data.pageNum > 1) {
-                            if (data.pageNum === data.pages) {
-                                that.isPreviewDisabled = false;
-                                that.isNextDisabled = true;
-                            } else {
-                                that.isPreviewDisabled = false;
-                                that.isNextDisabled = false;
+                stream.fetch({
+                    method: "POST",
+                    type: 'json',
+                    url: url,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: body
+                }, function(ret) {
+                    let data = ret.data.data;
+                    if (ret.status === 200) {
+                        if (ret.data.status === 1) {
+                            modal.toast({ message: ret.data.message });
+                            that.tableBodyData = data.list;
+                            that.pages = data.pages; //页数
+                            that.currentPage = data.pageNum; //当前页
+                            if (data.pageNum > 1) {
+                                if (data.pageNum === data.pages) {
+                                    that.isPreviewDisabled = false;
+                                    that.isNextDisabled = true;
+                                } else {
+                                    that.isPreviewDisabled = false;
+                                    that.isNextDisabled = false;
+                                }
                             }
-                        }
-                        if (data.pageNum === 1) {
-                            if (data.pageNum === data.pages) {
+                            if (data.pageNum === 1) {
+                                if (data.pageNum === data.pages) {
+                                    that.isPreviewDisabled = true;
+                                    that.isNextDisabled = true;
+                                } else {
+                                    that.isPreviewDisabled = true;
+                                    that.isNextDisabled = false;
+                                }
+                            }
+                            if (data.list.length === 0) {
+                                that.currentPage = 0;
+                                that.pages = 0;
                                 that.isPreviewDisabled = true;
                                 that.isNextDisabled = true;
-                            } else {
-                                that.isPreviewDisabled = true;
-                                that.isNextDisabled = false;
                             }
+                        } else {
+                            modal.toast({ message: ret.data.message });
                         }
-                        if (data.list.length === 0) {
-                            that.currentPage = 0;
-                            that.pages = 0;
-                            that.isPreviewDisabled = true;
-                            that.isNextDisabled = true;
-                        }
-                    } else {
-                        modal.toast({ message: ret.data.message });
-                        that.currentPage = 0;
-                        that.pages = 0;
-                        that.isPreviewDisabled = true;
-                        that.isNextDisabled = true;
                     }
-                }
-            })
+                })
+            } else {
+                that.initTable();
+            }
         },
+        
         // 筛选按钮
         showFilterButton() {
             let that = this;
