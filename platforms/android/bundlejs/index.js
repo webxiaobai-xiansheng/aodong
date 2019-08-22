@@ -5384,7 +5384,12 @@ module.exports = {
     "justifyContent": "center",
     "alignItems": "center",
     "flexDirection": "column",
-    "marginTop": "90"
+    "marginTop": "80"
+  },
+  "page_title": {
+    "marginBottom": "80",
+    "fontSize": "40",
+    "color": "#333333"
   },
   "input_box": {
     "flexDirection": "row",
@@ -5393,18 +5398,19 @@ module.exports = {
     "borderColor": "#333333",
     "borderRadius": 10,
     "marginBottom": 40,
-    "paddingLeft": 20
+    "paddingLeft": 10,
+    "width": "700"
   },
   "input_item": {
     "width": "670",
-    "height": "90"
+    "height": "90",
+    "marginLeft": "10"
   },
   "button_box": {
-    "marginTop": "20",
     "alignItems": "center"
   },
   "bottom": {
-    "marginTop": "40"
+    "marginTop": "70"
   },
   "mask-content": {
     "paddingTop": 20
@@ -5441,6 +5447,14 @@ module.exports = {
     "fontSize": "40",
     "textAlign": "center",
     "opacity": 0
+  },
+  "iconfont": {
+    "fontFamily": "iconfont"
+  },
+  "login-icon": {
+    "paddingTop": "25",
+    "fontSize": "40",
+    "color": "#cccccc"
   }
 }
 
@@ -5457,13 +5471,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _weexUi = __webpack_require__(1);
 
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -5701,9 +5708,13 @@ exports.default = {
         storage.getItem('containerNum', function (event) {
             console.log(event.data);
         });
-        //   this.$nextTick(function () {
-        //     this.time=setInterval(this.onstart, 20000);
-        //   })
+        var domModule = weex.requireModule('dom');
+        domModule.addRule('fontFace', {
+            'fontFamily': "iconfont",
+            'src': "url('http://at.alicdn.com/t/font_1141918_gqt9dsrnysk.ttf')"
+        });
+
+        //   this.music()
     }
 };
 
@@ -22809,11 +22820,15 @@ module.exports.render._withStripped = true
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: ["login_content"]
-  }, [_c('div', {
+  }, [_c('text', {
+    staticClass: ["page_title"]
+  }, [_vm._v("欢迎回来，请登录！")]), _c('div', {
     staticClass: ["login_input"]
   }, [_c('div', {
     staticClass: ["user_name", "input_box"]
-  }, [_c('input', {
+  }, [_c('text', {
+    staticClass: ["iconfont", "login-icon"]
+  }, [_vm._v("")]), _c('input', {
     staticClass: ["input_item"],
     attrs: {
       "type": "text",
@@ -22828,7 +22843,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })]), _c('div', {
     staticClass: ["user_password", "input_box"]
-  }, [_c('input', {
+  }, [_c('text', {
+    staticClass: ["iconfont", "login-icon"]
+  }, [_vm._v("")]), _c('input', {
     staticClass: ["input_item"],
     attrs: {
       "type": "password",
@@ -22852,7 +22869,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "wxcButtonClicked": _vm.choseWorkShop
     }
   })], 1), _c('div', {
-    staticClass: ["button_box"]
+    staticClass: ["button_box", "bottom"]
   }, [_c('wxc-button', {
     attrs: {
       "text": "登录",
@@ -24430,14 +24447,18 @@ exports.default = {
                             if (data.pageNum === data.pages) {
                                 that.isPreviewDisabled = false;
                                 that.isNextDisabled = true;
+                            } else {
+                                that.isPreviewDisabled = false;
+                                that.isNextDisabled = false;
                             }
                         }
                         if (data.pageNum === 1) {
-                            that.isPreviewDisabled = true;
-                            that.isNextDisabled = false;
                             if (data.pageNum === data.pages) {
                                 that.isPreviewDisabled = true;
                                 that.isNextDisabled = true;
+                            } else {
+                                that.isPreviewDisabled = true;
+                                that.isNextDisabled = false;
                             }
                         }
                         if (data.list.length === 0) {
@@ -24448,6 +24469,10 @@ exports.default = {
                         }
                     } else {
                         modal.toast({ message: ret.data.message });
+                        that.currentPage = 0;
+                        that.pages = 0;
+                        that.isPreviewDisabled = true;
+                        that.isNextDisabled = true;
                     }
                 }
             });
@@ -24467,6 +24492,7 @@ exports.default = {
             var body = {};
             if (checked === true) {
                 var containerName = checkedList[0].value;
+                that.currentIndex = -1;
                 if (containerName === '空料桶' || containerName === '空料斗') {
                     console.log(that.currentPage);
                     body = JSON.stringify({
@@ -24514,14 +24540,18 @@ exports.default = {
                             if (data.pageNum === data.pages) {
                                 that.isPreviewDisabled = false;
                                 that.isNextDisabled = true;
+                            } else {
+                                that.isPreviewDisabled = false;
+                                that.isNextDisabled = false;
                             }
                         }
                         if (data.pageNum === 1) {
-                            that.isPreviewDisabled = true;
-                            that.isNextDisabled = false;
                             if (data.pageNum === data.pages) {
                                 that.isPreviewDisabled = true;
                                 that.isNextDisabled = true;
+                            } else {
+                                that.isPreviewDisabled = true;
+                                that.isNextDisabled = false;
                             }
                         }
                         if (data.list.length === 0) {
@@ -24532,6 +24562,10 @@ exports.default = {
                         }
                     } else {
                         modal.toast({ message: ret.data.message });
+                        that.currentPage = 0;
+                        that.pages = 0;
+                        that.isPreviewDisabled = true;
+                        that.isNextDisabled = true;
                     }
                 }
             });
@@ -26790,7 +26824,7 @@ exports.default = {
             _this2.workshopName = event.data;
         });
         storage.getItem('containerNum', function (event) {
-            _this2.workshopName = event.data;
+            _this2.containerNum = event.data;
         });
     },
 
@@ -28906,14 +28940,18 @@ exports.default = {
                             if (data.pageNum === data.pages) {
                                 that.isPreviewDisabled = false;
                                 that.isNextDisabled = true;
+                            } else {
+                                that.isPreviewDisabled = false;
+                                that.isNextDisabled = false;
                             }
                         }
                         if (data.pageNum === 1) {
-                            that.isPreviewDisabled = true;
-                            that.isNextDisabled = false;
                             if (data.pageNum === data.pages) {
                                 that.isPreviewDisabled = true;
                                 that.isNextDisabled = true;
+                            } else {
+                                that.isPreviewDisabled = true;
+                                that.isNextDisabled = false;
                             }
                         }
                         if (data.list.length === 0) {
@@ -28924,6 +28962,10 @@ exports.default = {
                         }
                     } else {
                         modal.toast({ message: ret.data.message });
+                        that.currentPage = 0;
+                        that.pages = 0;
+                        that.isPreviewDisabled = true;
+                        that.isNextDisabled = true;
                     }
                 }
             });
@@ -28937,10 +28979,11 @@ exports.default = {
                 checkedList = _ref.checkedList;
 
             var that = this;
-            var url = 'http://10.34.10.126:8200/containerInformation/getAllContainerInformation';
+            var url = 'http://10.34.10.126:8200/containerInformation/getAllOverdueNotUsed';
             that.tableBodyData = [];
             var body = {};
             if (checked === true) {
+                that.currentIndex = -1;
                 var containerName = checkedList[0].value;
                 if (containerName === '空料桶' || containerName === '空料斗') {
                     console.log(that.currentPage);
@@ -28989,14 +29032,18 @@ exports.default = {
                             if (data.pageNum === data.pages) {
                                 that.isPreviewDisabled = false;
                                 that.isNextDisabled = true;
+                            } else {
+                                that.isPreviewDisabled = false;
+                                that.isNextDisabled = false;
                             }
                         }
                         if (data.pageNum === 1) {
-                            that.isPreviewDisabled = true;
-                            that.isNextDisabled = false;
                             if (data.pageNum === data.pages) {
                                 that.isPreviewDisabled = true;
                                 that.isNextDisabled = true;
+                            } else {
+                                that.isPreviewDisabled = true;
+                                that.isNextDisabled = false;
                             }
                         }
                         if (data.list.length === 0) {
@@ -29007,6 +29054,10 @@ exports.default = {
                         }
                     } else {
                         modal.toast({ message: ret.data.message });
+                        that.currentPage = 0;
+                        that.pages = 0;
+                        that.isPreviewDisabled = true;
+                        that.isNextDisabled = true;
                     }
                 }
             });
@@ -29674,6 +29725,14 @@ module.exports = {
   },
   "workShop-confirm": {
     "marginTop": "10"
+  },
+  "iconfont": {
+    "fontFamily": "iconfont"
+  },
+  "login-icon": {
+    "paddingTop": "25",
+    "fontSize": "40",
+    "color": "#cccccc"
   }
 }
 
@@ -29696,6 +29755,8 @@ var _config2 = _interopRequireDefault(_config);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//
+//
 //
 //
 //
@@ -29764,6 +29825,13 @@ exports.default = {
         onBlack: function onBlack() {
             this.$router.go(-1);
         }
+    },
+    created: function created() {
+        var domModule = weex.requireModule('dom');
+        domModule.addRule('fontFace', {
+            'fontFamily': "iconfont",
+            'src': "url('http://at.alicdn.com/t/font_1141918_gqt9dsrnysk.ttf')"
+        });
     }
 };
 
@@ -29778,7 +29846,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["login_input"]
   }, [_c('div', {
     staticClass: ["user_name", "input_box"]
-  }, [_c('input', {
+  }, [_c('text', {
+    staticClass: ["iconfont", "login-icon"]
+  }, [_vm._v("")]), _c('input', {
     staticClass: ["input_item"],
     attrs: {
       "type": "text",
@@ -29792,7 +29862,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })]), _c('div', {
     staticClass: ["user_password", "input_box"]
-  }, [_c('input', {
+  }, [_c('text', {
+    staticClass: ["iconfont", "login-icon"]
+  }, [_vm._v("")]), _c('input', {
     staticClass: ["input_item"],
     attrs: {
       "type": "password",
@@ -30733,8 +30805,8 @@ exports.default = {
             // 变量
             userBucket: '',
             userProduct: '',
-            userBatch: '',
-            userTime: '',
+            userBatch: '1231',
+            userTime: '2019-08-21',
             userStatus: '',
             userMaterial: '',
             userQalified: '',
@@ -30769,11 +30841,14 @@ exports.default = {
                 title: '已混颗粒',
                 value: '已混颗粒'
             }, {
-                title: '待清洗',
-                value: '待清洗'
+                title: '胶囊',
+                value: '胶囊'
             }, {
-                title: '已清洗',
-                value: '已清洗'
+                title: '素片',
+                value: '素片'
+            }, {
+                title: '包衣片',
+                value: '包衣片'
             }],
             product: [{
                 title: '心脑舒通胶囊',
@@ -31797,8 +31872,8 @@ exports.default = {
     components: { WxcButton: _weexUi.WxcButton, WxcRadio: _weexUi.WxcRadio, WxcPageCalendar: _weexUi.WxcPageCalendar, WxcMinibar: _weexUi.WxcMinibar, WxcPopup: _weexUi.WxcPopup },
     data: function data() {
         return {
-            ContainerNum: '',
-            LocationNum: '',
+            ContainerNum: '10086',
+            LocationNum: '33333',
             isCheckDisabled: true,
             tableHeadData: ['编号', '桶号', '库位二维码编号'],
             tableBodyData: [],
@@ -31833,7 +31908,7 @@ exports.default = {
                 return;
             } else {
                 var that = this;
-                var url = 'http://10.34.10.126:8200/containerFunctionLocation/getAllContainerFunctionLocation';
+                var url = 'http://10.34.10.126:8200/containerFunctionLocation/saveContainerFunctionLocation';
                 var body = JSON.stringify({
                     containerFunctionNumber: that.ContainerNum,
                     containerFunctionQrCodeNumber: that.LocationNum
@@ -31901,18 +31976,32 @@ exports.default = {
                             if (data.pageNum === data.pages) {
                                 that.isPreviewDisabled = false;
                                 that.isNextDisabled = true;
+                            } else {
+                                that.isPreviewDisabled = false;
+                                that.isNextDisabled = false;
                             }
                         }
                         if (data.pageNum === 1) {
-                            that.isPreviewDisabled = true;
-                            that.isNextDisabled = false;
                             if (data.pageNum === data.pages) {
                                 that.isPreviewDisabled = true;
                                 that.isNextDisabled = true;
+                            } else {
+                                that.isPreviewDisabled = true;
+                                that.isNextDisabled = false;
                             }
+                        }
+                        if (data.list.length === 0) {
+                            that.currentPage = 0;
+                            that.pages = 0;
+                            that.isPreviewDisabled = true;
+                            that.isNextDisabled = true;
                         }
                     } else {
                         modal.toast({ message: ret.data.message });
+                        that.currentPage = 0;
+                        that.pages = 0;
+                        that.isPreviewDisabled = true;
+                        that.isNextDisabled = true;
                     }
                 }
             });

@@ -11220,27 +11220,6 @@ var _require = __webpack_require__(37),
 var App = __webpack_require__(513);
 /* eslint-disable no-new */
 
-// 路由导航守卫
-// router.beforeEach((to, from, next) => {
-//   console.log(to)
-//   console.log(from)
-//     // let mycookie = sessionStorage.getItem('mycookie') || '';
-//     // if (mycookie) {
-//     //     next()
-//     // } else {
-//     //     if (to.path != '/login') {
-//     //         next({ path: '/login' })
-//     //     } else {
-//     //         next()
-//     //     }
-//     // }
-// })
-// import Nat from 'natjs'
-// Nat.audio.play('../img/view.mp3')
-// const storage = weex.requireModule('storage');
-// storage.setItem('btext','1',event => {
-
-// });
 new _vue2.default(_vue2.default.util.extend({ el: '#root', router: router }, App));
 router.push('/');
 
@@ -25527,7 +25506,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.login_content[data-v-1e98f12e] {\r\n    justify-content: center;\r\n    align-items: center;\r\n    flex-direction: column;\r\n    margin-top: 1.2rem;\n}\n.input_box[data-v-1e98f12e] {\r\n    flex-direction: row;\r\n    border-style: solid;\r\n    border-width: 1;\r\n    border-color: #333;\r\n    border-radius: 10;\r\n    margin-bottom: 40;\r\n    padding-left: 20;\n}\n.input_item[data-v-1e98f12e] {\r\n    width: 8.93333rem;\r\n    height: 1.2rem;\n}\n.button_box[data-v-1e98f12e] {\r\n    margin-top: 0.26667rem;\r\n    align-items: center;\n}\n.bottom[data-v-1e98f12e] {\r\n    margin-top: 0.53333rem;\n}\n.mask-content[data-v-1e98f12e] {\r\n    padding-top: 20;\n}\n.mask-title[data-v-1e98f12e] {\r\n    align-items: center;\n}\n.title[data-v-1e98f12e] {\r\n    font-size: 0.37333rem;\n}\n.mask-btns[data-v-1e98f12e] {\r\n    align-items: center;\r\n    justify-content: center;\r\n    flex-direction: row;\n}\n.scroller-box[data-v-1e98f12e] {\r\n    height: 808;\r\n    position: absolute !important;\r\n    top: 0;\r\n    right: 0;\r\n    left: 0;\r\n    bottom: 0;\n}\n.workShop-confirm[data-v-1e98f12e] {\r\n    margin-top: 0.13333rem;\n}\n.video[data-v-1e98f12e] {\r\n    width: 8.4rem;\r\n    height: 4.66667rem;\r\n    margin-top: 0.8rem;\r\n    margin-left: 0.8rem;\r\n    /* opacity: 0; */\n}\n.info[data-v-1e98f12e] {\r\n    margin-top: 0.53333rem;\r\n    font-size: 0.53333rem;\r\n    text-align: center;\r\n    opacity: 0;\n}\r\n", ""]);
+exports.push([module.i, "\n.login_content[data-v-1e98f12e] {\r\n    justify-content: center;\r\n    align-items: center;\r\n    flex-direction: column;\r\n    margin-top: 1.06667rem;\n}\n.page_title[data-v-1e98f12e]{\r\n    margin-bottom: 1.06667rem;\r\n    font-size: 0.53333rem;\r\n    color:#333;\n}\n.input_box[data-v-1e98f12e] {\r\n    flex-direction: row;\r\n    border-style: solid;\r\n    border-width: 1;\r\n    border-color: #333;\r\n    border-radius: 10;\r\n    margin-bottom: 40;\r\n    padding-left: 10;\r\n    width:9.33333rem;\n}\n.input_item[data-v-1e98f12e] {\r\n    width: 8.93333rem;\r\n    height: 1.2rem;\r\n    margin-left: 0.13333rem;\n}\n.button_box[data-v-1e98f12e] {\r\n    align-items: center;\n}\n.bottom[data-v-1e98f12e] {\r\n    margin-top: 0.93333rem;\n}\n.mask-content[data-v-1e98f12e] {\r\n    padding-top: 20;\n}\n.mask-title[data-v-1e98f12e] {\r\n    align-items: center;\n}\n.title[data-v-1e98f12e] {\r\n    font-size: 0.37333rem;\n}\n.mask-btns[data-v-1e98f12e] {\r\n    align-items: center;\r\n    justify-content: center;\r\n    flex-direction: row;\n}\n.scroller-box[data-v-1e98f12e] {\r\n    height: 808;\r\n    position: absolute !important;\r\n    top: 0;\r\n    right: 0;\r\n    left: 0;\r\n    bottom: 0;\n}\n.workShop-confirm[data-v-1e98f12e] {\r\n    margin-top: 0.13333rem;\n}\n.video[data-v-1e98f12e] {\r\n    width: 8.4rem;\r\n    height: 4.66667rem;\r\n    margin-top: 0.8rem;\r\n    margin-left: 0.8rem;\r\n    /* opacity: 0; */\n}\n.info[data-v-1e98f12e] {\r\n    margin-top: 0.53333rem;\r\n    font-size: 0.53333rem;\r\n    text-align: center;\r\n    opacity: 0;\n}\n.iconfont[data-v-1e98f12e] {\r\n    font-family: iconfont;\n}\n.login-icon[data-v-1e98f12e] {\r\n    padding-top: 0.33333rem;\r\n    font-size: 0.53333rem;\r\n    color:#ccc;\n}\r\n", ""]);
 
 // exports
 
@@ -25578,13 +25557,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _weexUi = __webpack_require__(4);
 
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -25822,9 +25794,13 @@ exports.default = {
         storage.getItem('containerNum', function (event) {
             console.log(event.data);
         });
-        //   this.$nextTick(function () {
-        //     this.time=setInterval(this.onstart, 20000);
-        //   })
+        var domModule = weex.requireModule('dom');
+        domModule.addRule('fontFace', {
+            'fontFamily': "iconfont",
+            'src': "url('http://at.alicdn.com/t/font_1141918_gqt9dsrnysk.ttf')"
+        });
+
+        //   this.music()
     }
 };
 
@@ -44340,7 +44316,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "weex-type": "div"
     }
-  }, [_c('div', {
+  }, [_c('p', {
+    staticClass: "page_title weex-el weex-text",
+    attrs: {
+      "weex-type": "text"
+    }
+  }, [_vm._v("欢迎回来，请登录！")]), _vm._v(" "), _c('div', {
     staticClass: "login_input weex-ct weex-div",
     attrs: {
       "weex-type": "div"
@@ -44350,7 +44331,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "weex-type": "div"
     }
-  }, [_c('input', {
+  }, [_c('p', {
+    staticClass: "iconfont login-icon weex-el weex-text",
+    attrs: {
+      "weex-type": "text"
+    }
+  }, [_vm._v("")]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -44384,7 +44370,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "weex-type": "div"
     }
-  }, [_c('input', {
+  }, [_c('p', {
+    staticClass: "iconfont login-icon weex-el weex-text",
+    attrs: {
+      "weex-type": "text"
+    }
+  }, [_vm._v("")]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -44428,7 +44419,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "wxcButtonClicked": _vm.choseWorkShop
     }
   })], 1), _vm._v(" "), _c('div', {
-    staticClass: "button_box weex-ct weex-div",
+    staticClass: "button_box bottom weex-ct weex-div",
     attrs: {
       "weex-type": "div"
     }
@@ -45175,6 +45166,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 
+var Stark = new BroadcastChannel('Avengers');
 exports.default = {
   components: { WxcMask: _weexUi.WxcMask, vStop: _vStop2.default, vStart: _vStart2.default, vGetSpritzerHopper: _vGetSpritzerHopper2.default, vEmptySpritzerHopper: _vEmptySpritzerHopper2.default, vResetContainer: _vResetContainer2.default },
   data: function data() {
@@ -45206,6 +45198,14 @@ exports.default = {
     onpen: function onpen() {
       this.showBusiness = false;
     }
+  },
+  mounted: function mounted() {
+    var self = this;
+    Stark.onmessage = function (event) {
+      if (event.data === 'Assemble!') {
+        self.showBusiness = false;
+      }
+    };
   }
 };
 
@@ -46386,14 +46386,18 @@ exports.default = {
                             if (data.pageNum === data.pages) {
                                 that.isPreviewDisabled = false;
                                 that.isNextDisabled = true;
+                            } else {
+                                that.isPreviewDisabled = false;
+                                that.isNextDisabled = false;
                             }
                         }
                         if (data.pageNum === 1) {
-                            that.isPreviewDisabled = true;
-                            that.isNextDisabled = false;
                             if (data.pageNum === data.pages) {
                                 that.isPreviewDisabled = true;
                                 that.isNextDisabled = true;
+                            } else {
+                                that.isPreviewDisabled = true;
+                                that.isNextDisabled = false;
                             }
                         }
                         if (data.list.length === 0) {
@@ -46404,6 +46408,10 @@ exports.default = {
                         }
                     } else {
                         modal.toast({ message: ret.data.message });
+                        that.currentPage = 0;
+                        that.pages = 0;
+                        that.isPreviewDisabled = true;
+                        that.isNextDisabled = true;
                     }
                 }
             });
@@ -46423,6 +46431,7 @@ exports.default = {
             var body = {};
             if (checked === true) {
                 var containerName = checkedList[0].value;
+                that.currentIndex = -1;
                 if (containerName === '空料桶' || containerName === '空料斗') {
                     console.log(that.currentPage);
                     body = JSON.stringify({
@@ -46470,14 +46479,18 @@ exports.default = {
                             if (data.pageNum === data.pages) {
                                 that.isPreviewDisabled = false;
                                 that.isNextDisabled = true;
+                            } else {
+                                that.isPreviewDisabled = false;
+                                that.isNextDisabled = false;
                             }
                         }
                         if (data.pageNum === 1) {
-                            that.isPreviewDisabled = true;
-                            that.isNextDisabled = false;
                             if (data.pageNum === data.pages) {
                                 that.isPreviewDisabled = true;
                                 that.isNextDisabled = true;
+                            } else {
+                                that.isPreviewDisabled = true;
+                                that.isNextDisabled = false;
                             }
                         }
                         if (data.list.length === 0) {
@@ -46488,6 +46501,10 @@ exports.default = {
                         }
                     } else {
                         modal.toast({ message: ret.data.message });
+                        that.currentPage = 0;
+                        that.pages = 0;
+                        that.isPreviewDisabled = true;
+                        that.isNextDisabled = true;
                     }
                 }
             });
@@ -47081,6 +47098,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 
+var Stark = new BroadcastChannel('Avengers');
 exports.default = {
   components: { WxcMask: _weexUi.WxcMask, vStop: _vStop2.default, vStart: _vStart2.default, vGetSpritzerHopper: _vGetSpritzerHopper2.default, vEmptySpritzerHopper: _vEmptySpritzerHopper2.default, vSpritzerHopper: _vSpritzerHopper2.default, vGetEmptySpritzerHopper: _vGetEmptySpritzerHopper2.default, vResetContainer: _vResetContainer2.default },
   data: function data() {
@@ -47108,6 +47126,14 @@ exports.default = {
       this.showFunction = true;
       this.hasFunction = false;
     }
+  },
+  mounted: function mounted() {
+    var self = this;
+    Stark.onmessage = function (event) {
+      if (event.data === 'Assemble!') {
+        self.showBusiness = false;
+      }
+    };
   }
 };
 
@@ -47991,6 +48017,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 
+var Stark = new BroadcastChannel('Avengers');
+// 取料斗
+
+// 送料斗或料桶
 exports.default = {
   components: { WxcMask: _weexUi.WxcMask, vStop: _vStop2.default, vStart: _vStart2.default, vGetSpritzerTankHopper: _vGetSpritzerTankHopper2.default, vEmptySpritzerTank: _vEmptySpritzerTank2.default, vSpritzerHopper: _vSpritzerHopper2.default, vGetEmptySpritzerHopper: _vGetEmptySpritzerHopper2.default, vResetContainer: _vResetContainer2.default },
   data: function data() {
@@ -48018,11 +48048,16 @@ exports.default = {
       this.showFunction = true;
       this.hasFunction = false;
     }
+  },
+  mounted: function mounted() {
+    var self = this;
+    Stark.onmessage = function (event) {
+      if (event.data === 'Assemble!') {
+        self.showBusiness = false;
+      }
+    };
   }
 };
-// 取料斗
-
-// 送料斗或料桶
 
 /***/ }),
 /* 392 */
@@ -48795,6 +48830,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 
+var Stark = new BroadcastChannel('Avengers');
+// 取料桶
+
+// 送空料桶
 exports.default = {
   components: { WxcMask: _weexUi.WxcMask, vStop: _vStop2.default, vStart: _vStart2.default, vGetEmptySpritzerTank: _vGetEmptySpritzerTank2.default, vEmptySpritzerTank: _vEmptySpritzerTank2.default, vSpritzerTank: _vSpritzerTank2.default, vGetSpritzerTank: _vGetSpritzerTank2.default, vResetContainer: _vResetContainer2.default },
   data: function data() {
@@ -48822,11 +48861,16 @@ exports.default = {
       this.showFunction = true;
       this.hasFunction = false;
     }
+  },
+  mounted: function mounted() {
+    var self = this;
+    Stark.onmessage = function (event) {
+      if (event.data === 'Assemble!') {
+        self.showBusiness = false;
+      }
+    };
   }
 };
-// 取料桶
-
-// 送空料桶
 
 /***/ }),
 /* 411 */
@@ -49224,7 +49268,7 @@ exports.default = {
             _this2.workshopName = event.data;
         });
         storage.getItem('containerNum', function (event) {
-            _this2.workshopName = event.data;
+            _this2.containerNum = event.data;
         });
     },
 
@@ -49877,6 +49921,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 
+var Stark = new BroadcastChannel('Avengers');
+// 取料桶
+
+// 送空料桶回中间站
 exports.default = {
   components: { WxcMask: _weexUi.WxcMask, vStop: _vStop2.default, vStart: _vStart2.default, vGetSpritzerHopperBack: _vGetSpritzerHopperBack2.default, vGetSpritzerHopperRinse: _vGetSpritzerHopperRinse2.default, vSpritzerTank: _vSpritzerTank2.default, vGetSpritzerTank: _vGetSpritzerTank2.default, vResetContainer: _vResetContainer2.default },
   data: function data() {
@@ -49904,11 +49952,16 @@ exports.default = {
       this.showFunction = true;
       this.hasFunction = false;
     }
+  },
+  mounted: function mounted() {
+    var self = this;
+    Stark.onmessage = function (event) {
+      if (event.data === 'Assemble!') {
+        self.showBusiness = false;
+      }
+    };
   }
 };
-// 取料桶
-
-// 送空料桶回中间站
 
 /***/ }),
 /* 434 */
@@ -50811,41 +50864,7 @@ var _vWeigh2 = _interopRequireDefault(_vWeigh);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // 送过期料斗和料桶清洗
-exports.default = {
-  components: { WxcMask: _weexUi.WxcMask, vStop: _vStop2.default, vStart: _vStart2.default, vGetSpritzerHopperRinses: _vGetSpritzerHopperRinses2.default, vWeigh: _vWeigh2.default },
-  data: function data() {
-    return {
-      showBusiness: false,
-      showFunction: false,
-      overlayCanClose: true,
-      isFalse: false,
-      hasBusiness: true,
-      hasFunction: true
-    };
-  },
-  methods: {
-    openMask: function openMask(e) {
-      this.showBusiness = true;
-      this.hasBusiness = true;
-    },
-    wxcMaskBusiness: function wxcMaskBusiness() {
-      this.showBusiness = false;
-    },
-    wxcMaskFunction: function wxcMaskFunction() {
-      this.showFunction = false;
-    },
-    openNoAnimationMask: function openNoAnimationMask(e) {
-      this.showFunction = true;
-      this.hasFunction = false;
-    },
-    onJurisLogin: function onJurisLogin() {
-      this.$router.push({ name: 'jurisLogin' });
-    },
-    onContainerLogin: function onContainerLogin() {
-      this.$router.push({ name: 'containerLogin' });
-    }
-  }
-};
+var Stark = new BroadcastChannel('Avengers');
 // 称重
 //
 //
@@ -50900,6 +50919,50 @@ exports.default = {
 //
 //
 //
+
+exports.default = {
+  components: { WxcMask: _weexUi.WxcMask, vStop: _vStop2.default, vStart: _vStart2.default, vGetSpritzerHopperRinses: _vGetSpritzerHopperRinses2.default, vWeigh: _vWeigh2.default },
+  data: function data() {
+    return {
+      showBusiness: false,
+      showFunction: false,
+      overlayCanClose: true,
+      isFalse: false,
+      hasBusiness: true,
+      hasFunction: true
+    };
+  },
+  methods: {
+    openMask: function openMask(e) {
+      this.showBusiness = true;
+      this.hasBusiness = true;
+    },
+    wxcMaskBusiness: function wxcMaskBusiness() {
+      this.showBusiness = false;
+    },
+    wxcMaskFunction: function wxcMaskFunction() {
+      this.showFunction = false;
+    },
+    openNoAnimationMask: function openNoAnimationMask(e) {
+      this.showFunction = true;
+      this.hasFunction = false;
+    },
+    onJurisLogin: function onJurisLogin() {
+      this.$router.push({ name: 'jurisLogin' });
+    },
+    onContainerLogin: function onContainerLogin() {
+      this.$router.push({ name: 'containerLogin' });
+    }
+  },
+  mounted: function mounted() {
+    var self = this;
+    Stark.onmessage = function (event) {
+      if (event.data === 'Assemble!') {
+        self.showBusiness = false;
+      }
+    };
+  }
+};
 
 /***/ }),
 /* 454 */
@@ -51669,14 +51732,18 @@ exports.default = {
                             if (data.pageNum === data.pages) {
                                 that.isPreviewDisabled = false;
                                 that.isNextDisabled = true;
+                            } else {
+                                that.isPreviewDisabled = false;
+                                that.isNextDisabled = false;
                             }
                         }
                         if (data.pageNum === 1) {
-                            that.isPreviewDisabled = true;
-                            that.isNextDisabled = false;
                             if (data.pageNum === data.pages) {
                                 that.isPreviewDisabled = true;
                                 that.isNextDisabled = true;
+                            } else {
+                                that.isPreviewDisabled = true;
+                                that.isNextDisabled = false;
                             }
                         }
                         if (data.list.length === 0) {
@@ -51687,6 +51754,10 @@ exports.default = {
                         }
                     } else {
                         modal.toast({ message: ret.data.message });
+                        that.currentPage = 0;
+                        that.pages = 0;
+                        that.isPreviewDisabled = true;
+                        that.isNextDisabled = true;
                     }
                 }
             });
@@ -51700,10 +51771,11 @@ exports.default = {
                 checkedList = _ref.checkedList;
 
             var that = this;
-            var url = 'http://10.34.10.126:8200/containerInformation/getAllContainerInformation';
+            var url = 'http://10.34.10.126:8200/containerInformation/getAllOverdueNotUsed';
             that.tableBodyData = [];
             var body = {};
             if (checked === true) {
+                that.currentIndex = -1;
                 var containerName = checkedList[0].value;
                 if (containerName === '空料桶' || containerName === '空料斗') {
                     console.log(that.currentPage);
@@ -51752,14 +51824,18 @@ exports.default = {
                             if (data.pageNum === data.pages) {
                                 that.isPreviewDisabled = false;
                                 that.isNextDisabled = true;
+                            } else {
+                                that.isPreviewDisabled = false;
+                                that.isNextDisabled = false;
                             }
                         }
                         if (data.pageNum === 1) {
-                            that.isPreviewDisabled = true;
-                            that.isNextDisabled = false;
                             if (data.pageNum === data.pages) {
                                 that.isPreviewDisabled = true;
                                 that.isNextDisabled = true;
+                            } else {
+                                that.isPreviewDisabled = true;
+                                that.isNextDisabled = false;
                             }
                         }
                         if (data.list.length === 0) {
@@ -51770,6 +51846,10 @@ exports.default = {
                         }
                     } else {
                         modal.toast({ message: ret.data.message });
+                        that.currentPage = 0;
+                        that.pages = 0;
+                        that.isPreviewDisabled = true;
+                        that.isNextDisabled = true;
                     }
                 }
             });
@@ -52636,7 +52716,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.login_content[data-v-373b4fa8] {\r\n    justify-content: center;\r\n    align-items: center;\r\n    flex-direction: column;\r\n    margin-top: 1.2rem;\n}\n.input_box[data-v-373b4fa8] {\r\n    flex-direction: row;\r\n    border-style: solid;\r\n    border-width: 1;\r\n    border-color: #333;\r\n    border-radius: 10;\r\n    margin-bottom: 40;\r\n    padding-left: 20;\n}\n.input_item[data-v-373b4fa8] {\r\n    width: 8.93333rem;\r\n    height: 1.2rem;\n}\n.button_box[data-v-373b4fa8] {\r\n    margin-top: 0.26667rem;\r\n    align-items: center;\n}\n.bottom[data-v-373b4fa8] {\r\n    margin-top: 0.53333rem;\n}\n.mask-content[data-v-373b4fa8] {\r\n    padding-top: 20;\n}\n.mask-title[data-v-373b4fa8] {\r\n    align-items: center;\n}\n.title[data-v-373b4fa8] {\r\n    font-size: 0.37333rem;\n}\n.mask-btns[data-v-373b4fa8] {\r\n    align-items: center;\r\n    justify-content: center;\r\n    flex-direction: row;\n}\n.scroller-box[data-v-373b4fa8] {\r\n    height: 808;\r\n    position: absolute !important;\r\n    top: 0;\r\n    right: 0;\r\n    left: 0;\r\n    bottom: 0;\n}\n.workShop-confirm[data-v-373b4fa8] {\r\n    margin-top: 0.13333rem;\n}\r\n", ""]);
+exports.push([module.i, "\n.login_content[data-v-373b4fa8] {\r\n    justify-content: center;\r\n    align-items: center;\r\n    flex-direction: column;\r\n    margin-top: 1.2rem;\n}\n.input_box[data-v-373b4fa8] {\r\n    flex-direction: row;\r\n    border-style: solid;\r\n    border-width: 1;\r\n    border-color: #333;\r\n    border-radius: 10;\r\n    margin-bottom: 40;\r\n    padding-left: 20;\n}\n.input_item[data-v-373b4fa8] {\r\n    width: 8.93333rem;\r\n    height: 1.2rem;\n}\n.button_box[data-v-373b4fa8] {\r\n    margin-top: 0.26667rem;\r\n    align-items: center;\n}\n.bottom[data-v-373b4fa8] {\r\n    margin-top: 0.53333rem;\n}\n.mask-content[data-v-373b4fa8] {\r\n    padding-top: 20;\n}\n.mask-title[data-v-373b4fa8] {\r\n    align-items: center;\n}\n.title[data-v-373b4fa8] {\r\n    font-size: 0.37333rem;\n}\n.mask-btns[data-v-373b4fa8] {\r\n    align-items: center;\r\n    justify-content: center;\r\n    flex-direction: row;\n}\n.scroller-box[data-v-373b4fa8] {\r\n    height: 808;\r\n    position: absolute !important;\r\n    top: 0;\r\n    right: 0;\r\n    left: 0;\r\n    bottom: 0;\n}\n.workShop-confirm[data-v-373b4fa8] {\r\n    margin-top: 0.13333rem;\n}\n.iconfont[data-v-373b4fa8] {\r\n    font-family: iconfont;\n}\n.login-icon[data-v-373b4fa8] {\r\n    padding-top: 0.33333rem;\r\n    font-size: 0.53333rem;\r\n    color:#ccc;\n}\r\n", ""]);
 
 // exports
 
@@ -52660,6 +52740,8 @@ var _config2 = _interopRequireDefault(_config);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//
+//
 //
 //
 //
@@ -52728,6 +52810,13 @@ exports.default = {
         onBlack: function onBlack() {
             this.$router.go(-1);
         }
+    },
+    created: function created() {
+        var domModule = weex.requireModule('dom');
+        domModule.addRule('fontFace', {
+            'fontFamily': "iconfont",
+            'src': "url('http://at.alicdn.com/t/font_1141918_gqt9dsrnysk.ttf')"
+        });
     }
 };
 
@@ -52751,7 +52840,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "weex-type": "div"
     }
-  }, [_c('input', {
+  }, [_c('p', {
+    staticClass: "iconfont login-icon weex-el weex-text",
+    attrs: {
+      "weex-type": "text"
+    }
+  }, [_vm._v("")]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -52777,7 +52871,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "weex-type": "div"
     }
-  }, [_c('input', {
+  }, [_c('p', {
+    staticClass: "iconfont login-icon weex-el weex-text",
+    attrs: {
+      "weex-type": "text"
+    }
+  }, [_vm._v("")]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -53845,8 +53944,8 @@ exports.default = {
             // 变量
             userBucket: '',
             userProduct: '',
-            userBatch: '',
-            userTime: '',
+            userBatch: '1231',
+            userTime: '2019-08-21',
             userStatus: '',
             userMaterial: '',
             userQalified: '',
@@ -53881,11 +53980,14 @@ exports.default = {
                 title: '已混颗粒',
                 value: '已混颗粒'
             }, {
-                title: '待清洗',
-                value: '待清洗'
+                title: '胶囊',
+                value: '胶囊'
             }, {
-                title: '已清洗',
-                value: '已清洗'
+                title: '素片',
+                value: '素片'
+            }, {
+                title: '包衣片',
+                value: '包衣片'
             }],
             product: [{
                 title: '心脑舒通胶囊',
@@ -55079,8 +55181,8 @@ exports.default = {
     components: { WxcButton: _weexUi.WxcButton, WxcRadio: _weexUi.WxcRadio, WxcPageCalendar: _weexUi.WxcPageCalendar, WxcMinibar: _weexUi.WxcMinibar, WxcPopup: _weexUi.WxcPopup },
     data: function data() {
         return {
-            ContainerNum: '',
-            LocationNum: '',
+            ContainerNum: '10086',
+            LocationNum: '33333',
             isCheckDisabled: true,
             tableHeadData: ['编号', '桶号', '库位二维码编号'],
             tableBodyData: [],
@@ -55115,7 +55217,7 @@ exports.default = {
                 return;
             } else {
                 var that = this;
-                var url = 'http://10.34.10.126:8200/containerFunctionLocation/getAllContainerFunctionLocation';
+                var url = 'http://10.34.10.126:8200/containerFunctionLocation/saveContainerFunctionLocation';
                 var body = JSON.stringify({
                     containerFunctionNumber: that.ContainerNum,
                     containerFunctionQrCodeNumber: that.LocationNum
@@ -55183,18 +55285,32 @@ exports.default = {
                             if (data.pageNum === data.pages) {
                                 that.isPreviewDisabled = false;
                                 that.isNextDisabled = true;
+                            } else {
+                                that.isPreviewDisabled = false;
+                                that.isNextDisabled = false;
                             }
                         }
                         if (data.pageNum === 1) {
-                            that.isPreviewDisabled = true;
-                            that.isNextDisabled = false;
                             if (data.pageNum === data.pages) {
                                 that.isPreviewDisabled = true;
                                 that.isNextDisabled = true;
+                            } else {
+                                that.isPreviewDisabled = true;
+                                that.isNextDisabled = false;
                             }
+                        }
+                        if (data.list.length === 0) {
+                            that.currentPage = 0;
+                            that.pages = 0;
+                            that.isPreviewDisabled = true;
+                            that.isNextDisabled = true;
                         }
                     } else {
                         modal.toast({ message: ret.data.message });
+                        that.currentPage = 0;
+                        that.pages = 0;
+                        that.isPreviewDisabled = true;
+                        that.isNextDisabled = true;
                     }
                 }
             });
