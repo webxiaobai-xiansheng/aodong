@@ -73,7 +73,7 @@ export default {
                 return;
             } else {
                 let that = this;
-                let url = 'http://10.34.10.126:8999/obtain/workshopBucketManagement';
+                let url = 'http://10.34.10.177:8999/obtain/workshopBucketManagement';
                 let body = JSON.stringify({
                     functionRoomNumber: that.functionRoomNumber,
                     containerNumber: that.resetContainerNum

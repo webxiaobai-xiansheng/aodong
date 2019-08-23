@@ -18,6 +18,9 @@
             <wxc-button text="登录" :disabled="isLoginDisabled" type="blue" @wxcButtonClicked="login"></wxc-button>
         </div>
 
+        <!-- <video class="video" src="http://flv2.bn.netease.com/videolib3/1611/01/XGqSL5981/SD/XGqSL5981-mobile.mp4" autoplay controls
+      @start="onstart" @pause="onpause" @finish="onfinish" @fail="onfail"></video> -->
+
         <wxc-popup popup-color="#fff" :show="show" @wxcPopupOverlayClicked="wxcMaskSetHidden" pos="left" height="400">
             <div class="content mask-content">
                 <div class="mask-title">
@@ -160,7 +163,7 @@ export default {
         login() {
             // let audio = new Audio('http://59.110.169.246/img/1.mp3');
             let that=this;
-            let url = 'http://10.34.10.126:8999/user/login';
+            let url = 'http://10.34.10.177:8999/user/login';
             let body = JSON.stringify({
                 username: this.userName,
                 password: this.userPassword,
@@ -238,6 +241,19 @@ export default {
                    
         //         }
         //     })
+        // }
+        // onstart (event) {
+        //     console.log(event)
+        //     this.state = 'onstart'
+        // },
+        // onpause (event) {
+        //     this.state = 'onpause'
+        // },
+        // onfinish (event) {
+        //     this.state = 'onfinish'
+        // },
+        // onfail (event) {
+        //     this.state = 'onfinish'
         // }
     },
     created() {

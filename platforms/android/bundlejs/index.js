@@ -5640,7 +5640,7 @@ exports.default = {
         login: function login() {
             // let audio = new Audio('http://59.110.169.246/img/1.mp3');
             var that = this;
-            var url = 'http://10.34.10.126:8999/user/login';
+            var url = 'http://10.34.10.177:8999/user/login';
             var body = JSON.stringify({
                 username: this.userName,
                 password: this.userPassword
@@ -23563,7 +23563,7 @@ exports.default = {
   methods: {
     wxcButtonStop: function wxcButtonStop() {
       var _this = this;
-      var url = 'http://10.34.10.126:8088/agv/stopOrStart/1';
+      var url = 'http://10.34.10.177:8088/agv/stopOrStart/1';
       stream.fetch({
         method: "GET",
         url: url,
@@ -23643,7 +23643,7 @@ exports.default = {
     wxcButtonStart: function wxcButtonStart() {
       var _this = this;
 
-      var url = 'http://10.34.10.126:8088/agv/stopOrStart/0';
+      var url = 'http://10.34.10.177:8088/agv/stopOrStart/0';
 
       stream.fetch({
         method: "GET",
@@ -23740,7 +23740,7 @@ exports.default = {
   methods: {
     wxcButtonGetSpritzerHopper: function wxcButtonGetSpritzerHopper() {
       var _this = this;
-      var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+      var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
       stream.fetch({
         method: "GET",
         url: url,
@@ -23842,7 +23842,7 @@ exports.default = {
         wxcButtonEmptySpritzerHopper: function wxcButtonEmptySpritzerHopper(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://10.34.10.126:8999/obtain/getEmptyContainer?containerNumber=' + _this.containerNum + '&functionRoomNumber=' + _this.workshopName;
+                var url = 'http://10.34.10.177:8999/obtain/getEmptyContainer?containerNumber=' + _this.containerNum + '&functionRoomNumber=' + _this.workshopName;
                 stream.fetch({
                     method: "GET",
                     url: url,
@@ -24031,7 +24031,7 @@ exports.default = {
                 return;
             } else {
                 var that = this;
-                var url = 'http://10.34.10.126:8999/obtain/workshopBucketManagement';
+                var url = 'http://10.34.10.177:8999/obtain/workshopBucketManagement';
                 var body = JSON.stringify({
                     functionRoomNumber: that.functionRoomNumber,
                     containerNumber: that.resetContainerNum
@@ -24422,7 +24422,7 @@ exports.default = {
         // 初始化table和筛选table
         initTable: function initTable() {
             var that = this;
-            var url = 'http://10.34.10.126:8200/containerInformation/getContainerInformation';
+            var url = 'http://10.34.10.177:8200/containerInformation/getContainerInformation';
             var body = JSON.stringify({
                 init: '',
                 page: that.currentPage,
@@ -24486,7 +24486,7 @@ exports.default = {
                 checkedList = _ref.checkedList;
 
             var that = this;
-            var url = 'http://10.34.10.126:8200/containerInformation/getContainerInformation';
+            var url = 'http://10.34.10.177:8200/containerInformation/getContainerInformation';
             that.tableBodyData = [];
             // that.currentPage = 1;
             var body = {};
@@ -25135,7 +25135,7 @@ exports.default = {
         wxcButtonSpritzerHopper: function wxcButtonSpritzerHopper(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://10.34.10.126:8999/obtain/getStripContainer';
+                var url = 'http://10.34.10.177:8999/obtain/getStripContainer';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -25285,7 +25285,7 @@ exports.default = {
         // 打开弹窗
         wxcButtonGetEmptySpritzerHopper: function wxcButtonGetEmptySpritzerHopper(e) {
             var _this = this;
-            var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+            var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
             stream.fetch({
                 method: "GET",
                 url: url,
@@ -25331,7 +25331,7 @@ exports.default = {
             var _this = this;
             console.log(this.containerNum);
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://10.34.10.126:8999/delivery/sendContainerToCleaningRoom';
+                var url = 'http://10.34.10.177:8999/delivery/sendContainerToCleaningRoom';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -25934,7 +25934,7 @@ exports.default = {
   methods: {
     wxcButtonGetSpritzerTankHopper: function wxcButtonGetSpritzerTankHopper() {
       var _this = this;
-      var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+      var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
       stream.fetch({
         method: "GET",
         url: url,
@@ -26038,7 +26038,7 @@ exports.default = {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
 
-                var url = 'http://10.34.10.126:8999/obtain/getEmptyContainer?containerNumber=' + _this.containerNum + '&functionRoomNumber=' + _this.workshopName;
+                var url = 'http://10.34.10.177:8999/obtain/getEmptyContainer?containerNumber=' + _this.containerNum + '&functionRoomNumber=' + _this.workshopName;
                 stream.fetch({
                     method: "GET",
                     url: url,
@@ -26640,7 +26640,7 @@ exports.default = {
         // 打开弹窗
         wxcButtonGetEmptySpritzerTank: function wxcButtonGetEmptySpritzerTank(e) {
             var _this = this;
-            var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+            var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
             stream.fetch({
                 method: "GET",
                 url: url,
@@ -26680,7 +26680,7 @@ exports.default = {
         wxcConfirmEmptyContainer: function wxcConfirmEmptyContainer(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://10.34.10.126:8999/delivery/sendContainerToCleaningRoom';
+                var url = 'http://10.34.10.177:8999/delivery/sendContainerToCleaningRoom';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -26832,7 +26832,7 @@ exports.default = {
         wxcButtonEmptySpritzerTank: function wxcButtonEmptySpritzerTank(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://10.34.10.126:8999/obtain/getStripContainer';
+                var url = 'http://10.34.10.177:8999/obtain/getStripContainer';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -26936,7 +26936,7 @@ exports.default = {
   methods: {
     wxcButtonGetSpritzerTank: function wxcButtonGetSpritzerTank() {
       var _this = this;
-      var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+      var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
       stream.fetch({
         method: "GET",
         url: url,
@@ -27498,7 +27498,7 @@ exports.default = {
         wxcButtonGetSpritzerHopperBack: function wxcButtonGetSpritzerHopperBack(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://10.34.10.126:8999/delivery/sendEmptyContainer';
+                var url = 'http://10.34.10.177:8999/delivery/sendEmptyContainer';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -27652,7 +27652,7 @@ exports.default = {
         wxcButtonGetSpritzerHopperRinse: function wxcButtonGetSpritzerHopperRinse(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://10.34.10.126:8999/delivery/sendContainerToCleaningRoom';
+                var url = 'http://10.34.10.177:8999/delivery/sendContainerToCleaningRoom';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -27995,7 +27995,7 @@ exports.default = {
         timer: function timer() {
             var _this = this;
 
-            var url = 'http://10.34.10.126:8999/agvTask/getReviewTask';
+            var url = 'http://10.34.10.177:8999/agvTask/getReviewTask';
             stream.fetch({
                 method: "GET",
                 url: url,
@@ -28024,7 +28024,7 @@ exports.default = {
         wxcChoseAllow: function wxcChoseAllow() {
             var _this = this;
 
-            var url = 'http://10.34.10.126:8999/obtain/reviewVerify';
+            var url = 'http://10.34.10.177:8999/obtain/reviewVerify';
             var body = JSON.stringify({
                 taskId: _this.id,
                 functionNumber: _this.functionNumber,
@@ -28050,7 +28050,7 @@ exports.default = {
         wxcChoseRefuse: function wxcChoseRefuse() {
             var _this = this;
 
-            var url = 'http://10.34.10.126:8999/obtain/reviewRefuse';
+            var url = 'http://10.34.10.177:8999/obtain/reviewRefuse';
             var body = JSON.stringify({
                 taskId: _this.id,
                 functionNumber: _this.functionNumber,
@@ -28428,7 +28428,7 @@ exports.default = {
         wxcButtonGetSpritzerHopperRinses: function wxcButtonGetSpritzerHopperRinses(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://10.34.10.126:8999/delivery/sendContainerFormZJToCleaningRoom';
+                var url = 'http://10.34.10.177:8999/delivery/sendContainerFormZJToCleaningRoom';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -28563,7 +28563,7 @@ exports.default = {
         wxcButtonWeigh: function wxcButtonWeigh(e) {
             var _this = this;
 
-            var url = 'http://10.34.10.126:8999/delivery/weighing';
+            var url = 'http://10.34.10.177:8999/delivery/weighing';
             var body = JSON.stringify({});
             stream.fetch({
                 method: "POST",
@@ -28915,7 +28915,7 @@ exports.default = {
         // 初始化table和筛选table
         initTable: function initTable() {
             var that = this;
-            var url = 'http://10.34.10.126:8200/containerInformation/getAllContainerInformation';
+            var url = 'http://10.34.10.177:8200/containerInformation/getAllContainerInformation';
             var body = JSON.stringify({
                 init: '',
                 page: that.currentPage,
@@ -28979,89 +28979,65 @@ exports.default = {
                 checkedList = _ref.checkedList;
 
             var that = this;
-            var url = 'http://10.34.10.126:8200/containerInformation/getAllOverdueNotUsed';
             that.tableBodyData = [];
             var body = {};
             if (checked === true) {
+                var url = 'http://10.34.10.177:8200/containerInformation/getAllOverdueNotUsed';
                 that.currentIndex = -1;
                 var containerName = checkedList[0].value;
-                if (containerName === '空料桶' || containerName === '空料斗') {
-                    console.log(that.currentPage);
-                    body = JSON.stringify({
-                        emptyContainer: containerName,
-                        page: that.currentPage,
-                        size: that.pageSize
-                    });
-                }
-                if (containerName === '料桶' || containerName === '料斗') {
-                    body = JSON.stringify({
-                        container: containerName,
-                        page: that.currentPage,
-                        size: that.pageSize
-                    });
-                }
-                if (containerName === '过期料斗、料桶') {
-                    body = JSON.stringify({
-                        outdatedContainers: containerName,
-                        page: that.currentPage,
-                        size: that.pageSize
-                    });
-                }
-            } else {
                 body = JSON.stringify({
-                    init: '',
+                    outdatedContainers: containerName,
                     page: that.currentPage,
                     size: that.pageSize
                 });
-            }
-            stream.fetch({
-                method: "POST",
-                type: 'json',
-                url: url,
-                headers: { 'Content-Type': 'application/json' },
-                body: body
-            }, function (ret) {
-                var data = ret.data.data;
-                if (ret.status === 200) {
-                    if (ret.data.status === 1) {
-                        modal.toast({ message: ret.data.message });
-                        that.tableBodyData = data.list;
-                        that.pages = data.pages; //页数
-                        that.currentPage = data.pageNum; //当前页
-                        if (data.pageNum > 1) {
-                            if (data.pageNum === data.pages) {
-                                that.isPreviewDisabled = false;
-                                that.isNextDisabled = true;
-                            } else {
-                                that.isPreviewDisabled = false;
-                                that.isNextDisabled = false;
+                stream.fetch({
+                    method: "POST",
+                    type: 'json',
+                    url: url,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: body
+                }, function (ret) {
+                    var data = ret.data.data;
+                    if (ret.status === 200) {
+                        if (ret.data.status === 1) {
+                            modal.toast({ message: ret.data.message });
+                            that.tableBodyData = data.list;
+                            that.pages = data.pages; //页数
+                            that.currentPage = data.pageNum; //当前页
+                            if (data.pageNum > 1) {
+                                if (data.pageNum === data.pages) {
+                                    that.isPreviewDisabled = false;
+                                    that.isNextDisabled = true;
+                                } else {
+                                    that.isPreviewDisabled = false;
+                                    that.isNextDisabled = false;
+                                }
                             }
-                        }
-                        if (data.pageNum === 1) {
-                            if (data.pageNum === data.pages) {
+                            if (data.pageNum === 1) {
+                                if (data.pageNum === data.pages) {
+                                    that.isPreviewDisabled = true;
+                                    that.isNextDisabled = true;
+                                } else {
+                                    that.isPreviewDisabled = true;
+                                    that.isNextDisabled = false;
+                                }
+                            }
+                            if (data.list.length === 0) {
+                                that.currentPage = 0;
+                                that.pages = 0;
                                 that.isPreviewDisabled = true;
                                 that.isNextDisabled = true;
-                            } else {
-                                that.isPreviewDisabled = true;
-                                that.isNextDisabled = false;
                             }
+                        } else {
+                            modal.toast({ message: ret.data.message });
                         }
-                        if (data.list.length === 0) {
-                            that.currentPage = 0;
-                            that.pages = 0;
-                            that.isPreviewDisabled = true;
-                            that.isNextDisabled = true;
-                        }
-                    } else {
-                        modal.toast({ message: ret.data.message });
-                        that.currentPage = 0;
-                        that.pages = 0;
-                        that.isPreviewDisabled = true;
-                        that.isNextDisabled = true;
                     }
-                }
-            });
+                });
+            } else {
+                that.initTable();
+            }
         },
+
 
         // 筛选按钮
         showFilterButton: function showFilterButton() {
@@ -29454,7 +29430,7 @@ exports.default = {
     onClack: function onClack() {
       var _this = this;
       if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-        var url = 'http://10.34.10.126:8999/delivery/sendEmptyContainer';
+        var url = 'http://10.34.10.177:8999/delivery/sendEmptyContainer';
         var body = JSON.stringify({
           containerNumber: _this.containerNum,
           functionRoomNumber: _this.workshopName
@@ -29793,7 +29769,7 @@ exports.default = {
         onLogin: function onLogin() {
             var _this = this;
             if (this.userName && this.userPassword) {
-                var url = 'http://10.34.10.126:8200/admin/getAdmin';
+                var url = 'http://10.34.10.177:8200/admin/getAdmin';
                 var body = JSON.stringify({
                     username: this.userName,
                     password: this.userPassword
@@ -30224,7 +30200,7 @@ exports.default = {
             var _this = this;
             if (this.userBucket && this.userProduct) {
                 this.binOrHopper = this.userProduct === '空料斗' ? '料斗' : '料桶';
-                var url = 'http://10.34.10.126:8200/containerInformation/saveContainerInformation';
+                var url = 'http://10.34.10.177:8200/containerInformation/saveContainerInformation';
 
                 var body = JSON.stringify({
                     containerNumber: this.userBucket,
@@ -31015,7 +30991,7 @@ exports.default = {
         login: function login() {
             var _this = this;
 
-            var url = 'http://10.34.10.126:8999/delivery/sendContainer';
+            var url = 'http://10.34.10.177:8999/delivery/sendContainer';
             var body = JSON.stringify({
                 functionNumber: _this.workshopName,
                 containerNumber: _this.userBucket,
@@ -31068,7 +31044,7 @@ exports.default = {
             // let name = this.workshopName;
             // console.log(name)
             // // modal.toast({ message: '你是'+name, duration: 10 });
-            var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+            var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
             // modal.toast({ message: url, duration: 3 });
             // let body = JSON.stringify({
             //     // functionRoomNumber: _this.workshopName
@@ -31521,7 +31497,7 @@ exports.default = {
         onLogin: function onLogin() {
             var _this = this;
             if (this.userName && this.userPassword) {
-                var url = 'http://10.34.10.126:8200/admin/getAdmin';
+                var url = 'http://10.34.10.177:8200/admin/getAdmin';
                 var body = JSON.stringify({
                     username: this.userName,
                     password: this.userPassword
@@ -31908,7 +31884,7 @@ exports.default = {
                 return;
             } else {
                 var that = this;
-                var url = 'http://10.34.10.126:8200/containerFunctionLocation/saveContainerFunctionLocation';
+                var url = 'http://10.34.10.177:8200/containerFunctionLocation/saveContainerFunctionLocation';
                 var body = JSON.stringify({
                     containerFunctionNumber: that.ContainerNum,
                     containerFunctionQrCodeNumber: that.LocationNum
@@ -31949,7 +31925,7 @@ exports.default = {
         // 初始化table
         initTable: function initTable() {
             var that = this;
-            var url = 'http://10.34.10.126:8200/containerFunctionLocation/getAllContainerFunctionLocation';
+            var url = 'http://10.34.10.177:8200/containerFunctionLocation/getAllContainerFunctionLocation';
             var body = JSON.stringify({
                 page: that.currentPage,
                 size: that.pageSize

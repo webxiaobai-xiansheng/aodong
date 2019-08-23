@@ -44,7 +44,7 @@ export default {
     onClack(){
       let _this=this;
         if(this.containerNum!=='undefined'&&this.workshopName!=='undefined'){
-          let url = 'http://10.34.10.126:8999/delivery/sendEmptyContainer';
+          let url = 'http://10.34.10.177:8999/delivery/sendEmptyContainer';
           let body = JSON.stringify({
               containerNumber:_this.containerNum,
               functionRoomNumber:_this.workshopName

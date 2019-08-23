@@ -72,7 +72,7 @@ export default {
     timer(){
       let _this=this;
 
-      let url = 'http://10.34.10.126:8999/agvTask/getReviewTask';
+      let url = 'http://10.34.10.177:8999/agvTask/getReviewTask';
       stream.fetch({
           method:"GET",
           url:url,
@@ -102,7 +102,7 @@ export default {
     wxcChoseAllow(){
       let _this=this;
 
-      let url = 'http://10.34.10.126:8999/obtain/reviewVerify';
+      let url = 'http://10.34.10.177:8999/obtain/reviewVerify';
       let body = JSON.stringify({
           taskId:_this.id,
           functionNumber:_this.functionNumber,
@@ -128,7 +128,7 @@ export default {
     wxcChoseRefuse(){
       let _this=this;
 
-      let url = 'http://10.34.10.126:8999/obtain/reviewRefuse';
+      let url = 'http://10.34.10.177:8999/obtain/reviewRefuse';
       let body = JSON.stringify({
           taskId:_this.id,
           functionNumber:_this.functionNumber,
