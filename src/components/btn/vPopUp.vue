@@ -164,8 +164,8 @@ export default {
         // 变量
         userBucket: '',
         userProduct:'',
-        userBatch:'1231',
-        userTime:'2019-08-21',
+        userBatch:'',
+        userTime:'',
         userStatus:'',
         userMaterial:'',
         userQalified:'',
@@ -404,7 +404,7 @@ export default {
                 if(ret.data.status===1){
                    const Steve = new BroadcastChannel('Avengers')
                    Steve.postMessage('Assemble!')
-                   modal.toast({ message: ret.data.message, duration: 3 });
+                   modal.toast({ message: ret.data.message,duration: 2});
                 //    _this.$router.go(-1);
                    _this.time=setInterval(this.timer, 1000);
                 }
@@ -439,7 +439,7 @@ export default {
             // console.log(name)
             // // modal.toast({ message: '你是'+name, duration: 10 });
             let url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber='+this.workshopName;
-            // modal.toast({ message: url, duration: 3 });
+            // modal.toast({ message: url,duration: 2});
             // let body = JSON.stringify({
             //     // functionRoomNumber: _this.workshopName
             // });

@@ -37,6 +37,11 @@
             </div>
       </div>
     </wxc-popup>
+
+    <div class="videoView">
+        <video class="video" src="http://flv2.bn.netease.com/videolib3/1611/01/XGqSL5981/SD/XGqSL5981-mobile.mp4" controls="nocontrols" play-status='pause'
+        auto-play='true' v-if="showlist"></video>
+    </div>
   </div>
 </template>
 
@@ -54,7 +59,8 @@ export default {
       productName:'',
       id:'',
       showproduct:false,
-      time:''
+      time:'',
+      showlist:false,
     }
   },
   components: {
@@ -65,7 +71,7 @@ export default {
   },
   created () {
     this.$nextTick(function () {
-        this.time=setInterval(this.timer, 20000);
+        this.time=setInterval(this.timer, 10000);
     })
   },
   methods: {
@@ -83,6 +89,7 @@ export default {
               if(ret.data.message==='没有需要复核任务'){
 
               }else if(ret.data.message==='有未复核通过任务'){
+                _this.showlist=true;
                 clearInterval(_this.time);
                 _this.showproduct=true;
                 _this.functionNumber=ret.data.data.functionNumber;
@@ -91,7 +98,7 @@ export default {
                 _this.id=ret.data.data.taskId;
               }
           }else{
-              modal.toast({ message: ret.data.message, duration: 3 });
+              modal.toast({ message: ret.data.message,duration: 2});
           }
       })
     },
@@ -117,11 +124,12 @@ export default {
           type:'json',
       },function(ret){
           if(ret.data.status===1){
-              modal.toast({ message: ret.data.message, duration: 3 });
+              modal.toast({ message: ret.data.message,duration: 2});
              _this.showproduct=false;
-            setInterval(_this.timer, 20000);
+            setInterval(_this.timer, 10000);
+            _this.showlist=false;
           }else{
-              modal.toast({ message: ret.data.message, duration: 3 });
+              modal.toast({ message: ret.data.message,duration: 2});
           }
       })
     },
@@ -143,11 +151,12 @@ export default {
           type:'json',
       },function(ret){
           if(ret.data.status===1){
-              modal.toast({ message: ret.data.message, duration: 3 });
+              modal.toast({ message: ret.data.message,duration: 2});
              _this.showproduct=false;
-            setInterval(_this.timer, 20000);
+            setInterval(_this.timer, 10000);
+            _this.showlist=false;
           }else{
-              modal.toast({ message: ret.data.message, duration: 3 });
+              modal.toast({ message: ret.data.message,duration: 2});
           }
       })
     }
@@ -226,5 +235,23 @@ export default {
 }
 .button{
     align-items: center;
+}
+
+.video {
+    width: 630px;
+    height: 350px;
+    margin-top: 60px;
+    margin-left: 60px;
+    /* opacity: 0; */
+}
+
+.info {
+    margin-top: 40px;
+    font-size: 40px;
+    text-align: center;
+    opacity: 0;
+}
+.videoView{
+    opacity: 0;
 }
 </style>

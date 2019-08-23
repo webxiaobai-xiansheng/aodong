@@ -36,7 +36,7 @@ export default {
             if(ret.data.data.length>0){
               _this.$router.push({name:'popUp'})
             }else{
-              modal.toast({ message: '该车间没有料斗', duration: 3 });
+              modal.toast({ message: '该车间没有料斗',duration: 2});
             }
           }
       })

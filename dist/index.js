@@ -2321,7 +2321,7 @@ exports.default = toParams;
 var _require = __webpack_require__(28),
     router = _require.router;
 
-var App = __webpack_require__(417);
+var App = __webpack_require__(421);
 /* eslint-disable no-new */
 
 new Vue(Vue.util.extend({ el: '#root', router: router }, App));
@@ -2375,27 +2375,27 @@ var _wayStation = __webpack_require__(364);
 
 var _wayStation2 = _interopRequireDefault(_wayStation);
 
-var _cleaning = __webpack_require__(385);
+var _cleaning = __webpack_require__(389);
 
 var _cleaning2 = _interopRequireDefault(_cleaning);
 
-var _jurisLogin = __webpack_require__(393);
+var _jurisLogin = __webpack_require__(397);
 
 var _jurisLogin2 = _interopRequireDefault(_jurisLogin);
 
-var _jurisLoginMessage = __webpack_require__(397);
+var _jurisLoginMessage = __webpack_require__(401);
 
 var _jurisLoginMessage2 = _interopRequireDefault(_jurisLoginMessage);
 
-var _popUp = __webpack_require__(401);
+var _popUp = __webpack_require__(405);
 
 var _popUp2 = _interopRequireDefault(_popUp);
 
-var _containerLogin = __webpack_require__(409);
+var _containerLogin = __webpack_require__(413);
 
 var _containerLogin2 = _interopRequireDefault(_containerLogin);
 
-var _containerLoginMessage = __webpack_require__(413);
+var _containerLoginMessage = __webpack_require__(417);
 
 var _containerLoginMessage2 = _interopRequireDefault(_containerLoginMessage);
 
@@ -5436,18 +5436,6 @@ module.exports = {
   "workShop-confirm": {
     "marginTop": "10"
   },
-  "video": {
-    "width": "630",
-    "height": "350",
-    "marginTop": "60",
-    "marginLeft": "60"
-  },
-  "info": {
-    "marginTop": "40",
-    "fontSize": "40",
-    "textAlign": "center",
-    "opacity": 0
-  },
   "iconfont": {
     "fontFamily": "iconfont"
   },
@@ -5471,6 +5459,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _weexUi = __webpack_require__(1);
 
+//
+//
 //
 //
 //
@@ -5566,7 +5556,7 @@ exports.default = {
                 title: '清洗间',
                 value: 'QXCK'
             }]
-
+            // showlist:false,
             // state: '----',
             // src:'../img/XGqSL5981-mobile.mp4',
             // time:""
@@ -5658,6 +5648,8 @@ exports.default = {
                 if (ret.status === 200) {
                     if (ret.data.status === 1) {
                         // modal.toast({ message: ret.data.message, duration: 100 });
+                        // console.log(that.$refs.yourcomponent.$el)
+                        // that.showlist=true;
 
                         storage.getItem('workShopName', function (event) {
 
@@ -5693,13 +5685,13 @@ exports.default = {
                             }
                         });
 
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 1 });
                         // audio.play();
                     } else {
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 1 });
                     }
                 } else {
-                    modal.toast({ message: ret.data.message, duration: 3 });
+                    modal.toast({ message: ret.data.message, duration: 1 });
                 }
             });
         },
@@ -22914,20 +22906,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "wxcButtonClicked": _vm.login
     }
-  })], 1), _c('video', {
-    staticClass: ["video"],
-    attrs: {
-      "src": "http://flv2.bn.netease.com/videolib3/1611/01/XGqSL5981/SD/XGqSL5981-mobile.mp4",
-      "autoplay": "",
-      "controls": ""
-    },
-    on: {
-      "start": _vm.onstart,
-      "pause": _vm.onpause,
-      "finish": _vm.onfinish,
-      "fail": _vm.onfail
-    }
-  }), _c('wxc-popup', {
+  })], 1), _c('wxc-popup', {
     attrs: {
       "popupColor": "#fff",
       "show": _vm.show,
@@ -23618,9 +23597,9 @@ exports.default = {
         type: 'json'
       }, function (ret) {
         if (ret.data.status === 1) {
-          modal.toast({ message: ret.data.message, duration: 3 });
+          modal.toast({ message: ret.data.message, duration: 1 });
         } else {
-          modal.toast({ message: ret.data.message, duration: 3 });
+          modal.toast({ message: ret.data.message, duration: 1 });
         }
       });
     }
@@ -23700,9 +23679,9 @@ exports.default = {
       }, function (ret) {
 
         if (ret.data.status === 1) {
-          modal.toast({ message: ret.data.message, duration: 3 });
+          modal.toast({ message: ret.data.message, duration: 1 });
         } else {
-          modal.toast({ message: ret.data.message, duration: 3 });
+          modal.toast({ message: ret.data.message, duration: 1 });
         }
       });
     }
@@ -23798,7 +23777,7 @@ exports.default = {
           if (ret.data.data.length > 0) {
             _this.$router.push({ name: 'popUp' });
           } else {
-            modal.toast({ message: '该车间没有料斗', duration: 3 });
+            modal.toast({ message: '该车间没有料斗', duration: 1 });
           }
         }
       });
@@ -23900,13 +23879,13 @@ exports.default = {
                         // 订阅者
                         var Steve = new BroadcastChannel('Avengers');
                         Steve.postMessage('Assemble!');
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 1 });
                     } else {
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 1 });
                     }
                 });
             } else {
-                modal.toast({ message: '请选择桶编号', duration: 3 });
+                modal.toast({ message: '请选择桶编号', duration: 1 });
             }
         }
     }
@@ -25198,13 +25177,13 @@ exports.default = {
                     if (ret.data.status === 1) {
                         var Steve = new BroadcastChannel('Avengers');
                         Steve.postMessage('Assemble!');
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 1 });
                     } else {
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 1 });
                     }
                 });
             } else {
-                modal.toast({ message: '请选择桶编号', duration: 3 });
+                modal.toast({ message: '请选择桶编号', duration: 1 });
             }
         }
     }
@@ -25347,7 +25326,7 @@ exports.default = {
                         }
                         _this.show = true;
                     } else {
-                        modal.toast({ message: '该车间没有料斗', duration: 3 });
+                        modal.toast({ message: '该车间没有料斗', duration: 1 });
                     }
                 }
             });
@@ -25394,14 +25373,14 @@ exports.default = {
                     if (ret.data.status === 1) {
                         var Steve = new BroadcastChannel('Avengers');
                         Steve.postMessage('Assemble!');
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 1 });
                     } else {
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 1 });
                     }
                     // this.show = false;
                 });
             } else {
-                modal.toast({ message: '请选择桶编号', duration: 3 });
+                modal.toast({ message: '请选择桶编号', duration: 1 });
             }
             this.show = false;
         }
@@ -25992,7 +25971,7 @@ exports.default = {
           if (ret.data.data.length > 0) {
             _this.$router.push({ name: 'popUp' });
           } else {
-            modal.toast({ message: '该车间没有料斗和料桶', duration: 3 });
+            modal.toast({ message: '该车间没有料斗和料桶', duration: 1 });
           }
         }
       });
@@ -26095,13 +26074,13 @@ exports.default = {
                     if (ret.data.status === 1) {
                         var _Steve = new BroadcastChannel('Avengers');
                         _Steve.postMessage('Assemble!');
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 1 });
                     } else {
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 1 });
                     }
                 });
             } else {
-                modal.toast({ message: '请选择桶编号', duration: 3 });
+                modal.toast({ message: '请选择桶编号', duration: 1 });
             }
         }
     }
@@ -26701,7 +26680,7 @@ exports.default = {
                         }
                         _this.show = true;
                     } else {
-                        modal.toast({ message: '该车间没有料桶', duration: 3 });
+                        modal.toast({ message: '该车间没有料桶', duration: 1 });
                     }
                 }
             });
@@ -26743,13 +26722,13 @@ exports.default = {
                     if (ret.data.status === 1) {
                         var Steve = new BroadcastChannel('Avengers');
                         Steve.postMessage('Assemble!');
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 1 });
                     } else {
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 1 });
                     }
                 });
             } else {
-                modal.toast({ message: '请选择桶编号', duration: 3 });
+                modal.toast({ message: '请选择桶编号', duration: 1 });
                 // _this.show = false;
             }
             this.show = false;
@@ -26895,13 +26874,13 @@ exports.default = {
                     if (ret.data.status === 1) {
                         var Steve = new BroadcastChannel('Avengers');
                         Steve.postMessage('Assemble!');
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 1 });
                     } else {
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 1 });
                     }
                 });
             } else {
-                modal.toast({ message: '请选择桶编号', duration: 3 });
+                modal.toast({ message: '请选择桶编号', duration: 1 });
             }
         }
     }
@@ -26994,7 +26973,7 @@ exports.default = {
           if (ret.data.data.length > 0) {
             _this.$router.push({ name: 'popUp' });
           } else {
-            modal.toast({ message: '该车间没有料桶', duration: 3 });
+            modal.toast({ message: '该车间没有料桶', duration: 1 });
           }
         }
       });
@@ -27561,13 +27540,13 @@ exports.default = {
                     if (ret.data.status === 1) {
                         var Steve = new BroadcastChannel('Avengers');
                         Steve.postMessage('Assemble!');
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 1 });
                     } else {
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 1 });
                     }
                 });
             } else {
-                modal.toast({ message: '请选择桶编号', duration: 3 });
+                modal.toast({ message: '请选择桶编号', duration: 1 });
             }
         }
     }
@@ -27652,6 +27631,26 @@ module.exports = {
     "marginBottom": 0,
     "color": "#ffffff",
     "fontSize": "35"
+  },
+  "mask-container": {
+    "justifyContent": "center",
+    "alignItems": "center"
+  },
+  "mask-content": {
+    "paddingTop": 20
+  },
+  "mask-title": {
+    "alignItems": "center"
+  },
+  "title": {
+    "fontSize": "28"
+  },
+  "button_box": {
+    "marginTop": "20",
+    "alignItems": "center"
+  },
+  "bottom": {
+    "marginTop": "40"
   }
 }
 
@@ -27665,6 +27664,26 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _weexUi = __webpack_require__(1);
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -27678,9 +27697,12 @@ var modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
 var storage = weex.requireModule('storage');
 exports.default = {
+    components: { WxcPopup: _weexUi.WxcPopup, WxcRadio: _weexUi.WxcRadio, WxcButton: _weexUi.WxcButton },
     data: function data() {
         return {
-            // 车间名字
+            show: false,
+            isChoseDisabled: true,
+            emptyContainerList: [],
             workshopName: '',
             containerNum: ''
         };
@@ -27691,13 +27713,51 @@ exports.default = {
         storage.getItem('workShopName', function (event) {
             _this2.workshopName = event.data;
         });
-        storage.getItem('containerNum', function (event) {
-            _this2.containerNum = event.data;
-        });
     },
 
     methods: {
+
+        // 打开弹窗
         wxcButtonGetSpritzerHopperRinse: function wxcButtonGetSpritzerHopperRinse(e) {
+            var _this = this;
+            var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+            stream.fetch({
+                method: "GET",
+                url: url,
+                type: 'json'
+            }, function (ret) {
+                if (ret.data.status === 1) {
+                    if (ret.data.data.length > 0) {
+                        for (var i = 0; i < ret.data.data.length; i++) {
+                            _this.emptyContainerList.push({ title: ret.data.data[i].containerNumber, value: ret.data.data[i].containerNumber });
+                        }
+                        _this.show = true;
+                    } else {
+                        modal.toast({ message: '该车间没有料桶', duration: 1 });
+                    }
+                }
+            });
+        },
+
+        // 关闭弹窗
+        wxcMaskSetHidden: function wxcMaskSetHidden() {
+            this.show = false;
+        },
+
+        // 选择空料桶
+        wxcSelectEmptyContainer: function wxcSelectEmptyContainer(e) {
+            // if (e.title.length < 1) {
+            //     this.isChoseDisabled = true;
+            // } else {
+            //     this.isChoseDisabled = false;
+            // }
+            this.isChoseDisabled = false;
+            this.containerNum = e.value;
+        },
+
+
+        // 选择选择空料斗、料桶--确认按钮
+        wxcConfirmEmptyContainer: function wxcConfirmEmptyContainer(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
                 var url = 'http://10.34.10.177:8999/delivery/sendContainerToCleaningRoom';
@@ -27715,14 +27775,16 @@ exports.default = {
                     if (ret.data.status === 1) {
                         var Steve = new BroadcastChannel('Avengers');
                         Steve.postMessage('Assemble!');
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 1 });
                     } else {
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 1 });
                     }
                 });
             } else {
-                modal.toast({ message: '请选择桶编号', duration: 3 });
+                modal.toast({ message: '请选择桶编号', duration: 1 });
+                // _this.show = false;
             }
+            this.show = false;
         }
     }
 };
@@ -27732,14 +27794,54 @@ exports.default = {
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  return _c('div', [_c('div', {
     staticClass: ["btn"],
     on: {
       "click": _vm.wxcButtonGetSpritzerHopperRinse
     }
   }, [_c('text', {
     staticClass: ["btn-txt"]
-  }, [_vm._v("送空料桶清洗")])])
+  }, [_vm._v("送空料桶清洗")])]), _c('div', {
+    staticClass: ["mask-container"]
+  }, [_c('wxc-popup', {
+    attrs: {
+      "popupColor": "#fff",
+      "show": _vm.show,
+      "pos": "left",
+      "height": "400"
+    },
+    on: {
+      "wxcPopupOverlayClicked": _vm.wxcMaskSetHidden
+    }
+  }, [_c('div', {
+    staticClass: ["content", "mask-content"]
+  }, [_c('div', {
+    staticClass: ["mask-title"]
+  }, [_c('text', {
+    staticClass: ["title"]
+  }, [_vm._v("请选择空料斗或空料桶")])]), _c('div', {
+    staticClass: ["scroller-box"]
+  }, [_c('scroller', {
+    staticClass: ["scroller"]
+  }, [_c('wxc-radio', {
+    attrs: {
+      "list": _vm.emptyContainerList
+    },
+    on: {
+      "wxcRadioListChecked": _vm.wxcSelectEmptyContainer
+    }
+  })], 1)]), _c('div', {
+    staticClass: ["button_box", "bottom"]
+  }, [_c('wxc-button', {
+    attrs: {
+      "text": "确定",
+      "type": "blue",
+      "disabled": _vm.isChoseDisabled
+    },
+    on: {
+      "wxcButtonClicked": _vm.wxcConfirmEmptyContainer
+    }
+  })], 1)])])], 1)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
@@ -27844,7 +27946,7 @@ __vue_styles__.push(__webpack_require__(365)
 __vue_exports__ = __webpack_require__(366)
 
 /* template */
-var __vue_template__ = __webpack_require__(384)
+var __vue_template__ = __webpack_require__(388)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -27944,6 +28046,21 @@ module.exports = {
   },
   "button": {
     "alignItems": "center"
+  },
+  "video": {
+    "width": "630",
+    "height": "350",
+    "marginTop": "60",
+    "marginLeft": "60"
+  },
+  "info": {
+    "marginTop": "40",
+    "fontSize": "40",
+    "textAlign": "center",
+    "opacity": 0
+  },
+  "videoView": {
+    "opacity": 0
   }
 }
 
@@ -27962,7 +28079,7 @@ var _vPopoverWay = __webpack_require__(367);
 
 var _vPopoverWay2 = _interopRequireDefault(_vPopoverWay);
 
-var _wayTable = __webpack_require__(379);
+var _wayTable = __webpack_require__(383);
 
 var _wayTable2 = _interopRequireDefault(_wayTable);
 
@@ -27970,6 +28087,11 @@ var _weexUi = __webpack_require__(1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//
+//
+//
+//
+//
 //
 //
 //
@@ -28023,7 +28145,8 @@ exports.default = {
             productName: '',
             id: '',
             showproduct: false,
-            time: ''
+            time: '',
+            showlist: false
         };
     },
 
@@ -28052,6 +28175,7 @@ exports.default = {
                 console.log(ret);
                 if (ret.data.status === 1) {
                     if (ret.data.message === '没有需要复核任务') {} else if (ret.data.message === '有未复核通过任务') {
+                        _this.showlist = true;
                         clearInterval(_this.time);
                         _this.showproduct = true;
                         _this.functionNumber = ret.data.data.functionNumber;
@@ -28060,7 +28184,7 @@ exports.default = {
                         _this.id = ret.data.data.taskId;
                     }
                 } else {
-                    modal.toast({ message: ret.data.message, duration: 3 });
+                    modal.toast({ message: ret.data.message, duration: 1 });
                 }
             });
         },
@@ -28087,11 +28211,12 @@ exports.default = {
                 type: 'json'
             }, function (ret) {
                 if (ret.data.status === 1) {
-                    modal.toast({ message: ret.data.message, duration: 3 });
+                    modal.toast({ message: ret.data.message, duration: 1 });
                     _this.showproduct = false;
                     setInterval(_this.timer, 20000);
+                    _this.showlist = false;
                 } else {
-                    modal.toast({ message: ret.data.message, duration: 3 });
+                    modal.toast({ message: ret.data.message, duration: 1 });
                 }
             });
         },
@@ -28113,11 +28238,12 @@ exports.default = {
                 type: 'json'
             }, function (ret) {
                 if (ret.data.status === 1) {
-                    modal.toast({ message: ret.data.message, duration: 3 });
+                    modal.toast({ message: ret.data.message, duration: 1 });
                     _this.showproduct = false;
                     setInterval(_this.timer, 20000);
+                    _this.showlist = false;
                 } else {
-                    modal.toast({ message: ret.data.message, duration: 3 });
+                    modal.toast({ message: ret.data.message, duration: 1 });
                 }
             });
         }
@@ -28139,7 +28265,7 @@ __vue_styles__.push(__webpack_require__(368)
 __vue_exports__ = __webpack_require__(369)
 
 /* template */
-var __vue_template__ = __webpack_require__(378)
+var __vue_template__ = __webpack_require__(382)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -28215,7 +28341,7 @@ module.exports = {
     "justifyContent": "center"
   },
   "contentBox": {
-    "height": "300",
+    "height": "400",
     "width": "500",
     "display": "flex",
     "flexDirection": "row",
@@ -28262,10 +28388,12 @@ var _vWeigh = __webpack_require__(374);
 
 var _vWeigh2 = _interopRequireDefault(_vWeigh);
 
+var _vManualStorage = __webpack_require__(378);
+
+var _vManualStorage2 = _interopRequireDefault(_vManualStorage);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// 送过期料斗和料桶清洗
-var Stark = new BroadcastChannel('Avengers');
 // 称重
 //
 //
@@ -28321,8 +28449,12 @@ var Stark = new BroadcastChannel('Avengers');
 //
 //
 
+var Stark = new BroadcastChannel('Avengers');
+// 人工入库
+
+// 送过期料斗和料桶清洗
 exports.default = {
-  components: { WxcMask: _weexUi.WxcMask, vStop: _vStop2.default, vStart: _vStart2.default, vGetSpritzerHopperRinses: _vGetSpritzerHopperRinses2.default, vWeigh: _vWeigh2.default },
+  components: { WxcMask: _weexUi.WxcMask, vStop: _vStop2.default, vStart: _vStart2.default, vGetSpritzerHopperRinses: _vGetSpritzerHopperRinses2.default, vWeigh: _vWeigh2.default, vManualStorage: _vManualStorage2.default },
   data: function data() {
     return {
       showBusiness: false,
@@ -28491,13 +28623,13 @@ exports.default = {
                     if (ret.data.status === 1) {
                         var Steve = new BroadcastChannel('Avengers');
                         Steve.postMessage('Assemble!');
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 1 });
                     } else {
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 1 });
                     }
                 });
             } else {
-                modal.toast({ message: '请选择桶编号', duration: 3 });
+                modal.toast({ message: '请选择桶编号', duration: 1 });
             }
         }
     }
@@ -28623,9 +28755,9 @@ exports.default = {
                 if (ret.data.status === 1) {
                     var Steve = new BroadcastChannel('Avengers');
                     Steve.postMessage('Assemble!');
-                    modal.toast({ message: ret.data.message, duration: 3 });
+                    modal.toast({ message: ret.data.message, duration: 1 });
                 } else {
-                    modal.toast({ message: ret.data.message, duration: 3 });
+                    modal.toast({ message: ret.data.message, duration: 1 });
                 }
             });
         }
@@ -28650,6 +28782,287 @@ module.exports.render._withStripped = true
 
 /***/ }),
 /* 378 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(379)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(380)
+
+/* template */
+var __vue_template__ = __webpack_require__(381)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "C:\\Users\\IBM\\Desktop\\aodong\\src\\components\\btn\\vManualStorage.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-cca40622"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 379 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "btn": {
+    "display": "flex",
+    "justifyContent": "center",
+    "backgroundColor": "#0099ff",
+    "width": "200",
+    "height": "100",
+    "borderRadius": "10"
+  },
+  "btn-txt": {
+    "textAlign": "center",
+    "marginTop": 0,
+    "marginBottom": 0,
+    "color": "#ffffff",
+    "fontSize": "35"
+  },
+  "mask-container": {
+    "justifyContent": "center",
+    "alignItems": "center"
+  },
+  "mask-content": {
+    "paddingTop": 20
+  },
+  "mask-title": {
+    "alignItems": "center"
+  },
+  "title": {
+    "fontSize": "28"
+  },
+  "button_box": {
+    "marginTop": "20",
+    "alignItems": "center"
+  },
+  "bottom": {
+    "marginTop": "40"
+  }
+}
+
+/***/ }),
+/* 380 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _weexUi = __webpack_require__(1);
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var modal = weex.requireModule('modal');
+var stream = weex.requireModule('stream');
+exports.default = {
+    components: { WxcPopup: _weexUi.WxcPopup, WxcRadio: _weexUi.WxcRadio, WxcButton: _weexUi.WxcButton },
+    data: function data() {
+        return {
+            show: false,
+            isChoseDisabled: true,
+            taskList: [],
+            taskId: '',
+            containerNumber: ''
+        };
+    },
+    methods: {
+        // 打开弹窗
+        wxcButtonManualStorage: function wxcButtonManualStorage(e) {
+            var _this = this;
+            var url = 'http://10.34.10.177:8999/agvTask/getFailureAgvTaskOfContainerNumber';
+            stream.fetch({
+                method: "GET",
+                url: url,
+                type: 'json'
+            }, function (ret) {
+                console.log(ret);
+                if (ret.data.status === 1) {
+                    if (ret.data.data === null || ret.data.data === 'undefined') {
+                        modal.toast({ message: '没有失败的任务', duration: 1 });
+                        _this.show = false;
+                    }
+                    if (ret.data.data.length > 0) {
+                        for (var i = 0; i < ret.data.data.length; i++) {
+                            _this.taskList.push({ title: ret.data.data[i].containerNumber, value: ret.data.data[i].taskId });
+                        }
+                        _this.show = true;
+                    } else {
+                        modal.toast({ message: '没有失败的任务', duration: 1 });
+                    }
+                }
+            });
+        },
+
+        // 关闭弹窗
+        wxcMaskSetHidden: function wxcMaskSetHidden() {
+            this.show = false;
+        },
+
+        // 选择任务失败的桶
+        wxcSelectEmptyContainer: function wxcSelectEmptyContainer(e) {
+            console.log(e);
+            console.log(e.title);
+            this.isChoseDisabled = false;
+            this.containerNumber = e.title;
+            this.taskId = e.value;
+        },
+
+
+        // 选择任务失败的桶--确认按钮
+        wxcConfirmEmptyContainer: function wxcConfirmEmptyContainer(e) {
+            var _this = this;
+            if (this.containerNumber !== 'undefined') {
+                var url = 'http://10.34.10.177:8999/agvTask/manualStorage?taskId=' + this.taskId + '&containerNumber=' + _this.containerNumber;
+                stream.fetch({
+                    method: "GET",
+                    url: url,
+                    type: 'json'
+                }, function (ret) {
+                    if (ret.data.status === 1) {
+                        modal.toast({ message: ret.data.message, duration: 1 });
+                    } else {
+                        modal.toast({ message: ret.data.message, duration: 1 });
+                    }
+                    // this.show = false;
+                });
+            } else {
+                modal.toast({ message: '请选择桶编号', duration: 1 });
+            }
+            this.show = false;
+        },
+
+        // 返回
+        back: function back() {
+            // this.$router.push({ name: 'wayStation' })
+            this.show = false;
+        }
+    }
+};
+
+/***/ }),
+/* 381 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('div', {
+    staticClass: ["btn"],
+    on: {
+      "click": _vm.wxcButtonManualStorage
+    }
+  }, [_c('text', {
+    staticClass: ["btn-txt"]
+  }, [_vm._v("人工入库")])]), _c('div', {
+    staticClass: ["mask-container"]
+  }, [_c('wxc-popup', {
+    attrs: {
+      "popupColor": "#fff",
+      "show": _vm.show,
+      "pos": "left",
+      "height": "400"
+    },
+    on: {
+      "wxcPopupOverlayClicked": _vm.wxcMaskSetHidden
+    }
+  }, [_c('div', {
+    staticClass: ["content", "mask-content"]
+  }, [_c('div', {
+    staticClass: ["mask-title"]
+  }, [_c('text', {
+    staticClass: ["title"]
+  }, [_vm._v("请在下面失败任务列表种选择桶")])]), _c('div', {
+    staticClass: ["scroller-box"]
+  }, [_c('scroller', {
+    staticClass: ["scroller"]
+  }, [_c('wxc-radio', {
+    attrs: {
+      "list": _vm.taskList
+    },
+    on: {
+      "wxcRadioListChecked": _vm.wxcSelectEmptyContainer
+    }
+  })], 1)]), _c('div', {
+    staticClass: ["button_box", "bottom"]
+  }, [_c('wxc-button', {
+    attrs: {
+      "text": "确定",
+      "type": "blue",
+      "disabled": _vm.isChoseDisabled
+    },
+    on: {
+      "wxcButtonClicked": _vm.wxcConfirmEmptyContainer
+    }
+  })], 1), _c('div', {
+    staticClass: ["button_box"]
+  }, [_c('wxc-button', {
+    attrs: {
+      "text": "返回",
+      "type": "blue"
+    },
+    on: {
+      "wxcButtonClicked": _vm.back
+    }
+  })], 1)])])], 1)])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 382 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -28673,7 +29086,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["btn-txt"]
   }, [_vm._v("车辆控制")])])]), _c('wxc-mask', {
     attrs: {
-      "height": "300",
+      "height": "400",
       "width": "500",
       "borderRadius": "0",
       "duration": "200",
@@ -28706,7 +29119,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('text', {
     staticClass: ["btn-txtNSS"]
-  }, [_vm._v("桶/库位绑定")])])], 1)]), _c('wxc-mask', {
+  }, [_vm._v("桶/库位绑定")])]), _c('v-manual-storage', {
+    staticClass: ["contentBox-btn"]
+  })], 1)]), _c('wxc-mask', {
     attrs: {
       "height": "300",
       "width": "500",
@@ -28730,23 +29145,23 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 379 */
+/* 383 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(380)
+__vue_styles__.push(__webpack_require__(384)
 )
-__vue_styles__.push(__webpack_require__(381)
+__vue_styles__.push(__webpack_require__(385)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(382)
+__vue_exports__ = __webpack_require__(386)
 
 /* template */
-var __vue_template__ = __webpack_require__(383)
+var __vue_template__ = __webpack_require__(387)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -28776,7 +29191,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 380 */
+/* 384 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -28826,7 +29241,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 381 */
+/* 385 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -28849,7 +29264,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 382 */
+/* 386 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29144,7 +29559,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 383 */
+/* 387 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -29236,7 +29651,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 384 */
+/* 388 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -29304,26 +29719,36 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "wxcButtonClicked": _vm.wxcChoseRefuse
     }
-  })], 1)])])], 1)
+  })], 1)])]), _c('div', {
+    staticClass: ["videoView"]
+  }, [(_vm.showlist) ? _c('video', {
+    staticClass: ["video"],
+    attrs: {
+      "src": "http://flv2.bn.netease.com/videolib3/1611/01/XGqSL5981/SD/XGqSL5981-mobile.mp4",
+      "controls": "nocontrols",
+      "playStatus": "pause",
+      "autoPlay": "true"
+    }
+  }) : _vm._e()])], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 385 */
+/* 389 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(386)
+__vue_styles__.push(__webpack_require__(390)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(387)
+__vue_exports__ = __webpack_require__(391)
 
 /* template */
-var __vue_template__ = __webpack_require__(392)
+var __vue_template__ = __webpack_require__(396)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -29353,7 +29778,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 386 */
+/* 390 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -29414,7 +29839,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 387 */
+/* 391 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29424,7 +29849,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _vCleaning = __webpack_require__(388);
+var _vCleaning = __webpack_require__(392);
 
 var _vCleaning2 = _interopRequireDefault(_vCleaning);
 
@@ -29493,34 +29918,34 @@ exports.default = {
           if (ret.data.status === 1) {
             var Steve = new BroadcastChannel('Avengers');
             Steve.postMessage('Assemble!');
-            modal.toast({ message: ret.data.message, duration: 3 });
+            modal.toast({ message: ret.data.message, duration: 1 });
           } else {
-            modal.toast({ message: ret.data.message, duration: 3 });
+            modal.toast({ message: ret.data.message, duration: 1 });
           }
         });
       } else {
-        modal.toast({ message: '请输入桶编号', duration: 3 });
+        modal.toast({ message: '请输入桶编号', duration: 1 });
       }
     }
   }
 };
 
 /***/ }),
-/* 388 */
+/* 392 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(389)
+__vue_styles__.push(__webpack_require__(393)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(390)
+__vue_exports__ = __webpack_require__(394)
 
 /* template */
-var __vue_template__ = __webpack_require__(391)
+var __vue_template__ = __webpack_require__(395)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -29550,7 +29975,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 389 */
+/* 393 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -29562,7 +29987,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 390 */
+/* 394 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29598,7 +30023,7 @@ exports.default = {
 //
 
 /***/ }),
-/* 391 */
+/* 395 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -29611,7 +30036,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 392 */
+/* 396 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -29652,21 +30077,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 393 */
+/* 397 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(394)
+__vue_styles__.push(__webpack_require__(398)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(395)
+__vue_exports__ = __webpack_require__(399)
 
 /* template */
-var __vue_template__ = __webpack_require__(396)
+var __vue_template__ = __webpack_require__(400)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -29696,7 +30121,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 394 */
+/* 398 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -29761,7 +30186,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 395 */
+/* 399 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29832,16 +30257,16 @@ exports.default = {
                 }, function (ret) {
                     console.log(ret);
                     if (ret.data.status === 1) {
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 1 });
                         _this.$router.push({ name: 'jurisLoginMessage' });
                     } else {
-                        modal.toast({ message: '登录失败！！！', duration: 3 });
+                        modal.toast({ message: '登录失败！！！', duration: 1 });
                     }
                 }, function (progress) {
                     // console.log(progress)
                 });
             } else {
-                modal.toast({ message: '请输入账号和密码', duration: 3 });
+                modal.toast({ message: '请输入账号和密码', duration: 1 });
             }
         },
 
@@ -29860,7 +30285,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 396 */
+/* 400 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -29925,21 +30350,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 397 */
+/* 401 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(398)
+__vue_styles__.push(__webpack_require__(402)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(399)
+__vue_exports__ = __webpack_require__(403)
 
 /* template */
-var __vue_template__ = __webpack_require__(400)
+var __vue_template__ = __webpack_require__(404)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -29969,7 +30394,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 398 */
+/* 402 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -30036,7 +30461,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 399 */
+/* 403 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30178,10 +30603,10 @@ exports.default = {
     components: { WxcButton: _weexUi.WxcButton, WxcRadio: _weexUi.WxcRadio, WxcPageCalendar: _weexUi.WxcPageCalendar, WxcMinibar: _weexUi.WxcMinibar, WxcPopup: _weexUi.WxcPopup },
     data: function data() {
         return {
-            userBucket: '99',
-            userProduct: '空桶',
-            userVolume: '80L',
-            userWeight: '100kg',
+            userBucket: '',
+            userProduct: '',
+            userVolume: '',
+            userWeight: '',
             binOrHopper: '',
             // userTime:'2019-10-10',
             isWorkShopDisabled: true,
@@ -30268,15 +30693,15 @@ exports.default = {
                 }, function (ret) {
                     console.log(ret);
                     if (ret.data.status === 1) {
-                        _this.userBucket = '', _this.userProduct = '', _this.userVolume = '', _this.userWeight = '', _this.binOrHopper = '', modal.toast({ message: ret.data.message, duration: 3 });
+                        _this.userBucket = '', _this.userProduct = '', _this.userVolume = '', _this.userWeight = '', _this.binOrHopper = '', modal.toast({ message: ret.data.message, duration: 1 });
                     } else {
-                        modal.toast({ message: '填写失败！！！', duration: 3 });
+                        modal.toast({ message: '填写失败！！！', duration: 1 });
                     }
                 }, function (progress) {
                     // console.log(progress)
                 });
             } else {
-                modal.toast({ message: '请选择产品名称和请输入桶编号', duration: 3 });
+                modal.toast({ message: '请选择产品名称和请输入桶编号', duration: 1 });
             }
         },
         black: function black() {
@@ -30291,7 +30716,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 400 */
+/* 404 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -30456,21 +30881,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 401 */
+/* 405 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(402)
+__vue_styles__.push(__webpack_require__(406)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(403)
+__vue_exports__ = __webpack_require__(407)
 
 /* template */
-var __vue_template__ = __webpack_require__(408)
+var __vue_template__ = __webpack_require__(412)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -30500,13 +30925,13 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 402 */
+/* 406 */
 /***/ (function(module, exports) {
 
 module.exports = {}
 
 /***/ }),
-/* 403 */
+/* 407 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30516,7 +30941,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _vPopUp = __webpack_require__(404);
+var _vPopUp = __webpack_require__(408);
 
 var _vPopUp2 = _interopRequireDefault(_vPopUp);
 
@@ -30540,21 +30965,21 @@ exports.default = {
 //
 
 /***/ }),
-/* 404 */
+/* 408 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(405)
+__vue_styles__.push(__webpack_require__(409)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(406)
+__vue_exports__ = __webpack_require__(410)
 
 /* template */
-var __vue_template__ = __webpack_require__(407)
+var __vue_template__ = __webpack_require__(411)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -30584,7 +31009,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 405 */
+/* 409 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -30651,7 +31076,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 406 */
+/* 410 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30829,8 +31254,8 @@ exports.default = {
             // 变量
             userBucket: '',
             userProduct: '',
-            userBatch: '1231',
-            userTime: '2019-08-21',
+            userBatch: '',
+            userTime: '',
             userStatus: '',
             userMaterial: '',
             userQalified: '',
@@ -31060,7 +31485,7 @@ exports.default = {
                 if (ret.data.status === 1) {
                     var Steve = new BroadcastChannel('Avengers');
                     Steve.postMessage('Assemble!');
-                    modal.toast({ message: ret.data.message, duration: 3 });
+                    modal.toast({ message: ret.data.message, duration: 1 });
                     //    _this.$router.go(-1);
                     _this.time = setInterval(this.timer, 1000);
                 }
@@ -31093,7 +31518,7 @@ exports.default = {
             // console.log(name)
             // // modal.toast({ message: '你是'+name, duration: 10 });
             var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
-            // modal.toast({ message: url, duration: 3 });
+            // modal.toast({ message: url, duration: 1 });
             // let body = JSON.stringify({
             //     // functionRoomNumber: _this.workshopName
             // });
@@ -31120,7 +31545,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 407 */
+/* 411 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -31378,7 +31803,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 408 */
+/* 412 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -31389,21 +31814,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 409 */
+/* 413 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(410)
+__vue_styles__.push(__webpack_require__(414)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(411)
+__vue_exports__ = __webpack_require__(415)
 
 /* template */
-var __vue_template__ = __webpack_require__(412)
+var __vue_template__ = __webpack_require__(416)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -31433,7 +31858,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 410 */
+/* 414 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -31490,7 +31915,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 411 */
+/* 415 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31560,16 +31985,16 @@ exports.default = {
                 }, function (ret) {
                     console.log(ret);
                     if (ret.data.status === 1) {
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 1 });
                         _this.$router.push({ name: 'containerLoginMessage' });
                     } else {
-                        modal.toast({ message: '登录失败！！！', duration: 3 });
+                        modal.toast({ message: '登录失败！！！', duration: 1 });
                     }
                 }, function (progress) {
                     // console.log(progress)
                 });
             } else {
-                modal.toast({ message: '请输入账号和密码', duration: 3 });
+                modal.toast({ message: '请输入账号和密码', duration: 1 });
             }
         },
 
@@ -31581,7 +32006,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 412 */
+/* 416 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -31642,21 +32067,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 413 */
+/* 417 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(414)
+__vue_styles__.push(__webpack_require__(418)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(415)
+__vue_exports__ = __webpack_require__(419)
 
 /* template */
-var __vue_template__ = __webpack_require__(416)
+var __vue_template__ = __webpack_require__(420)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -31686,7 +32111,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 414 */
+/* 418 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -31805,7 +32230,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 415 */
+/* 419 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32072,7 +32497,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 416 */
+/* 420 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -32255,21 +32680,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 417 */
+/* 421 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(418)
+__vue_styles__.push(__webpack_require__(422)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(419)
+__vue_exports__ = __webpack_require__(423)
 
 /* template */
-var __vue_template__ = __webpack_require__(420)
+var __vue_template__ = __webpack_require__(424)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -32299,7 +32724,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 418 */
+/* 422 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -32349,7 +32774,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 419 */
+/* 423 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32373,7 +32798,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 420 */
+/* 424 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;

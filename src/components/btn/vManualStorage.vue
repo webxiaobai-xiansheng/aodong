@@ -52,7 +52,7 @@ export default {
                 console.log(ret)
                 if (ret.data.status === 1) {
                     if (ret.data.data === null || ret.data.data === 'undefined') {
-                        modal.toast({ message: '没有失败的任务', duration: 3 });
+                        modal.toast({ message: '没有失败的任务',duration: 2});
                         _this.show = false;
                     }
                     if (ret.data.data.length > 0) {
@@ -61,7 +61,7 @@ export default {
                         }
                         _this.show = true;
                     } else {
-                        modal.toast({ message: '没有失败的任务', duration: 3 });
+                        modal.toast({ message: '没有失败的任务',duration: 2});
                     }
                 }
             })
@@ -90,14 +90,14 @@ export default {
                     type: 'json',
                 }, function(ret) {
                     if (ret.data.status === 1) {
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message,duration: 2});
                     } else {
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message,duration: 2});
                     }
                     // this.show = false;
                 })
             } else {
-                modal.toast({ message: '请选择桶编号', duration: 3 });
+                modal.toast({ message: '请选择桶编号',duration: 2});
             }
             this.show = false;
         },

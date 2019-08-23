@@ -51,16 +51,16 @@ export default {
                 },function(ret){
                     console.log(ret)
                     if(ret.data.status===1){
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message,duration: 2});
                         _this.$router.push({name:'jurisLoginMessage'});
                     }else{
-                        modal.toast({ message: '登录失败！！！', duration: 3 });
+                        modal.toast({ message: '登录失败！！！',duration: 2});
                     }
                 },function(progress) {
                     // console.log(progress)
                 })
             }else{
-                modal.toast({ message: '请输入账号和密码', duration: 3 });
+                modal.toast({ message: '请输入账号和密码',duration: 2});
             }
         },
         // 返回按钮

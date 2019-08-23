@@ -20,9 +20,9 @@ export default {
           type:'json',
       },function(ret){
           if(ret.data.status===1){
-              modal.toast({ message: ret.data.message, duration: 3 });
+              modal.toast({ message: ret.data.message,duration: 2});
           }else{
-            modal.toast({ message: ret.data.message, duration: 3 });
+            modal.toast({ message: ret.data.message,duration: 2});
           }
       })
       

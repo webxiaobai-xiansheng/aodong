@@ -60,7 +60,7 @@ export default {
                         }
                         _this.show=true;
                     }else{
-                        modal.toast({ message: '该车间没有料斗', duration: 3 });
+                        modal.toast({ message: '该车间没有料斗',duration: 2});
                     }
                 }
             })
@@ -104,14 +104,14 @@ export default {
                     if(ret.data.status===1){
                         const Steve = new BroadcastChannel('Avengers')
                         Steve.postMessage('Assemble!')
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message,duration: 2});
                     }else{
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message,duration: 2});
                     }
                     // this.show = false;
                 })
             }else{
-                modal.toast({ message: '请选择桶编号', duration: 3 });
+                modal.toast({ message: '请选择桶编号',duration: 2});
             }
             this.show = false;
         }

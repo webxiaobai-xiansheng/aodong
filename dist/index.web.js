@@ -11217,7 +11217,7 @@ _weexVueRender2.default.init(_vue2.default);
 var _require = __webpack_require__(37),
     router = _require.router;
 
-var App = __webpack_require__(513);
+var App = __webpack_require__(518);
 /* eslint-disable no-new */
 
 new _vue2.default(_vue2.default.util.extend({ el: '#root', router: router }, App));
@@ -22470,27 +22470,27 @@ var _wayStation = __webpack_require__(446);
 
 var _wayStation2 = _interopRequireDefault(_wayStation);
 
-var _cleaning = __webpack_require__(473);
+var _cleaning = __webpack_require__(478);
 
 var _cleaning2 = _interopRequireDefault(_cleaning);
 
-var _jurisLogin = __webpack_require__(483);
+var _jurisLogin = __webpack_require__(488);
 
 var _jurisLogin2 = _interopRequireDefault(_jurisLogin);
 
-var _jurisLoginMessage = __webpack_require__(488);
+var _jurisLoginMessage = __webpack_require__(493);
 
 var _jurisLoginMessage2 = _interopRequireDefault(_jurisLoginMessage);
 
-var _popUp = __webpack_require__(493);
+var _popUp = __webpack_require__(498);
 
 var _popUp2 = _interopRequireDefault(_popUp);
 
-var _containerLogin = __webpack_require__(503);
+var _containerLogin = __webpack_require__(508);
 
 var _containerLogin2 = _interopRequireDefault(_containerLogin);
 
-var _containerLoginMessage = __webpack_require__(508);
+var _containerLoginMessage = __webpack_require__(513);
 
 var _containerLoginMessage2 = _interopRequireDefault(_containerLoginMessage);
 
@@ -25594,6 +25594,9 @@ var _weexUi = __webpack_require__(4);
 //
 //
 //
+//
+//
+//
 
 var modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
@@ -25726,7 +25729,7 @@ exports.default = {
         login: function login() {
             // let audio = new Audio('http://59.110.169.246/img/1.mp3');
             var that = this;
-            var url = 'http://10.34.10.126:8999/user/login';
+            var url = 'http://10.34.10.177:8999/user/login';
             var body = JSON.stringify({
                 username: this.userName,
                 password: this.userPassword
@@ -45274,7 +45277,7 @@ exports.default = {
   methods: {
     wxcButtonStop: function wxcButtonStop() {
       var _this = this;
-      var url = 'http://10.34.10.126:8088/agv/stopOrStart/1';
+      var url = 'http://10.34.10.56:8088/api/agv/stopOrStart/1';
       stream.fetch({
         method: "GET",
         url: url,
@@ -45389,7 +45392,7 @@ exports.default = {
     wxcButtonStart: function wxcButtonStart() {
       var _this = this;
 
-      var url = 'http://10.34.10.126:8088/agv/stopOrStart/0';
+      var url = 'http://10.34.10.56:8088/api/agv/stopOrStart/0';
 
       stream.fetch({
         method: "GET",
@@ -45521,7 +45524,7 @@ exports.default = {
   methods: {
     wxcButtonGetSpritzerHopper: function wxcButtonGetSpritzerHopper() {
       var _this = this;
-      var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+      var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
       stream.fetch({
         method: "GET",
         url: url,
@@ -45663,7 +45666,7 @@ exports.default = {
         wxcButtonEmptySpritzerHopper: function wxcButtonEmptySpritzerHopper(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://10.34.10.126:8999/obtain/getEmptyContainer?containerNumber=' + _this.containerNum + '&functionRoomNumber=' + _this.workshopName;
+                var url = 'http://10.34.10.177:8999/obtain/getEmptyContainer?containerNumber=' + _this.containerNum + '&functionRoomNumber=' + _this.workshopName;
                 stream.fetch({
                     method: "GET",
                     url: url,
@@ -45853,7 +45856,7 @@ exports.default = {
                 return;
             } else {
                 var that = this;
-                var url = 'http://10.34.10.126:8999/obtain/workshopBucketManagement';
+                var url = 'http://10.34.10.177:8999/obtain/workshopBucketManagement';
                 var body = JSON.stringify({
                     functionRoomNumber: that.functionRoomNumber,
                     containerNumber: that.resetContainerNum
@@ -46361,7 +46364,7 @@ exports.default = {
         // 初始化table和筛选table
         initTable: function initTable() {
             var that = this;
-            var url = 'http://10.34.10.126:8200/containerInformation/getContainerInformation';
+            var url = 'http://10.34.10.177:8200/containerInformation/getContainerInformation';
             var body = JSON.stringify({
                 init: '',
                 page: that.currentPage,
@@ -46425,7 +46428,7 @@ exports.default = {
                 checkedList = _ref.checkedList;
 
             var that = this;
-            var url = 'http://10.34.10.126:8200/containerInformation/getContainerInformation';
+            var url = 'http://10.34.10.177:8200/containerInformation/getContainerInformation';
             that.tableBodyData = [];
             // that.currentPage = 1;
             var body = {};
@@ -47222,7 +47225,7 @@ exports.default = {
         wxcButtonSpritzerHopper: function wxcButtonSpritzerHopper(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://10.34.10.126:8999/obtain/getStripContainer';
+                var url = 'http://10.34.10.177:8999/obtain/getStripContainer';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -47387,7 +47390,7 @@ exports.default = {
         // 打开弹窗
         wxcButtonGetEmptySpritzerHopper: function wxcButtonGetEmptySpritzerHopper(e) {
             var _this = this;
-            var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+            var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
             stream.fetch({
                 method: "GET",
                 url: url,
@@ -47433,7 +47436,7 @@ exports.default = {
             var _this = this;
             console.log(this.containerNum);
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://10.34.10.126:8999/delivery/sendContainerToCleaningRoom';
+                var url = 'http://10.34.10.177:8999/delivery/sendContainerToCleaningRoom';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -48182,7 +48185,7 @@ exports.default = {
   methods: {
     wxcButtonGetSpritzerTankHopper: function wxcButtonGetSpritzerTankHopper() {
       var _this = this;
-      var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+      var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
       stream.fetch({
         method: "GET",
         url: url,
@@ -48321,7 +48324,7 @@ exports.default = {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
 
-                var url = 'http://10.34.10.126:8999/obtain/getEmptyContainer?containerNumber=' + _this.containerNum + '&functionRoomNumber=' + _this.workshopName;
+                var url = 'http://10.34.10.177:8999/obtain/getEmptyContainer?containerNumber=' + _this.containerNum + '&functionRoomNumber=' + _this.workshopName;
                 stream.fetch({
                     method: "GET",
                     url: url,
@@ -49022,7 +49025,7 @@ exports.default = {
         // 打开弹窗
         wxcButtonGetEmptySpritzerTank: function wxcButtonGetEmptySpritzerTank(e) {
             var _this = this;
-            var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+            var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
             stream.fetch({
                 method: "GET",
                 url: url,
@@ -49062,7 +49065,7 @@ exports.default = {
         wxcConfirmEmptyContainer: function wxcConfirmEmptyContainer(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://10.34.10.126:8999/delivery/sendContainerToCleaningRoom';
+                var url = 'http://10.34.10.177:8999/delivery/sendContainerToCleaningRoom';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -49276,7 +49279,7 @@ exports.default = {
         wxcButtonEmptySpritzerTank: function wxcButtonEmptySpritzerTank(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://10.34.10.126:8999/obtain/getStripContainer';
+                var url = 'http://10.34.10.177:8999/obtain/getStripContainer';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -49415,7 +49418,7 @@ exports.default = {
   methods: {
     wxcButtonGetSpritzerTank: function wxcButtonGetSpritzerTank() {
       var _this = this;
-      var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+      var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
       stream.fetch({
         method: "GET",
         url: url,
@@ -50092,7 +50095,7 @@ exports.default = {
         wxcButtonGetSpritzerHopperBack: function wxcButtonGetSpritzerHopperBack(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://10.34.10.126:8999/delivery/sendEmptyContainer';
+                var url = 'http://10.34.10.177:8999/delivery/sendEmptyContainer';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -50281,7 +50284,7 @@ exports.default = {
         wxcButtonGetSpritzerHopperRinse: function wxcButtonGetSpritzerHopperRinse(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://10.34.10.126:8999/delivery/sendContainerToCleaningRoom';
+                var url = 'http://10.34.10.177:8999/delivery/sendContainerToCleaningRoom';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -50500,7 +50503,7 @@ var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(449),
   /* template */
-  __webpack_require__(472),
+  __webpack_require__(477),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -50586,7 +50589,7 @@ var _vPopoverWay = __webpack_require__(450);
 
 var _vPopoverWay2 = _interopRequireDefault(_vPopoverWay);
 
-var _wayTable = __webpack_require__(465);
+var _wayTable = __webpack_require__(470);
 
 var _wayTable2 = _interopRequireDefault(_wayTable);
 
@@ -50667,7 +50670,7 @@ exports.default = {
         timer: function timer() {
             var _this = this;
 
-            var url = 'http://10.34.10.126:8999/agvTask/getReviewTask';
+            var url = 'http://10.34.10.177:8999/agvTask/getReviewTask';
             stream.fetch({
                 method: "GET",
                 url: url,
@@ -50696,7 +50699,7 @@ exports.default = {
         wxcChoseAllow: function wxcChoseAllow() {
             var _this = this;
 
-            var url = 'http://10.34.10.126:8999/obtain/reviewVerify';
+            var url = 'http://10.34.10.177:8999/obtain/reviewVerify';
             var body = JSON.stringify({
                 taskId: _this.id,
                 functionNumber: _this.functionNumber,
@@ -50722,7 +50725,7 @@ exports.default = {
         wxcChoseRefuse: function wxcChoseRefuse() {
             var _this = this;
 
-            var url = 'http://10.34.10.126:8999/obtain/reviewRefuse';
+            var url = 'http://10.34.10.177:8999/obtain/reviewRefuse';
             var body = JSON.stringify({
                 taskId: _this.id,
                 functionNumber: _this.functionNumber,
@@ -50761,7 +50764,7 @@ var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(453),
   /* template */
-  __webpack_require__(464),
+  __webpack_require__(469),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -50827,7 +50830,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.btns{\r\n  height: 1.33333rem;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content:space-around;\n}\n.btn{\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  justify-content: center;\r\n  background-color:#0099ff;\r\n  width: 2rem;\r\n  height: 1.06667rem;\r\n  border-radius: 0.13333rem;\n}\n.btn-txt{\r\n  text-align: center;\r\n  margin: 0 auto;\r\n  color: #fff;\r\n  font-size: 0.46667rem;\n}\n.btnNss{\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  justify-content: center;\r\n  background-color:#0099ff;\r\n  width: 2.66667rem;\r\n  height: 1.33333rem;\r\n  border-radius: 0.13333rem;\n}\n.btn-txtNSS{\r\n  text-align: center;\r\n  margin: 0 auto;\r\n  color: #fff;\r\n  font-size: 0.46667rem;\n}\n.content{\r\n  height: 4rem;\r\n  flex-direction: row;\r\n  justify-content: center;\n}\n.contentBox{\r\n  height: 4rem;\r\n  width: 6.66667rem;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: space-between;\r\n  flex-wrap: wrap;\n}\n.contentBox-btn{\r\n  margin-bottom: 0.53333rem;\n}\n.content-btn{\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  height: 4rem;\r\n  flex-direction: column;\r\n  justify-content: space-around;\n}\r\n", ""]);
+exports.push([module.i, "\n.btns{\r\n  height: 1.33333rem;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content:space-around;\n}\n.btn{\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  justify-content: center;\r\n  background-color:#0099ff;\r\n  width: 2rem;\r\n  height: 1.06667rem;\r\n  border-radius: 0.13333rem;\n}\n.btn-txt{\r\n  text-align: center;\r\n  margin: 0 auto;\r\n  color: #fff;\r\n  font-size: 0.46667rem;\n}\n.btnNss{\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  justify-content: center;\r\n  background-color:#0099ff;\r\n  width: 2.66667rem;\r\n  height: 1.33333rem;\r\n  border-radius: 0.13333rem;\n}\n.btn-txtNSS{\r\n  text-align: center;\r\n  margin: 0 auto;\r\n  color: #fff;\r\n  font-size: 0.46667rem;\n}\n.content{\r\n  height: 4rem;\r\n  flex-direction: row;\r\n  justify-content: center;\n}\n.contentBox{\r\n  height: 5.33333rem;\r\n  width: 6.66667rem;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: space-between;\r\n  flex-wrap: wrap;\n}\n.contentBox-btn{\r\n  margin-bottom: 0.53333rem;\n}\n.content-btn{\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  height: 4rem;\r\n  flex-direction: column;\r\n  justify-content: space-around;\n}\r\n", ""]);
 
 // exports
 
@@ -50861,10 +50864,12 @@ var _vWeigh = __webpack_require__(459);
 
 var _vWeigh2 = _interopRequireDefault(_vWeigh);
 
+var _vManualStorage = __webpack_require__(464);
+
+var _vManualStorage2 = _interopRequireDefault(_vManualStorage);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// 送过期料斗和料桶清洗
-var Stark = new BroadcastChannel('Avengers');
 // 称重
 //
 //
@@ -50920,8 +50925,12 @@ var Stark = new BroadcastChannel('Avengers');
 //
 //
 
+var Stark = new BroadcastChannel('Avengers');
+// 人工入库
+
+// 送过期料斗和料桶清洗
 exports.default = {
-  components: { WxcMask: _weexUi.WxcMask, vStop: _vStop2.default, vStart: _vStart2.default, vGetSpritzerHopperRinses: _vGetSpritzerHopperRinses2.default, vWeigh: _vWeigh2.default },
+  components: { WxcMask: _weexUi.WxcMask, vStop: _vStop2.default, vStart: _vStart2.default, vGetSpritzerHopperRinses: _vGetSpritzerHopperRinses2.default, vWeigh: _vWeigh2.default, vManualStorage: _vManualStorage2.default },
   data: function data() {
     return {
       showBusiness: false,
@@ -51093,7 +51102,7 @@ exports.default = {
         wxcButtonGetSpritzerHopperRinses: function wxcButtonGetSpritzerHopperRinses(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://10.34.10.126:8999/delivery/sendContainerFormZJToCleaningRoom';
+                var url = 'http://10.34.10.177:8999/delivery/sendContainerFormZJToCleaningRoom';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -51263,7 +51272,7 @@ exports.default = {
         wxcButtonWeigh: function wxcButtonWeigh(e) {
             var _this = this;
 
-            var url = 'http://10.34.10.126:8999/delivery/weighing';
+            var url = 'http://10.34.10.177:8999/delivery/weighing';
             var body = JSON.stringify({});
             stream.fetch({
                 method: "POST",
@@ -51321,6 +51330,333 @@ if (false) {
 /* 464 */
 /***/ (function(module, exports, __webpack_require__) {
 
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(465)
+}
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(467),
+  /* template */
+  __webpack_require__(468),
+  /* styles */
+  injectStyle,
+  /* scopeId */
+  "data-v-1bfd95b1",
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "C:\\Users\\IBM\\Desktop\\aodong\\src\\components\\btn\\vManualStorage.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] vManualStorage.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1bfd95b1", Component.options)
+  } else {
+    hotAPI.reload("data-v-1bfd95b1", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 465 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(466);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("19df5750", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1bfd95b1\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./vManualStorage.vue", function() {
+     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1bfd95b1\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./vManualStorage.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 466 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.btn[data-v-1bfd95b1] {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    justify-content: center;\r\n    background-color: #0099ff;\r\n    width: 2.66667rem;\r\n    height: 1.33333rem;\r\n    border-radius: 0.13333rem;\n}\n.btn-txt[data-v-1bfd95b1] {\r\n    text-align: center;\r\n    margin: 0 auto;\r\n    color: #fff;\r\n    font-size: 0.46667rem;\n}\n.mask-container[data-v-1bfd95b1] {\r\n    justify-content: center;\r\n    align-items: center;\n}\n.mask-content[data-v-1bfd95b1] {\r\n    padding-top: 20;\n}\n.mask-title[data-v-1bfd95b1] {\r\n    align-items: center;\n}\n.title[data-v-1bfd95b1] {\r\n    font-size: 0.37333rem;\n}\n.mask-title[data-v-1bfd95b1] {\r\n    align-items: center;\n}\n.title[data-v-1bfd95b1] {\r\n    font-size: 0.37333rem;\n}\n.button_box[data-v-1bfd95b1] {\r\n    margin-top: 0.26667rem;\r\n    align-items: center;\n}\n.bottom[data-v-1bfd95b1] {\r\n    margin-top: 0.53333rem;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 467 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _weexUi = __webpack_require__(4);
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var modal = weex.requireModule('modal');
+var stream = weex.requireModule('stream');
+exports.default = {
+    components: { WxcPopup: _weexUi.WxcPopup, WxcRadio: _weexUi.WxcRadio, WxcButton: _weexUi.WxcButton },
+    data: function data() {
+        return {
+            show: false,
+            isChoseDisabled: true,
+            taskList: [],
+            taskId: '',
+            containerNumber: ''
+        };
+    },
+    methods: {
+        // 打开弹窗
+        wxcButtonManualStorage: function wxcButtonManualStorage(e) {
+            var _this = this;
+            var url = 'http://10.34.10.177:8999/agvTask/getFailureAgvTaskOfContainerNumber';
+            stream.fetch({
+                method: "GET",
+                url: url,
+                type: 'json'
+            }, function (ret) {
+                console.log(ret);
+                if (ret.data.status === 1) {
+                    if (ret.data.data === null || ret.data.data === 'undefined') {
+                        modal.toast({ message: '没有失败的任务', duration: 3 });
+                        _this.show = false;
+                    }
+                    if (ret.data.data.length > 0) {
+                        for (var i = 0; i < ret.data.data.length; i++) {
+                            _this.taskList.push({ title: ret.data.data[i].containerNumber, value: ret.data.data[i].taskId });
+                        }
+                        _this.show = true;
+                    } else {
+                        modal.toast({ message: '没有失败的任务', duration: 3 });
+                    }
+                }
+            });
+        },
+
+        // 关闭弹窗
+        wxcMaskSetHidden: function wxcMaskSetHidden() {
+            this.show = false;
+        },
+
+        // 选择任务失败的桶
+        wxcSelectEmptyContainer: function wxcSelectEmptyContainer(e) {
+            console.log(e);
+            console.log(e.title);
+            this.isChoseDisabled = false;
+            this.containerNumber = e.title;
+            this.taskId = e.value;
+        },
+
+
+        // 选择任务失败的桶--确认按钮
+        wxcConfirmEmptyContainer: function wxcConfirmEmptyContainer(e) {
+            var _this = this;
+            if (this.containerNumber !== 'undefined') {
+                var url = 'http://10.34.10.177:8999/agvTask/manualStorage?taskId=' + this.taskId + '&containerNumber=' + _this.containerNumber;
+                stream.fetch({
+                    method: "GET",
+                    url: url,
+                    type: 'json'
+                }, function (ret) {
+                    if (ret.data.status === 1) {
+                        modal.toast({ message: ret.data.message, duration: 3 });
+                    } else {
+                        modal.toast({ message: ret.data.message, duration: 3 });
+                    }
+                    // this.show = false;
+                });
+            } else {
+                modal.toast({ message: '请选择桶编号', duration: 3 });
+            }
+            this.show = false;
+        },
+
+        // 返回
+        back: function back() {
+            // this.$router.push({ name: 'wayStation' })
+            this.show = false;
+        }
+    }
+};
+
+/***/ }),
+/* 468 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: " weex-ct weex-div",
+    attrs: {
+      "weex-type": "div"
+    }
+  }, [_c('div', {
+    staticClass: "btn weex-ct weex-div",
+    attrs: {
+      "weex-type": "div",
+      "data-evt-click": ""
+    },
+    on: {
+      "click": _vm.$stopOuterA,
+      "weex$tap": function($event) {
+        $event.stopPropagation();
+        return _vm.wxcButtonManualStorage($event)
+      }
+    }
+  }, [_c('p', {
+    staticClass: "btn-txt weex-el weex-text",
+    attrs: {
+      "weex-type": "text"
+    }
+  }, [_vm._v("人工入库")])]), _vm._v(" "), _c('div', {
+    staticClass: "mask-container weex-ct weex-div",
+    attrs: {
+      "weex-type": "div"
+    }
+  }, [_c('wxc-popup', {
+    attrs: {
+      "popup-color": "#fff",
+      "show": _vm.show,
+      "pos": "left",
+      "height": "400",
+      "data-evt-wxcPopupOverlayClicked": ""
+    },
+    on: {
+      "wxcPopupOverlayClicked": _vm.wxcMaskSetHidden
+    }
+  }, [_c('div', {
+    staticClass: "content mask-content weex-ct weex-div",
+    attrs: {
+      "weex-type": "div"
+    }
+  }, [_c('div', {
+    staticClass: "mask-title weex-ct weex-div",
+    attrs: {
+      "weex-type": "div"
+    }
+  }, [_c('p', {
+    staticClass: "title weex-el weex-text",
+    attrs: {
+      "weex-type": "text"
+    }
+  }, [_vm._v("请在下面失败任务列表种选择桶")])]), _vm._v(" "), _c('div', {
+    staticClass: "scroller-box weex-ct weex-div",
+    attrs: {
+      "weex-type": "div"
+    }
+  }, [_c('scroller', {
+    staticClass: "scroller",
+    attrs: {}
+  }, [_c('wxc-radio', {
+    attrs: {
+      "list": _vm.taskList,
+      "data-evt-wxcRadioListChecked": ""
+    },
+    on: {
+      "wxcRadioListChecked": _vm.wxcSelectEmptyContainer
+    }
+  })], 1)], 1), _vm._v(" "), _c('div', {
+    staticClass: "button_box bottom weex-ct weex-div",
+    attrs: {
+      "weex-type": "div"
+    }
+  }, [_c('wxc-button', {
+    attrs: {
+      "text": "确定",
+      "type": "blue",
+      "disabled": _vm.isChoseDisabled,
+      "data-evt-wxcButtonClicked": ""
+    },
+    on: {
+      "wxcButtonClicked": _vm.wxcConfirmEmptyContainer
+    }
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "button_box weex-ct weex-div",
+    attrs: {
+      "weex-type": "div"
+    }
+  }, [_c('wxc-button', {
+    attrs: {
+      "text": "返回",
+      "type": "blue",
+      "data-evt-wxcButtonClicked": ""
+    },
+    on: {
+      "wxcButtonClicked": _vm.back
+    }
+  })], 1)])])], 1)])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-1bfd95b1", module.exports)
+  }
+}
+
+/***/ }),
+/* 469 */
+/***/ (function(module, exports, __webpack_require__) {
+
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "btn-box weex-ct weex-div",
@@ -51370,7 +51706,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("车辆控制")])])]), _vm._v(" "), _c('wxc-mask', {
     attrs: {
-      "height": "300",
+      "height": "400",
       "width": "500",
       "border-radius": "0",
       "duration": "200",
@@ -51431,7 +51767,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "weex-type": "text"
     }
-  }, [_vm._v("桶/库位绑定")])])], 1)]), _vm._v(" "), _c('wxc-mask', {
+  }, [_vm._v("桶/库位绑定")])]), _vm._v(" "), _c('v-manual-storage', {
+    staticClass: "contentBox-btn",
+    attrs: {}
+  })], 1)]), _vm._v(" "), _c('wxc-mask', {
     attrs: {
       "height": "300",
       "width": "500",
@@ -51468,20 +51807,20 @@ if (false) {
 }
 
 /***/ }),
-/* 465 */
+/* 470 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(466)
-  __webpack_require__(468)
+  __webpack_require__(471)
+  __webpack_require__(473)
 }
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(470),
+  __webpack_require__(475),
   /* template */
-  __webpack_require__(471),
+  __webpack_require__(476),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -51513,13 +51852,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 466 */
+/* 471 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(467);
+var content = __webpack_require__(472);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -51539,7 +51878,7 @@ if(false) {
 }
 
 /***/ }),
-/* 467 */
+/* 472 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -51553,13 +51892,13 @@ exports.push([module.i, "\r\n/* 公共样式 begin */\r\n\r\n/* table begin */\r
 
 
 /***/ }),
-/* 468 */
+/* 473 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(469);
+var content = __webpack_require__(474);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -51579,7 +51918,7 @@ if(false) {
 }
 
 /***/ }),
-/* 469 */
+/* 474 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -51593,7 +51932,7 @@ exports.push([module.i, "\n.pageButton_box[data-v-7309aafe] {\r\n    flex-direct
 
 
 /***/ }),
-/* 470 */
+/* 475 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51707,7 +52046,7 @@ exports.default = {
         // 初始化table和筛选table
         initTable: function initTable() {
             var that = this;
-            var url = 'http://10.34.10.126:8200/containerInformation/getAllContainerInformation';
+            var url = 'http://10.34.10.177:8200/containerInformation/getAllContainerInformation';
             var body = JSON.stringify({
                 init: '',
                 page: that.currentPage,
@@ -51771,89 +52110,65 @@ exports.default = {
                 checkedList = _ref.checkedList;
 
             var that = this;
-            var url = 'http://10.34.10.126:8200/containerInformation/getAllOverdueNotUsed';
             that.tableBodyData = [];
             var body = {};
             if (checked === true) {
+                var url = 'http://10.34.10.177:8200/containerInformation/getAllOverdueNotUsed';
                 that.currentIndex = -1;
                 var containerName = checkedList[0].value;
-                if (containerName === '空料桶' || containerName === '空料斗') {
-                    console.log(that.currentPage);
-                    body = JSON.stringify({
-                        emptyContainer: containerName,
-                        page: that.currentPage,
-                        size: that.pageSize
-                    });
-                }
-                if (containerName === '料桶' || containerName === '料斗') {
-                    body = JSON.stringify({
-                        container: containerName,
-                        page: that.currentPage,
-                        size: that.pageSize
-                    });
-                }
-                if (containerName === '过期料斗、料桶') {
-                    body = JSON.stringify({
-                        outdatedContainers: containerName,
-                        page: that.currentPage,
-                        size: that.pageSize
-                    });
-                }
-            } else {
                 body = JSON.stringify({
-                    init: '',
+                    outdatedContainers: containerName,
                     page: that.currentPage,
                     size: that.pageSize
                 });
-            }
-            stream.fetch({
-                method: "POST",
-                type: 'json',
-                url: url,
-                headers: { 'Content-Type': 'application/json' },
-                body: body
-            }, function (ret) {
-                var data = ret.data.data;
-                if (ret.status === 200) {
-                    if (ret.data.status === 1) {
-                        modal.toast({ message: ret.data.message });
-                        that.tableBodyData = data.list;
-                        that.pages = data.pages; //页数
-                        that.currentPage = data.pageNum; //当前页
-                        if (data.pageNum > 1) {
-                            if (data.pageNum === data.pages) {
-                                that.isPreviewDisabled = false;
-                                that.isNextDisabled = true;
-                            } else {
-                                that.isPreviewDisabled = false;
-                                that.isNextDisabled = false;
+                stream.fetch({
+                    method: "POST",
+                    type: 'json',
+                    url: url,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: body
+                }, function (ret) {
+                    var data = ret.data.data;
+                    if (ret.status === 200) {
+                        if (ret.data.status === 1) {
+                            modal.toast({ message: ret.data.message });
+                            that.tableBodyData = data.list;
+                            that.pages = data.pages; //页数
+                            that.currentPage = data.pageNum; //当前页
+                            if (data.pageNum > 1) {
+                                if (data.pageNum === data.pages) {
+                                    that.isPreviewDisabled = false;
+                                    that.isNextDisabled = true;
+                                } else {
+                                    that.isPreviewDisabled = false;
+                                    that.isNextDisabled = false;
+                                }
                             }
-                        }
-                        if (data.pageNum === 1) {
-                            if (data.pageNum === data.pages) {
+                            if (data.pageNum === 1) {
+                                if (data.pageNum === data.pages) {
+                                    that.isPreviewDisabled = true;
+                                    that.isNextDisabled = true;
+                                } else {
+                                    that.isPreviewDisabled = true;
+                                    that.isNextDisabled = false;
+                                }
+                            }
+                            if (data.list.length === 0) {
+                                that.currentPage = 0;
+                                that.pages = 0;
                                 that.isPreviewDisabled = true;
                                 that.isNextDisabled = true;
-                            } else {
-                                that.isPreviewDisabled = true;
-                                that.isNextDisabled = false;
                             }
+                        } else {
+                            modal.toast({ message: ret.data.message });
                         }
-                        if (data.list.length === 0) {
-                            that.currentPage = 0;
-                            that.pages = 0;
-                            that.isPreviewDisabled = true;
-                            that.isNextDisabled = true;
-                        }
-                    } else {
-                        modal.toast({ message: ret.data.message });
-                        that.currentPage = 0;
-                        that.pages = 0;
-                        that.isPreviewDisabled = true;
-                        that.isNextDisabled = true;
                     }
-                }
-            });
+                });
+            } else {
+                that.initTable();
+            }
         },
+
 
         // 筛选按钮
         showFilterButton: function showFilterButton() {
@@ -51912,7 +52227,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 471 */
+/* 476 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -52100,7 +52415,7 @@ if (false) {
 }
 
 /***/ }),
-/* 472 */
+/* 477 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -52234,19 +52549,19 @@ if (false) {
 }
 
 /***/ }),
-/* 473 */
+/* 478 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(474)
+  __webpack_require__(479)
 }
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(476),
+  __webpack_require__(481),
   /* template */
-  __webpack_require__(482),
+  __webpack_require__(487),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -52278,13 +52593,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 474 */
+/* 479 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(475);
+var content = __webpack_require__(480);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -52304,7 +52619,7 @@ if(false) {
 }
 
 /***/ }),
-/* 475 */
+/* 480 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -52318,7 +52633,7 @@ exports.push([module.i, "\n.home[data-v-5aeb9829]{\r\n  padding: 0.4rem;\n}\n.ch
 
 
 /***/ }),
-/* 476 */
+/* 481 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52328,7 +52643,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _vCleaning = __webpack_require__(477);
+var _vCleaning = __webpack_require__(482);
 
 var _vCleaning2 = _interopRequireDefault(_vCleaning);
 
@@ -52382,7 +52697,7 @@ exports.default = {
     onClack: function onClack() {
       var _this = this;
       if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-        var url = 'http://10.34.10.126:8999/delivery/sendEmptyContainer';
+        var url = 'http://10.34.10.177:8999/delivery/sendEmptyContainer';
         var body = JSON.stringify({
           containerNumber: _this.containerNum,
           functionRoomNumber: _this.workshopName
@@ -52410,19 +52725,19 @@ exports.default = {
 };
 
 /***/ }),
-/* 477 */
+/* 482 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(478)
+  __webpack_require__(483)
 }
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(480),
+  __webpack_require__(485),
   /* template */
-  __webpack_require__(481),
+  __webpack_require__(486),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -52454,13 +52769,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 478 */
+/* 483 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(479);
+var content = __webpack_require__(484);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -52480,7 +52795,7 @@ if(false) {
 }
 
 /***/ }),
-/* 479 */
+/* 484 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -52494,7 +52809,7 @@ exports.push([module.i, "\n.btns{\r\n  display: -webkit-box;\r\n  display: -webk
 
 
 /***/ }),
-/* 480 */
+/* 485 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52530,7 +52845,7 @@ exports.default = {
 //
 
 /***/ }),
-/* 481 */
+/* 486 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -52555,7 +52870,7 @@ if (false) {
 }
 
 /***/ }),
-/* 482 */
+/* 487 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -52638,19 +52953,19 @@ if (false) {
 }
 
 /***/ }),
-/* 483 */
+/* 488 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(484)
+  __webpack_require__(489)
 }
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(486),
+  __webpack_require__(491),
   /* template */
-  __webpack_require__(487),
+  __webpack_require__(492),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -52682,13 +52997,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 484 */
+/* 489 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(485);
+var content = __webpack_require__(490);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -52708,7 +53023,7 @@ if(false) {
 }
 
 /***/ }),
-/* 485 */
+/* 490 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -52722,7 +53037,7 @@ exports.push([module.i, "\n.login_content[data-v-373b4fa8] {\r\n    justify-cont
 
 
 /***/ }),
-/* 486 */
+/* 491 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52778,7 +53093,7 @@ exports.default = {
         onLogin: function onLogin() {
             var _this = this;
             if (this.userName && this.userPassword) {
-                var url = 'http://10.34.10.126:8200/admin/getAdmin';
+                var url = 'http://10.34.10.177:8200/admin/getAdmin';
                 var body = JSON.stringify({
                     username: this.userName,
                     password: this.userPassword
@@ -52821,7 +53136,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 487 */
+/* 492 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -52936,19 +53251,19 @@ if (false) {
 }
 
 /***/ }),
-/* 488 */
+/* 493 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(489)
+  __webpack_require__(494)
 }
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(491),
+  __webpack_require__(496),
   /* template */
-  __webpack_require__(492),
+  __webpack_require__(497),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -52980,13 +53295,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 489 */
+/* 494 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(490);
+var content = __webpack_require__(495);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -53006,7 +53321,7 @@ if(false) {
 }
 
 /***/ }),
-/* 490 */
+/* 495 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -53020,7 +53335,7 @@ exports.push([module.i, "\n.inputBox[data-v-037ce022]{\r\n    display: -webkit-b
 
 
 /***/ }),
-/* 491 */
+/* 496 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53232,7 +53547,7 @@ exports.default = {
             var _this = this;
             if (this.userBucket && this.userProduct) {
                 this.binOrHopper = this.userProduct === '空料斗' ? '料斗' : '料桶';
-                var url = 'http://10.34.10.126:8200/containerInformation/saveContainerInformation';
+                var url = 'http://10.34.10.177:8200/containerInformation/saveContainerInformation';
 
                 var body = JSON.stringify({
                     containerNumber: this.userBucket,
@@ -53275,7 +53590,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 492 */
+/* 497 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -53564,19 +53879,19 @@ if (false) {
 }
 
 /***/ }),
-/* 493 */
+/* 498 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(494)
+  __webpack_require__(499)
 }
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(496),
+  __webpack_require__(501),
   /* template */
-  __webpack_require__(502),
+  __webpack_require__(507),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -53608,13 +53923,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 494 */
+/* 499 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(495);
+var content = __webpack_require__(500);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -53634,7 +53949,7 @@ if(false) {
 }
 
 /***/ }),
-/* 495 */
+/* 500 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -53648,7 +53963,7 @@ exports.push([module.i, "\n.table[data-v-1293774c]{\r\n  /* margin-bottom: 40px;
 
 
 /***/ }),
-/* 496 */
+/* 501 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53658,7 +53973,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _vPopUp = __webpack_require__(497);
+var _vPopUp = __webpack_require__(502);
 
 var _vPopUp2 = _interopRequireDefault(_vPopUp);
 
@@ -53682,19 +53997,19 @@ exports.default = {
 //
 
 /***/ }),
-/* 497 */
+/* 502 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(498)
+  __webpack_require__(503)
 }
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(500),
+  __webpack_require__(505),
   /* template */
-  __webpack_require__(501),
+  __webpack_require__(506),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -53726,13 +54041,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 498 */
+/* 503 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(499);
+var content = __webpack_require__(504);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -53752,7 +54067,7 @@ if(false) {
 }
 
 /***/ }),
-/* 499 */
+/* 504 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -53766,7 +54081,7 @@ exports.push([module.i, "\n.inputBox[data-v-f20c29b0]{\r\n    display: -webkit-b
 
 
 /***/ }),
-/* 500 */
+/* 505 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54154,7 +54469,7 @@ exports.default = {
         login: function login() {
             var _this = this;
 
-            var url = 'http://10.34.10.126:8999/delivery/sendContainer';
+            var url = 'http://10.34.10.177:8999/delivery/sendContainer';
             var body = JSON.stringify({
                 functionNumber: _this.workshopName,
                 containerNumber: _this.userBucket,
@@ -54207,7 +54522,7 @@ exports.default = {
             // let name = this.workshopName;
             // console.log(name)
             // // modal.toast({ message: '你是'+name, duration: 10 });
-            var url = 'http://10.34.10.126:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+            var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
             // modal.toast({ message: url, duration: 3 });
             // let body = JSON.stringify({
             //     // functionRoomNumber: _this.workshopName
@@ -54235,7 +54550,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 501 */
+/* 506 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -54706,7 +55021,7 @@ if (false) {
 }
 
 /***/ }),
-/* 502 */
+/* 507 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -54726,19 +55041,19 @@ if (false) {
 }
 
 /***/ }),
-/* 503 */
+/* 508 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(504)
+  __webpack_require__(509)
 }
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(506),
+  __webpack_require__(511),
   /* template */
-  __webpack_require__(507),
+  __webpack_require__(512),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -54770,13 +55085,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 504 */
+/* 509 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(505);
+var content = __webpack_require__(510);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -54796,7 +55111,7 @@ if(false) {
 }
 
 /***/ }),
-/* 505 */
+/* 510 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -54810,7 +55125,7 @@ exports.push([module.i, "\n.login_content[data-v-bf1405d0] {\r\n    justify-cont
 
 
 /***/ }),
-/* 506 */
+/* 511 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54865,7 +55180,7 @@ exports.default = {
         onLogin: function onLogin() {
             var _this = this;
             if (this.userName && this.userPassword) {
-                var url = 'http://10.34.10.126:8200/admin/getAdmin';
+                var url = 'http://10.34.10.177:8200/admin/getAdmin';
                 var body = JSON.stringify({
                     username: this.userName,
                     password: this.userPassword
@@ -54901,7 +55216,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 507 */
+/* 512 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -55006,19 +55321,19 @@ if (false) {
 }
 
 /***/ }),
-/* 508 */
+/* 513 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(509)
+  __webpack_require__(514)
 }
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(511),
+  __webpack_require__(516),
   /* template */
-  __webpack_require__(512),
+  __webpack_require__(517),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -55050,13 +55365,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 509 */
+/* 514 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(510);
+var content = __webpack_require__(515);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -55076,7 +55391,7 @@ if(false) {
 }
 
 /***/ }),
-/* 510 */
+/* 515 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -55090,7 +55405,7 @@ exports.push([module.i, "\n.inputBox[data-v-3d9de47f] {\r\n    display: -webkit-
 
 
 /***/ }),
-/* 511 */
+/* 516 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55217,7 +55532,7 @@ exports.default = {
                 return;
             } else {
                 var that = this;
-                var url = 'http://10.34.10.126:8200/containerFunctionLocation/saveContainerFunctionLocation';
+                var url = 'http://10.34.10.177:8200/containerFunctionLocation/saveContainerFunctionLocation';
                 var body = JSON.stringify({
                     containerFunctionNumber: that.ContainerNum,
                     containerFunctionQrCodeNumber: that.LocationNum
@@ -55258,7 +55573,7 @@ exports.default = {
         // 初始化table
         initTable: function initTable() {
             var that = this;
-            var url = 'http://10.34.10.126:8200/containerFunctionLocation/getAllContainerFunctionLocation';
+            var url = 'http://10.34.10.177:8200/containerFunctionLocation/getAllContainerFunctionLocation';
             var body = JSON.stringify({
                 page: that.currentPage,
                 size: that.pageSize
@@ -55357,7 +55672,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 512 */
+/* 517 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -55681,19 +55996,19 @@ if (false) {
 }
 
 /***/ }),
-/* 513 */
+/* 518 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(514)
+  __webpack_require__(519)
 }
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(516),
+  __webpack_require__(521),
   /* template */
-  __webpack_require__(517),
+  __webpack_require__(522),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -55725,13 +56040,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 514 */
+/* 519 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(515);
+var content = __webpack_require__(520);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -55751,7 +56066,7 @@ if(false) {
 }
 
 /***/ }),
-/* 515 */
+/* 520 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -55765,7 +56080,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  \n/* 公共样式
 
 
 /***/ }),
-/* 516 */
+/* 521 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55789,7 +56104,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 517 */
+/* 522 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;

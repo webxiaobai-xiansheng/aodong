@@ -18,9 +18,6 @@
             <wxc-button text="登录" :disabled="isLoginDisabled" type="blue" @wxcButtonClicked="login"></wxc-button>
         </div>
 
-        <!-- <video class="video" src="http://flv2.bn.netease.com/videolib3/1611/01/XGqSL5981/SD/XGqSL5981-mobile.mp4" autoplay controls
-      @start="onstart" @pause="onpause" @finish="onfinish" @fail="onfail"></video> -->
-
         <wxc-popup popup-color="#fff" :show="show" @wxcPopupOverlayClicked="wxcMaskSetHidden" pos="left" height="400">
             <div class="content mask-content">
                 <div class="mask-title">
@@ -43,7 +40,6 @@ const modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
 const storage = weex.requireModule('storage');
 import { WxcButton, WxcRadio, WxcPopup } from 'weex-ui';
-// const audio = new Audio('http://59.110.169.246/img/1.mp3');
 
 export default {
     components: { WxcButton, WxcRadio, WxcPopup },
@@ -91,11 +87,7 @@ export default {
         }, {
             title: '清洗间',
             value: 'QXCK'
-        }],
-
-        // state: '----',
-        // src:'../img/XGqSL5981-mobile.mp4',
-        // time:""
+        }]
     }),
     methods: {
         // 账号、密码输入框输入内容后显示 “选择车间按钮”
@@ -134,12 +126,9 @@ export default {
                 this.isChoseDisabled = false;
                 var workShopName = e.value;
                 var workShopTitle = e.title;
-                storage.setItem('workShopName', workShopName, event => {
-                    console.log(event)
-                    // console.log(event.data)
-                });
+                storage.setItem('workShopName', workShopName, event => {});
                 storage.setItem('workShopTitle', workShopTitle, event => {
-                    // console.log(event.data)
+
                 });
             }
         },
@@ -161,7 +150,6 @@ export default {
 
         // 登录按钮
         login() {
-            // let audio = new Audio('http://59.110.169.246/img/1.mp3');
             let that=this;
             let url = 'http://10.34.10.177:8999/user/login';
             let body = JSON.stringify({
@@ -177,7 +165,6 @@ export default {
             }, function(ret) {
                 if (ret.status === 200) {
                     if (ret.data.status === 1) {
-                        // modal.toast({ message: ret.data.message, duration: 100 });
                         
                         storage.getItem('workShopName', event => {
 
@@ -213,48 +200,17 @@ export default {
                             }
                         });
  
-                        modal.toast({ message: ret.data.message, duration: 3 });
-                        // audio.play();
+                        modal.toast({ message: ret.data.message,duration: 2});
                     } else {
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message,duration: 2});
                     }
                 } else {
-                    modal.toast({ message: ret.data.message, duration: 3 });
+                    modal.toast({ message: ret.data.message,duration: 2});
                 }
 
             });
         },
 
-        // music(){
-        //     let _this=this;
-
-        //     let url = 'http://10.34.10.24:8999/video/getVideo';
-        //     stream.fetch({
-        //         method:"GET",
-        //         url:url,
-        //         type:'json',
-        //     },function(ret){
-        //         console.log(ret)
-        //         if(ret.data.status===1){
-                    
-        //         }else{
-                   
-        //         }
-        //     })
-        // }
-        // onstart (event) {
-        //     console.log(event)
-        //     this.state = 'onstart'
-        // },
-        // onpause (event) {
-        //     this.state = 'onpause'
-        // },
-        // onfinish (event) {
-        //     this.state = 'onfinish'
-        // },
-        // onfail (event) {
-        //     this.state = 'onfinish'
-        // }
     },
     created() {
       storage.getItem('workShopName', event => {
@@ -269,7 +225,6 @@ export default {
           'src': "url('http://at.alicdn.com/t/font_1141918_gqt9dsrnysk.ttf')"
       });
       
-    //   this.music()
     }
 }
 </script>
@@ -341,21 +296,6 @@ export default {
 
 .workShop-confirm {
     margin-top: 10px;
-}
-
-.video {
-    width: 630px;
-    height: 350px;
-    margin-top: 60px;
-    margin-left: 60px;
-    /* opacity: 0; */
-}
-
-.info {
-    margin-top: 40px;
-    font-size: 40px;
-    text-align: center;
-    opacity: 0;
 }
 
 .iconfont {

@@ -128,10 +128,10 @@ import { WxcButton, WxcRadio, WxcPageCalendar, WxcMinibar, WxcPopup } from 'weex
 export default {
     components: { WxcButton, WxcRadio, WxcPageCalendar, WxcMinibar, WxcPopup },
     data: () => ({
-        userBucket: '99',
-        userProduct:'空桶',
-        userVolume:'80L',
-        userWeight:'100kg',
+        userBucket: '',
+        userProduct:'',
+        userVolume:'',
+        userWeight:'',
         binOrHopper:'',
         // userTime:'2019-10-10',
         isWorkShopDisabled: true,
@@ -223,15 +223,15 @@ export default {
                         _this.userVolume='',
                         _this.userWeight='',
                         _this.binOrHopper='',
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message,duration: 2});
                     }else{
-                        modal.toast({ message: '填写失败！！！', duration: 3 });
+                        modal.toast({ message: '填写失败！！！',duration: 2});
                     }
                 },function(progress) {
                     // console.log(progress)
                 })
             }else{
-                modal.toast({ message: '请选择产品名称和请输入桶编号', duration: 3 });
+                modal.toast({ message: '请选择产品名称和请输入桶编号',duration: 2});
             }
         },
         black(){

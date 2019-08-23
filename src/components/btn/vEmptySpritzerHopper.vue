@@ -41,13 +41,13 @@ export default {
                   // 订阅者
                   const Steve = new BroadcastChannel('Avengers')
                   Steve.postMessage('Assemble!')
-                  modal.toast({ message: ret.data.message, duration: 3 });
+                  modal.toast({ message: ret.data.message,duration: 2});
               }else{
-                 modal.toast({ message: ret.data.message, duration: 3 });
+                 modal.toast({ message: ret.data.message,duration: 2});
               }
           })
         }else{
-          modal.toast({ message: '请选择桶编号', duration: 3 });
+          modal.toast({ message: '请选择桶编号',duration: 2});
         }
     }
   }
