@@ -9,7 +9,7 @@
         <text class="btn-txt">车辆控制</text>
       </div>
     </div>
-    <wxc-mask height="300"
+    <wxc-mask height="400"
               width="500"
               border-radius="0"
               duration="200"
@@ -28,7 +28,7 @@
           <div class="btnNss" @click="onContainerLogin">
             <text class="btn-txtNSS">桶/库位绑定</text>
           </div>
-          <!-- <v-container-location class="contentBox-btn"></v-container-location> -->
+          <v-manual-storage class="contentBox-btn"></v-manual-storage>
       </div>
     </wxc-mask>
     <wxc-mask height="300"
@@ -59,9 +59,11 @@
   import vGetSpritzerHopperRinses from './btn/vGetSpritzerHopperRinses.vue';
   // 称重
   import vWeigh from './btn/vWeigh.vue';
+  // 人工入库
+  import vManualStorage from './btn/vManualStorage.vue'
   const Stark = new BroadcastChannel('Avengers');
   export default {
-    components: { WxcMask,vStop,vStart,vGetSpritzerHopperRinses,vWeigh },
+    components: { WxcMask,vStop,vStart,vGetSpritzerHopperRinses,vWeigh,vManualStorage },
     data: () => ({
       showBusiness: false,
       showFunction:false,
@@ -146,7 +148,7 @@
   justify-content: center;
 }
 .contentBox{
-  height: 300px;
+  height: 400px;
   width: 500px;
   display: flex;
   flex-direction: row;
