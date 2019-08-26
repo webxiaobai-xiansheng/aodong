@@ -36,7 +36,7 @@ export default {
         onLogin() {
             let _this=this;
             if(this.userName&&this.userPassword){
-                let url = 'http://192.168.10.240:8200/admin/getAdmin';
+                let url = 'http://10.34.10.177:8200/admin/getAdmin';
                 let body = JSON.stringify({
                     username: this.userName,
                     password: this.userPassword

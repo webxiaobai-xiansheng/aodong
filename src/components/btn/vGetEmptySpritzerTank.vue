@@ -18,6 +18,9 @@
                     <div class="button_box bottom">
                         <wxc-button text="确定" type="blue" :disabled="isChoseDisabled" @wxcButtonClicked="wxcConfirmEmptyContainer"></wxc-button size="small">
                     </div>
+                    <div class="button_box">
+                        <wxc-button text="返回" type="blue" @wxcButtonClicked="black"></wxc-button>
+                    </div>
                 </div>
             </wxc-popup>
         </div>
@@ -47,7 +50,7 @@ export default {
         // 打开弹窗
         wxcButtonGetEmptySpritzerTank(e) {
             let _this=this;
-            let url = 'http://192.168.10.240:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber='+this.workshopName;
+            let url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber='+this.workshopName;
             stream.fetch({
                 method:"GET",
                 url:url,
@@ -79,12 +82,15 @@ export default {
             this.isChoseDisabled = false;
             this.containerNum=e.value
         },
-
+        // 返回
+        black(){
+           this.show = false;
+        },
         // 选择选择空料斗、料桶--确认按钮
         wxcConfirmEmptyContainer(e) {
             let _this=this;
             if(this.containerNum!=='undefined'&&this.workshopName!=='undefined'){
-                let url = 'http://192.168.10.240:8999/delivery/sendContainerToCleaningRoom';
+                let url = 'http://10.34.10.177:8999/delivery/sendContainerToCleaningRoom';
                 let body = JSON.stringify({
                     containerNumber:_this.containerNum,
                     functionRoomNumber:_this.workshopName

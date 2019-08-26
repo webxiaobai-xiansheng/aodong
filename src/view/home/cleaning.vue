@@ -27,6 +27,9 @@
                     <div class="button_box bottom">
                         <wxc-button text="确定" type="blue" :disabled="isChoseDisabled" @wxcButtonClicked="wxcConfirmEmptyContainer"></wxc-button size="small">
                     </div>
+                    <div class="button_box">
+                        <wxc-button text="返回" type="blue" @wxcButtonClicked="black"></wxc-button>
+                    </div>
                 </div>
             </wxc-popup>
         </div>
@@ -63,9 +66,9 @@ export default {
   },
   methods: {
     // 打开弹窗
-    wxcButtonGetEmptySpritzerTank(e) {
+    wxcButtonGetEmptySpritzerTan(e) {
         let _this=this;
-        let url = 'http://192.168.10.240:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber='+this.workshopName;
+        let url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber='+this.workshopName;
         stream.fetch({
             method:"GET",
             url:url,
@@ -97,11 +100,15 @@ export default {
     wxcConfirmEmptyContainer(e) {
         this.show =false;
     },
+    // 返回
+    black(){
+      this.show = false;
+    },
     // 确认按钮
     onClack(){
-      let _this=this;
+        let _this=this;
         if(this.containerNum!=='undefined'&&this.workshopName!=='undefined'){
-          let url = 'http://192.168.10.240:8999/delivery/sendEmptyContainer';
+          let url = 'http://10.34.10.177:8999/delivery/sendEmptyContainer';
           let body = JSON.stringify({
               containerNumber:_this.containerNum,
               functionRoomNumber:_this.workshopName
@@ -114,8 +121,9 @@ export default {
               type:'json',
           },function(ret){
               if(ret.data.status===1){
-                  const Steve = new BroadcastChannel('Avengers')
-                  Steve.postMessage('Assemble!')
+                  _this.containerNum=' ';
+                  const Steve = new BroadcastChannel('Avengers');
+                  Steve.postMessage('Assemble!');
                   modal.toast({ message: ret.data.message,duration: 2});
               }else{
                  modal.toast({ message: ret.data.message,duration: 2});
@@ -176,8 +184,9 @@ export default {
 }
 
 .input_item {
-  
+  line-height: 90px;
   height: 90px;
+  font-size: 30px;
 }
 
 .input-title{
@@ -186,5 +195,54 @@ export default {
   font-size: 35px;
   height: 90px;
   line-height: 90px;
+}
+.btn {
+    display: flex;
+    justify-content: center;
+    background-color: #0099ff;
+    width: 200px;
+    height: 100px;
+    border-radius: 10px;
+}
+
+.btn-txt {
+    text-align: center;
+    margin: 0 auto;
+    color: #fff;
+    font-size: 35px;
+}
+
+.mask-container {
+    justify-content: center;
+    align-items: center;
+}
+
+.mask-content {
+    padding-top: 20;
+}
+
+.mask-title {
+    align-items: center;
+}
+
+.title {
+    font-size: 28px;
+}
+
+.mask-title {
+    align-items: center;
+}
+
+.title {
+    font-size: 28px;
+}
+
+.button_box {
+    margin-top: 20px;
+    align-items: center;
+}
+
+.bottom {
+    margin-top: 40px;
 }
 </style>

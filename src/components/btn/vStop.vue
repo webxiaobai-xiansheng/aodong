@@ -13,7 +13,7 @@ export default {
   methods: {
     wxcButtonStop () {
       let _this=this;
-      let url = 'http://192.168.10.240:8088/api/agv/stopOrStart/1';
+      let url = 'http://10.34.10.177:8088/api/agv/stopOrStart/1';
       stream.fetch({
           method:"GET",
           url:url,

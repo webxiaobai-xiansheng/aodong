@@ -383,7 +383,7 @@ export default {
         login() {
             let _this=this;
 
-            let url = 'http://192.168.10.240:8999/delivery/sendContainer';
+            let url = 'http://10.34.10.177:8999/delivery/sendContainer';
             let body = JSON.stringify({
                 functionNumber: _this.workshopName,
                 containerNumber:_this.userBucket,
@@ -438,7 +438,7 @@ export default {
             // let name = this.workshopName;
             // console.log(name)
             // // modal.toast({ message: '你是'+name, duration: 10 });
-            let url = 'http://192.168.10.240:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber='+this.workshopName;
+            let url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber='+this.workshopName;
             // modal.toast({ message: url,duration: 2});
             // let body = JSON.stringify({
             //     // functionRoomNumber: _this.workshopName

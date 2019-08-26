@@ -54,7 +54,7 @@ const config = {
     proxyTable: {
             proxy: {
                 '/apis': {
-                    // target: 'http://192.168.10.240:8200', // 颖杰本地接口域名
+                    // target: 'http://10.34.10.177:8200', // 颖杰本地接口域名
                     target: 'http://http://10.34.10.25:8999', // 文锋本地接口域名
                     secure: false, // 如果是https接口，需要配置这个参数
                     changeOrigin: true, //是否跨域

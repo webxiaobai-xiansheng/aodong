@@ -5615,7 +5615,7 @@ exports.default = {
         // 登录按钮
         login: function login() {
             var that = this;
-            var url = 'http://192.168.10.240:8999/user/login';
+            var url = 'http://10.34.10.177:8999/user/login';
             var body = JSON.stringify({
                 username: this.userName,
                 password: this.userPassword
@@ -23534,7 +23534,7 @@ exports.default = {
   methods: {
     wxcButtonStop: function wxcButtonStop() {
       var _this = this;
-      var url = 'http://192.168.10.240:8088/api/agv/stopOrStart/1';
+      var url = 'http://10.34.10.177:8088/api/agv/stopOrStart/1';
       stream.fetch({
         method: "GET",
         url: url,
@@ -23614,7 +23614,7 @@ exports.default = {
     wxcButtonStart: function wxcButtonStart() {
       var _this = this;
 
-      var url = 'http://192.168.10.240:8088/api/agv/stopOrStart/0';
+      var url = 'http://10.34.10.177:8088/api/agv/stopOrStart/0';
 
       stream.fetch({
         method: "GET",
@@ -23711,7 +23711,7 @@ exports.default = {
   methods: {
     wxcButtonGetSpritzerHopper: function wxcButtonGetSpritzerHopper() {
       var _this = this;
-      var url = 'http://192.168.10.240:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+      var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
       stream.fetch({
         method: "GET",
         url: url,
@@ -23813,7 +23813,7 @@ exports.default = {
         wxcButtonEmptySpritzerHopper: function wxcButtonEmptySpritzerHopper(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://192.168.10.240:8999/obtain/getEmptyContainer?containerNumber=' + _this.containerNum + '&functionRoomNumber=' + _this.workshopName;
+                var url = 'http://10.34.10.177:8999/obtain/getEmptyContainer?containerNumber=' + _this.containerNum + '&functionRoomNumber=' + _this.workshopName;
                 stream.fetch({
                     method: "GET",
                     url: url,
@@ -24002,7 +24002,7 @@ exports.default = {
                 return;
             } else {
                 var that = this;
-                var url = 'http://192.168.10.240:8999/obtain/workshopBucketManagement';
+                var url = 'http://10.34.10.177:8999/obtain/workshopBucketManagement';
                 var body = JSON.stringify({
                     functionRoomNumber: that.functionRoomNumber,
                     containerNumber: that.resetContainerNum
@@ -24393,7 +24393,7 @@ exports.default = {
         // 初始化table和筛选table
         initTable: function initTable() {
             var that = this;
-            var url = 'http://192.168.10.240:8200/containerInformation/getContainerInformation';
+            var url = 'http://10.34.10.177:8200/containerInformation/getContainerInformation';
             var body = JSON.stringify({
                 init: '',
                 page: that.currentPage,
@@ -24457,7 +24457,7 @@ exports.default = {
                 checkedList = _ref.checkedList;
 
             var that = this;
-            var url = 'http://192.168.10.240:8200/containerInformation/getContainerInformation';
+            var url = 'http://10.34.10.177:8200/containerInformation/getContainerInformation';
             that.tableBodyData = [];
             // that.currentPage = 1;
             var body = {};
@@ -25106,7 +25106,7 @@ exports.default = {
         wxcButtonSpritzerHopper: function wxcButtonSpritzerHopper(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://192.168.10.240:8999/obtain/getStripContainer';
+                var url = 'http://10.34.10.177:8999/obtain/getStripContainer';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -25256,7 +25256,7 @@ exports.default = {
         // 打开弹窗
         wxcButtonGetEmptySpritzerHopper: function wxcButtonGetEmptySpritzerHopper(e) {
             var _this = this;
-            var url = 'http://192.168.10.240:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+            var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
             stream.fetch({
                 method: "GET",
                 url: url,
@@ -25302,7 +25302,7 @@ exports.default = {
             var _this = this;
             console.log(this.containerNum);
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://192.168.10.240:8999/delivery/sendContainerToCleaningRoom';
+                var url = 'http://10.34.10.177:8999/delivery/sendContainerToCleaningRoom';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -25905,7 +25905,7 @@ exports.default = {
   methods: {
     wxcButtonGetSpritzerTankHopper: function wxcButtonGetSpritzerTankHopper() {
       var _this = this;
-      var url = 'http://192.168.10.240:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+      var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
       stream.fetch({
         method: "GET",
         url: url,
@@ -26009,7 +26009,7 @@ exports.default = {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
 
-                var url = 'http://192.168.10.240:8999/obtain/getEmptyContainer?containerNumber=' + _this.containerNum + '&functionRoomNumber=' + _this.workshopName;
+                var url = 'http://10.34.10.177:8999/obtain/getEmptyContainer?containerNumber=' + _this.containerNum + '&functionRoomNumber=' + _this.workshopName;
                 stream.fetch({
                     method: "GET",
                     url: url,
@@ -26611,7 +26611,7 @@ exports.default = {
         // 打开弹窗
         wxcButtonGetEmptySpritzerTank: function wxcButtonGetEmptySpritzerTank(e) {
             var _this = this;
-            var url = 'http://192.168.10.240:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+            var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
             stream.fetch({
                 method: "GET",
                 url: url,
@@ -26651,7 +26651,7 @@ exports.default = {
         wxcConfirmEmptyContainer: function wxcConfirmEmptyContainer(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://192.168.10.240:8999/delivery/sendContainerToCleaningRoom';
+                var url = 'http://10.34.10.177:8999/delivery/sendContainerToCleaningRoom';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -26803,7 +26803,7 @@ exports.default = {
         wxcButtonEmptySpritzerTank: function wxcButtonEmptySpritzerTank(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://192.168.10.240:8999/obtain/getStripContainer';
+                var url = 'http://10.34.10.177:8999/obtain/getStripContainer';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -26907,7 +26907,7 @@ exports.default = {
   methods: {
     wxcButtonGetSpritzerTank: function wxcButtonGetSpritzerTank() {
       var _this = this;
-      var url = 'http://192.168.10.240:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+      var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
       stream.fetch({
         method: "GET",
         url: url,
@@ -27469,7 +27469,7 @@ exports.default = {
         wxcButtonGetSpritzerHopperBack: function wxcButtonGetSpritzerHopperBack(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://192.168.10.240:8999/delivery/sendEmptyContainer';
+                var url = 'http://10.34.10.177:8999/delivery/sendEmptyContainer';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -27664,7 +27664,7 @@ exports.default = {
         // 打开弹窗
         wxcButtonGetSpritzerHopperRinse: function wxcButtonGetSpritzerHopperRinse(e) {
             var _this = this;
-            var url = 'http://192.168.10.240:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+            var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
             stream.fetch({
                 method: "GET",
                 url: url,
@@ -27704,7 +27704,7 @@ exports.default = {
         wxcConfirmEmptyContainer: function wxcConfirmEmptyContainer(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://192.168.10.240:8999/delivery/sendContainerToCleaningRoom';
+                var url = 'http://10.34.10.177:8999/delivery/sendContainerToCleaningRoom';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -28110,7 +28110,7 @@ exports.default = {
         timer: function timer() {
             var _this = this;
 
-            var url = 'http://192.168.10.240:8999/agvTask/getReviewTask';
+            var url = 'http://10.34.10.177:8999/agvTask/getReviewTask';
             stream.fetch({
                 method: "GET",
                 url: url,
@@ -28140,7 +28140,7 @@ exports.default = {
         wxcChoseAllow: function wxcChoseAllow() {
             var _this = this;
 
-            var url = 'http://192.168.10.240:8999/obtain/reviewVerify';
+            var url = 'http://10.34.10.177:8999/obtain/reviewVerify';
             var body = JSON.stringify({
                 taskId: _this.id,
                 functionNumber: _this.functionNumber,
@@ -28167,7 +28167,7 @@ exports.default = {
         wxcChoseRefuse: function wxcChoseRefuse() {
             var _this = this;
 
-            var url = 'http://192.168.10.240:8999/obtain/reviewRefuse';
+            var url = 'http://10.34.10.177:8999/obtain/reviewRefuse';
             var body = JSON.stringify({
                 taskId: _this.id,
                 functionNumber: _this.functionNumber,
@@ -28552,7 +28552,7 @@ exports.default = {
         wxcButtonGetSpritzerHopperRinses: function wxcButtonGetSpritzerHopperRinses(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://192.168.10.240:8999/delivery/sendContainerFormZJToCleaningRoom';
+                var url = 'http://10.34.10.177:8999/delivery/sendContainerFormZJToCleaningRoom';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -28687,7 +28687,7 @@ exports.default = {
         wxcButtonWeigh: function wxcButtonWeigh(e) {
             var _this = this;
 
-            var url = 'http://192.168.10.240:8999/delivery/weighing';
+            var url = 'http://10.34.10.177:8999/delivery/weighing';
             var body = JSON.stringify({});
             stream.fetch({
                 method: "POST",
@@ -28869,7 +28869,7 @@ exports.default = {
         // 打开弹窗
         wxcButtonManualStorage: function wxcButtonManualStorage(e) {
             var _this = this;
-            var url = 'http://192.168.10.240:8999/agvTask/getFailureAgvTaskOfContainerNumber';
+            var url = 'http://10.34.10.177:8999/agvTask/getFailureAgvTaskOfContainerNumber';
             stream.fetch({
                 method: "GET",
                 url: url,
@@ -28912,7 +28912,7 @@ exports.default = {
         wxcConfirmEmptyContainer: function wxcConfirmEmptyContainer(e) {
             var _this = this;
             if (this.containerNumber !== 'undefined') {
-                var url = 'http://192.168.10.240:8999/agvTask/manualStorage?taskId=' + this.taskId + '&containerNumber=' + _this.containerNumber;
+                var url = 'http://10.34.10.177:8999/agvTask/manualStorage?taskId=' + this.taskId + '&containerNumber=' + _this.containerNumber;
                 stream.fetch({
                     method: "GET",
                     url: url,
@@ -29322,7 +29322,7 @@ exports.default = {
         // 初始化table和筛选table
         initTable: function initTable() {
             var that = this;
-            var url = 'http://192.168.10.240:8200/containerInformation/getAllContainerInformation';
+            var url = 'http://10.34.10.177:8200/containerInformation/getAllContainerInformation';
             var body = JSON.stringify({
                 init: '',
                 page: that.currentPage,
@@ -29389,7 +29389,7 @@ exports.default = {
             that.tableBodyData = [];
             var body = {};
             if (checked === true) {
-                var url = 'http://192.168.10.240:8200/containerInformation/getAllOverdueNotUsed';
+                var url = 'http://10.34.10.177:8200/containerInformation/getAllOverdueNotUsed';
                 that.currentIndex = -1;
                 var containerName = checkedList[0].value;
                 body = JSON.stringify({
@@ -29867,9 +29867,9 @@ exports.default = {
     },
     methods: {
         // 打开弹窗
-        wxcButtonGetEmptySpritzerTank: function wxcButtonGetEmptySpritzerTank(e) {
+        wxcButtonGetEmptySpritzerTan: function wxcButtonGetEmptySpritzerTan(e) {
             var _this = this;
-            var url = 'http://192.168.10.240:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+            var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
             stream.fetch({
                 method: "GET",
                 url: url,
@@ -29909,7 +29909,7 @@ exports.default = {
         onClack: function onClack() {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://192.168.10.240:8999/delivery/sendEmptyContainer';
+                var url = 'http://10.34.10.177:8999/delivery/sendEmptyContainer';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -30280,7 +30280,7 @@ exports.default = {
         onLogin: function onLogin() {
             var _this = this;
             if (this.userName && this.userPassword) {
-                var url = 'http://192.168.10.240:8200/admin/getAdmin';
+                var url = 'http://10.34.10.177:8200/admin/getAdmin';
                 var body = JSON.stringify({
                     username: this.userName,
                     password: this.userPassword
@@ -30711,7 +30711,7 @@ exports.default = {
             var _this = this;
             if (this.userBucket && this.userProduct) {
                 this.binOrHopper = this.userProduct === '空料斗' ? '料斗' : '料桶';
-                var url = 'http://192.168.10.240:8200/containerInformation/saveContainerInformation';
+                var url = 'http://10.34.10.177:8200/containerInformation/saveContainerInformation';
 
                 var body = JSON.stringify({
                     containerNumber: this.userBucket,
@@ -31502,7 +31502,7 @@ exports.default = {
         login: function login() {
             var _this = this;
 
-            var url = 'http://192.168.10.240:8999/delivery/sendContainer';
+            var url = 'http://10.34.10.177:8999/delivery/sendContainer';
             var body = JSON.stringify({
                 functionNumber: _this.workshopName,
                 containerNumber: _this.userBucket,
@@ -31555,7 +31555,7 @@ exports.default = {
             // let name = this.workshopName;
             // console.log(name)
             // // modal.toast({ message: '你是'+name, duration: 10 });
-            var url = 'http://192.168.10.240:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+            var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
             // modal.toast({ message: url,duration: 2});
             // let body = JSON.stringify({
             //     // functionRoomNumber: _this.workshopName
@@ -32008,7 +32008,7 @@ exports.default = {
         onLogin: function onLogin() {
             var _this = this;
             if (this.userName && this.userPassword) {
-                var url = 'http://192.168.10.240:8200/admin/getAdmin';
+                var url = 'http://10.34.10.177:8200/admin/getAdmin';
                 var body = JSON.stringify({
                     username: this.userName,
                     password: this.userPassword
@@ -32359,8 +32359,8 @@ exports.default = {
     components: { WxcButton: _weexUi.WxcButton, WxcRadio: _weexUi.WxcRadio, WxcPageCalendar: _weexUi.WxcPageCalendar, WxcMinibar: _weexUi.WxcMinibar, WxcPopup: _weexUi.WxcPopup },
     data: function data() {
         return {
-            ContainerNum: '10086',
-            LocationNum: '33333',
+            ContainerNum: '',
+            LocationNum: '',
             isCheckDisabled: true,
             tableHeadData: ['编号', '桶号', '库位二维码编号'],
             tableBodyData: [],
@@ -32395,7 +32395,7 @@ exports.default = {
                 return;
             } else {
                 var that = this;
-                var url = 'http://192.168.10.240:8200/containerFunctionLocation/saveContainerFunctionLocation';
+                var url = 'http://10.34.10.177:8200/containerFunctionLocation/saveContainerFunctionLocation';
                 var body = JSON.stringify({
                     containerFunctionNumber: that.ContainerNum,
                     containerFunctionQrCodeNumber: that.LocationNum
@@ -32436,7 +32436,7 @@ exports.default = {
         // 初始化table
         initTable: function initTable() {
             var that = this;
-            var url = 'http://192.168.10.240:8200/containerFunctionLocation/getAllContainerFunctionLocation';
+            var url = 'http://10.34.10.177:8200/containerFunctionLocation/getAllContainerFunctionLocation';
             var body = JSON.stringify({
                 page: that.currentPage,
                 size: that.pageSize

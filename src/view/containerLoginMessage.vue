@@ -77,8 +77,8 @@ import { WxcButton, WxcRadio, WxcPageCalendar, WxcMinibar, WxcPopup } from 'weex
 export default {
     components: { WxcButton, WxcRadio, WxcPageCalendar, WxcMinibar, WxcPopup },
     data: () => ({
-        ContainerNum: '10086',
-        LocationNum: '33333',
+        ContainerNum: '',
+        LocationNum: '',
         isCheckDisabled: true,
         tableHeadData: ['编号', '桶号', '库位二维码编号'],
         tableBodyData: [],
@@ -111,7 +111,7 @@ export default {
                 return;
             } else {
                 let that = this;
-                let url = 'http://192.168.10.240:8200/containerFunctionLocation/saveContainerFunctionLocation';
+                let url = 'http://10.34.10.177:8200/containerFunctionLocation/saveContainerFunctionLocation';
                 let body = JSON.stringify({
                     containerFunctionNumber: that.ContainerNum,
                     containerFunctionQrCodeNumber: that.LocationNum
@@ -150,7 +150,7 @@ export default {
         // 初始化table
         initTable() {
             let that = this;
-            let url = 'http://192.168.10.240:8200/containerFunctionLocation/getAllContainerFunctionLocation'
+            let url = 'http://10.34.10.177:8200/containerFunctionLocation/getAllContainerFunctionLocation'
             let body = JSON.stringify({
                 page: that.currentPage,
                 size: that.pageSize
