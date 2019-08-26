@@ -52,16 +52,17 @@ export default {
                 console.log(ret)
                 if (ret.data.status === 1) {
                     if (ret.data.data === null || ret.data.data === 'undefined') {
-                        modal.toast({ message: '没有失败的任务',duration: 2});
+                        modal.toast({ message:ret.data.message, duration: 2 });
                         _this.show = false;
-                    }
-                    if (ret.data.data.length > 0) {
-                        for (let i = 0; i < ret.data.data.length; i++) {
-                            _this.taskList.push({ title: ret.data.data[i].containerNumber, value: ret.data.data[i].taskId })
-                        }
-                        _this.show = true;
                     } else {
-                        modal.toast({ message: '没有失败的任务',duration: 2});
+                        if (ret.data.data.length > 0) {
+                            for (let i = 0; i < ret.data.data.length; i++) {
+                                _this.taskList.push({ title: ret.data.data[i].containerNumber, value: ret.data.data[i].taskId })
+                            }
+                            _this.show = true;
+                        } else {
+                            modal.toast({ message: ret.data.message, duration: 2 });
+                        }
                     }
                 }
             })
