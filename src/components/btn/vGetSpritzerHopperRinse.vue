@@ -47,7 +47,7 @@ export default {
         // 打开弹窗
        wxcButtonGetSpritzerHopperRinse(e) {
             let _this=this;
-            let url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber='+this.workshopName;
+            let url = 'http://192.168.10.240:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber='+this.workshopName;
             stream.fetch({
                 method:"GET",
                 url:url,
@@ -84,7 +84,7 @@ export default {
         wxcConfirmEmptyContainer(e) {
             let _this=this;
             if(this.containerNum!=='undefined'&&this.workshopName!=='undefined'){
-                let url = 'http://10.34.10.177:8999/delivery/sendContainerToCleaningRoom';
+                let url = 'http://192.168.10.240:8999/delivery/sendContainerToCleaningRoom';
                 let body = JSON.stringify({
                     containerNumber:_this.containerNum,
                     functionRoomNumber:_this.workshopName

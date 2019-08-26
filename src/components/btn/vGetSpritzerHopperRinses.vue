@@ -30,7 +30,7 @@ export default {
     wxcButtonGetSpritzerHopperRinses (e) {
         let _this=this;
         if(this.containerNum!=='undefined'&&this.workshopName!=='undefined'){
-          let url = 'http://10.34.10.177:8999/delivery/sendContainerFormZJToCleaningRoom';
+          let url = 'http://192.168.10.240:8999/delivery/sendContainerFormZJToCleaningRoom';
           let body = JSON.stringify({
               containerNumber:_this.containerNum,
               functionRoomNumber:_this.workshopName

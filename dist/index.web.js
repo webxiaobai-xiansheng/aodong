@@ -25506,7 +25506,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.login_content[data-v-1e98f12e] {\r\n    justify-content: center;\r\n    align-items: center;\r\n    flex-direction: column;\r\n    margin-top: 1.06667rem;\n}\n.page_title[data-v-1e98f12e]{\r\n    margin-bottom: 1.06667rem;\r\n    font-size: 0.53333rem;\r\n    color:#333;\n}\n.input_box[data-v-1e98f12e] {\r\n    flex-direction: row;\r\n    border-style: solid;\r\n    border-width: 1;\r\n    border-color: #333;\r\n    border-radius: 10;\r\n    margin-bottom: 40;\r\n    padding-left: 10;\r\n    width:9.33333rem;\n}\n.input_item[data-v-1e98f12e] {\r\n    width: 8.93333rem;\r\n    height: 1.2rem;\r\n    margin-left: 0.13333rem;\n}\n.button_box[data-v-1e98f12e] {\r\n    align-items: center;\n}\n.bottom[data-v-1e98f12e] {\r\n    margin-top: 0.93333rem;\n}\n.mask-content[data-v-1e98f12e] {\r\n    padding-top: 20;\n}\n.mask-title[data-v-1e98f12e] {\r\n    align-items: center;\n}\n.title[data-v-1e98f12e] {\r\n    font-size: 0.37333rem;\n}\n.mask-btns[data-v-1e98f12e] {\r\n    align-items: center;\r\n    justify-content: center;\r\n    flex-direction: row;\n}\n.scroller-box[data-v-1e98f12e] {\r\n    height: 808;\r\n    position: absolute !important;\r\n    top: 0;\r\n    right: 0;\r\n    left: 0;\r\n    bottom: 0;\n}\n.workShop-confirm[data-v-1e98f12e] {\r\n    margin-top: 0.13333rem;\n}\n.video[data-v-1e98f12e] {\r\n    width: 8.4rem;\r\n    height: 4.66667rem;\r\n    margin-top: 0.8rem;\r\n    margin-left: 0.8rem;\r\n    /* opacity: 0; */\n}\n.info[data-v-1e98f12e] {\r\n    margin-top: 0.53333rem;\r\n    font-size: 0.53333rem;\r\n    text-align: center;\r\n    opacity: 0;\n}\n.iconfont[data-v-1e98f12e] {\r\n    font-family: iconfont;\n}\n.login-icon[data-v-1e98f12e] {\r\n    padding-top: 0.33333rem;\r\n    font-size: 0.53333rem;\r\n    color:#ccc;\n}\r\n", ""]);
+exports.push([module.i, "\n.login_content[data-v-1e98f12e] {\r\n    justify-content: center;\r\n    align-items: center;\r\n    flex-direction: column;\r\n    margin-top: 1.06667rem;\n}\n.page_title[data-v-1e98f12e]{\r\n    margin-bottom: 1.06667rem;\r\n    font-size: 0.53333rem;\r\n    color:#333;\n}\n.input_box[data-v-1e98f12e] {\r\n    flex-direction: row;\r\n    border-style: solid;\r\n    border-width: 1;\r\n    border-color: #333;\r\n    border-radius: 10;\r\n    margin-bottom: 40;\r\n    padding-left: 10;\r\n    width:9.33333rem;\n}\n.input_item[data-v-1e98f12e] {\r\n    width: 8.93333rem;\r\n    height: 1.2rem;\r\n    margin-left: 0.13333rem;\n}\n.button_box[data-v-1e98f12e] {\r\n    align-items: center;\n}\n.bottom[data-v-1e98f12e] {\r\n    margin-top: 0.93333rem;\n}\n.mask-content[data-v-1e98f12e] {\r\n    padding-top: 20;\n}\n.mask-title[data-v-1e98f12e] {\r\n    align-items: center;\n}\n.title[data-v-1e98f12e] {\r\n    font-size: 0.37333rem;\n}\n.mask-btns[data-v-1e98f12e] {\r\n    align-items: center;\r\n    justify-content: center;\r\n    flex-direction: row;\n}\n.scroller-box[data-v-1e98f12e] {\r\n    height: 808;\r\n    position: absolute !important;\r\n    top: 0;\r\n    right: 0;\r\n    left: 0;\r\n    bottom: 0;\n}\n.workShop-confirm[data-v-1e98f12e] {\r\n    margin-top: 0.13333rem;\n}\n.iconfont[data-v-1e98f12e] {\r\n    font-family: iconfont;\n}\n.login-icon[data-v-1e98f12e] {\r\n    padding-top: 0.33333rem;\r\n    font-size: 0.53333rem;\r\n    color:#ccc;\n}\r\n", ""]);
 
 // exports
 
@@ -25594,16 +25594,10 @@ var _weexUi = __webpack_require__(4);
 //
 //
 //
-//
-//
-//
 
 var modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
 var storage = weex.requireModule('storage');
-
-// const audio = new Audio('http://59.110.169.246/img/1.mp3');
-
 exports.default = {
     components: { WxcButton: _weexUi.WxcButton, WxcRadio: _weexUi.WxcRadio, WxcPopup: _weexUi.WxcPopup },
     data: function data() {
@@ -25652,10 +25646,6 @@ exports.default = {
                 title: '清洗间',
                 value: 'QXCK'
             }]
-
-            // state: '----',
-            // src:'../img/XGqSL5981-mobile.mp4',
-            // time:""
         };
     },
     methods: {
@@ -25697,13 +25687,8 @@ exports.default = {
                 this.isChoseDisabled = false;
                 var workShopName = e.value;
                 var workShopTitle = e.title;
-                storage.setItem('workShopName', workShopName, function (event) {
-                    console.log(event);
-                    // console.log(event.data)
-                });
-                storage.setItem('workShopTitle', workShopTitle, function (event) {
-                    // console.log(event.data)
-                });
+                storage.setItem('workShopName', workShopName, function (event) {});
+                storage.setItem('workShopTitle', workShopTitle, function (event) {});
             }
         },
 
@@ -25727,9 +25712,8 @@ exports.default = {
 
         // 登录按钮
         login: function login() {
-            // let audio = new Audio('http://59.110.169.246/img/1.mp3');
             var that = this;
-            var url = 'http://10.34.10.177:8999/user/login';
+            var url = 'http://192.168.10.240:8999/user/login';
             var body = JSON.stringify({
                 username: this.userName,
                 password: this.userPassword
@@ -25743,7 +25727,6 @@ exports.default = {
             }, function (ret) {
                 if (ret.status === 200) {
                     if (ret.data.status === 1) {
-                        // modal.toast({ message: ret.data.message, duration: 100 });
 
                         storage.getItem('workShopName', function (event) {
 
@@ -25779,13 +25762,12 @@ exports.default = {
                             }
                         });
 
-                        modal.toast({ message: ret.data.message, duration: 3 });
-                        // audio.play();
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     } else {
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     }
                 } else {
-                    modal.toast({ message: ret.data.message, duration: 3 });
+                    modal.toast({ message: ret.data.message, duration: 2 });
                 }
             });
         }
@@ -25802,8 +25784,6 @@ exports.default = {
             'fontFamily': "iconfont",
             'src': "url('http://at.alicdn.com/t/font_1141918_gqt9dsrnysk.ttf')"
         });
-
-        //   this.music()
     }
 };
 
@@ -45277,16 +45257,16 @@ exports.default = {
   methods: {
     wxcButtonStop: function wxcButtonStop() {
       var _this = this;
-      var url = 'http://10.34.10.56:8088/api/agv/stopOrStart/1';
+      var url = 'http://192.168.10.240:8088/api/agv/stopOrStart/1';
       stream.fetch({
         method: "GET",
         url: url,
         type: 'json'
       }, function (ret) {
         if (ret.data.status === 1) {
-          modal.toast({ message: ret.data.message, duration: 3 });
+          modal.toast({ message: ret.data.message, duration: 2 });
         } else {
-          modal.toast({ message: ret.data.message, duration: 3 });
+          modal.toast({ message: ret.data.message, duration: 2 });
         }
       });
     }
@@ -45392,7 +45372,7 @@ exports.default = {
     wxcButtonStart: function wxcButtonStart() {
       var _this = this;
 
-      var url = 'http://10.34.10.56:8088/api/agv/stopOrStart/0';
+      var url = 'http://192.168.10.240:8088/api/agv/stopOrStart/0';
 
       stream.fetch({
         method: "GET",
@@ -45401,9 +45381,9 @@ exports.default = {
       }, function (ret) {
 
         if (ret.data.status === 1) {
-          modal.toast({ message: ret.data.message, duration: 3 });
+          modal.toast({ message: ret.data.message, duration: 2 });
         } else {
-          modal.toast({ message: ret.data.message, duration: 3 });
+          modal.toast({ message: ret.data.message, duration: 2 });
         }
       });
     }
@@ -45524,7 +45504,7 @@ exports.default = {
   methods: {
     wxcButtonGetSpritzerHopper: function wxcButtonGetSpritzerHopper() {
       var _this = this;
-      var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+      var url = 'http://192.168.10.240:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
       stream.fetch({
         method: "GET",
         url: url,
@@ -45534,7 +45514,7 @@ exports.default = {
           if (ret.data.data.length > 0) {
             _this.$router.push({ name: 'popUp' });
           } else {
-            modal.toast({ message: '该车间没有料斗', duration: 3 });
+            modal.toast({ message: '该车间没有料斗', duration: 2 });
           }
         }
       });
@@ -45666,7 +45646,7 @@ exports.default = {
         wxcButtonEmptySpritzerHopper: function wxcButtonEmptySpritzerHopper(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://10.34.10.177:8999/obtain/getEmptyContainer?containerNumber=' + _this.containerNum + '&functionRoomNumber=' + _this.workshopName;
+                var url = 'http://192.168.10.240:8999/obtain/getEmptyContainer?containerNumber=' + _this.containerNum + '&functionRoomNumber=' + _this.workshopName;
                 stream.fetch({
                     method: "GET",
                     url: url,
@@ -45676,13 +45656,13 @@ exports.default = {
                         // 订阅者
                         var Steve = new BroadcastChannel('Avengers');
                         Steve.postMessage('Assemble!');
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     } else {
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     }
                 });
             } else {
-                modal.toast({ message: '请选择桶编号', duration: 3 });
+                modal.toast({ message: '请选择桶编号', duration: 2 });
             }
         }
     }
@@ -45856,7 +45836,7 @@ exports.default = {
                 return;
             } else {
                 var that = this;
-                var url = 'http://10.34.10.177:8999/obtain/workshopBucketManagement';
+                var url = 'http://192.168.10.240:8999/obtain/workshopBucketManagement';
                 var body = JSON.stringify({
                     functionRoomNumber: that.functionRoomNumber,
                     containerNumber: that.resetContainerNum
@@ -46364,7 +46344,7 @@ exports.default = {
         // 初始化table和筛选table
         initTable: function initTable() {
             var that = this;
-            var url = 'http://10.34.10.177:8200/containerInformation/getContainerInformation';
+            var url = 'http://192.168.10.240:8200/containerInformation/getContainerInformation';
             var body = JSON.stringify({
                 init: '',
                 page: that.currentPage,
@@ -46428,7 +46408,7 @@ exports.default = {
                 checkedList = _ref.checkedList;
 
             var that = this;
-            var url = 'http://10.34.10.177:8200/containerInformation/getContainerInformation';
+            var url = 'http://192.168.10.240:8200/containerInformation/getContainerInformation';
             that.tableBodyData = [];
             // that.currentPage = 1;
             var body = {};
@@ -47225,7 +47205,7 @@ exports.default = {
         wxcButtonSpritzerHopper: function wxcButtonSpritzerHopper(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://10.34.10.177:8999/obtain/getStripContainer';
+                var url = 'http://192.168.10.240:8999/obtain/getStripContainer';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -47240,13 +47220,13 @@ exports.default = {
                     if (ret.data.status === 1) {
                         var Steve = new BroadcastChannel('Avengers');
                         Steve.postMessage('Assemble!');
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     } else {
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     }
                 });
             } else {
-                modal.toast({ message: '请选择桶编号', duration: 3 });
+                modal.toast({ message: '请选择桶编号', duration: 2 });
             }
         }
     }
@@ -47390,7 +47370,7 @@ exports.default = {
         // 打开弹窗
         wxcButtonGetEmptySpritzerHopper: function wxcButtonGetEmptySpritzerHopper(e) {
             var _this = this;
-            var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+            var url = 'http://192.168.10.240:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
             stream.fetch({
                 method: "GET",
                 url: url,
@@ -47404,7 +47384,7 @@ exports.default = {
                         }
                         _this.show = true;
                     } else {
-                        modal.toast({ message: '该车间没有料斗', duration: 3 });
+                        modal.toast({ message: '该车间没有料斗', duration: 2 });
                     }
                 }
             });
@@ -47436,7 +47416,7 @@ exports.default = {
             var _this = this;
             console.log(this.containerNum);
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://10.34.10.177:8999/delivery/sendContainerToCleaningRoom';
+                var url = 'http://192.168.10.240:8999/delivery/sendContainerToCleaningRoom';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -47451,14 +47431,14 @@ exports.default = {
                     if (ret.data.status === 1) {
                         var Steve = new BroadcastChannel('Avengers');
                         Steve.postMessage('Assemble!');
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     } else {
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     }
                     // this.show = false;
                 });
             } else {
-                modal.toast({ message: '请选择桶编号', duration: 3 });
+                modal.toast({ message: '请选择桶编号', duration: 2 });
             }
             this.show = false;
         }
@@ -48185,7 +48165,7 @@ exports.default = {
   methods: {
     wxcButtonGetSpritzerTankHopper: function wxcButtonGetSpritzerTankHopper() {
       var _this = this;
-      var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+      var url = 'http://192.168.10.240:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
       stream.fetch({
         method: "GET",
         url: url,
@@ -48195,7 +48175,7 @@ exports.default = {
           if (ret.data.data.length > 0) {
             _this.$router.push({ name: 'popUp' });
           } else {
-            modal.toast({ message: '该车间没有料斗和料桶', duration: 3 });
+            modal.toast({ message: '该车间没有料斗和料桶', duration: 2 });
           }
         }
       });
@@ -48324,7 +48304,7 @@ exports.default = {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
 
-                var url = 'http://10.34.10.177:8999/obtain/getEmptyContainer?containerNumber=' + _this.containerNum + '&functionRoomNumber=' + _this.workshopName;
+                var url = 'http://192.168.10.240:8999/obtain/getEmptyContainer?containerNumber=' + _this.containerNum + '&functionRoomNumber=' + _this.workshopName;
                 stream.fetch({
                     method: "GET",
                     url: url,
@@ -48333,13 +48313,13 @@ exports.default = {
                     if (ret.data.status === 1) {
                         var _Steve = new BroadcastChannel('Avengers');
                         _Steve.postMessage('Assemble!');
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     } else {
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     }
                 });
             } else {
-                modal.toast({ message: '请选择桶编号', duration: 3 });
+                modal.toast({ message: '请选择桶编号', duration: 2 });
             }
         }
     }
@@ -49025,7 +49005,7 @@ exports.default = {
         // 打开弹窗
         wxcButtonGetEmptySpritzerTank: function wxcButtonGetEmptySpritzerTank(e) {
             var _this = this;
-            var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+            var url = 'http://192.168.10.240:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
             stream.fetch({
                 method: "GET",
                 url: url,
@@ -49038,7 +49018,7 @@ exports.default = {
                         }
                         _this.show = true;
                     } else {
-                        modal.toast({ message: '该车间没有料桶', duration: 3 });
+                        modal.toast({ message: '该车间没有料桶', duration: 2 });
                     }
                 }
             });
@@ -49065,7 +49045,7 @@ exports.default = {
         wxcConfirmEmptyContainer: function wxcConfirmEmptyContainer(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://10.34.10.177:8999/delivery/sendContainerToCleaningRoom';
+                var url = 'http://192.168.10.240:8999/delivery/sendContainerToCleaningRoom';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -49080,13 +49060,13 @@ exports.default = {
                     if (ret.data.status === 1) {
                         var Steve = new BroadcastChannel('Avengers');
                         Steve.postMessage('Assemble!');
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     } else {
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     }
                 });
             } else {
-                modal.toast({ message: '请选择桶编号', duration: 3 });
+                modal.toast({ message: '请选择桶编号', duration: 2 });
                 // _this.show = false;
             }
             this.show = false;
@@ -49279,7 +49259,7 @@ exports.default = {
         wxcButtonEmptySpritzerTank: function wxcButtonEmptySpritzerTank(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://10.34.10.177:8999/obtain/getStripContainer';
+                var url = 'http://192.168.10.240:8999/obtain/getStripContainer';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -49294,13 +49274,13 @@ exports.default = {
                     if (ret.data.status === 1) {
                         var Steve = new BroadcastChannel('Avengers');
                         Steve.postMessage('Assemble!');
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     } else {
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     }
                 });
             } else {
-                modal.toast({ message: '请选择桶编号', duration: 3 });
+                modal.toast({ message: '请选择桶编号', duration: 2 });
             }
         }
     }
@@ -49418,7 +49398,7 @@ exports.default = {
   methods: {
     wxcButtonGetSpritzerTank: function wxcButtonGetSpritzerTank() {
       var _this = this;
-      var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+      var url = 'http://192.168.10.240:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
       stream.fetch({
         method: "GET",
         url: url,
@@ -49428,7 +49408,7 @@ exports.default = {
           if (ret.data.data.length > 0) {
             _this.$router.push({ name: 'popUp' });
           } else {
-            modal.toast({ message: '该车间没有料桶', duration: 3 });
+            modal.toast({ message: '该车间没有料桶', duration: 2 });
           }
         }
       });
@@ -50095,7 +50075,7 @@ exports.default = {
         wxcButtonGetSpritzerHopperBack: function wxcButtonGetSpritzerHopperBack(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://10.34.10.177:8999/delivery/sendEmptyContainer';
+                var url = 'http://192.168.10.240:8999/delivery/sendEmptyContainer';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -50110,13 +50090,13 @@ exports.default = {
                     if (ret.data.status === 1) {
                         var Steve = new BroadcastChannel('Avengers');
                         Steve.postMessage('Assemble!');
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     } else {
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     }
                 });
             } else {
-                modal.toast({ message: '请选择桶编号', duration: 3 });
+                modal.toast({ message: '请选择桶编号', duration: 2 });
             }
         }
     }
@@ -50234,7 +50214,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.btn[data-v-2b42e06c]{\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  justify-content: center;\r\n  background-color:#0099ff;\r\n  width: 2.66667rem;\r\n  height: 1.33333rem;\r\n  border-radius: 0.13333rem;\n}\n.btn-txt[data-v-2b42e06c]{\r\n  text-align: center;\r\n  margin: 0 auto;\r\n  color: #fff;\r\n  font-size: 0.46667rem;\n}\r\n", ""]);
+exports.push([module.i, "\n.btn[data-v-2b42e06c] {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    justify-content: center;\r\n    background-color: #0099ff;\r\n    width: 2.66667rem;\r\n    height: 1.33333rem;\r\n    border-radius: 0.13333rem;\n}\n.btn-txt[data-v-2b42e06c] {\r\n    text-align: center;\r\n    margin: 0 auto;\r\n    color: #fff;\r\n    font-size: 0.46667rem;\n}\n.mask-container[data-v-2b42e06c] {\r\n    justify-content: center;\r\n    align-items: center;\n}\n.mask-content[data-v-2b42e06c] {\r\n    padding-top: 20;\n}\n.mask-title[data-v-2b42e06c] {\r\n    align-items: center;\n}\n.title[data-v-2b42e06c] {\r\n    font-size: 0.37333rem;\n}\n.mask-title[data-v-2b42e06c] {\r\n    align-items: center;\n}\n.title[data-v-2b42e06c] {\r\n    font-size: 0.37333rem;\n}\n.button_box[data-v-2b42e06c] {\r\n    margin-top: 0.26667rem;\r\n    align-items: center;\n}\n.bottom[data-v-2b42e06c] {\r\n    margin-top: 0.53333rem;\n}\r\n", ""]);
 
 // exports
 
@@ -50249,6 +50229,26 @@ exports.push([module.i, "\n.btn[data-v-2b42e06c]{\r\n  display: -webkit-box;\r\n
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _weexUi = __webpack_require__(4);
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -50262,9 +50262,12 @@ var modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
 var storage = weex.requireModule('storage');
 exports.default = {
+    components: { WxcPopup: _weexUi.WxcPopup, WxcRadio: _weexUi.WxcRadio, WxcButton: _weexUi.WxcButton },
     data: function data() {
         return {
-            // 车间名字
+            show: false,
+            isChoseDisabled: true,
+            emptyContainerList: [],
             workshopName: '',
             containerNum: ''
         };
@@ -50275,16 +50278,54 @@ exports.default = {
         storage.getItem('workShopName', function (event) {
             _this2.workshopName = event.data;
         });
-        storage.getItem('containerNum', function (event) {
-            _this2.containerNum = event.data;
-        });
     },
 
     methods: {
+
+        // 打开弹窗
         wxcButtonGetSpritzerHopperRinse: function wxcButtonGetSpritzerHopperRinse(e) {
             var _this = this;
+            var url = 'http://192.168.10.240:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+            stream.fetch({
+                method: "GET",
+                url: url,
+                type: 'json'
+            }, function (ret) {
+                if (ret.data.status === 1) {
+                    if (ret.data.data.length > 0) {
+                        for (var i = 0; i < ret.data.data.length; i++) {
+                            _this.emptyContainerList.push({ title: ret.data.data[i].containerNumber, value: ret.data.data[i].containerNumber });
+                        }
+                        _this.show = true;
+                    } else {
+                        modal.toast({ message: '该车间没有料桶', duration: 2 });
+                    }
+                }
+            });
+        },
+
+        // 关闭弹窗
+        wxcMaskSetHidden: function wxcMaskSetHidden() {
+            this.show = false;
+        },
+
+        // 选择空料桶
+        wxcSelectEmptyContainer: function wxcSelectEmptyContainer(e) {
+            // if (e.title.length < 1) {
+            //     this.isChoseDisabled = true;
+            // } else {
+            //     this.isChoseDisabled = false;
+            // }
+            this.isChoseDisabled = false;
+            this.containerNum = e.value;
+        },
+
+
+        // 选择选择空料斗、料桶--确认按钮
+        wxcConfirmEmptyContainer: function wxcConfirmEmptyContainer(e) {
+            var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://10.34.10.177:8999/delivery/sendContainerToCleaningRoom';
+                var url = 'http://192.168.10.240:8999/delivery/sendContainerToCleaningRoom';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -50299,14 +50340,16 @@ exports.default = {
                     if (ret.data.status === 1) {
                         var Steve = new BroadcastChannel('Avengers');
                         Steve.postMessage('Assemble!');
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     } else {
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     }
                 });
             } else {
-                modal.toast({ message: '请选择桶编号', duration: 3 });
+                modal.toast({ message: '请选择桶编号', duration: 2 });
+                // _this.show = false;
             }
+            this.show = false;
         }
     }
 };
@@ -50317,6 +50360,11 @@ exports.default = {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
+    staticClass: " weex-ct weex-div",
+    attrs: {
+      "weex-type": "div"
+    }
+  }, [_c('div', {
     staticClass: "btn weex-ct weex-div",
     attrs: {
       "weex-type": "div",
@@ -50334,7 +50382,69 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "weex-type": "text"
     }
-  }, [_vm._v("送空料桶清洗")])])
+  }, [_vm._v("送空料桶清洗")])]), _vm._v(" "), _c('div', {
+    staticClass: "mask-container weex-ct weex-div",
+    attrs: {
+      "weex-type": "div"
+    }
+  }, [_c('wxc-popup', {
+    attrs: {
+      "popup-color": "#fff",
+      "show": _vm.show,
+      "pos": "left",
+      "height": "400",
+      "data-evt-wxcPopupOverlayClicked": ""
+    },
+    on: {
+      "wxcPopupOverlayClicked": _vm.wxcMaskSetHidden
+    }
+  }, [_c('div', {
+    staticClass: "content mask-content weex-ct weex-div",
+    attrs: {
+      "weex-type": "div"
+    }
+  }, [_c('div', {
+    staticClass: "mask-title weex-ct weex-div",
+    attrs: {
+      "weex-type": "div"
+    }
+  }, [_c('p', {
+    staticClass: "title weex-el weex-text",
+    attrs: {
+      "weex-type": "text"
+    }
+  }, [_vm._v("请选择空料斗或空料桶")])]), _vm._v(" "), _c('div', {
+    staticClass: "scroller-box weex-ct weex-div",
+    attrs: {
+      "weex-type": "div"
+    }
+  }, [_c('scroller', {
+    staticClass: "scroller",
+    attrs: {}
+  }, [_c('wxc-radio', {
+    attrs: {
+      "list": _vm.emptyContainerList,
+      "data-evt-wxcRadioListChecked": ""
+    },
+    on: {
+      "wxcRadioListChecked": _vm.wxcSelectEmptyContainer
+    }
+  })], 1)], 1), _vm._v(" "), _c('div', {
+    staticClass: "button_box bottom weex-ct weex-div",
+    attrs: {
+      "weex-type": "div"
+    }
+  }, [_c('wxc-button', {
+    attrs: {
+      "text": "确定",
+      "type": "blue",
+      "disabled": _vm.isChoseDisabled,
+      "data-evt-wxcButtonClicked": ""
+    },
+    on: {
+      "wxcButtonClicked": _vm.wxcConfirmEmptyContainer
+    }
+  })], 1)])])], 1)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -50569,7 +50679,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.inputBox[data-v-ef0a6316]{\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    flex-direction: row;\n}\n.input-title[data-v-ef0a6316]{\r\n    flex: 1;\r\n    line-height: 0.8rem;\r\n    text-align: center;\r\n    font-size: 0.4rem;\n}\n.input_box[data-v-ef0a6316] {\r\n    flex:3;\r\n    border-style: solid;\r\n    border-width: 1px;\r\n    border-color: #333;\r\n    border-radius: 0.13333rem;\r\n    margin-bottom: 0.53333rem;\r\n    padding-left: 0.26667rem;\n}\n.login-txt[data-v-ef0a6316]{\r\n    padding:0.26667rem;\n}\n.input_item[data-v-ef0a6316] {\r\n    height: 0.8rem;\r\n    line-height:0.8rem;\r\n    font-size:0.4rem;\n}\n.button_box[data-v-ef0a6316] {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    margin-top: 0.26667rem;\n}\n.mask-content[data-v-ef0a6316] {\r\n    padding-top: 20;\n}\n.mask-title[data-v-ef0a6316] {\r\n    padding: 0.26667rem 0;\r\n    align-items: center;\n}\n.title[data-v-ef0a6316] {\r\n    font-size: 0.37333rem;\n}\n.mask-btns[data-v-ef0a6316] {\r\n    align-items: center;\r\n    justify-content: center;\r\n    flex-direction: row;\n}\n.scroller-box[data-v-ef0a6316] {\r\n    height: 606;\r\n    position: absolute !important;\r\n    top: 0;\r\n    right: 0;\r\n    left: 0;\r\n    bottom: 0;\n}\n.workShop-confirm[data-v-ef0a6316] {\r\n    margin-top: 0.13333rem;\n}\n.button[data-v-ef0a6316]{\r\n    align-items: center;\n}\r\n", ""]);
+exports.push([module.i, "\n.inputBox[data-v-ef0a6316]{\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    flex-direction: row;\n}\n.input-title[data-v-ef0a6316]{\r\n    flex: 1;\r\n    line-height: 0.8rem;\r\n    text-align: center;\r\n    font-size: 0.4rem;\n}\n.input_box[data-v-ef0a6316] {\r\n    flex:3;\r\n    border-style: solid;\r\n    border-width: 1px;\r\n    border-color: #333;\r\n    border-radius: 0.13333rem;\r\n    margin-bottom: 0.53333rem;\r\n    padding-left: 0.26667rem;\n}\n.login-txt[data-v-ef0a6316]{\r\n    padding:0.26667rem;\n}\n.input_item[data-v-ef0a6316] {\r\n    height: 0.8rem;\r\n    line-height:0.8rem;\r\n    font-size:0.4rem;\n}\n.button_box[data-v-ef0a6316] {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-around;\r\n    margin-top: 0.26667rem;\n}\n.mask-content[data-v-ef0a6316] {\r\n    padding-top: 20;\n}\n.mask-title[data-v-ef0a6316] {\r\n    padding: 0.26667rem 0;\r\n    align-items: center;\n}\n.title[data-v-ef0a6316] {\r\n    font-size: 0.37333rem;\n}\n.mask-btns[data-v-ef0a6316] {\r\n    align-items: center;\r\n    justify-content: center;\r\n    flex-direction: row;\n}\n.scroller-box[data-v-ef0a6316] {\r\n    height: 606;\r\n    position: absolute !important;\r\n    top: 0;\r\n    right: 0;\r\n    left: 0;\r\n    bottom: 0;\n}\n.workShop-confirm[data-v-ef0a6316] {\r\n    margin-top: 0.13333rem;\n}\n.button[data-v-ef0a6316]{\r\n    align-items: center;\n}\n.video[data-v-ef0a6316] {\r\n    width: 8.4rem;\r\n    height: 4.66667rem;\r\n    margin-top: 0.8rem;\r\n    margin-left: 0.8rem;\r\n    /* opacity: 0; */\n}\n.info[data-v-ef0a6316] {\r\n    margin-top: 0.53333rem;\r\n    font-size: 0.53333rem;\r\n    text-align: center;\r\n    opacity: 0;\n}\n.videoView[data-v-ef0a6316]{\r\n    opacity: 0;\n}\r\n", ""]);
 
 // exports
 
@@ -50639,6 +50749,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
 
 var modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
@@ -50650,7 +50765,8 @@ exports.default = {
             productName: '',
             id: '',
             showproduct: false,
-            time: ''
+            time: '',
+            showlist: false
         };
     },
 
@@ -50662,7 +50778,7 @@ exports.default = {
     },
     created: function created() {
         this.$nextTick(function () {
-            this.time = setInterval(this.timer, 20000);
+            this.time = setInterval(this.timer, 10000);
         });
     },
 
@@ -50670,7 +50786,7 @@ exports.default = {
         timer: function timer() {
             var _this = this;
 
-            var url = 'http://10.34.10.177:8999/agvTask/getReviewTask';
+            var url = 'http://192.168.10.240:8999/agvTask/getReviewTask';
             stream.fetch({
                 method: "GET",
                 url: url,
@@ -50679,6 +50795,7 @@ exports.default = {
                 console.log(ret);
                 if (ret.data.status === 1) {
                     if (ret.data.message === '没有需要复核任务') {} else if (ret.data.message === '有未复核通过任务') {
+                        _this.showlist = true;
                         clearInterval(_this.time);
                         _this.showproduct = true;
                         _this.functionNumber = ret.data.data.functionNumber;
@@ -50687,7 +50804,7 @@ exports.default = {
                         _this.id = ret.data.data.taskId;
                     }
                 } else {
-                    modal.toast({ message: ret.data.message, duration: 3 });
+                    modal.toast({ message: ret.data.message, duration: 2 });
                 }
             });
         },
@@ -50699,7 +50816,7 @@ exports.default = {
         wxcChoseAllow: function wxcChoseAllow() {
             var _this = this;
 
-            var url = 'http://10.34.10.177:8999/obtain/reviewVerify';
+            var url = 'http://192.168.10.240:8999/obtain/reviewVerify';
             var body = JSON.stringify({
                 taskId: _this.id,
                 functionNumber: _this.functionNumber,
@@ -50714,18 +50831,19 @@ exports.default = {
                 type: 'json'
             }, function (ret) {
                 if (ret.data.status === 1) {
-                    modal.toast({ message: ret.data.message, duration: 3 });
+                    modal.toast({ message: ret.data.message, duration: 2 });
                     _this.showproduct = false;
-                    setInterval(_this.timer, 20000);
+                    setInterval(_this.timer, 10000);
+                    _this.showlist = false;
                 } else {
-                    modal.toast({ message: ret.data.message, duration: 3 });
+                    modal.toast({ message: ret.data.message, duration: 2 });
                 }
             });
         },
         wxcChoseRefuse: function wxcChoseRefuse() {
             var _this = this;
 
-            var url = 'http://10.34.10.177:8999/obtain/reviewRefuse';
+            var url = 'http://192.168.10.240:8999/obtain/reviewRefuse';
             var body = JSON.stringify({
                 taskId: _this.id,
                 functionNumber: _this.functionNumber,
@@ -50740,11 +50858,12 @@ exports.default = {
                 type: 'json'
             }, function (ret) {
                 if (ret.data.status === 1) {
-                    modal.toast({ message: ret.data.message, duration: 3 });
+                    modal.toast({ message: ret.data.message, duration: 2 });
                     _this.showproduct = false;
-                    setInterval(_this.timer, 20000);
+                    setInterval(_this.timer, 10000);
+                    _this.showlist = false;
                 } else {
-                    modal.toast({ message: ret.data.message, duration: 3 });
+                    modal.toast({ message: ret.data.message, duration: 2 });
                 }
             });
         }
@@ -51102,7 +51221,7 @@ exports.default = {
         wxcButtonGetSpritzerHopperRinses: function wxcButtonGetSpritzerHopperRinses(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://10.34.10.177:8999/delivery/sendContainerFormZJToCleaningRoom';
+                var url = 'http://192.168.10.240:8999/delivery/sendContainerFormZJToCleaningRoom';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -51117,13 +51236,13 @@ exports.default = {
                     if (ret.data.status === 1) {
                         var Steve = new BroadcastChannel('Avengers');
                         Steve.postMessage('Assemble!');
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     } else {
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     }
                 });
             } else {
-                modal.toast({ message: '请选择桶编号', duration: 3 });
+                modal.toast({ message: '请选择桶编号', duration: 2 });
             }
         }
     }
@@ -51272,7 +51391,7 @@ exports.default = {
         wxcButtonWeigh: function wxcButtonWeigh(e) {
             var _this = this;
 
-            var url = 'http://10.34.10.177:8999/delivery/weighing';
+            var url = 'http://192.168.10.240:8999/delivery/weighing';
             var body = JSON.stringify({});
             stream.fetch({
                 method: "POST",
@@ -51284,9 +51403,9 @@ exports.default = {
                 if (ret.data.status === 1) {
                     var Steve = new BroadcastChannel('Avengers');
                     Steve.postMessage('Assemble!');
-                    modal.toast({ message: ret.data.message, duration: 3 });
+                    modal.toast({ message: ret.data.message, duration: 2 });
                 } else {
-                    modal.toast({ message: ret.data.message, duration: 3 });
+                    modal.toast({ message: ret.data.message, duration: 2 });
                 }
             });
         }
@@ -51469,7 +51588,7 @@ exports.default = {
         // 打开弹窗
         wxcButtonManualStorage: function wxcButtonManualStorage(e) {
             var _this = this;
-            var url = 'http://10.34.10.177:8999/agvTask/getFailureAgvTaskOfContainerNumber';
+            var url = 'http://192.168.10.240:8999/agvTask/getFailureAgvTaskOfContainerNumber';
             stream.fetch({
                 method: "GET",
                 url: url,
@@ -51478,7 +51597,7 @@ exports.default = {
                 console.log(ret);
                 if (ret.data.status === 1) {
                     if (ret.data.data === null || ret.data.data === 'undefined') {
-                        modal.toast({ message: '没有失败的任务', duration: 3 });
+                        modal.toast({ message: '没有失败的任务', duration: 2 });
                         _this.show = false;
                     }
                     if (ret.data.data.length > 0) {
@@ -51487,7 +51606,7 @@ exports.default = {
                         }
                         _this.show = true;
                     } else {
-                        modal.toast({ message: '没有失败的任务', duration: 3 });
+                        modal.toast({ message: '没有失败的任务', duration: 2 });
                     }
                 }
             });
@@ -51512,21 +51631,21 @@ exports.default = {
         wxcConfirmEmptyContainer: function wxcConfirmEmptyContainer(e) {
             var _this = this;
             if (this.containerNumber !== 'undefined') {
-                var url = 'http://10.34.10.177:8999/agvTask/manualStorage?taskId=' + this.taskId + '&containerNumber=' + _this.containerNumber;
+                var url = 'http://192.168.10.240:8999/agvTask/manualStorage?taskId=' + this.taskId + '&containerNumber=' + _this.containerNumber;
                 stream.fetch({
                     method: "GET",
                     url: url,
                     type: 'json'
                 }, function (ret) {
                     if (ret.data.status === 1) {
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     } else {
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     }
                     // this.show = false;
                 });
             } else {
-                modal.toast({ message: '请选择桶编号', duration: 3 });
+                modal.toast({ message: '请选择桶编号', duration: 2 });
             }
             this.show = false;
         },
@@ -52046,7 +52165,7 @@ exports.default = {
         // 初始化table和筛选table
         initTable: function initTable() {
             var that = this;
-            var url = 'http://10.34.10.177:8200/containerInformation/getAllContainerInformation';
+            var url = 'http://192.168.10.240:8200/containerInformation/getAllContainerInformation';
             var body = JSON.stringify({
                 init: '',
                 page: that.currentPage,
@@ -52113,7 +52232,7 @@ exports.default = {
             that.tableBodyData = [];
             var body = {};
             if (checked === true) {
-                var url = 'http://10.34.10.177:8200/containerInformation/getAllOverdueNotUsed';
+                var url = 'http://192.168.10.240:8200/containerInformation/getAllOverdueNotUsed';
                 that.currentIndex = -1;
                 var containerName = checkedList[0].value;
                 body = JSON.stringify({
@@ -52538,7 +52657,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "wxcButtonClicked": _vm.wxcChoseRefuse
     }
-  })], 1)])])], 1)
+  })], 1)])]), _vm._v(" "), _c('div', {
+    staticClass: "videoView weex-ct weex-div",
+    attrs: {
+      "weex-type": "div"
+    }
+  }, [(_vm.showlist) ? _c('video', {
+    staticClass: "video",
+    attrs: {
+      "src": "http://flv2.bn.netease.com/videolib3/1611/01/XGqSL5981/SD/XGqSL5981-mobile.mp4",
+      "controls": "nocontrols",
+      "play-status": "pause",
+      "auto-play": "true"
+    }
+  }) : _vm._e()])], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -52640,8 +52772,10 @@ exports.push([module.i, "\n.home[data-v-5aeb9829]{\r\n  padding: 0.4rem;\n}\n.ch
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
+
+var _weexUi = __webpack_require__(4);
 
 var _vCleaning = __webpack_require__(482);
 
@@ -52667,61 +52801,121 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
 var storage = weex.requireModule('storage');
 exports.default = {
-  data: function data() {
-    return {
-      // 车间名字
-      workshopName: '',
-      containerNum: ''
-    };
-  },
-  created: function created() {
-    var _this2 = this;
+    data: function data() {
+        return {
+            // 车间名字
+            workshopName: '',
+            containerNum: '',
+            show: false,
+            isChoseDisabled: true,
+            emptyContainerList: []
+        };
+    },
+    created: function created() {
+        var _this2 = this;
 
-    storage.getItem('workShopName', function (event) {
-      _this2.workshopName = event.data;
-    });
-    // storage.getItem('containerNum', event => {
-    //     this.workshopName = event.data;
-    // });
-  },
+        storage.getItem('workShopName', function (event) {
+            _this2.workshopName = event.data;
+        });
+    },
 
-  components: {
-    vCleaning: _vCleaning2.default
-  },
-  methods: {
-    onClack: function onClack() {
-      var _this = this;
-      if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-        var url = 'http://10.34.10.177:8999/delivery/sendEmptyContainer';
-        var body = JSON.stringify({
-          containerNumber: _this.containerNum,
-          functionRoomNumber: _this.workshopName
-        });
-        stream.fetch({
-          method: "POST",
-          url: url,
-          headers: { 'Content-Type': 'application/json' },
-          body: body,
-          type: 'json'
-        }, function (ret) {
-          if (ret.data.status === 1) {
-            var Steve = new BroadcastChannel('Avengers');
-            Steve.postMessage('Assemble!');
-            modal.toast({ message: ret.data.message, duration: 3 });
-          } else {
-            modal.toast({ message: ret.data.message, duration: 3 });
-          }
-        });
-      } else {
-        modal.toast({ message: '请输入桶编号', duration: 3 });
-      }
+    components: {
+        vCleaning: _vCleaning2.default,
+        WxcPopup: _weexUi.WxcPopup,
+        WxcRadio: _weexUi.WxcRadio,
+        WxcButton: _weexUi.WxcButton
+    },
+    methods: {
+        // 打开弹窗
+        wxcButtonGetEmptySpritzerTank: function wxcButtonGetEmptySpritzerTank(e) {
+            var _this = this;
+            var url = 'http://192.168.10.240:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+            stream.fetch({
+                method: "GET",
+                url: url,
+                type: 'json'
+            }, function (ret) {
+                if (ret.data.status === 1) {
+                    if (ret.data.data.length > 0) {
+                        for (var i = 0; i < ret.data.data.length; i++) {
+                            _this.emptyContainerList.push({ title: ret.data.data[i].containerNumber, value: ret.data.data[i].containerNumber });
+                        }
+                        _this.show = true;
+                    } else {
+                        modal.toast({ message: '该车间没有料桶', duration: 2 });
+                    }
+                }
+            });
+        },
+
+        // 关闭弹窗
+        wxcMaskSetHidden: function wxcMaskSetHidden() {
+            this.show = false;
+        },
+
+        // 选择空料桶
+        wxcSelectEmptyContainer: function wxcSelectEmptyContainer(e) {
+            this.isChoseDisabled = false;
+            this.containerNum = e.value;
+        },
+
+
+        // 选择选择空料斗、料桶--确认按钮
+        wxcConfirmEmptyContainer: function wxcConfirmEmptyContainer(e) {
+            this.show = false;
+        },
+
+        // 确认按钮
+        onClack: function onClack() {
+            var _this = this;
+            if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
+                var url = 'http://192.168.10.240:8999/delivery/sendEmptyContainer';
+                var body = JSON.stringify({
+                    containerNumber: _this.containerNum,
+                    functionRoomNumber: _this.workshopName
+                });
+                stream.fetch({
+                    method: "POST",
+                    url: url,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: body,
+                    type: 'json'
+                }, function (ret) {
+                    if (ret.data.status === 1) {
+                        var Steve = new BroadcastChannel('Avengers');
+                        Steve.postMessage('Assemble!');
+                        modal.toast({ message: ret.data.message, duration: 2 });
+                    } else {
+                        modal.toast({ message: ret.data.message, duration: 2 });
+                    }
+                });
+            } else {
+                modal.toast({ message: '请输入桶编号', duration: 2 });
+            }
+        }
     }
-  }
 };
 
 /***/ }),
@@ -52897,29 +53091,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "weex-type": "div"
     }
-  }, [_c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.containerNum),
-      expression: "containerNum"
-    }],
-    staticClass: "input_item",
+  }, [_c('p', {
+    staticClass: "input_item weex-el weex-text",
     attrs: {
-      "type": "text",
-      "placeholder": "编号",
-      "maxlength": "6"
-    },
-    domProps: {
-      "value": (_vm.containerNum)
+      "weex-type": "text",
+      "data-evt-click": ""
     },
     on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.containerNum = $event.target.value
+      "click": _vm.$stopOuterA,
+      "weex$tap": function($event) {
+        $event.stopPropagation();
+        return _vm.wxcButtonGetEmptySpritzerTan($event)
       }
     }
-  })])]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.containerNum))])])]), _vm._v(" "), _c('div', {
     staticClass: "btns weex-ct weex-div",
     attrs: {
       "weex-type": "div"
@@ -52942,7 +53127,69 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         return _vm.onClack($event)
       }
     }
-  }, [_vm._v("确认")])])])], 1)
+  }, [_vm._v("确认")])])]), _vm._v(" "), _c('div', {
+    staticClass: "mask-container weex-ct weex-div",
+    attrs: {
+      "weex-type": "div"
+    }
+  }, [_c('wxc-popup', {
+    attrs: {
+      "popup-color": "#fff",
+      "show": _vm.show,
+      "pos": "left",
+      "height": "400",
+      "data-evt-wxcPopupOverlayClicked": ""
+    },
+    on: {
+      "wxcPopupOverlayClicked": _vm.wxcMaskSetHidden
+    }
+  }, [_c('div', {
+    staticClass: "content mask-content weex-ct weex-div",
+    attrs: {
+      "weex-type": "div"
+    }
+  }, [_c('div', {
+    staticClass: "mask-title weex-ct weex-div",
+    attrs: {
+      "weex-type": "div"
+    }
+  }, [_c('p', {
+    staticClass: "title weex-el weex-text",
+    attrs: {
+      "weex-type": "text"
+    }
+  }, [_vm._v("请选择空料斗或空料桶")])]), _vm._v(" "), _c('div', {
+    staticClass: "scroller-box weex-ct weex-div",
+    attrs: {
+      "weex-type": "div"
+    }
+  }, [_c('scroller', {
+    staticClass: "scroller",
+    attrs: {}
+  }, [_c('wxc-radio', {
+    attrs: {
+      "list": _vm.emptyContainerList,
+      "data-evt-wxcRadioListChecked": ""
+    },
+    on: {
+      "wxcRadioListChecked": _vm.wxcSelectEmptyContainer
+    }
+  })], 1)], 1), _vm._v(" "), _c('div', {
+    staticClass: "button_box bottom weex-ct weex-div",
+    attrs: {
+      "weex-type": "div"
+    }
+  }, [_c('wxc-button', {
+    attrs: {
+      "text": "确定",
+      "type": "blue",
+      "disabled": _vm.isChoseDisabled,
+      "data-evt-wxcButtonClicked": ""
+    },
+    on: {
+      "wxcButtonClicked": _vm.wxcConfirmEmptyContainer
+    }
+  })], 1)])])], 1)], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -53093,7 +53340,7 @@ exports.default = {
         onLogin: function onLogin() {
             var _this = this;
             if (this.userName && this.userPassword) {
-                var url = 'http://10.34.10.177:8200/admin/getAdmin';
+                var url = 'http://192.168.10.240:8200/admin/getAdmin';
                 var body = JSON.stringify({
                     username: this.userName,
                     password: this.userPassword
@@ -53108,16 +53355,16 @@ exports.default = {
                 }, function (ret) {
                     console.log(ret);
                     if (ret.data.status === 1) {
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                         _this.$router.push({ name: 'jurisLoginMessage' });
                     } else {
-                        modal.toast({ message: '登录失败！！！', duration: 3 });
+                        modal.toast({ message: '登录失败！！！', duration: 2 });
                     }
                 }, function (progress) {
                     // console.log(progress)
                 });
             } else {
-                modal.toast({ message: '请输入账号和密码', duration: 3 });
+                modal.toast({ message: '请输入账号和密码', duration: 2 });
             }
         },
 
@@ -53477,10 +53724,10 @@ exports.default = {
     components: { WxcButton: _weexUi.WxcButton, WxcRadio: _weexUi.WxcRadio, WxcPageCalendar: _weexUi.WxcPageCalendar, WxcMinibar: _weexUi.WxcMinibar, WxcPopup: _weexUi.WxcPopup },
     data: function data() {
         return {
-            userBucket: '99',
-            userProduct: '空桶',
-            userVolume: '80L',
-            userWeight: '100kg',
+            userBucket: '',
+            userProduct: '',
+            userVolume: '',
+            userWeight: '',
             binOrHopper: '',
             // userTime:'2019-10-10',
             isWorkShopDisabled: true,
@@ -53547,7 +53794,7 @@ exports.default = {
             var _this = this;
             if (this.userBucket && this.userProduct) {
                 this.binOrHopper = this.userProduct === '空料斗' ? '料斗' : '料桶';
-                var url = 'http://10.34.10.177:8200/containerInformation/saveContainerInformation';
+                var url = 'http://192.168.10.240:8200/containerInformation/saveContainerInformation';
 
                 var body = JSON.stringify({
                     containerNumber: this.userBucket,
@@ -53567,15 +53814,15 @@ exports.default = {
                 }, function (ret) {
                     console.log(ret);
                     if (ret.data.status === 1) {
-                        _this.userBucket = '', _this.userProduct = '', _this.userVolume = '', _this.userWeight = '', _this.binOrHopper = '', modal.toast({ message: ret.data.message, duration: 3 });
+                        _this.userBucket = '', _this.userProduct = '', _this.userVolume = '', _this.userWeight = '', _this.binOrHopper = '', modal.toast({ message: ret.data.message, duration: 2 });
                     } else {
-                        modal.toast({ message: '填写失败！！！', duration: 3 });
+                        modal.toast({ message: '填写失败！！！', duration: 2 });
                     }
                 }, function (progress) {
                     // console.log(progress)
                 });
             } else {
-                modal.toast({ message: '请选择产品名称和请输入桶编号', duration: 3 });
+                modal.toast({ message: '请选择产品名称和请输入桶编号', duration: 2 });
             }
         },
         black: function black() {
@@ -54259,8 +54506,8 @@ exports.default = {
             // 变量
             userBucket: '',
             userProduct: '',
-            userBatch: '1231',
-            userTime: '2019-08-21',
+            userBatch: '',
+            userTime: '',
             userStatus: '',
             userMaterial: '',
             userQalified: '',
@@ -54469,7 +54716,7 @@ exports.default = {
         login: function login() {
             var _this = this;
 
-            var url = 'http://10.34.10.177:8999/delivery/sendContainer';
+            var url = 'http://192.168.10.240:8999/delivery/sendContainer';
             var body = JSON.stringify({
                 functionNumber: _this.workshopName,
                 containerNumber: _this.userBucket,
@@ -54490,7 +54737,7 @@ exports.default = {
                 if (ret.data.status === 1) {
                     var Steve = new BroadcastChannel('Avengers');
                     Steve.postMessage('Assemble!');
-                    modal.toast({ message: ret.data.message, duration: 3 });
+                    modal.toast({ message: ret.data.message, duration: 2 });
                     //    _this.$router.go(-1);
                     _this.time = setInterval(this.timer, 1000);
                 }
@@ -54522,8 +54769,8 @@ exports.default = {
             // let name = this.workshopName;
             // console.log(name)
             // // modal.toast({ message: '你是'+name, duration: 10 });
-            var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
-            // modal.toast({ message: url, duration: 3 });
+            var url = 'http://192.168.10.240:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+            // modal.toast({ message: url,duration: 2});
             // let body = JSON.stringify({
             //     // functionRoomNumber: _this.workshopName
             // });
@@ -55180,7 +55427,7 @@ exports.default = {
         onLogin: function onLogin() {
             var _this = this;
             if (this.userName && this.userPassword) {
-                var url = 'http://10.34.10.177:8200/admin/getAdmin';
+                var url = 'http://192.168.10.240:8200/admin/getAdmin';
                 var body = JSON.stringify({
                     username: this.userName,
                     password: this.userPassword
@@ -55195,16 +55442,16 @@ exports.default = {
                 }, function (ret) {
                     console.log(ret);
                     if (ret.data.status === 1) {
-                        modal.toast({ message: ret.data.message, duration: 3 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                         _this.$router.push({ name: 'containerLoginMessage' });
                     } else {
-                        modal.toast({ message: '登录失败！！！', duration: 3 });
+                        modal.toast({ message: '登录失败！！！', duration: 2 });
                     }
                 }, function (progress) {
                     // console.log(progress)
                 });
             } else {
-                modal.toast({ message: '请输入账号和密码', duration: 3 });
+                modal.toast({ message: '请输入账号和密码', duration: 2 });
             }
         },
 
@@ -55532,7 +55779,7 @@ exports.default = {
                 return;
             } else {
                 var that = this;
-                var url = 'http://10.34.10.177:8200/containerFunctionLocation/saveContainerFunctionLocation';
+                var url = 'http://192.168.10.240:8200/containerFunctionLocation/saveContainerFunctionLocation';
                 var body = JSON.stringify({
                     containerFunctionNumber: that.ContainerNum,
                     containerFunctionQrCodeNumber: that.LocationNum
@@ -55573,7 +55820,7 @@ exports.default = {
         // 初始化table
         initTable: function initTable() {
             var that = this;
-            var url = 'http://10.34.10.177:8200/containerFunctionLocation/getAllContainerFunctionLocation';
+            var url = 'http://192.168.10.240:8200/containerFunctionLocation/getAllContainerFunctionLocation';
             var body = JSON.stringify({
                 page: that.currentPage,
                 size: that.pageSize

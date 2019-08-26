@@ -98,7 +98,7 @@ export default {
         // 初始化table和筛选table
         initTable() {
             let that = this;
-            let url = 'http://10.34.10.177:8200/containerInformation/getAllContainerInformation';
+            let url = 'http://192.168.10.240:8200/containerInformation/getAllContainerInformation';
             let body = JSON.stringify({
                 init: '',
                 page: that.currentPage,
@@ -160,7 +160,7 @@ export default {
             that.tableBodyData = [];
             let body = {};
             if (checked === true) {
-                let url = 'http://10.34.10.177:8200/containerInformation/getAllOverdueNotUsed';
+                let url = 'http://192.168.10.240:8200/containerInformation/getAllOverdueNotUsed';
                 that.currentIndex = -1;
                 let containerName = checkedList[0].value;
                 body = JSON.stringify({

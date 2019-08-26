@@ -54,9 +54,6 @@ export default {
       storage.getItem('workShopName', event => {
           this.workshopName = event.data;
       });
-      // storage.getItem('containerNum', event => {
-      //     this.workshopName = event.data;
-      // });
   },
   components: {
     vCleaning,
@@ -65,13 +62,10 @@ export default {
     WxcButton
   },
   methods: {
-    // onStatus(){
-    //   this.show=true;
-    // },
     // 打开弹窗
     wxcButtonGetEmptySpritzerTank(e) {
         let _this=this;
-        let url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber='+this.workshopName;
+        let url = 'http://192.168.10.240:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber='+this.workshopName;
         stream.fetch({
             method:"GET",
             url:url,
@@ -95,49 +89,19 @@ export default {
     },
     // 选择空料桶
     wxcSelectEmptyContainer(e) {
-        // if (e.title.length < 1) {
-            //     this.isChoseDisabled = true;
-        // } else {
-            //     this.isChoseDisabled = false;
-        // }
         this.isChoseDisabled = false;
         this.containerNum=e.value
     },
 
     // 选择选择空料斗、料桶--确认按钮
     wxcConfirmEmptyContainer(e) {
-        // let _this=this;
-        // if(this.containerNum!=='undefined'&&this.workshopName!=='undefined'){
-        //     let url = 'http://10.34.10.177:8999/delivery/sendContainerToCleaningRoom';
-        //     let body = JSON.stringify({
-        //         containerNumber:_this.containerNum,
-        //         functionRoomNumber:_this.workshopName
-        //     });
-        //     stream.fetch({
-        //         method:"POST",
-        //         url:url,
-        //         headers:{'Content-Type':'application/json'},
-        //         body: body,
-        //         type:'json',
-        //     },function(ret){
-        //         if(ret.data.status===1){
-        //             const Steve = new BroadcastChannel('Avengers')
-        //             Steve.postMessage('Assemble!')
-        //             modal.toast({ message: ret.data.message,duration: 2});
-        //         }else{
-        //             modal.toast({ message: ret.data.message,duration: 2});
-        //         }
-        //     })
-        // }else{
-        //     modal.toast({ message: '请选择桶编号',duration: 2});
-        //     // _this.show = false;
-        // }
         this.show =false;
     },
+    // 确认按钮
     onClack(){
       let _this=this;
         if(this.containerNum!=='undefined'&&this.workshopName!=='undefined'){
-          let url = 'http://10.34.10.177:8999/delivery/sendEmptyContainer';
+          let url = 'http://192.168.10.240:8999/delivery/sendEmptyContainer';
           let body = JSON.stringify({
               containerNumber:_this.containerNum,
               functionRoomNumber:_this.workshopName

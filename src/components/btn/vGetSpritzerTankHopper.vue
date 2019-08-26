@@ -24,7 +24,7 @@ export default {
   methods: {
     wxcButtonGetSpritzerTankHopper () {
       let _this=this;
-      let url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber='+this.workshopName;
+      let url = 'http://192.168.10.240:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber='+this.workshopName;
       stream.fetch({
           method:"GET",
           url:url,

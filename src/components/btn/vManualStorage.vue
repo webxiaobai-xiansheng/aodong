@@ -43,7 +43,7 @@ export default {
         // 打开弹窗
         wxcButtonManualStorage(e) {
             let _this = this;
-            let url = 'http://10.34.10.177:8999/agvTask/getFailureAgvTaskOfContainerNumber';
+            let url = 'http://192.168.10.240:8999/agvTask/getFailureAgvTaskOfContainerNumber';
             stream.fetch({
                 method: "GET",
                 url: url,
@@ -83,7 +83,7 @@ export default {
         wxcConfirmEmptyContainer(e) {
             let _this = this;
             if (this.containerNumber !== 'undefined') {
-                let url = 'http://10.34.10.177:8999/agvTask/manualStorage?taskId=' + this.taskId + '&containerNumber=' + _this.containerNumber;
+                let url = 'http://192.168.10.240:8999/agvTask/manualStorage?taskId=' + this.taskId + '&containerNumber=' + _this.containerNumber;
                 stream.fetch({
                     method: "GET",
                     url: url,

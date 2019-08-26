@@ -31,7 +31,7 @@ export default {
     wxcButtonEmptySpritzerHopper (e) {
         let _this=this;
         if(this.containerNum!=='undefined'&&this.workshopName!=='undefined'){
-          let url = 'http://10.34.10.177:8999/obtain/getEmptyContainer?containerNumber='+_this.containerNum+'&functionRoomNumber='+_this.workshopName;
+          let url = 'http://192.168.10.240:8999/obtain/getEmptyContainer?containerNumber='+_this.containerNum+'&functionRoomNumber='+_this.workshopName;
           stream.fetch({
               method:"GET",
               url:url,

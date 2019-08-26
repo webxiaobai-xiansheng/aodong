@@ -198,7 +198,7 @@ export default {
             let _this=this;
             if(this.userBucket&&this.userProduct){
                 this.binOrHopper=this.userProduct==='空料斗'?'料斗':'料桶';
-                let url = 'http://10.34.10.177:8200/containerInformation/saveContainerInformation';
+                let url = 'http://192.168.10.240:8200/containerInformation/saveContainerInformation';
 
                 let body = JSON.stringify({
                     containerNumber: this.userBucket,

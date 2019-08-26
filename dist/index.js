@@ -5496,18 +5496,10 @@ var _weexUi = __webpack_require__(1);
 //
 //
 //
-//
-//
-//
-//
-//
 
 var modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
 var storage = weex.requireModule('storage');
-
-// const audio = new Audio('http://59.110.169.246/img/1.mp3');
-
 exports.default = {
     components: { WxcButton: _weexUi.WxcButton, WxcRadio: _weexUi.WxcRadio, WxcPopup: _weexUi.WxcPopup },
     data: function data() {
@@ -5556,10 +5548,6 @@ exports.default = {
                 title: '清洗间',
                 value: 'QXCK'
             }]
-            // showlist:false,
-            // state: '----',
-            // src:'../img/XGqSL5981-mobile.mp4',
-            // time:""
         };
     },
     methods: {
@@ -5601,13 +5589,8 @@ exports.default = {
                 this.isChoseDisabled = false;
                 var workShopName = e.value;
                 var workShopTitle = e.title;
-                storage.setItem('workShopName', workShopName, function (event) {
-                    console.log(event);
-                    // console.log(event.data)
-                });
-                storage.setItem('workShopTitle', workShopTitle, function (event) {
-                    // console.log(event.data)
-                });
+                storage.setItem('workShopName', workShopName, function (event) {});
+                storage.setItem('workShopTitle', workShopTitle, function (event) {});
             }
         },
 
@@ -5631,9 +5614,8 @@ exports.default = {
 
         // 登录按钮
         login: function login() {
-            // let audio = new Audio('http://59.110.169.246/img/1.mp3');
             var that = this;
-            var url = 'http://10.34.10.177:8999/user/login';
+            var url = 'http://192.168.10.240:8999/user/login';
             var body = JSON.stringify({
                 username: this.userName,
                 password: this.userPassword
@@ -5647,9 +5629,6 @@ exports.default = {
             }, function (ret) {
                 if (ret.status === 200) {
                     if (ret.data.status === 1) {
-                        // modal.toast({ message: ret.data.message, duration: 100 });
-                        // console.log(that.$refs.yourcomponent.$el)
-                        // that.showlist=true;
 
                         storage.getItem('workShopName', function (event) {
 
@@ -5685,47 +5664,14 @@ exports.default = {
                             }
                         });
 
-                        modal.toast({ message: ret.data.message, duration: 1 });
-                        // audio.play();
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     } else {
-                        modal.toast({ message: ret.data.message, duration: 1 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     }
                 } else {
-                    modal.toast({ message: ret.data.message, duration: 1 });
+                    modal.toast({ message: ret.data.message, duration: 2 });
                 }
             });
-        },
-
-
-        // music(){
-        //     let _this=this;
-
-        //     let url = 'http://10.34.10.24:8999/video/getVideo';
-        //     stream.fetch({
-        //         method:"GET",
-        //         url:url,
-        //         type:'json',
-        //     },function(ret){
-        //         console.log(ret)
-        //         if(ret.data.status===1){
-
-        //         }else{
-
-        //         }
-        //     })
-        // }
-        onstart: function onstart(event) {
-            console.log(event);
-            this.state = 'onstart';
-        },
-        onpause: function onpause(event) {
-            this.state = 'onpause';
-        },
-        onfinish: function onfinish(event) {
-            this.state = 'onfinish';
-        },
-        onfail: function onfail(event) {
-            this.state = 'onfinish';
         }
     },
     created: function created() {
@@ -5740,8 +5686,6 @@ exports.default = {
             'fontFamily': "iconfont",
             'src': "url('http://at.alicdn.com/t/font_1141918_gqt9dsrnysk.ttf')"
         });
-
-        //   this.music()
     }
 };
 
@@ -23590,16 +23534,16 @@ exports.default = {
   methods: {
     wxcButtonStop: function wxcButtonStop() {
       var _this = this;
-      var url = 'http://10.34.10.56:8088/api/agv/stopOrStart/1';
+      var url = 'http://192.168.10.240:8088/api/agv/stopOrStart/1';
       stream.fetch({
         method: "GET",
         url: url,
         type: 'json'
       }, function (ret) {
         if (ret.data.status === 1) {
-          modal.toast({ message: ret.data.message, duration: 1 });
+          modal.toast({ message: ret.data.message, duration: 2 });
         } else {
-          modal.toast({ message: ret.data.message, duration: 1 });
+          modal.toast({ message: ret.data.message, duration: 2 });
         }
       });
     }
@@ -23670,7 +23614,7 @@ exports.default = {
     wxcButtonStart: function wxcButtonStart() {
       var _this = this;
 
-      var url = 'http://10.34.10.56:8088/api/agv/stopOrStart/0';
+      var url = 'http://192.168.10.240:8088/api/agv/stopOrStart/0';
 
       stream.fetch({
         method: "GET",
@@ -23679,9 +23623,9 @@ exports.default = {
       }, function (ret) {
 
         if (ret.data.status === 1) {
-          modal.toast({ message: ret.data.message, duration: 1 });
+          modal.toast({ message: ret.data.message, duration: 2 });
         } else {
-          modal.toast({ message: ret.data.message, duration: 1 });
+          modal.toast({ message: ret.data.message, duration: 2 });
         }
       });
     }
@@ -23767,7 +23711,7 @@ exports.default = {
   methods: {
     wxcButtonGetSpritzerHopper: function wxcButtonGetSpritzerHopper() {
       var _this = this;
-      var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+      var url = 'http://192.168.10.240:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
       stream.fetch({
         method: "GET",
         url: url,
@@ -23777,7 +23721,7 @@ exports.default = {
           if (ret.data.data.length > 0) {
             _this.$router.push({ name: 'popUp' });
           } else {
-            modal.toast({ message: '该车间没有料斗', duration: 1 });
+            modal.toast({ message: '该车间没有料斗', duration: 2 });
           }
         }
       });
@@ -23869,7 +23813,7 @@ exports.default = {
         wxcButtonEmptySpritzerHopper: function wxcButtonEmptySpritzerHopper(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://10.34.10.177:8999/obtain/getEmptyContainer?containerNumber=' + _this.containerNum + '&functionRoomNumber=' + _this.workshopName;
+                var url = 'http://192.168.10.240:8999/obtain/getEmptyContainer?containerNumber=' + _this.containerNum + '&functionRoomNumber=' + _this.workshopName;
                 stream.fetch({
                     method: "GET",
                     url: url,
@@ -23879,13 +23823,13 @@ exports.default = {
                         // 订阅者
                         var Steve = new BroadcastChannel('Avengers');
                         Steve.postMessage('Assemble!');
-                        modal.toast({ message: ret.data.message, duration: 1 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     } else {
-                        modal.toast({ message: ret.data.message, duration: 1 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     }
                 });
             } else {
-                modal.toast({ message: '请选择桶编号', duration: 1 });
+                modal.toast({ message: '请选择桶编号', duration: 2 });
             }
         }
     }
@@ -24058,7 +24002,7 @@ exports.default = {
                 return;
             } else {
                 var that = this;
-                var url = 'http://10.34.10.177:8999/obtain/workshopBucketManagement';
+                var url = 'http://192.168.10.240:8999/obtain/workshopBucketManagement';
                 var body = JSON.stringify({
                     functionRoomNumber: that.functionRoomNumber,
                     containerNumber: that.resetContainerNum
@@ -24449,7 +24393,7 @@ exports.default = {
         // 初始化table和筛选table
         initTable: function initTable() {
             var that = this;
-            var url = 'http://10.34.10.177:8200/containerInformation/getContainerInformation';
+            var url = 'http://192.168.10.240:8200/containerInformation/getContainerInformation';
             var body = JSON.stringify({
                 init: '',
                 page: that.currentPage,
@@ -24513,7 +24457,7 @@ exports.default = {
                 checkedList = _ref.checkedList;
 
             var that = this;
-            var url = 'http://10.34.10.177:8200/containerInformation/getContainerInformation';
+            var url = 'http://192.168.10.240:8200/containerInformation/getContainerInformation';
             that.tableBodyData = [];
             // that.currentPage = 1;
             var body = {};
@@ -25162,7 +25106,7 @@ exports.default = {
         wxcButtonSpritzerHopper: function wxcButtonSpritzerHopper(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://10.34.10.177:8999/obtain/getStripContainer';
+                var url = 'http://192.168.10.240:8999/obtain/getStripContainer';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -25177,13 +25121,13 @@ exports.default = {
                     if (ret.data.status === 1) {
                         var Steve = new BroadcastChannel('Avengers');
                         Steve.postMessage('Assemble!');
-                        modal.toast({ message: ret.data.message, duration: 1 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     } else {
-                        modal.toast({ message: ret.data.message, duration: 1 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     }
                 });
             } else {
-                modal.toast({ message: '请选择桶编号', duration: 1 });
+                modal.toast({ message: '请选择桶编号', duration: 2 });
             }
         }
     }
@@ -25312,7 +25256,7 @@ exports.default = {
         // 打开弹窗
         wxcButtonGetEmptySpritzerHopper: function wxcButtonGetEmptySpritzerHopper(e) {
             var _this = this;
-            var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+            var url = 'http://192.168.10.240:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
             stream.fetch({
                 method: "GET",
                 url: url,
@@ -25326,7 +25270,7 @@ exports.default = {
                         }
                         _this.show = true;
                     } else {
-                        modal.toast({ message: '该车间没有料斗', duration: 1 });
+                        modal.toast({ message: '该车间没有料斗', duration: 2 });
                     }
                 }
             });
@@ -25358,7 +25302,7 @@ exports.default = {
             var _this = this;
             console.log(this.containerNum);
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://10.34.10.177:8999/delivery/sendContainerToCleaningRoom';
+                var url = 'http://192.168.10.240:8999/delivery/sendContainerToCleaningRoom';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -25373,14 +25317,14 @@ exports.default = {
                     if (ret.data.status === 1) {
                         var Steve = new BroadcastChannel('Avengers');
                         Steve.postMessage('Assemble!');
-                        modal.toast({ message: ret.data.message, duration: 1 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     } else {
-                        modal.toast({ message: ret.data.message, duration: 1 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     }
                     // this.show = false;
                 });
             } else {
-                modal.toast({ message: '请选择桶编号', duration: 1 });
+                modal.toast({ message: '请选择桶编号', duration: 2 });
             }
             this.show = false;
         }
@@ -25961,7 +25905,7 @@ exports.default = {
   methods: {
     wxcButtonGetSpritzerTankHopper: function wxcButtonGetSpritzerTankHopper() {
       var _this = this;
-      var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+      var url = 'http://192.168.10.240:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
       stream.fetch({
         method: "GET",
         url: url,
@@ -25971,7 +25915,7 @@ exports.default = {
           if (ret.data.data.length > 0) {
             _this.$router.push({ name: 'popUp' });
           } else {
-            modal.toast({ message: '该车间没有料斗和料桶', duration: 1 });
+            modal.toast({ message: '该车间没有料斗和料桶', duration: 2 });
           }
         }
       });
@@ -26065,7 +26009,7 @@ exports.default = {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
 
-                var url = 'http://10.34.10.177:8999/obtain/getEmptyContainer?containerNumber=' + _this.containerNum + '&functionRoomNumber=' + _this.workshopName;
+                var url = 'http://192.168.10.240:8999/obtain/getEmptyContainer?containerNumber=' + _this.containerNum + '&functionRoomNumber=' + _this.workshopName;
                 stream.fetch({
                     method: "GET",
                     url: url,
@@ -26074,13 +26018,13 @@ exports.default = {
                     if (ret.data.status === 1) {
                         var _Steve = new BroadcastChannel('Avengers');
                         _Steve.postMessage('Assemble!');
-                        modal.toast({ message: ret.data.message, duration: 1 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     } else {
-                        modal.toast({ message: ret.data.message, duration: 1 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     }
                 });
             } else {
-                modal.toast({ message: '请选择桶编号', duration: 1 });
+                modal.toast({ message: '请选择桶编号', duration: 2 });
             }
         }
     }
@@ -26667,7 +26611,7 @@ exports.default = {
         // 打开弹窗
         wxcButtonGetEmptySpritzerTank: function wxcButtonGetEmptySpritzerTank(e) {
             var _this = this;
-            var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+            var url = 'http://192.168.10.240:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
             stream.fetch({
                 method: "GET",
                 url: url,
@@ -26680,7 +26624,7 @@ exports.default = {
                         }
                         _this.show = true;
                     } else {
-                        modal.toast({ message: '该车间没有料桶', duration: 1 });
+                        modal.toast({ message: '该车间没有料桶', duration: 2 });
                     }
                 }
             });
@@ -26707,7 +26651,7 @@ exports.default = {
         wxcConfirmEmptyContainer: function wxcConfirmEmptyContainer(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://10.34.10.177:8999/delivery/sendContainerToCleaningRoom';
+                var url = 'http://192.168.10.240:8999/delivery/sendContainerToCleaningRoom';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -26722,13 +26666,13 @@ exports.default = {
                     if (ret.data.status === 1) {
                         var Steve = new BroadcastChannel('Avengers');
                         Steve.postMessage('Assemble!');
-                        modal.toast({ message: ret.data.message, duration: 1 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     } else {
-                        modal.toast({ message: ret.data.message, duration: 1 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     }
                 });
             } else {
-                modal.toast({ message: '请选择桶编号', duration: 1 });
+                modal.toast({ message: '请选择桶编号', duration: 2 });
                 // _this.show = false;
             }
             this.show = false;
@@ -26859,7 +26803,7 @@ exports.default = {
         wxcButtonEmptySpritzerTank: function wxcButtonEmptySpritzerTank(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://10.34.10.177:8999/obtain/getStripContainer';
+                var url = 'http://192.168.10.240:8999/obtain/getStripContainer';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -26874,13 +26818,13 @@ exports.default = {
                     if (ret.data.status === 1) {
                         var Steve = new BroadcastChannel('Avengers');
                         Steve.postMessage('Assemble!');
-                        modal.toast({ message: ret.data.message, duration: 1 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     } else {
-                        modal.toast({ message: ret.data.message, duration: 1 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     }
                 });
             } else {
-                modal.toast({ message: '请选择桶编号', duration: 1 });
+                modal.toast({ message: '请选择桶编号', duration: 2 });
             }
         }
     }
@@ -26963,7 +26907,7 @@ exports.default = {
   methods: {
     wxcButtonGetSpritzerTank: function wxcButtonGetSpritzerTank() {
       var _this = this;
-      var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+      var url = 'http://192.168.10.240:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
       stream.fetch({
         method: "GET",
         url: url,
@@ -26973,7 +26917,7 @@ exports.default = {
           if (ret.data.data.length > 0) {
             _this.$router.push({ name: 'popUp' });
           } else {
-            modal.toast({ message: '该车间没有料桶', duration: 1 });
+            modal.toast({ message: '该车间没有料桶', duration: 2 });
           }
         }
       });
@@ -27525,7 +27469,7 @@ exports.default = {
         wxcButtonGetSpritzerHopperBack: function wxcButtonGetSpritzerHopperBack(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://10.34.10.177:8999/delivery/sendEmptyContainer';
+                var url = 'http://192.168.10.240:8999/delivery/sendEmptyContainer';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -27540,13 +27484,13 @@ exports.default = {
                     if (ret.data.status === 1) {
                         var Steve = new BroadcastChannel('Avengers');
                         Steve.postMessage('Assemble!');
-                        modal.toast({ message: ret.data.message, duration: 1 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     } else {
-                        modal.toast({ message: ret.data.message, duration: 1 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     }
                 });
             } else {
-                modal.toast({ message: '请选择桶编号', duration: 1 });
+                modal.toast({ message: '请选择桶编号', duration: 2 });
             }
         }
     }
@@ -27720,7 +27664,7 @@ exports.default = {
         // 打开弹窗
         wxcButtonGetSpritzerHopperRinse: function wxcButtonGetSpritzerHopperRinse(e) {
             var _this = this;
-            var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+            var url = 'http://192.168.10.240:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
             stream.fetch({
                 method: "GET",
                 url: url,
@@ -27733,7 +27677,7 @@ exports.default = {
                         }
                         _this.show = true;
                     } else {
-                        modal.toast({ message: '该车间没有料桶', duration: 1 });
+                        modal.toast({ message: '该车间没有料桶', duration: 2 });
                     }
                 }
             });
@@ -27760,7 +27704,7 @@ exports.default = {
         wxcConfirmEmptyContainer: function wxcConfirmEmptyContainer(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://10.34.10.177:8999/delivery/sendContainerToCleaningRoom';
+                var url = 'http://192.168.10.240:8999/delivery/sendContainerToCleaningRoom';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -27775,13 +27719,13 @@ exports.default = {
                     if (ret.data.status === 1) {
                         var Steve = new BroadcastChannel('Avengers');
                         Steve.postMessage('Assemble!');
-                        modal.toast({ message: ret.data.message, duration: 1 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     } else {
-                        modal.toast({ message: ret.data.message, duration: 1 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     }
                 });
             } else {
-                modal.toast({ message: '请选择桶编号', duration: 1 });
+                modal.toast({ message: '请选择桶编号', duration: 2 });
                 // _this.show = false;
             }
             this.show = false;
@@ -28158,7 +28102,7 @@ exports.default = {
     },
     created: function created() {
         this.$nextTick(function () {
-            this.time = setInterval(this.timer, 20000);
+            this.time = setInterval(this.timer, 10000);
         });
     },
 
@@ -28166,7 +28110,7 @@ exports.default = {
         timer: function timer() {
             var _this = this;
 
-            var url = 'http://10.34.10.177:8999/agvTask/getReviewTask';
+            var url = 'http://192.168.10.240:8999/agvTask/getReviewTask';
             stream.fetch({
                 method: "GET",
                 url: url,
@@ -28184,7 +28128,7 @@ exports.default = {
                         _this.id = ret.data.data.taskId;
                     }
                 } else {
-                    modal.toast({ message: ret.data.message, duration: 1 });
+                    modal.toast({ message: ret.data.message, duration: 2 });
                 }
             });
         },
@@ -28196,7 +28140,7 @@ exports.default = {
         wxcChoseAllow: function wxcChoseAllow() {
             var _this = this;
 
-            var url = 'http://10.34.10.177:8999/obtain/reviewVerify';
+            var url = 'http://192.168.10.240:8999/obtain/reviewVerify';
             var body = JSON.stringify({
                 taskId: _this.id,
                 functionNumber: _this.functionNumber,
@@ -28211,19 +28155,19 @@ exports.default = {
                 type: 'json'
             }, function (ret) {
                 if (ret.data.status === 1) {
-                    modal.toast({ message: ret.data.message, duration: 1 });
+                    modal.toast({ message: ret.data.message, duration: 2 });
                     _this.showproduct = false;
-                    setInterval(_this.timer, 20000);
+                    setInterval(_this.timer, 10000);
                     _this.showlist = false;
                 } else {
-                    modal.toast({ message: ret.data.message, duration: 1 });
+                    modal.toast({ message: ret.data.message, duration: 2 });
                 }
             });
         },
         wxcChoseRefuse: function wxcChoseRefuse() {
             var _this = this;
 
-            var url = 'http://10.34.10.177:8999/obtain/reviewRefuse';
+            var url = 'http://192.168.10.240:8999/obtain/reviewRefuse';
             var body = JSON.stringify({
                 taskId: _this.id,
                 functionNumber: _this.functionNumber,
@@ -28238,12 +28182,12 @@ exports.default = {
                 type: 'json'
             }, function (ret) {
                 if (ret.data.status === 1) {
-                    modal.toast({ message: ret.data.message, duration: 1 });
+                    modal.toast({ message: ret.data.message, duration: 2 });
                     _this.showproduct = false;
-                    setInterval(_this.timer, 20000);
+                    setInterval(_this.timer, 10000);
                     _this.showlist = false;
                 } else {
-                    modal.toast({ message: ret.data.message, duration: 1 });
+                    modal.toast({ message: ret.data.message, duration: 2 });
                 }
             });
         }
@@ -28608,7 +28552,7 @@ exports.default = {
         wxcButtonGetSpritzerHopperRinses: function wxcButtonGetSpritzerHopperRinses(e) {
             var _this = this;
             if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                var url = 'http://10.34.10.177:8999/delivery/sendContainerFormZJToCleaningRoom';
+                var url = 'http://192.168.10.240:8999/delivery/sendContainerFormZJToCleaningRoom';
                 var body = JSON.stringify({
                     containerNumber: _this.containerNum,
                     functionRoomNumber: _this.workshopName
@@ -28623,13 +28567,13 @@ exports.default = {
                     if (ret.data.status === 1) {
                         var Steve = new BroadcastChannel('Avengers');
                         Steve.postMessage('Assemble!');
-                        modal.toast({ message: ret.data.message, duration: 1 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     } else {
-                        modal.toast({ message: ret.data.message, duration: 1 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     }
                 });
             } else {
-                modal.toast({ message: '请选择桶编号', duration: 1 });
+                modal.toast({ message: '请选择桶编号', duration: 2 });
             }
         }
     }
@@ -28743,7 +28687,7 @@ exports.default = {
         wxcButtonWeigh: function wxcButtonWeigh(e) {
             var _this = this;
 
-            var url = 'http://10.34.10.177:8999/delivery/weighing';
+            var url = 'http://192.168.10.240:8999/delivery/weighing';
             var body = JSON.stringify({});
             stream.fetch({
                 method: "POST",
@@ -28755,9 +28699,9 @@ exports.default = {
                 if (ret.data.status === 1) {
                     var Steve = new BroadcastChannel('Avengers');
                     Steve.postMessage('Assemble!');
-                    modal.toast({ message: ret.data.message, duration: 1 });
+                    modal.toast({ message: ret.data.message, duration: 2 });
                 } else {
-                    modal.toast({ message: ret.data.message, duration: 1 });
+                    modal.toast({ message: ret.data.message, duration: 2 });
                 }
             });
         }
@@ -28925,7 +28869,7 @@ exports.default = {
         // 打开弹窗
         wxcButtonManualStorage: function wxcButtonManualStorage(e) {
             var _this = this;
-            var url = 'http://10.34.10.177:8999/agvTask/getFailureAgvTaskOfContainerNumber';
+            var url = 'http://192.168.10.240:8999/agvTask/getFailureAgvTaskOfContainerNumber';
             stream.fetch({
                 method: "GET",
                 url: url,
@@ -28934,7 +28878,7 @@ exports.default = {
                 console.log(ret);
                 if (ret.data.status === 1) {
                     if (ret.data.data === null || ret.data.data === 'undefined') {
-                        modal.toast({ message: '没有失败的任务', duration: 1 });
+                        modal.toast({ message: '没有失败的任务', duration: 2 });
                         _this.show = false;
                     }
                     if (ret.data.data.length > 0) {
@@ -28943,7 +28887,7 @@ exports.default = {
                         }
                         _this.show = true;
                     } else {
-                        modal.toast({ message: '没有失败的任务', duration: 1 });
+                        modal.toast({ message: '没有失败的任务', duration: 2 });
                     }
                 }
             });
@@ -28968,21 +28912,21 @@ exports.default = {
         wxcConfirmEmptyContainer: function wxcConfirmEmptyContainer(e) {
             var _this = this;
             if (this.containerNumber !== 'undefined') {
-                var url = 'http://10.34.10.177:8999/agvTask/manualStorage?taskId=' + this.taskId + '&containerNumber=' + _this.containerNumber;
+                var url = 'http://192.168.10.240:8999/agvTask/manualStorage?taskId=' + this.taskId + '&containerNumber=' + _this.containerNumber;
                 stream.fetch({
                     method: "GET",
                     url: url,
                     type: 'json'
                 }, function (ret) {
                     if (ret.data.status === 1) {
-                        modal.toast({ message: ret.data.message, duration: 1 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     } else {
-                        modal.toast({ message: ret.data.message, duration: 1 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     }
                     // this.show = false;
                 });
             } else {
-                modal.toast({ message: '请选择桶编号', duration: 1 });
+                modal.toast({ message: '请选择桶编号', duration: 2 });
             }
             this.show = false;
         },
@@ -29378,7 +29322,7 @@ exports.default = {
         // 初始化table和筛选table
         initTable: function initTable() {
             var that = this;
-            var url = 'http://10.34.10.177:8200/containerInformation/getAllContainerInformation';
+            var url = 'http://192.168.10.240:8200/containerInformation/getAllContainerInformation';
             var body = JSON.stringify({
                 init: '',
                 page: that.currentPage,
@@ -29445,7 +29389,7 @@ exports.default = {
             that.tableBodyData = [];
             var body = {};
             if (checked === true) {
-                var url = 'http://10.34.10.177:8200/containerInformation/getAllOverdueNotUsed';
+                var url = 'http://192.168.10.240:8200/containerInformation/getAllOverdueNotUsed';
                 that.currentIndex = -1;
                 var containerName = checkedList[0].value;
                 body = JSON.stringify({
@@ -29846,8 +29790,10 @@ module.exports = {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
+
+var _weexUi = __webpack_require__(1);
 
 var _vCleaning = __webpack_require__(392);
 
@@ -29873,61 +29819,121 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
 var storage = weex.requireModule('storage');
 exports.default = {
-  data: function data() {
-    return {
-      // 车间名字
-      workshopName: '',
-      containerNum: ''
-    };
-  },
-  created: function created() {
-    var _this2 = this;
+    data: function data() {
+        return {
+            // 车间名字
+            workshopName: '',
+            containerNum: '',
+            show: false,
+            isChoseDisabled: true,
+            emptyContainerList: []
+        };
+    },
+    created: function created() {
+        var _this2 = this;
 
-    storage.getItem('workShopName', function (event) {
-      _this2.workshopName = event.data;
-    });
-    // storage.getItem('containerNum', event => {
-    //     this.workshopName = event.data;
-    // });
-  },
+        storage.getItem('workShopName', function (event) {
+            _this2.workshopName = event.data;
+        });
+    },
 
-  components: {
-    vCleaning: _vCleaning2.default
-  },
-  methods: {
-    onClack: function onClack() {
-      var _this = this;
-      if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-        var url = 'http://10.34.10.177:8999/delivery/sendEmptyContainer';
-        var body = JSON.stringify({
-          containerNumber: _this.containerNum,
-          functionRoomNumber: _this.workshopName
-        });
-        stream.fetch({
-          method: "POST",
-          url: url,
-          headers: { 'Content-Type': 'application/json' },
-          body: body,
-          type: 'json'
-        }, function (ret) {
-          if (ret.data.status === 1) {
-            var Steve = new BroadcastChannel('Avengers');
-            Steve.postMessage('Assemble!');
-            modal.toast({ message: ret.data.message, duration: 1 });
-          } else {
-            modal.toast({ message: ret.data.message, duration: 1 });
-          }
-        });
-      } else {
-        modal.toast({ message: '请输入桶编号', duration: 1 });
-      }
+    components: {
+        vCleaning: _vCleaning2.default,
+        WxcPopup: _weexUi.WxcPopup,
+        WxcRadio: _weexUi.WxcRadio,
+        WxcButton: _weexUi.WxcButton
+    },
+    methods: {
+        // 打开弹窗
+        wxcButtonGetEmptySpritzerTank: function wxcButtonGetEmptySpritzerTank(e) {
+            var _this = this;
+            var url = 'http://192.168.10.240:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+            stream.fetch({
+                method: "GET",
+                url: url,
+                type: 'json'
+            }, function (ret) {
+                if (ret.data.status === 1) {
+                    if (ret.data.data.length > 0) {
+                        for (var i = 0; i < ret.data.data.length; i++) {
+                            _this.emptyContainerList.push({ title: ret.data.data[i].containerNumber, value: ret.data.data[i].containerNumber });
+                        }
+                        _this.show = true;
+                    } else {
+                        modal.toast({ message: '该车间没有料桶', duration: 2 });
+                    }
+                }
+            });
+        },
+
+        // 关闭弹窗
+        wxcMaskSetHidden: function wxcMaskSetHidden() {
+            this.show = false;
+        },
+
+        // 选择空料桶
+        wxcSelectEmptyContainer: function wxcSelectEmptyContainer(e) {
+            this.isChoseDisabled = false;
+            this.containerNum = e.value;
+        },
+
+
+        // 选择选择空料斗、料桶--确认按钮
+        wxcConfirmEmptyContainer: function wxcConfirmEmptyContainer(e) {
+            this.show = false;
+        },
+
+        // 确认按钮
+        onClack: function onClack() {
+            var _this = this;
+            if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
+                var url = 'http://192.168.10.240:8999/delivery/sendEmptyContainer';
+                var body = JSON.stringify({
+                    containerNumber: _this.containerNum,
+                    functionRoomNumber: _this.workshopName
+                });
+                stream.fetch({
+                    method: "POST",
+                    url: url,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: body,
+                    type: 'json'
+                }, function (ret) {
+                    if (ret.data.status === 1) {
+                        var Steve = new BroadcastChannel('Avengers');
+                        Steve.postMessage('Assemble!');
+                        modal.toast({ message: ret.data.message, duration: 2 });
+                    } else {
+                        modal.toast({ message: ret.data.message, duration: 2 });
+                    }
+                });
+            } else {
+                modal.toast({ message: '请输入桶编号', duration: 2 });
+            }
+        }
     }
-  }
 };
 
 /***/ }),
@@ -30050,20 +30056,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["input-title"]
   }, [_vm._v("编号")]), _c('div', {
     staticClass: ["input_box"]
-  }, [_c('input', {
+  }, [_c('text', {
     staticClass: ["input_item"],
-    attrs: {
-      "type": "text",
-      "placeholder": "编号",
-      "maxlength": "6",
-      "value": (_vm.containerNum)
-    },
     on: {
-      "input": function($event) {
-        _vm.containerNum = $event.target.attr.value
-      }
+      "click": _vm.wxcButtonGetEmptySpritzerTan
     }
-  })])]), _c('div', {
+  }, [_vm._v(_vm._s(_vm.containerNum))])])]), _c('div', {
     staticClass: ["btns"]
   }, [_c('div', {
     staticClass: ["btn"]
@@ -30072,7 +30070,47 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.onClack
     }
-  }, [_vm._v("确认")])])])], 1)
+  }, [_vm._v("确认")])])]), _c('div', {
+    staticClass: ["mask-container"]
+  }, [_c('wxc-popup', {
+    attrs: {
+      "popupColor": "#fff",
+      "show": _vm.show,
+      "pos": "left",
+      "height": "400"
+    },
+    on: {
+      "wxcPopupOverlayClicked": _vm.wxcMaskSetHidden
+    }
+  }, [_c('div', {
+    staticClass: ["content", "mask-content"]
+  }, [_c('div', {
+    staticClass: ["mask-title"]
+  }, [_c('text', {
+    staticClass: ["title"]
+  }, [_vm._v("请选择空料斗或空料桶")])]), _c('div', {
+    staticClass: ["scroller-box"]
+  }, [_c('scroller', {
+    staticClass: ["scroller"]
+  }, [_c('wxc-radio', {
+    attrs: {
+      "list": _vm.emptyContainerList
+    },
+    on: {
+      "wxcRadioListChecked": _vm.wxcSelectEmptyContainer
+    }
+  })], 1)]), _c('div', {
+    staticClass: ["button_box", "bottom"]
+  }, [_c('wxc-button', {
+    attrs: {
+      "text": "确定",
+      "type": "blue",
+      "disabled": _vm.isChoseDisabled
+    },
+    on: {
+      "wxcButtonClicked": _vm.wxcConfirmEmptyContainer
+    }
+  })], 1)])])], 1)], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
@@ -30242,7 +30280,7 @@ exports.default = {
         onLogin: function onLogin() {
             var _this = this;
             if (this.userName && this.userPassword) {
-                var url = 'http://10.34.10.177:8200/admin/getAdmin';
+                var url = 'http://192.168.10.240:8200/admin/getAdmin';
                 var body = JSON.stringify({
                     username: this.userName,
                     password: this.userPassword
@@ -30257,16 +30295,16 @@ exports.default = {
                 }, function (ret) {
                     console.log(ret);
                     if (ret.data.status === 1) {
-                        modal.toast({ message: ret.data.message, duration: 1 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                         _this.$router.push({ name: 'jurisLoginMessage' });
                     } else {
-                        modal.toast({ message: '登录失败！！！', duration: 1 });
+                        modal.toast({ message: '登录失败！！！', duration: 2 });
                     }
                 }, function (progress) {
                     // console.log(progress)
                 });
             } else {
-                modal.toast({ message: '请输入账号和密码', duration: 1 });
+                modal.toast({ message: '请输入账号和密码', duration: 2 });
             }
         },
 
@@ -30673,7 +30711,7 @@ exports.default = {
             var _this = this;
             if (this.userBucket && this.userProduct) {
                 this.binOrHopper = this.userProduct === '空料斗' ? '料斗' : '料桶';
-                var url = 'http://10.34.10.177:8200/containerInformation/saveContainerInformation';
+                var url = 'http://192.168.10.240:8200/containerInformation/saveContainerInformation';
 
                 var body = JSON.stringify({
                     containerNumber: this.userBucket,
@@ -30693,15 +30731,15 @@ exports.default = {
                 }, function (ret) {
                     console.log(ret);
                     if (ret.data.status === 1) {
-                        _this.userBucket = '', _this.userProduct = '', _this.userVolume = '', _this.userWeight = '', _this.binOrHopper = '', modal.toast({ message: ret.data.message, duration: 1 });
+                        _this.userBucket = '', _this.userProduct = '', _this.userVolume = '', _this.userWeight = '', _this.binOrHopper = '', modal.toast({ message: ret.data.message, duration: 2 });
                     } else {
-                        modal.toast({ message: '填写失败！！！', duration: 1 });
+                        modal.toast({ message: '填写失败！！！', duration: 2 });
                     }
                 }, function (progress) {
                     // console.log(progress)
                 });
             } else {
-                modal.toast({ message: '请选择产品名称和请输入桶编号', duration: 1 });
+                modal.toast({ message: '请选择产品名称和请输入桶编号', duration: 2 });
             }
         },
         black: function black() {
@@ -31464,7 +31502,7 @@ exports.default = {
         login: function login() {
             var _this = this;
 
-            var url = 'http://10.34.10.177:8999/delivery/sendContainer';
+            var url = 'http://192.168.10.240:8999/delivery/sendContainer';
             var body = JSON.stringify({
                 functionNumber: _this.workshopName,
                 containerNumber: _this.userBucket,
@@ -31485,7 +31523,7 @@ exports.default = {
                 if (ret.data.status === 1) {
                     var Steve = new BroadcastChannel('Avengers');
                     Steve.postMessage('Assemble!');
-                    modal.toast({ message: ret.data.message, duration: 1 });
+                    modal.toast({ message: ret.data.message, duration: 2 });
                     //    _this.$router.go(-1);
                     _this.time = setInterval(this.timer, 1000);
                 }
@@ -31517,8 +31555,8 @@ exports.default = {
             // let name = this.workshopName;
             // console.log(name)
             // // modal.toast({ message: '你是'+name, duration: 10 });
-            var url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
-            // modal.toast({ message: url, duration: 1 });
+            var url = 'http://192.168.10.240:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+            // modal.toast({ message: url,duration: 2});
             // let body = JSON.stringify({
             //     // functionRoomNumber: _this.workshopName
             // });
@@ -31970,7 +32008,7 @@ exports.default = {
         onLogin: function onLogin() {
             var _this = this;
             if (this.userName && this.userPassword) {
-                var url = 'http://10.34.10.177:8200/admin/getAdmin';
+                var url = 'http://192.168.10.240:8200/admin/getAdmin';
                 var body = JSON.stringify({
                     username: this.userName,
                     password: this.userPassword
@@ -31985,16 +32023,16 @@ exports.default = {
                 }, function (ret) {
                     console.log(ret);
                     if (ret.data.status === 1) {
-                        modal.toast({ message: ret.data.message, duration: 1 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                         _this.$router.push({ name: 'containerLoginMessage' });
                     } else {
-                        modal.toast({ message: '登录失败！！！', duration: 1 });
+                        modal.toast({ message: '登录失败！！！', duration: 2 });
                     }
                 }, function (progress) {
                     // console.log(progress)
                 });
             } else {
-                modal.toast({ message: '请输入账号和密码', duration: 1 });
+                modal.toast({ message: '请输入账号和密码', duration: 2 });
             }
         },
 
@@ -32357,7 +32395,7 @@ exports.default = {
                 return;
             } else {
                 var that = this;
-                var url = 'http://10.34.10.177:8200/containerFunctionLocation/saveContainerFunctionLocation';
+                var url = 'http://192.168.10.240:8200/containerFunctionLocation/saveContainerFunctionLocation';
                 var body = JSON.stringify({
                     containerFunctionNumber: that.ContainerNum,
                     containerFunctionQrCodeNumber: that.LocationNum
@@ -32398,7 +32436,7 @@ exports.default = {
         // 初始化table
         initTable: function initTable() {
             var that = this;
-            var url = 'http://10.34.10.177:8200/containerFunctionLocation/getAllContainerFunctionLocation';
+            var url = 'http://192.168.10.240:8200/containerFunctionLocation/getAllContainerFunctionLocation';
             var body = JSON.stringify({
                 page: that.currentPage,
                 size: that.pageSize
