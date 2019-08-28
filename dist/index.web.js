@@ -46277,7 +46277,7 @@ exports.default = {
                 title: '显示空料斗',
                 value: '空料斗'
             }],
-            //制粒间、胶囊间、压片间
+            //胶囊间、压片间
             radio2: [{
                 title: '显示料斗',
                 value: '料斗'
@@ -46285,7 +46285,7 @@ exports.default = {
                 title: '显示空料桶',
                 value: '空料桶'
             }],
-            //总混间
+            //制粒间、总混间
             radio3: [{
                 title: '显示料斗',
                 value: '料斗'
@@ -46501,10 +46501,10 @@ exports.default = {
                 if (that.name === '批料待发间') {
                     that.list = that.radio1;
                 }
-                if (that.name === '制粒间' || that.name === '胶囊间1' || that.name === '胶囊间2' || that.name === '压片间') {
+                if (that.name === '胶囊间1' || that.name === '胶囊间2' || that.name === '压片间') {
                     that.list = that.radio2;
                 }
-                if (that.name === '总混间') {
+                if (that.name === '制粒间' || that.name === '总混间') {
                     that.list = that.radio3;
                 }
                 if (that.name === '包衣间') {
@@ -47343,6 +47343,9 @@ var _weexUi = __webpack_require__(4);
 //
 //
 //
+//
+//
+//
 
 var modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
@@ -47410,6 +47413,10 @@ exports.default = {
             this.containerNum = e.value;
         },
 
+        // 返回
+        black: function black() {
+            this.show = false;
+        },
 
         // 选择选择空料斗、料桶--确认按钮
         wxcConfirmEmptyContainer: function wxcConfirmEmptyContainer(e) {
@@ -47534,6 +47541,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     on: {
       "wxcButtonClicked": _vm.wxcConfirmEmptyContainer
+    }
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "button_box weex-ct weex-div",
+    attrs: {
+      "weex-type": "div"
+    }
+  }, [_c('wxc-button', {
+    attrs: {
+      "text": "返回",
+      "type": "blue",
+      "data-evt-wxcButtonClicked": ""
+    },
+    on: {
+      "wxcButtonClicked": _vm.black
     }
   })], 1)])])], 1)])
 },staticRenderFns: []}
@@ -48977,6 +48998,9 @@ var _weexUi = __webpack_require__(4);
 //
 //
 //
+//
+//
+//
 
 var modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
@@ -49040,6 +49064,10 @@ exports.default = {
             this.containerNum = e.value;
         },
 
+        // 返回
+        black: function black() {
+            this.show = false;
+        },
 
         // 选择选择空料斗、料桶--确认按钮
         wxcConfirmEmptyContainer: function wxcConfirmEmptyContainer(e) {
@@ -49163,6 +49191,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     on: {
       "wxcButtonClicked": _vm.wxcConfirmEmptyContainer
+    }
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "button_box weex-ct weex-div",
+    attrs: {
+      "weex-type": "div"
+    }
+  }, [_c('wxc-button', {
+    attrs: {
+      "text": "返回",
+      "type": "blue",
+      "data-evt-wxcButtonClicked": ""
+    },
+    on: {
+      "wxcButtonClicked": _vm.black
     }
   })], 1)])])], 1)])
 },staticRenderFns: []}
@@ -50257,6 +50299,9 @@ var _weexUi = __webpack_require__(4);
 //
 //
 //
+//
+//
+//
 
 var modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
@@ -50319,7 +50364,9 @@ exports.default = {
             this.isChoseDisabled = false;
             this.containerNum = e.value;
         },
-
+        black: function black() {
+            this.show = false;
+        },
 
         // 选择选择空料斗、料桶--确认按钮
         wxcConfirmEmptyContainer: function wxcConfirmEmptyContainer(e) {
@@ -50443,6 +50490,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     on: {
       "wxcButtonClicked": _vm.wxcConfirmEmptyContainer
+    }
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "button_box weex-ct weex-div",
+    attrs: {
+      "weex-type": "div"
+    }
+  }, [_c('wxc-button', {
+    attrs: {
+      "text": "返回",
+      "type": "blue",
+      "data-evt-wxcButtonClicked": ""
+    },
+    on: {
+      "wxcButtonClicked": _vm.black
     }
   })], 1)])])], 1)])
 },staticRenderFns: []}
@@ -50867,6 +50928,10 @@ exports.default = {
                 }
             });
         }
+    },
+    destroyed: function destroyed() {
+        clearInterval(this.timer); // 清除定时器
+        this.timer = null;
     }
 };
 
@@ -51594,19 +51659,20 @@ exports.default = {
                 url: url,
                 type: 'json'
             }, function (ret) {
-                console.log(ret);
+                // console.log(ret)
                 if (ret.data.status === 1) {
                     if (ret.data.data === null || ret.data.data === 'undefined') {
-                        modal.toast({ message: '没有失败的任务', duration: 2 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                         _this.show = false;
-                    }
-                    if (ret.data.data.length > 0) {
-                        for (var i = 0; i < ret.data.data.length; i++) {
-                            _this.taskList.push({ title: ret.data.data[i].containerNumber, value: ret.data.data[i].taskId });
-                        }
-                        _this.show = true;
                     } else {
-                        modal.toast({ message: '没有失败的任务', duration: 2 });
+                        if (ret.data.data.length > 0) {
+                            for (var i = 0; i < ret.data.data.length; i++) {
+                                _this.taskList.push({ title: ret.data.data[i].containerNumber, value: ret.data.data[i].taskId });
+                            }
+                            _this.show = true;
+                        } else {
+                            modal.toast({ message: ret.data.message, duration: 2 });
+                        }
                     }
                 }
             });
@@ -52665,7 +52731,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [(_vm.showlist) ? _c('video', {
     staticClass: "video",
     attrs: {
-      "src": "http://flv2.bn.netease.com/videolib3/1611/01/XGqSL5981/SD/XGqSL5981-mobile.mp4",
+      "src": "http://10.34.10.177:8999/video/1.mp4",
       "controls": "nocontrols",
       "play-status": "pause",
       "auto-play": "true"
@@ -52759,7 +52825,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.home[data-v-5aeb9829]{\r\n  padding: 0.4rem;\n}\n.cheBtn[data-v-5aeb9829]{\r\n  margin-bottom: 1.06667rem;\n}\n.inputBox[data-v-5aeb9829]{\r\n  margin-bottom: 1.06667rem;\n}\n.btns[data-v-5aeb9829]{\r\n  height: 1.33333rem;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content:space-around;\n}\n.btn[data-v-5aeb9829]{\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  justify-content: center;\r\n  background-color:#0099ff;\r\n  width: 2.66667rem;\r\n  height: 1.33333rem;\r\n  border-radius: 0.13333rem;\n}\n.btn-txt[data-v-5aeb9829]{\r\n  text-align: center;\r\n  margin: 0 auto;\r\n  color: #fff;\r\n  font-size: 0.46667rem;\n}\n.inputBox[data-v-5aeb9829]{\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  flex-direction: row;\n}\n.input_box[data-v-5aeb9829] {\r\n  flex: 2;\r\n  border-style: solid;\r\n  border-width: 1;\r\n  border-color: #333;\r\n  border-radius: 10;\r\n  margin-bottom: 40;\r\n  padding-left: 20;\n}\n.input_item[data-v-5aeb9829] {\r\n  \r\n  height: 1.2rem;\n}\n.input-title[data-v-5aeb9829]{\r\n  flex: 1;\r\n  text-align: center;\r\n  font-size: 0.46667rem;\r\n  height: 1.2rem;\r\n  line-height: 1.2rem;\n}\r\n", ""]);
+exports.push([module.i, "\n.home[data-v-5aeb9829]{\r\n  padding: 0.4rem;\n}\n.cheBtn[data-v-5aeb9829]{\r\n  margin-bottom: 1.06667rem;\n}\n.inputBox[data-v-5aeb9829]{\r\n  margin-bottom: 1.06667rem;\n}\n.btns[data-v-5aeb9829]{\r\n  height: 1.33333rem;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content:space-around;\n}\n.btn[data-v-5aeb9829]{\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  justify-content: center;\r\n  background-color:#0099ff;\r\n  width: 2.66667rem;\r\n  height: 1.33333rem;\r\n  border-radius: 0.13333rem;\n}\n.btn-txt[data-v-5aeb9829]{\r\n  text-align: center;\r\n  margin: 0 auto;\r\n  color: #fff;\r\n  font-size: 0.46667rem;\n}\n.inputBox[data-v-5aeb9829]{\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  flex-direction: row;\n}\n.input_box[data-v-5aeb9829] {\r\n  flex: 2;\r\n  border-style: solid;\r\n  border-width: 1;\r\n  border-color: #333;\r\n  border-radius: 10;\r\n  margin-bottom: 40;\r\n  padding-left: 20;\n}\n.input_item[data-v-5aeb9829] {\r\n  line-height: 1.2rem;\r\n  height: 1.2rem;\r\n  font-size: 0.4rem;\n}\n.input-title[data-v-5aeb9829]{\r\n  flex: 1;\r\n  text-align: center;\r\n  font-size: 0.46667rem;\r\n  height: 1.2rem;\r\n  line-height: 1.2rem;\n}\n.btn[data-v-5aeb9829] {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    justify-content: center;\r\n    background-color: #0099ff;\r\n    width: 2.66667rem;\r\n    height: 1.33333rem;\r\n    border-radius: 0.13333rem;\n}\n.btn-txt[data-v-5aeb9829] {\r\n    text-align: center;\r\n    margin: 0 auto;\r\n    color: #fff;\r\n    font-size: 0.46667rem;\n}\n.mask-container[data-v-5aeb9829] {\r\n    justify-content: center;\r\n    align-items: center;\n}\n.mask-content[data-v-5aeb9829] {\r\n    padding-top: 20;\n}\n.mask-title[data-v-5aeb9829] {\r\n    align-items: center;\n}\n.title[data-v-5aeb9829] {\r\n    font-size: 0.37333rem;\n}\n.mask-title[data-v-5aeb9829] {\r\n    align-items: center;\n}\n.title[data-v-5aeb9829] {\r\n    font-size: 0.37333rem;\n}\n.button_box[data-v-5aeb9829] {\r\n    margin-top: 0.26667rem;\r\n    align-items: center;\n}\n.bottom[data-v-5aeb9829] {\r\n    margin-top: 0.53333rem;\n}\r\n", ""]);
 
 // exports
 
@@ -52783,6 +52849,9 @@ var _vCleaning2 = _interopRequireDefault(_vCleaning);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//
+//
+//
 //
 //
 //
@@ -52887,6 +52956,11 @@ exports.default = {
             this.show = false;
         },
 
+        // 返回
+        black: function black() {
+            this.show = false;
+        },
+
         // 确认按钮
         onClack: function onClack() {
             var _this = this;
@@ -52904,6 +52978,7 @@ exports.default = {
                     type: 'json'
                 }, function (ret) {
                     if (ret.data.status === 1) {
+                        _this.containerNum = ' ';
                         var Steve = new BroadcastChannel('Avengers');
                         Steve.postMessage('Assemble!');
                         modal.toast({ message: ret.data.message, duration: 2 });
@@ -53188,6 +53263,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     on: {
       "wxcButtonClicked": _vm.wxcConfirmEmptyContainer
+    }
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "button_box weex-ct weex-div",
+    attrs: {
+      "weex-type": "div"
+    }
+  }, [_c('wxc-button', {
+    attrs: {
+      "text": "返回",
+      "type": "blue",
+      "data-evt-wxcButtonClicked": ""
+    },
+    on: {
+      "wxcButtonClicked": _vm.black
     }
   })], 1)])])], 1)], 1)
 },staticRenderFns: []}
@@ -53672,50 +53761,6 @@ var _weexUi = __webpack_require__(4);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 var modal = weex.requireModule('modal');
 var stream = weex.requireModule('stream');
@@ -53729,7 +53774,6 @@ exports.default = {
             userVolume: '',
             userWeight: '',
             binOrHopper: '',
-            // userTime:'2019-10-10',
             isWorkShopDisabled: true,
 
             // 产品名称
@@ -53742,17 +53786,6 @@ exports.default = {
                 title: '空料桶',
                 value: '空料桶'
             }]
-
-            // 时间参数
-            // animationType: 'push',
-            // currentDate: '',
-            // selectedDate: ['2019-08-23', '2020-06-30'],
-            // isRange: true,
-            // calendarTitle: '选择日期',
-            // dateRange: ['2019-08-23', '2020-06-30'],
-            // minibarCfg: {
-            //     title: '日期选择'
-            // }
         };
     },
     methods: {
@@ -53774,21 +53807,6 @@ exports.default = {
         },
 
 
-        // 时间
-        // wxcPageCalendarDateSelected (e) {
-        //     this.userTime=e.date.join("")
-        //     this.selectedDate = e.date;
-        //     this.currentDate = e.date;
-        // },
-        // wxcPageCalendarBackClicked () {
-        // },
-        // showCalendar () {
-        //     this.isRange = false;
-        //     setTimeout(() => {
-        //     this.$refs['wxcPageCalendar'].show();
-        //     }, 10);
-        // },
-
         // 登录按钮
         login: function login() {
             var _this = this;
@@ -53801,7 +53819,6 @@ exports.default = {
                     productName: this.userProduct,
                     containerVolume: this.userVolume,
                     containerWeight: this.userWeight,
-                    // productDate:this.userTime,
                     binOrHopper: this.binOrHopper
                 });
 
@@ -53814,12 +53831,10 @@ exports.default = {
                 }, function (ret) {
                     console.log(ret);
                     if (ret.data.status === 1) {
-                        _this.userBucket = '', _this.userProduct = '', _this.userVolume = '', _this.userWeight = '', _this.binOrHopper = '', modal.toast({ message: ret.data.message, duration: 2 });
+                        _this.userBucket = '', _this.userProduct = ' ', _this.userVolume = '', _this.userWeight = '', _this.binOrHopper = '', modal.toast({ message: ret.data.message, duration: 2 });
                     } else {
                         modal.toast({ message: '填写失败！！！', duration: 2 });
                     }
-                }, function (progress) {
-                    // console.log(progress)
                 });
             } else {
                 modal.toast({ message: '请选择产品名称和请输入桶编号', duration: 2 });
@@ -53848,9 +53863,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('div', {
     staticClass: "container weex-ct weex-div",
-    style: ({
-      height: _vm._px2rem(_vm.height, 75)
-    }),
     attrs: {
       "weex-type": "div"
     }

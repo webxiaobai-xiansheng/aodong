@@ -23461,7 +23461,7 @@ exports.default = {
   methods: {
     openMask: function openMask(e) {
       this.showBusiness = true;
-      this.hasBusiness = true;
+      this.hasBusiness = false;
     },
     wxcMaskBusiness: function wxcMaskBusiness() {
       this.showBusiness = false;
@@ -24326,7 +24326,7 @@ exports.default = {
                 title: '显示空料斗',
                 value: '空料斗'
             }],
-            //制粒间、胶囊间、压片间
+            //胶囊间、压片间
             radio2: [{
                 title: '显示料斗',
                 value: '料斗'
@@ -24334,7 +24334,7 @@ exports.default = {
                 title: '显示空料桶',
                 value: '空料桶'
             }],
-            //总混间
+            //制粒间、总混间
             radio3: [{
                 title: '显示料斗',
                 value: '料斗'
@@ -24550,10 +24550,10 @@ exports.default = {
                 if (that.name === '批料待发间') {
                     that.list = that.radio1;
                 }
-                if (that.name === '制粒间' || that.name === '胶囊间1' || that.name === '胶囊间2' || that.name === '压片间') {
+                if (that.name === '胶囊间1' || that.name === '胶囊间2' || that.name === '压片间') {
                     that.list = that.radio2;
                 }
-                if (that.name === '总混间') {
+                if (that.name === '制粒间' || that.name === '总混间') {
                     that.list = that.radio3;
                 }
                 if (that.name === '包衣间') {
@@ -25016,7 +25016,7 @@ exports.default = {
   methods: {
     openMask: function openMask(e) {
       this.showBusiness = true;
-      this.hasBusiness = true;
+      this.hasBusiness = false;
     },
     wxcMaskBusiness: function wxcMaskBusiness() {
       this.showBusiness = false;
@@ -25794,7 +25794,7 @@ exports.default = {
   methods: {
     openMask: function openMask(e) {
       this.showBusiness = true;
-      this.hasBusiness = true;
+      this.hasBusiness = false;
     },
     wxcMaskBusiness: function wxcMaskBusiness() {
       this.showBusiness = false;
@@ -26453,7 +26453,7 @@ exports.default = {
   methods: {
     openMask: function openMask(e) {
       this.showBusiness = true;
-      this.hasBusiness = true;
+      this.hasBusiness = false;
     },
     wxcMaskBusiness: function wxcMaskBusiness() {
       this.showBusiness = false;
@@ -27369,7 +27369,7 @@ exports.default = {
   methods: {
     openMask: function openMask(e) {
       this.showBusiness = true;
-      this.hasBusiness = true;
+      this.hasBusiness = false;
     },
     wxcMaskBusiness: function wxcMaskBusiness() {
       this.showBusiness = false;
@@ -28240,6 +28240,10 @@ exports.default = {
                 }
             });
         }
+    },
+    destroyed: function destroyed() {
+        clearInterval(this.timer); // 清除定时器
+        this.timer = null;
     }
 };
 
@@ -28461,7 +28465,7 @@ exports.default = {
   methods: {
     openMask: function openMask(e) {
       this.showBusiness = true;
-      this.hasBusiness = true;
+      this.hasBusiness = false;
     },
     wxcMaskBusiness: function wxcMaskBusiness() {
       this.showBusiness = false;
@@ -28924,7 +28928,7 @@ exports.default = {
                 url: url,
                 type: 'json'
             }, function (ret) {
-                console.log(ret);
+                // console.log(ret)
                 if (ret.data.status === 1) {
                     if (ret.data.data === null || ret.data.data === 'undefined') {
                         modal.toast({ message: ret.data.message, duration: 2 });
@@ -29718,7 +29722,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [(_vm.showlist) ? _c('video', {
     staticClass: ["video"],
     attrs: {
-      "src": "http://flv2.bn.netease.com/videolib3/1611/01/XGqSL5981/SD/XGqSL5981-mobile.mp4",
+      "src": "http://10.34.10.177:8999/video/1.mp4",
       "controls": "nocontrols",
       "playStatus": "pause",
       "autoPlay": "true"

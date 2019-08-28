@@ -48,6 +48,7 @@ export default {
     methods: {
         // 打开弹窗
         wxcButtonGetEmptySpritzerHopper(e) {
+            this.emptyContainerList=[];
             let _this=this;
             let url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber='+this.workshopName;
             stream.fetch({
@@ -57,7 +58,6 @@ export default {
             },function(ret){
                 if(ret.data.status===1){
                     if(ret.data.data.length>0){
-                        // _this.$router.push({name:'popUp'})
                         for (let i = 0; i < ret.data.data.length; i++) {
                             _this.emptyContainerList.push({title:ret.data.data[i].containerNumber,value:ret.data.data[i].containerNumber})
                         }

@@ -67,7 +67,7 @@ export default {
             title: '显示空料斗',
             value: '空料斗'
         }],
-        //制粒间、胶囊间、压片间
+        //胶囊间、压片间
         radio2: [{
             title: '显示料斗',
             value: '料斗'
@@ -75,7 +75,7 @@ export default {
             title: '显示空料桶',
             value: '空料桶'
         }],
-        //总混间
+        //制粒间、总混间
         radio3: [{
             title: '显示料斗',
             value: '料斗'
@@ -283,10 +283,10 @@ export default {
                 if (that.name === '批料待发间') {
                     that.list = that.radio1;
                 }
-                if (that.name === '制粒间' || that.name === '胶囊间1' || that.name === '胶囊间2' || that.name === '压片间') {
+                if (that.name === '胶囊间1' || that.name === '胶囊间2' || that.name === '压片间') {
                     that.list = that.radio2;
                 }
-                if (that.name === '总混间') {
+                if (that.name === '制粒间' || that.name === '总混间') {
                     that.list = that.radio3;
                 }
                 if (that.name === '包衣间') {

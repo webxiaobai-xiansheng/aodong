@@ -1,5 +1,5 @@
 <template>
-    <!-- 送空料斗功能 -->
+    <!-- 人工入库功能 -->
     <div>
         <div class="btn" @click="wxcButtonManualStorage">
             <text class="btn-txt">人工入库</text>
@@ -49,7 +49,7 @@ export default {
                 url: url,
                 type: 'json',
             }, function(ret) {
-                console.log(ret)
+                // console.log(ret)
                 if (ret.data.status === 1) {
                     if (ret.data.data === null || ret.data.data === 'undefined') {
                         modal.toast({ message:ret.data.message, duration: 2 });

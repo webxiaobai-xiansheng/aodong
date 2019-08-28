@@ -49,6 +49,7 @@ export default {
         
         // 打开弹窗
        wxcButtonGetSpritzerHopperRinse(e) {
+            this.emptyContainerList=[];
             let _this=this;
             let url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber='+this.workshopName;
             stream.fetch({
@@ -74,11 +75,6 @@ export default {
         },
         // 选择空料桶
         wxcSelectEmptyContainer(e) {
-            // if (e.title.length < 1) {
-                //     this.isChoseDisabled = true;
-            // } else {
-                //     this.isChoseDisabled = false;
-            // }
             this.isChoseDisabled = false;
             this.containerNum=e.value
         },
@@ -111,7 +107,6 @@ export default {
                 })
             }else{
                 modal.toast({ message: '请选择桶编号',duration: 2});
-                // _this.show = false;
             }
             this.show =false;
         }

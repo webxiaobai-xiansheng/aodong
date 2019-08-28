@@ -67,6 +67,7 @@ export default {
   methods: {
     // 打开弹窗
     wxcButtonGetEmptySpritzerTan(e) {
+        this.emptyContainerList=[];
         let _this=this;
         let url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber='+this.workshopName;
         stream.fetch({

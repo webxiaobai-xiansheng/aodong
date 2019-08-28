@@ -70,7 +70,7 @@
     methods: {
       openMask (e) {
         this.showBusiness = true;
-        this.hasBusiness = true;
+        this.hasBusiness = false;
       },
       wxcMaskBusiness () {
         this.showBusiness = false;

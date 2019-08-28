@@ -160,7 +160,11 @@ export default {
           }
       })
     }
-  }
+  },
+  destroyed(){
+    clearInterval(this.timer);　　// 清除定时器
+    this.timer = null;
+  },
 }
 </script>
 
