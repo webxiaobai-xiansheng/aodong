@@ -1,6 +1,6 @@
 <template>
     <div class="login_content">
-        <div class="container" :style="{ height: height }">
+        <div class="container">
             <div class="demo">
             <wxc-minibar
                     background-color="#009ff0"
@@ -28,13 +28,6 @@
                         <text class="input_item" @click="onProduct">{{userProduct}}</text>
                     </div>
                 </div>
-                
-                <!-- <div class="inputBox">
-                    <text class="input-title">批号</text>
-                    <div class="input_box">
-                        <input v-model="userBatch " class="input_item" type="text">
-                    </div>
-                </div> -->
 
                 <div class="inputBox">
                     <text class="input-title">容器容积</text>
@@ -50,33 +43,6 @@
                     </div>
                 </div>
 
-                <!-- <div class="inputBox">
-                    <text class="input-title">日期</text>
-                    <div class="input_box">
-                        <text class="input_item" @click="showCalendar">{{userTime}}</text>
-                    </div>
-                </div> -->
-
-                <!-- <div class="inputBox">
-                    <text class="input-title">状态</text>
-                    <div class="input_box">
-                        <text class="input_item" @click="onStatus">{{userStatus}}</text>
-                    </div>
-                </div> -->
-                
-                <!-- <div class="inputBox">
-                    <text class="input-title">物料名称</text>
-                    <div class="input_box">
-                        <input v-model="userMaterial" class="input_item" type="text">
-                    </div>
-                </div> -->
-
-                <!-- <div class="inputBox">
-                    <text class="input-title">检验状态</text>
-                    <div class="input_box">
-                        <text class="input_item" @click="onQalified">{{userQalified}}</text>
-                    </div>
-                </div> -->
             </div>
 
             <div class="button_box">
@@ -108,16 +74,6 @@
             </div>
         </wxc-popup>
 
-        <!-- 日期 -->
-         <!-- <wxc-page-calendar :date-range="dateRange"
-                       :animationType="animationType"
-                       :selected-date="selectedDate"
-                       :is-range="isRange"
-                       :minibar-cfg="minibarCfg"
-                       @wxcPageCalendarBackClicked="wxcPageCalendarBackClicked"
-                       @wxcPageCalendarDateSelected="wxcPageCalendarDateSelected"
-                       ref="wxcPageCalendar">
-        </wxc-page-calendar> -->
     </div>
 </template>
 <script>
@@ -133,7 +89,6 @@ export default {
         userVolume:'',
         userWeight:'',
         binOrHopper:'',
-        // userTime:'2019-10-10',
         isWorkShopDisabled: true,
 
         // 产品名称
@@ -149,17 +104,6 @@ export default {
             value: '空料桶'
           }
         ],
-
-        // 时间参数
-        // animationType: 'push',
-        // currentDate: '',
-        // selectedDate: ['2019-08-23', '2020-06-30'],
-        // isRange: true,
-        // calendarTitle: '选择日期',
-        // dateRange: ['2019-08-23', '2020-06-30'],
-        // minibarCfg: {
-        //     title: '日期选择'
-        // }
     }),
     methods: {
         // 产品名称
@@ -177,22 +121,6 @@ export default {
             this.isLoginDisabled = false;
         },
 
-
-        // 时间
-        // wxcPageCalendarDateSelected (e) {
-        //     this.userTime=e.date.join("")
-        //     this.selectedDate = e.date;
-        //     this.currentDate = e.date;
-        // },
-        // wxcPageCalendarBackClicked () {
-        // },
-        // showCalendar () {
-        //     this.isRange = false;
-        //     setTimeout(() => {
-        //     this.$refs['wxcPageCalendar'].show();
-        //     }, 10);
-        // },
-
         // 登录按钮
         login() {
             let _this=this;
@@ -205,7 +133,6 @@ export default {
                     productName:this.userProduct,
                     containerVolume:this.userVolume,
                     containerWeight:this.userWeight,
-                    // productDate:this.userTime,
                     binOrHopper:this.binOrHopper
                 });
                 
@@ -227,8 +154,6 @@ export default {
                     }else{
                         modal.toast({ message: '填写失败！！！',duration: 2});
                     }
-                },function(progress) {
-                    // console.log(progress)
                 })
             }else{
                 modal.toast({ message: '请选择产品名称和请输入桶编号',duration: 2});

@@ -39,7 +39,7 @@
     </wxc-popup>
 
     <div class="videoView">
-        <video class="video" src="http://flv2.bn.netease.com/videolib3/1611/01/XGqSL5981/SD/XGqSL5981-mobile.mp4" controls="nocontrols" play-status='pause'
+        <video class="video" src="http://10.34.10.177:8999/video/1.mp4" controls="nocontrols" play-status='pause'
         auto-play='true' v-if="showlist"></video>
     </div>
   </div>
