@@ -1,14 +1,14 @@
 <template>
-    <!-- 送空料斗功能 -->
+    <!-- 送空料桶清洗功能 -->
     <div>
-        <div class="btn" @click="wxcButtonGetEmptySpritzerHopper">
-            <text class="btn-txt">送空料斗</text>
+        <div class="btn" @click="wxcButtonGetSpritzerHopperRinse">
+            <text class="btn-txt">送空料桶清洗</text>
         </div>
         <div class="mask-container">
             <wxc-popup popup-color="#fff" :show="show" @wxcPopupOverlayClicked="wxcMaskSetHidden" pos="left" height="400">
                 <div class="content mask-content">
                     <div class="mask-title">
-                        <text class="title">请选择空料斗或空料桶</text>
+                        <text class="title">请选择空料桶</text>
                     </div>
                     <div class="scroller-box">
                         <scroller class="scroller">
@@ -41,13 +41,14 @@ export default {
         containerNum:''
     }),
     created () {
-      storage.getItem('workShopName', event => {
+        storage.getItem('workShopName', event => {
           this.workshopName = event.data;
-      });
+        });
     },
     methods: {
+        
         // 打开弹窗
-        wxcButtonGetEmptySpritzerHopper(e) {
+       wxcButtonGetSpritzerHopperRinse(e) {
             this.emptyContainerList=[];
             let _this=this;
             let url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber='+this.workshopName;
@@ -61,9 +62,9 @@ export default {
                         for (let i = 0; i < ret.data.data.length; i++) {
                             _this.emptyContainerList.push({title:ret.data.data[i].containerNumber,value:ret.data.data[i].containerNumber})
                         }
-                        _this.show=true;
+                        _this.show=true
                     }else{
-                        modal.toast({ message: '该车间没有料斗',duration: 2});
+                        modal.toast({ message: '该车间没有料桶',duration: 2});
                     }
                 }
             })
@@ -72,28 +73,17 @@ export default {
         wxcMaskSetHidden() {
             this.show = false;
         },
-        // 选择空料斗
+        // 选择空料桶
         wxcSelectEmptyContainer(e) {
-            console.log(e)
-            console.log(e.title);
-            // if (e.title.length < 1) {
-            //     this.containerNum=e.value;
-            //     console.log(this.containerNum)
-            //     this.isChoseDisabled = true;
-            // } else {
-            //     this.isChoseDisabled = false;
-            // }
             this.isChoseDisabled = false;
-            this.containerNum=e.value;
+            this.containerNum=e.value
         },
-        // 返回
         black(){
-            this.show=false;
+           this.show = false;
         },
         // 选择选择空料斗、料桶--确认按钮
         wxcConfirmEmptyContainer(e) {
             let _this=this;
-            console.log(this.containerNum)
             if(this.containerNum!=='undefined'&&this.workshopName!=='undefined'){
                 let url = 'http://10.34.10.177:8999/delivery/sendContainerToCleaningRoom';
                 let body = JSON.stringify({
@@ -114,12 +104,11 @@ export default {
                     }else{
                         modal.toast({ message: ret.data.message,duration: 2});
                     }
-                    // this.show = false;
                 })
             }else{
                 modal.toast({ message: '请选择桶编号',duration: 2});
             }
-            this.show = false;
+            this.show =false;
         }
     }
 }

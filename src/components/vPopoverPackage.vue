@@ -23,7 +23,7 @@
           <v-spritzer-tank class="contentBox-btn"></v-spritzer-tank>
           <v-get-spritzer-hopper-back class="contentBox-btn"></v-get-spritzer-hopper-back>
           <v-get-spritzer-tank class="contentBox-btn"></v-get-spritzer-tank>
-          <v-get-spritzer-hopper-rinse class="contentBox-btn"></v-get-spritzer-hopper-rinse>
+          <v-get-spritzer-tank-rinse class="contentBox-btn"></v-get-spritzer-tank-rinse>
           <v-reset-container class="contentBox-btn"></v-reset-container>
       </div>
     </wxc-mask>
@@ -54,7 +54,7 @@
   // 送空料桶回中间站
   import vGetSpritzerHopperBack from './btn/vGetSpritzerHopperBack.vue';
   // 送空料桶清洗
-  import vGetSpritzerHopperRinse from './btn/vGetSpritzerHopperRinse.vue';
+  import vGetSpritzerTankRinse from './btn/vGetSpritzerTankRinse.vue';
   // 取料桶
   import vSpritzerTank from './btn/vSpritzerTank.vue';
   // 送料桶
@@ -62,7 +62,7 @@
   import vResetContainer from './btn/vResetContainer.vue';
   const Stark = new BroadcastChannel('Avengers');
   export default {
-    components: { WxcMask,vStop,vStart,vGetSpritzerHopperBack,vGetSpritzerHopperRinse,vSpritzerTank,vGetSpritzerTank,vResetContainer},
+    components: { WxcMask,vStop,vStart,vGetSpritzerHopperBack,vGetSpritzerTankRinse,vSpritzerTank,vGetSpritzerTank,vResetContainer},
     data: () => ({
       showBusiness: false,
       showFunction:false,

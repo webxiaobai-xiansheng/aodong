@@ -2137,7 +2137,7 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "C:\\Users\\IBM\\Desktop\\aodong\\src\\components\\btn\\vGetEmptySpritzerHopper.vue"
+__vue_options__.__file = "C:\\Users\\IBM\\Desktop\\aodong\\src\\components\\btn\\vGetEmptySpritzerHopperRinse.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 __vue_options__._scopeId = "data-v-10173b30"
@@ -24940,9 +24940,9 @@ var _vSpritzerHopper = __webpack_require__(21);
 
 var _vSpritzerHopper2 = _interopRequireDefault(_vSpritzerHopper);
 
-var _vGetEmptySpritzerHopper = __webpack_require__(22);
+var _vGetEmptySpritzerHopperRinse = __webpack_require__(22);
 
-var _vGetEmptySpritzerHopper2 = _interopRequireDefault(_vGetEmptySpritzerHopper);
+var _vGetEmptySpritzerHopperRinse2 = _interopRequireDefault(_vGetEmptySpritzerHopperRinse);
 
 var _vResetContainer = __webpack_require__(6);
 
@@ -25002,7 +25002,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Stark = new BroadcastChannel('Avengers');
 exports.default = {
-  components: { WxcMask: _weexUi.WxcMask, vStop: _vStop2.default, vStart: _vStart2.default, vGetSpritzerHopper: _vGetSpritzerHopper2.default, vEmptySpritzerHopper: _vEmptySpritzerHopper2.default, vSpritzerHopper: _vSpritzerHopper2.default, vGetEmptySpritzerHopper: _vGetEmptySpritzerHopper2.default, vResetContainer: _vResetContainer2.default },
+  components: { WxcMask: _weexUi.WxcMask, vStop: _vStop2.default, vStart: _vStart2.default, vGetSpritzerHopper: _vGetSpritzerHopper2.default, vEmptySpritzerHopper: _vEmptySpritzerHopper2.default, vSpritzerHopper: _vSpritzerHopper2.default, vGetEmptySpritzerHopperRinse: _vGetEmptySpritzerHopperRinse2.default, vResetContainer: _vResetContainer2.default },
   data: function data() {
     return {
       showBusiness: false,
@@ -25712,9 +25712,9 @@ var _vSpritzerHopper = __webpack_require__(21);
 
 var _vSpritzerHopper2 = _interopRequireDefault(_vSpritzerHopper);
 
-var _vGetEmptySpritzerHopper = __webpack_require__(22);
+var _vGetEmptySpritzerHopperRinse = __webpack_require__(22);
 
-var _vGetEmptySpritzerHopper2 = _interopRequireDefault(_vGetEmptySpritzerHopper);
+var _vGetEmptySpritzerHopperRinse2 = _interopRequireDefault(_vGetEmptySpritzerHopperRinse);
 
 var _vResetContainer = __webpack_require__(6);
 
@@ -25780,7 +25780,7 @@ var Stark = new BroadcastChannel('Avengers');
 
 // 送料斗或料桶
 exports.default = {
-  components: { WxcMask: _weexUi.WxcMask, vStop: _vStop2.default, vStart: _vStart2.default, vGetSpritzerTankHopper: _vGetSpritzerTankHopper2.default, vEmptySpritzerTank: _vEmptySpritzerTank2.default, vSpritzerHopper: _vSpritzerHopper2.default, vGetEmptySpritzerHopper: _vGetEmptySpritzerHopper2.default, vResetContainer: _vResetContainer2.default },
+  components: { WxcMask: _weexUi.WxcMask, vStop: _vStop2.default, vStart: _vStart2.default, vGetSpritzerTankHopper: _vGetSpritzerTankHopper2.default, vEmptySpritzerTank: _vEmptySpritzerTank2.default, vSpritzerHopper: _vSpritzerHopper2.default, vGetEmptySpritzerHopperRinse: _vGetEmptySpritzerHopperRinse2.default, vResetContainer: _vResetContainer2.default },
   data: function data() {
     return {
       showBusiness: false,

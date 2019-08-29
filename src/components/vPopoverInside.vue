@@ -23,6 +23,7 @@
           <v-spritzer-tank class="contentBox-btn"></v-spritzer-tank>
           <v-get-empty-spritzer-tank class="contentBox-btn"></v-get-empty-spritzer-tank>
           <v-get-spritzer-tank class="contentBox-btn"></v-get-spritzer-tank>
+          <v-get-spritzer-tank-rinse class="contentBox-btn"></v-get-spritzer-tank-rinse>
           <v-empty-spritzer-tank class="contentBox-btn"></v-empty-spritzer-tank>
           <v-reset-container class="contentBox-btn"></v-reset-container>
       </div>
@@ -51,8 +52,8 @@
   import { WxcMask } from 'weex-ui';
   import vStop from './btn/vStop';
   import vStart from './btn/vStart.vue';
-  // 送空料桶
-  import vGetEmptySpritzerTank from './btn/vGetEmptySpritzerTank.vue';
+  // 送空料桶清洗
+  import vGetSpritzerTankRinse from './btn/vGetSpritzerTankRinse.vue';
   // 取空料桶
   import vEmptySpritzerTank from './btn/vEmptySpritzerTank.vue';
   // 取料桶
@@ -62,7 +63,7 @@
   import vResetContainer from './btn/vResetContainer.vue';
   const Stark = new BroadcastChannel('Avengers');
   export default {
-    components: { WxcMask,vStop,vStart,vGetEmptySpritzerTank,vEmptySpritzerTank,vSpritzerTank,vGetSpritzerTank,vResetContainer},
+    components: { WxcMask,vStop,vStart,vGetSpritzerTankRinse,vEmptySpritzerTank,vSpritzerTank,vGetSpritzerTank,vResetContainer},
     data: () => ({
       showBusiness: false,
       showFunction:false,

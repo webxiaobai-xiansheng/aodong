@@ -23,7 +23,7 @@
           <v-empty-spritzer-hopper class="contentBox-btn"></v-empty-spritzer-hopper>
           <v-get-spritzer-hopper class="contentBox-btn"></v-get-spritzer-hopper>
           <v-spritzer-hopper class="contentBox-btn"></v-spritzer-hopper>
-          <v-get-empty-spritzer-hopper class="contentBox-btn"></v-get-empty-spritzer-hopper>
+          <v-get-empty-spritzer-hopper-rinse class="contentBox-btn"></v-get-empty-spritzer-hopper-rinse>
           <v-reset-container class="contentBox-btn"></v-reset-container>
       </div>
     </wxc-mask>
@@ -54,11 +54,11 @@
   import vGetSpritzerHopper from './btn/vGetSpritzerHopper.vue';
   import vEmptySpritzerHopper from './btn/vEmptySpritzerHopper.vue';
   import vSpritzerHopper from './btn/vSpritzerHopper.vue';
-  import vGetEmptySpritzerHopper from './btn/vGetEmptySpritzerHopper.vue';
+  import vGetEmptySpritzerHopperRinse from './btn/vGetEmptySpritzerHopperRinse.vue';
   import vResetContainer from './btn/vResetContainer.vue';
   const Stark = new BroadcastChannel('Avengers');
   export default {
-    components: { WxcMask,vStop,vStart,vGetSpritzerHopper,vEmptySpritzerHopper,vSpritzerHopper,vGetEmptySpritzerHopper,vResetContainer},
+    components: { WxcMask,vStop,vStart,vGetSpritzerHopper,vEmptySpritzerHopper,vSpritzerHopper,vGetEmptySpritzerHopperRinse,vResetContainer},
     data: () => ({
       showBusiness: false,
       showFunction:false,

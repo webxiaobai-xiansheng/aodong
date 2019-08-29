@@ -42,6 +42,7 @@ export default {
     methods: {
         // 打开弹窗
         wxcButtonManualStorage(e) {
+            this.taskList = [];
             let _this = this;
             let url = 'http://10.34.10.177:8999/agvTask/getFailureAgvTaskOfContainerNumber';
             stream.fetch({
@@ -49,12 +50,13 @@ export default {
                 url: url,
                 type: 'json',
             }, function(ret) {
-                // console.log(ret)
+                console.log(ret)
                 if (ret.data.status === 1) {
-                    if (ret.data.data === null || ret.data.data === 'undefined') {
+                    console.log(ret.data.message);
+                    if (ret.data.message === '没有失败的信息') {
                         modal.toast({ message:ret.data.message, duration: 2 });
                         _this.show = false;
-                    } else {
+                    } else if (ret.data.message === '有失败的任务') {
                         if (ret.data.data.length > 0) {
                             for (let i = 0; i < ret.data.data.length; i++) {
                                 _this.taskList.push({ title: ret.data.data[i].containerNumber, value: ret.data.data[i].taskId })
