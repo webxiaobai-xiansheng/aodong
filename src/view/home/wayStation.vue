@@ -92,7 +92,37 @@ export default {
                 _this.showlist=true;
                 clearInterval(_this.time);
                 _this.showproduct=true;
-                _this.functionNumber=ret.data.data.functionNumber;
+                // _this.functionNumber=ret.data.data.functionNumber;
+                if(ret.data.data.functionNumber === 'WL'){
+                    _this.functionNumber = '批料待发间'
+                }
+                if(ret.data.data.functionNumber === 'ZL') {
+                    _this.functionNumber = '制粒间'
+                }
+                if(ret.data.data.functionNumber === 'ZH') {
+                    _this.functionNumber = '总混间'
+                }
+                if(ret.data.data.functionNumber === 'JN1') {
+                    _this.functionNumber = '胶囊间1'
+                }
+                if(ret.data.data.functionNumber === 'JN2') {
+                    _this.functionNumber = '胶囊间2'
+                }
+                if(ret.data.data.functionNumber === 'YP') {
+                    _this.functionNumber = '压片间'
+                }
+                if(ret.data.data.functionNumber === 'BY') {
+                    _this.functionNumber = '包衣间'
+                }
+                if(ret.data.data.functionNumber === 'PBZ') {
+                    _this.functionNumber = '瓶装'
+                }
+                if(ret.data.data.functionNumber === 'LSBZ1') {
+                    _this.functionNumber = '铝塑包装1'
+                }
+                if(ret.data.data.functionNumber === 'LSBZ2') {
+                    _this.functionNumber = '铝塑包装2'
+                }
                 _this.containerNumber=ret.data.data.containerNumber;
                 _this.productName=ret.data.data.drugName;
                 _this.id=ret.data.data.taskId;

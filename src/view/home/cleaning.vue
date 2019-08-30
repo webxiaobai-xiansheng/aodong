@@ -127,6 +127,7 @@ export default {
                   Steve.postMessage('Assemble!');
                   modal.toast({ message: ret.data.message,duration: 2});
               }else{
+                _this.containerNum=' ';
                  modal.toast({ message: ret.data.message,duration: 2});
               }
           })

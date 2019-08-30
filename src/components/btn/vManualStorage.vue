@@ -54,7 +54,7 @@ export default {
                 if (ret.data.status === 1) {
                     console.log(ret.data.message);
                     if (ret.data.message === '没有失败的信息') {
-                        modal.toast({ message:ret.data.message, duration: 2 });
+                        modal.toast({ message: ret.data.message, duration: 2 });
                         _this.show = false;
                     } else if (ret.data.message === '有失败的任务') {
                         if (ret.data.data.length > 0) {
@@ -93,14 +93,16 @@ export default {
                     type: 'json',
                 }, function(ret) {
                     if (ret.data.status === 1) {
-                        modal.toast({ message: ret.data.message,duration: 2});
+                        const Steve = new BroadcastChannel('Avengers')
+                        Steve.postMessage('Assemble!')
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     } else {
-                        modal.toast({ message: ret.data.message,duration: 2});
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     }
                     // this.show = false;
                 })
             } else {
-                modal.toast({ message: '请选择桶编号',duration: 2});
+                modal.toast({ message: '请选择桶编号', duration: 2 });
             }
             this.show = false;
         },
@@ -132,6 +134,15 @@ export default {
 .mask-container {
     justify-content: center;
     align-items: center;
+}
+
+.scroller-box {
+    height: 708;
+    position: absolute !important;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
 }
 
 .mask-content {

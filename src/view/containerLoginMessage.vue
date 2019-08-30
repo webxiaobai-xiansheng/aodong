@@ -129,6 +129,8 @@ export default {
                         if (ret.data.status === 1) {
                             modal.toast({ message: ret.data.message });
                             that.isCheckDisabled = false;
+                            that.ContainerNum = ' ';
+                            that.LocationNum = ' ';
                         } else {
                             modal.toast({ message: ret.data.message });
                         }
