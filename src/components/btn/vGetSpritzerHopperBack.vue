@@ -1,8 +1,11 @@
 <template>
     <!-- 送空料桶回中间站功能 -->
     <div>
-        <div class="btn" @click="wxcButtonGetSpritzerHopperBack">
+        <!-- <div class="btn" @click="wxcButtonGetSpritzerHopperBack">
             <text class="btn-txt">送空料桶回中间站</text>
+        </div> -->
+        <div class="btn">
+            <wxc-button text="送空料桶回中间站" type="blue" :disabled="isDisabled" :btn-style="btnStyle" :text-style="textStyle" @wxcButtonClicked="wxcButtonGetSpritzerHopperBack"></wxc-button>
         </div>
         <div class="mask-container">
             <wxc-popup popup-color="#fff" :show="show" @wxcPopupOverlayClicked="wxcMaskSetHidden" pos="left" height="400">
@@ -41,6 +44,17 @@ export default {
             show: false,
             isChoseDisabled: true,
             emptyContainerList: [],
+            isDisabled: false,
+            btnStyle: {
+                width: '200px',
+                height: '100px',
+                borderRadius: '10px'
+            },
+            textStyle: {
+                fontSize: '35px',
+                color: '#ffffff',
+                textAlign: 'center'
+            }
         }
     },
     created() {
@@ -55,23 +69,31 @@ export default {
         wxcButtonGetSpritzerHopperBack(e) {
             this.emptyContainerList = [];
             let _this = this;
-            let url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber='+this.workshopName;
-            stream.fetch({
-                method: "GET",
-                url: url,
-                type: 'json',
-            }, function(ret) {
-                if (ret.data.status === 1) {
-                    if (ret.data.data.length > 0) {
-                        for (let i = 0; i < ret.data.data.length; i++) {
-                            _this.emptyContainerList.push({ title: ret.data.data[i].containerNumber, value: ret.data.data[i].containerNumber })
+            _this.isDisabled = true;
+            if (e.disabled) {
+                _this.isDisabled = true;
+                return;
+            } else {
+                let url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+                stream.fetch({
+                    method: "GET",
+                    url: url,
+                    type: 'json',
+                }, function(ret) {
+                    _this.isDisabled = false;
+                    if (ret.data.status === 1) {
+                        if (ret.data.data.length > 0) {
+                            for (let i = 0; i < ret.data.data.length; i++) {
+                                _this.emptyContainerList.push({ title: ret.data.data[i].containerNumber, value: ret.data.data[i].containerNumber })
+                            }
+                            _this.show = true
+                        } else {
+                            modal.toast({ message: '该车间没有料桶，请尝试其他操作', duration: 2 });
                         }
-                        _this.show = true
-                    } else {
-                        modal.toast({ message: '该车间没有料桶', duration: 2 });
                     }
-                }
-            })
+
+                })
+            }
         },
         // 关闭弹窗
         wxcMaskSetHidden() {
@@ -134,6 +156,7 @@ export default {
     color: #fff;
     font-size: 35px;
 }
+
 .mask-container {
     justify-content: center;
     align-items: center;

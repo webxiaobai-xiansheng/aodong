@@ -1,6 +1,6 @@
 <template>
   <div class="btn-box">
-    <!-- 批料待发间 -->
+    <!-- 批料待发室 -->
     <div class="btns">
       <div class="btn" @click="openMask">
         <text class="btn-txt">桶管理</text>
@@ -19,7 +19,7 @@
               :show-close="true"
               :show="showBusiness"
               @wxcMaskSetHidden="wxcMaskBusiness">
-      <div class="content">
+      <div class="contentBox">
         <!-- <div class="content-btn"> -->
           <v-empty-spritzer-hopper class="contentBox-btn"></v-empty-spritzer-hopper>
           <v-get-spritzer-hopper class="contentBox-btn"></v-get-spritzer-hopper>
@@ -37,7 +37,7 @@
               :show-close="true"
               :show="showFunction"
               @wxcMaskSetHidden="wxcMaskFunction">
-      <div class="content">
+      <div class="content small">
         <div class="content-btn">
           <v-stop></v-stop>
           <v-start></v-start>
@@ -118,6 +118,11 @@
   font-size: 35px;
 }
 .content{
+  height: 300px;
+  flex-direction: row;
+  justify-content: center;
+}
+.contentBox{
   height: 500px;
   width: 500px;
   display: flex;

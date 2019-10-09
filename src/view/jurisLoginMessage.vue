@@ -124,6 +124,11 @@ export default {
         // 登录按钮
         login() {
             let _this=this;
+            this.userBucket = this.userBucket.replace(/\s+/g,"");
+            this.userProduct = this.userProduct.replace(/\s+/g,"");
+            this.userVolume = this.userVolume.replace(/\s+/g,"");
+            this.userWeight = this.userWeight.replace(/\s+/g,"");
+            this.binOrHopper = this.binOrHopper.replace(/\s+/g,"");
             if(this.userBucket&&this.userProduct){
                 this.binOrHopper=this.userProduct==='空料斗'?'料斗':'料桶';
                 let url = 'http://10.34.10.177:8200/containerInformation/saveContainerInformation';

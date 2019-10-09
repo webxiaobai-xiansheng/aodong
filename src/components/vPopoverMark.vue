@@ -1,6 +1,6 @@
 <template>
   <div class="btn-box">
-    <!-- 制粒间和总混间 -->
+    <!-- 制粒室和批混室 -->
     <div class="btns">
       <div class="btn" @click="openMask">
         <text class="btn-txt">桶管理</text>

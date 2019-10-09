@@ -1,5 +1,5 @@
 <template>
-  <!-- 包衣间 -->
+  <!-- 包衣室 -->
   <div class="home">
     <v-popover-inside></v-popover-inside>
     <v-table class="table"></v-table>

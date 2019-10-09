@@ -4,12 +4,11 @@
 /* table begin */
 .table_container {
     align-items: center;
-    margin-top: 20px;
 }
 .table_scroller{
     width:702;
     height:675;
-    margin-top: 20px;
+    margin-top: 15px;
     margin-bottom:20px;
 }
 
@@ -56,3 +55,7 @@
 /* lise-cell样式 end */
 
 /* 公共样式 end */
+
+/* weex begin */
+
+/* weex end */

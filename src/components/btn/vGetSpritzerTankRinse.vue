@@ -1,8 +1,11 @@
 <template>
     <!-- 送空料桶清洗功能 -->
     <div>
-        <div class="btn" @click="wxcButtonGetSpritzerHopperRinse">
+        <!-- <div class="btn" @click="wxcButtonGetSpritzerHopperRinse">
             <text class="btn-txt">送空料桶清洗</text>
+        </div> -->
+        <div class="btn">
+            <wxc-button text="送空料桶清洗" type="blue" :disabled="isDisabled" :btn-style="btnStyle" :text-style="textStyle" @wxcButtonClicked="wxcButtonGetSpritzerHopperRinse"></wxc-button>
         </div>
         <div class="mask-container">
             <wxc-popup popup-color="#fff" :show="show" @wxcPopupOverlayClicked="wxcMaskSetHidden" pos="left" height="400">
@@ -37,37 +40,57 @@ export default {
         show: false,
         isChoseDisabled: true,
         emptyContainerList: [],
-        workshopName:'',
-        containerNum:''
+        workshopName: '',
+        containerNum: '',
+        isDisabled: false,
+        btnStyle: {
+            width: '200px',
+            height: '100px',
+            borderRadius: '10px'
+        },
+        textStyle: {
+            fontSize: '35px',
+            color: '#ffffff',
+            textAlign: 'center'
+        }
     }),
-    created () {
+    created() {
         storage.getItem('workShopName', event => {
-          this.workshopName = event.data;
+            this.workshopName = event.data;
         });
     },
     methods: {
-        
+
         // 打开弹窗
-       wxcButtonGetSpritzerHopperRinse(e) {
-            this.emptyContainerList=[];
-            let _this=this;
-            let url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber='+this.workshopName;
-            stream.fetch({
-                method:"GET",
-                url:url,
-                type:'json',
-            },function(ret){
-                if(ret.data.status===1){
-                    if(ret.data.data.length>0){
-                        for (let i = 0; i < ret.data.data.length; i++) {
-                            _this.emptyContainerList.push({title:ret.data.data[i].containerNumber,value:ret.data.data[i].containerNumber})
+        wxcButtonGetSpritzerHopperRinse(e) {
+            this.emptyContainerList = [];
+            let _this = this;
+            _this.isDisabled = true;
+            if (e.disabled) {
+                _this.isDisabled = true;
+                return;
+            } else {
+                let url = 'http://10.34.10.177:8200/functionRoomUseContainer/getFunctionRoomUseContainer?functionRoomNumber=' + this.workshopName;
+                stream.fetch({
+                    method: "GET",
+                    url: url,
+                    type: 'json',
+                }, function(ret) {
+                    _this.isDisabled = false;
+                    if (ret.data.status === 1) {
+                        if (ret.data.data.length > 0) {
+                            for (let i = 0; i < ret.data.data.length; i++) {
+                                _this.emptyContainerList.push({ title: ret.data.data[i].containerNumber, value: ret.data.data[i].containerNumber })
+                            }
+                            _this.show = true
+                        } else {
+                            modal.toast({ message: '该车间没有料桶，请尝试其他操作', duration: 2 });
+                            _this.isDisabled = false;
                         }
-                        _this.show=true
-                    }else{
-                        modal.toast({ message: '该车间没有料桶',duration: 2});
                     }
-                }
-            })
+
+                })
+            }
         },
         // 关闭弹窗
         wxcMaskSetHidden() {
@@ -76,39 +99,39 @@ export default {
         // 选择空料桶
         wxcSelectEmptyContainer(e) {
             this.isChoseDisabled = false;
-            this.containerNum=e.value
+            this.containerNum = e.value
         },
-        black(){
-           this.show = false;
+        black() {
+            this.show = false;
         },
         // 选择选择空料斗、料桶--确认按钮
         wxcConfirmEmptyContainer(e) {
-            let _this=this;
-            if(this.containerNum!=='undefined'&&this.workshopName!=='undefined'){
+            let _this = this;
+            if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
                 let url = 'http://10.34.10.177:8999/delivery/sendContainerToCleaningRoom';
                 let body = JSON.stringify({
-                    containerNumber:_this.containerNum,
-                    functionRoomNumber:_this.workshopName
+                    containerNumber: _this.containerNum,
+                    functionRoomNumber: _this.workshopName
                 });
                 stream.fetch({
-                    method:"POST",
-                    url:url,
-                    headers:{'Content-Type':'application/json'},
+                    method: "POST",
+                    url: url,
+                    headers: { 'Content-Type': 'application/json' },
                     body: body,
-                    type:'json',
-                },function(ret){
-                    if(ret.data.status===1){
+                    type: 'json',
+                }, function(ret) {
+                    if (ret.data.status === 1) {
                         const Steve = new BroadcastChannel('Avengers')
                         Steve.postMessage('Assemble!')
-                        modal.toast({ message: ret.data.message,duration: 2});
-                    }else{
-                        modal.toast({ message: ret.data.message,duration: 2});
+                        modal.toast({ message: ret.data.message, duration: 2 });
+                    } else {
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     }
                 })
-            }else{
-                modal.toast({ message: '请选择桶编号',duration: 2});
+            } else {
+                modal.toast({ message: '请选择桶编号', duration: 2 });
             }
-            this.show =false;
+            this.show = false;
         }
     }
 }

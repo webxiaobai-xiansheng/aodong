@@ -1,5 +1,5 @@
 <template>
-  <!-- 制粒间和总混间 -->
+  <!-- 制粒室和批混室 -->
   <div class="home">
     <v-popover-mark></v-popover-mark>
     <v-table class="table"></v-table>

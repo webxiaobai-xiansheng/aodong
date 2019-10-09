@@ -1,6 +1,6 @@
 <template>
   <div class="btn-box">
-    <!-- 胶囊间和压片间 -->
+    <!-- 胶囊填充室和压片室 -->
     <div class="btns">
       <div class="btn" @click="openMask">
         <text class="btn-txt">桶管理</text>

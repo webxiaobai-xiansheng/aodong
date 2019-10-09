@@ -51,25 +51,25 @@ export const router = new Router({
       component: home,
       redirect: { name: 'batch' },
       children: [
-        // 批料待发间
+        // 批料待发室
         {
             path: '/batch',
             name: 'batch',
             component: batch
         },
-        // 制粒间和总混间
+        // 制粒室和批混室
         {
           path: '/granulating',
           name: 'granulating',
           component: granulating
         },
-        // 胶囊间和压片间
+        // 胶囊填充室和压片室
         {
           path: '/capsule',
           name: 'capsule',
           component: capsule
         },
-        // 包衣间
+        // 包衣室
         {
           path: '/laggingCover',
           name: 'laggingCover',
@@ -87,7 +87,7 @@ export const router = new Router({
           name: 'wayStation',
           component: wayStation
         },
-        // 清洗间
+        // 容器具清洗室
         {
           path: '/cleaning',
           name: 'cleaning',

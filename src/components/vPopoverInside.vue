@@ -1,6 +1,6 @@
 <template>
   <div class="btn-box">
-    <!-- 包衣间 -->
+    <!-- 包衣室 -->
     <div class="btns">
       <div class="btn" @click="openMask">
         <text class="btn-txt">桶管理</text>
@@ -21,7 +21,6 @@
               @wxcMaskSetHidden="wxcMaskBusiness">
       <div class="contentBox">
           <v-spritzer-tank class="contentBox-btn"></v-spritzer-tank>
-          <v-get-empty-spritzer-tank class="contentBox-btn"></v-get-empty-spritzer-tank>
           <v-get-spritzer-tank class="contentBox-btn"></v-get-spritzer-tank>
           <v-get-spritzer-tank-rinse class="contentBox-btn"></v-get-spritzer-tank-rinse>
           <v-empty-spritzer-tank class="contentBox-btn"></v-empty-spritzer-tank>

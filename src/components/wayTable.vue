@@ -1,6 +1,11 @@
 <template>
     <div>
         <div class="table_container">
+            <div class="car_box">
+                <text class="cars_text">{{taskFunctionNumber}}</text>
+                <text class="cars_text">{{taskContainerNumber}}</text>
+                <text class="cars_text">{{task}}</text>
+            </div>
             <div class="radio_box">
                 <wxc-grid-select class="radio_item" :single="true" :cols="5" :customStyles="customStyles" :list="list" @select="params => onSelect(params)">
                 </wxc-grid-select>
@@ -73,10 +78,13 @@ export default {
         pageSize: 10,
         pages: 0,
         pageNum: 1,
-        btext:''
+        btext: '',
+        taskFunctionNumber: '',
+        task: '',
+        taskContainerNumber: ''
     }),
     methods: {
-        
+
         // 点击table选择桶或者料斗
         selectContainer(index) {
             let that = this;
@@ -98,6 +106,7 @@ export default {
         // 初始化table和筛选table
         initTable() {
             let that = this;
+            that.currentIndex = -1;
             let url = 'http://10.34.10.177:8200/containerInformation/getAllContainerInformation';
             let body = JSON.stringify({
                 init: '',
@@ -150,6 +159,11 @@ export default {
                         that.isPreviewDisabled = true;
                         that.isNextDisabled = true;
                     }
+                } else {
+                    that.currentPage = 0;
+                    that.pages = 0;
+                    that.isPreviewDisabled = true;
+                    that.isNextDisabled = true;
                 }
             });
         },
@@ -215,7 +229,7 @@ export default {
                 that.initTable();
             }
         },
-        
+
         // 筛选按钮
         showFilterButton() {
             let that = this;
@@ -247,23 +261,93 @@ export default {
                 that.initTable();
             }
         },
+        //显示车子的信息
+        showCarsDetails() {
+            let that = this;
+            let url = 'http://10.34.10.177:8999/agvTask/getCurrentAgvTask';
+            stream.fetch({
+                method: "GET",
+                url: url,
+                type: 'json',
+            }, function(ret) {
+                if (ret.data.status === 1) {
+                    if (ret.data.message === '当前没有执行任务') {
+                        that.taskFunctionNumber = '';
+                        that.taskContainerNumber = '';
+                        that.task = '' + ret.data.message + '';
+                    } else {
+                        let str = '车间:'
+                        switch (ret.data.data.functionNumber) {
+                            case 'WL':
+                                that.taskFunctionNumber = str + '批料待发室';
+                                break;
+                            case 'ZH':
+                                that.taskFunctionNumber = str + '批混室';
+                                break;
+                            case 'ZL':
+                                that.taskFunctionNumber = str + '制粒室';
+                                break;
+                            case 'JN1':
+                                that.taskFunctionNumber = str + '胶囊填充室1';
+                                break;
+                            case 'JN2':
+                                that.taskFunctionNumber = str + '胶囊填充室2';
+                                break;
+                            case 'JN3':
+                                that.taskFunctionNumber = str + '胶囊填充室3';
+                                break;
+                            case 'YP1':
+                                that.taskFunctionNumber = str + '压片室1';
+                                break;
+                            case 'YP2':
+                                that.taskFunctionNumber = str + '压片室2';
+                                break;
+                            case 'BY':
+                                that.taskFunctionNumber = str + '包衣室';
+                                break;
+                            case 'PBZ':
+                                that.taskFunctionNumber = str + '瓶包装室';
+                                break;
+                            case 'LSBZ1':
+                                that.taskFunctionNumber = str + '铝塑包装室1';
+                                break;
+                            case 'LSBZ2':
+                                that.taskFunctionNumber = str + '铝塑包装室2';
+                                break;
+                            case 'LSBZ3':
+                                that.taskFunctionNumber = str + '铝塑包装室3';
+                                break;
+                            case 'ZJ':
+                                that.functionNumber = str + '中间站';
+                                break;
+                            case 'QXCK':
+                                that.taskFunctionNumber = str + '容器具清洗室';
+                        }
+                        that.task = '任务:' + ret.data.data.taskDescription;
+                        that.taskContainerNumber = '容器:' + ret.data.data.containerNumber;
+                    }
+                }
+            })
+        }
     },
     created() {
         this.initTable(); //初始化table
         this.showFilterButton(); //筛选按钮
-        this.$nextTick(function () {
-            this.time=setInterval(this.timer, 20000);
+        this.$nextTick(function() {
+            this.time = setInterval(this.timer, 20000);
         })
         storage.getItem('workShopName', event => {
             this.btext = event.data;
         });
+        this.showCarsDetails(); //获取车子当前信息
     },
     mounted() {
-        let self = this;
-        Stark.onmessage = function (event) { 
-           if(event.data==='Assemble!'){
-                self.initTable()
-           }
+        let self = this;
+        Stark.onmessage = function(event) {
+            if (event.data === 'Assemble!') {
+                self.initTable();
+                self.showCarsDetails();
+            }
         }
     }
 }
@@ -286,8 +370,23 @@ export default {
     align-items: center;
     justify-content: center;
 }
-.radio_box{
-    width:702;
+
+.radio_box {
+    width: 702;
     flex-direction: row;
+}
+
+.car_box {
+    width: 710px;
+    margin-bottom: 10px;
+    flex-direction: row;
+    /*align-items: center;
+    justify-content: center;*/
+}
+
+.cars_text {
+    color: #ff6600;
+    font-size: 24px;
+    margin-right: 10px;
 }
 </style>

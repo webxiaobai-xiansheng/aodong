@@ -19,7 +19,7 @@
                 <div class="inputBox">
                     <text class="input-title">库位二维码</text>
                     <div class="input_box">
-                        <input v-model="LocationNum" class="input_item" type="text" placeholder="请输入库位二维码的编号" @input="onInputContainer">
+                        <input v-model="LocationNum" class="input_item" type="number" placeholder="请输入库位二维码的编号" @input="onInputContainer">
                     </div>
                 </div>
             </div>
@@ -37,6 +37,7 @@
         <div class="mask-container">
             <wxc-popup popup-color="#fff" :show="showTable" @wxcPopupOverlayClicked="wxcMaskTableHidden" pos="left" height="400">
                 <div class="table_box">
+                    <text class="table_title">桶与库位绑定列表</text>
                     <div class="table_container">
                         <table class="table">
                             <thead>
@@ -56,15 +57,15 @@
                 </div>
                 <!-- 页码功能 -->
                 <div class="pageButton_box">
-                    <wxc-button text="上一页" type="blue" size="big" :disabled="isPreviewDisabled" @wxcButtonClicked="wxcButtonPreview"></wxc-button>
+                    <wxc-button text="上一页" type="blue" :btn-style="btnStyle" :text-style="textStyle" :disabled="isPreviewDisabled" @wxcButtonClicked="wxcButtonPreview"></wxc-button>
                     <div class="text_box">
                         <text class="page-txt pageNum">{{currentPage}}/{{pages}}</text>
                     </div>
-                    <wxc-button text="下一页" type="blue" size="big" :disabled="isNextDisabled" @wxcButtonClicked="wxcButtonNext"></wxc-button>
+                    <wxc-button text="下一页" type="blue" :btn-style="btnStyle" :text-style="textStyle" :disabled="isNextDisabled" @wxcButtonClicked="wxcButtonNext"></wxc-button>
                 </div>
                 <!-- 返回按钮 -->
                 <div class="pageButton_box">
-                    <wxc-button text="返回" type="blue" size="big" @wxcButtonClicked="back"></wxc-button>
+                    <wxc-button text="返回" type="blue" :btn-style="backStyle" @wxcButtonClicked="back"></wxc-button>
                 </div>
             </wxc-popup>
         </div>
@@ -79,7 +80,6 @@ export default {
     data: () => ({
         ContainerNum: '',
         LocationNum: '',
-        isCheckDisabled: true,
         tableHeadData: ['编号', '桶号', '库位二维码编号'],
         tableBodyData: [],
         isPreviewDisabled: false,
@@ -88,7 +88,17 @@ export default {
         pageSize: 10,
         pages: 0,
         pageNum: 1,
-        showTable: false
+        showTable: false,
+        btnStyle: {
+            width:'218px',
+            height: '70px'
+        },
+        textStyle: {
+            fontSize:'28px'
+        },
+        backStyle: {
+            width: '536px'
+        },
     }),
     methods: {
         //输入桶编号和库位编号
@@ -111,6 +121,8 @@ export default {
                 return;
             } else {
                 let that = this;
+                that.ContainerNum = that.ContainerNum.replace(/\s+/g,"");
+                that.LocationNum = that.LocationNum.replace(/\s+/g,"");
                 let url = 'http://10.34.10.177:8200/containerFunctionLocation/saveContainerFunctionLocation';
                 let body = JSON.stringify({
                     containerFunctionNumber: that.ContainerNum,
@@ -128,9 +140,8 @@ export default {
                     if (ret.status === 200) {
                         if (ret.data.status === 1) {
                             modal.toast({ message: ret.data.message });
-                            that.isCheckDisabled = false;
-                            that.ContainerNum = ' ';
-                            that.LocationNum = ' ';
+                            that.ContainerNum = '';
+                            that.LocationNum = '';
                         } else {
                             modal.toast({ message: ret.data.message });
                         }
@@ -170,9 +181,6 @@ export default {
                     if (ret.data.status === 1) {
                         modal.toast({ message: ret.data.message });
                         that.tableBodyData = data.list;
-                        if (data.list && data.list != '') {
-                            that.isCheckDisabled = false;
-                        }
                         that.pages = data.pages; //页数
                         that.currentPage = data.pageNum; //当前页
                         if (data.pageNum > 1) {
@@ -272,9 +280,6 @@ export default {
 
 .login-txt {
     padding: 20px;
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* flex-direction: column; */
 }
 
 
@@ -328,6 +333,14 @@ export default {
 }
 
 /*table*/
+.table_box{
+    padding-top:30px;
+}
+.table_title{
+    align-items: center;
+    font-size: 34px;
+    text-align: center;
+}
 .table_container {
     align-items: center;
     margin-top: 20px;
@@ -370,11 +383,9 @@ export default {
 /*分页*/
 .pageButton_box {
     flex-direction: row;
-    justify-content: space-around;
+    /*justify-content: space-around;*/
     justify-content: center;
-    margin-top:20px;
-    /* width:400px; */
-    /* background-color: orange; */
+    margin-top:40px;
 }
 .text_box {
     width: 100px;

@@ -10,7 +10,7 @@
         </div>
 
         <div class="button_box">
-            <wxc-button text="桶/库位绑定登录" type="blue" @wxcButtonClicked="onLogin"></wxc-button>
+            <wxc-button text="桶/库位绑定登录" type="blue" :disabled="disabledLogin" @wxcButtonClicked="onLogin"></wxc-button>
         </div>
         <div class="button_box">
             <wxc-button text="返回" type="blue" @wxcButtonClicked="onBlack"></wxc-button>
@@ -29,6 +29,7 @@ export default {
     data: () => ({
         userName: 'admin',
         userPassword: 'admin',
+        disabledLogin: false
     }),
     methods: {
         // 登录按钮
@@ -51,6 +52,7 @@ export default {
                     console.log(ret)
                     if(ret.data.status===1){
                         modal.toast({ message: ret.data.message,duration: 2});
+                        _this.disabledLogin = true;
                         _this.$router.push({name:'containerLoginMessage'});
                     }else{
                         modal.toast({ message: '登录失败！！！',duration: 2});

@@ -1,5 +1,5 @@
 <template>
-  <!-- 批料待发间 -->
+  <!-- 批料待发室 -->
   <div class="home">
     <v-popover-batch></v-popover-batch>
     <v-table class="table"></v-table>

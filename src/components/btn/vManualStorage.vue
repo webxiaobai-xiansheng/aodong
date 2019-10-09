@@ -1,8 +1,11 @@
 <template>
     <!-- 人工入库功能 -->
     <div>
-        <div class="btn" @click="wxcButtonManualStorage">
+        <!-- <div class="btn" @click="wxcButtonManualStorage">
             <text class="btn-txt">人工入库</text>
+        </div> -->
+        <div class="btn">
+            <wxc-button text="人工入库" type="blue" :disabled="isDisabled" :btn-style="btnStyle" @wxcButtonClicked="wxcButtonManualStorage"></wxc-button>
         </div>
         <div class="mask-container">
             <wxc-popup popup-color="#fff" :show="show" @wxcPopupOverlayClicked="wxcMaskSetHidden" pos="left" height="400">
@@ -37,37 +40,58 @@ export default {
         isChoseDisabled: true,
         taskList: [],
         taskId: '',
-        containerNumber: ''
+        containerNumber: '',
+        isDisabled: false,
+        timer: '',
+        btnStyle: {
+            width: '200px',
+            height: '100px',
+            borderRadius: '10px'
+        }
     }),
     methods: {
         // 打开弹窗
         wxcButtonManualStorage(e) {
             this.taskList = [];
             let _this = this;
-            let url = 'http://10.34.10.177:8999/agvTask/getFailureAgvTaskOfContainerNumber';
-            stream.fetch({
-                method: "GET",
-                url: url,
-                type: 'json',
-            }, function(ret) {
-                console.log(ret)
-                if (ret.data.status === 1) {
-                    console.log(ret.data.message);
-                    if (ret.data.message === '没有失败的信息') {
-                        modal.toast({ message: ret.data.message, duration: 2 });
-                        _this.show = false;
-                    } else if (ret.data.message === '有失败的任务') {
-                        if (ret.data.data.length > 0) {
-                            for (let i = 0; i < ret.data.data.length; i++) {
-                                _this.taskList.push({ title: ret.data.data[i].containerNumber, value: ret.data.data[i].taskId })
+            if (e.disabled) {
+                _this.isDisabled = true;
+                return;
+            } else {
+                let url = 'http://10.34.10.177:8999/agvTask/getFailureAgvTaskOfContainerNumber';
+                stream.fetch({
+                    method: "GET",
+                    url: url,
+                    type: 'json',
+                }, function(ret) {
+                    console.log(ret)
+                    if (_this.isDisabled === false) {
+                        if (ret.data.status === 1) {
+                            if (ret.data.message === '没有失败的信息') {
+                                modal.toast({ message: ret.data.message, duration: 2 });
+                                _this.show = false;
+                                _this.isDisabled = true;
+                                clearTimeout(_this.timer);
+                                _this.timer = setTimeout(function() {
+                                    _this.isDisabled = false;
+                                }, 3000)
+                            } else if (ret.data.message === '有失败的任务') {
+                                if (ret.data.data.length > 0) {
+                                    for (let i = 0; i < ret.data.data.length; i++) {
+                                        _this.taskList.push({ title: ret.data.data[i].containerNumber, value: ret.data.data[i].taskId })
+                                    }
+                                    _this.show = true;
+                                } else {
+                                    modal.toast({ message: ret.data.message, duration: 2 });
+                                }
                             }
-                            _this.show = true;
-                        } else {
-                            modal.toast({ message: ret.data.message, duration: 2 });
                         }
+                    } else {
+                        clearTimeout(_this.timer);
+                        return
                     }
-                }
-            })
+                })
+            }
         },
         // 关闭弹窗
         wxcMaskSetHidden() {

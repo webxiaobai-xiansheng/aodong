@@ -17,8 +17,7 @@
         <div class="button_box bottom">
             <wxc-button text="登录" :disabled="isLoginDisabled" type="blue" @wxcButtonClicked="login"></wxc-button>
         </div>
-
-        <wxc-popup popup-color="#fff" :show="show" @wxcPopupOverlayClicked="wxcMaskSetHidden" pos="left" height="400">
+        <wxc-popup popup-color="#fff" :show="show" @wxcPopupOverlayClicked="wxcMaskSetHidden" pos="left" height="800">
             <div class="content mask-content">
                 <div class="mask-title">
                     <text class="title">请选择车间</text>
@@ -50,43 +49,52 @@ export default {
         isLoginDisabled: true,
         isChoseDisabled: true,
         show: false,
-        p:'',
         list: [{
-            title: '批料待发间',
+            title: '批料待发室',
             value: 'WL'
-        }, {
-            title: '制粒间',
-            value: 'ZL'
-        }, {
-            title: '总混间',
-            value: 'ZH'
-        }, {
-            title: '胶囊间1',
-            value: 'JN1'
-        }, {
-            title: '胶囊间2',
-            value: 'JN2'
-        }, {
-            title: '压片间',
-            value: 'YP'
-        }, {
-            title: '包衣间',
-            value: 'BY'
-        }, {
-            title: '瓶装',
-            value: 'PBZ'
-        }, {
-            title: '铝塑包装1',
-            value: 'LSBZ1'
-        }, {
-            title: '铝塑包装2',
-            value: 'LSBZ2'
         }, {
             title: '中间站',
             value: 'ZJ'
         }, {
-            title: '清洗间',
+            title: '容器具清洗室',
             value: 'QXCK'
+        }, {
+            title: '制粒室',
+            value: 'ZL'
+        }, {
+            title: '批混室',
+            value: 'ZH'
+        }, {
+            title: '胶囊填充室1',
+            value: 'JN1'
+        }, {
+            title: '胶囊填充室2',
+            value: 'JN2'
+        }, {
+            title: '胶囊填充室3',
+            value: 'JN3'
+        }, {
+            title: '压片室1',
+            value: 'YP1'
+        }, {
+            title: '压片室2',
+            value: 'YP2'
+        }, {
+            title: '包衣室',
+            value: 'BY'
+        }, {
+            title: '瓶包装室',
+            value: 'PBZ'
+        }, {
+            title: '铝塑包装室1',
+            value: 'LSBZ1'
+        }, {
+            title: '铝塑包装室2',
+            value: 'LSBZ2'
+        }, {
+            title: '铝塑包装室3',
+            value: 'LSBZ3'
+
         }]
     }),
     methods: {
@@ -95,17 +103,9 @@ export default {
             if (this.userName && this.userPassword) {
                 if (this.userName.length < 8) {
                     modal.toast({ message: '账号长度为8位' });
-                    this.isWorkShopDisabled = true;
                 } else if (this.userPassword.length < 8) {
                     modal.toast({ message: '密码长度为8位' });
-                    this.isWorkShopDisabled = true;
-                } else {
-                    if (this.isWorkShopDisabled) {
-                        this.isWorkShopDisabled = false
-                    }
                 }
-            } else if (!this.isWorkShopDisabled) {
-                this.isWorkShopDisabled = true
             }
         },
 
@@ -127,9 +127,7 @@ export default {
                 var workShopName = e.value;
                 var workShopTitle = e.title;
                 storage.setItem('workShopName', workShopName, event => {});
-                storage.setItem('workShopTitle', workShopTitle, event => {
-
-                });
+                storage.setItem('workShopTitle', workShopTitle, event => {});
             }
         },
 
@@ -150,7 +148,7 @@ export default {
 
         // 登录按钮
         login() {
-            let that=this;
+            let that = this;
             let url = 'http://10.34.10.177:8999/user/login';
             let body = JSON.stringify({
                 username: this.userName,
@@ -165,66 +163,58 @@ export default {
             }, function(ret) {
                 if (ret.status === 200) {
                     if (ret.data.status === 1) {
-                        
+                        modal.toast({ message: ret.data.message, duration: 2 });
+                        that.isLoginDisabled = true;
                         storage.getItem('workShopName', event => {
-
                             let getName = event.data;
 
                             // 批料待发
                             if (getName === 'WL') {
                                 that.$router.push({ name: 'batch' });
                             }
-                            // 制粒间和总混间
+                            // 制粒室和批混室
                             if (getName === 'ZL' || getName === 'ZH') {
                                 that.$router.push({ name: 'granulating' });
                             }
-                            // 胶囊间1、胶囊间2、压片间
-                            if (getName === 'JN1' || getName === 'JN2' || getName === 'YP') {
+                            // 胶囊填充室1、胶囊填充室2、胶囊填充室3、压片室1、压片室2
+                            if (getName === 'JN1' || getName === 'JN2' || getName === 'JN3' || getName === 'YP1' || getName === 'YP2') {
                                 that.$router.push({ name: 'capsule' });
                             }
-                            // 包衣间
+                            // 包衣室
                             if (getName === 'BY') {
                                 that.$router.push({ name: 'laggingCover' });
                             }
-                            // 瓶装、铝塑包装1、铝塑包装2（内包间）
-                            if (getName === 'PBZ' || getName === 'LSBZ1' || getName === 'LSBZ2') {
+                            // 瓶包装室、铝塑包装室1、铝塑包装室2、铝塑包装室3（内包间）
+                            if (getName === 'PBZ' || getName === 'LSBZ1' || getName === 'LSBZ2' || getName === 'LSBZ3') {
                                 that.$router.push({ name: 'insourcing' });
                             }
                             // 中间站
                             if (getName === 'ZJ') {
                                 that.$router.push({ name: 'wayStation' });
                             }
-                            // 清洗间（出口）
+                            // 容器具清洗室（出口）
                             if (getName === 'QXCK') {
                                 that.$router.push({ name: 'cleaning' });
                             }
                         });
- 
-                        modal.toast({ message: ret.data.message,duration: 2});
                     } else {
-                        modal.toast({ message: ret.data.message,duration: 2});
+                        modal.toast({ message: ret.data.message, duration: 2 });
                     }
                 } else {
-                    modal.toast({ message: ret.data.message,duration: 2});
+                    modal.toast({ message: ret.data.message, duration: 2 });
                 }
-
             });
         },
-
     },
     created() {
-      storage.getItem('workShopName', event => {
-          console.log(event.data);
-      });
-      storage.getItem('containerNum', event => {
-          console.log(event.data);
-      });
-      let domModule = weex.requireModule('dom');
-      domModule.addRule('fontFace', {
-          'fontFamily': "iconfont",
-          'src': "url('http://at.alicdn.com/t/font_1141918_gqt9dsrnysk.ttf')"
-      });
-      
+        storage.getItem('workShopName', event => {});
+        storage.getItem('containerNum', event => {});
+        let domModule = weex.requireModule('dom');
+        domModule.addRule('fontFace', {
+            'fontFamily': "iconfont",
+            'src': "url('http://at.alicdn.com/t/font_1141918_gqt9dsrnysk.ttf')"
+        });
+
     }
 }
 </script>
@@ -236,10 +226,10 @@ export default {
     margin-top: 80px;
 }
 
-.page_title{
+.page_title {
     margin-bottom: 80px;
     font-size: 40px;
-    color:#333;
+    color: #333;
 }
 
 .input_box {
@@ -250,7 +240,7 @@ export default {
     border-radius: 10;
     margin-bottom: 40;
     padding-left: 10;
-    width:700px;
+    width: 700px;
 }
 
 .input_item {
@@ -286,8 +276,8 @@ export default {
 }
 
 .scroller-box {
-    height: 808;
-    position: absolute !important;
+    height: 808px;
+    /*position: absolute !important;*/
     top: 0;
     right: 0;
     left: 0;
@@ -305,6 +295,6 @@ export default {
 .login-icon {
     padding-top: 25px;
     font-size: 40px;
-    color:#ccc;
+    color: #ccc;
 }
 </style>

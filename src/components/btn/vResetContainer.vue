@@ -73,6 +73,7 @@ export default {
                 return;
             } else {
                 let that = this;
+                that.resetContainerNum = that.resetContainerNum.replace(/\s+/g,"");
                 let url = 'http://10.34.10.177:8999/obtain/workshopBucketManagement';
                 let body = JSON.stringify({
                     functionRoomNumber: that.functionRoomNumber,
@@ -90,6 +91,8 @@ export default {
                     if (ret.status === 200) {
                         if (ret.data.status === 1) {
                             modal.toast({ message: ret.data.message });
+                            that.isResetContainerDisabled = true;
+                            that.resetContainerNum = '';
                         } else {
                             modal.toast({ message: ret.data.message });
                         }

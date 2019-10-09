@@ -8,7 +8,7 @@
                 </div>
             </div>
             <div class="inputBox">
-                <text class="input-title">产品名称</text>
+                <text class="input-title">容器名称</text>
                 <div class="input_box">
                     <text class="input_item" @click="onProduct">{{userProduct}}</text>
                 </div>
@@ -46,7 +46,7 @@
             </div>
         </div>
         <div class="button_box">
-            <wxc-button text="确定" type="blue" @wxcButtonClicked="login"></wxc-button>
+            <wxc-button text="确定" type="blue" @wxcButtonClicked="login" :disabled="isDisabled"></wxc-button>
         </div>
         <div class="button_box">
             <wxc-button text="返回" type="blue" @wxcButtonClicked="black"></wxc-button>
@@ -259,7 +259,8 @@ export default {
         isBottomShow: false,
         // 定时器测试
         count: 0,
-        time: ''
+        time: '',
+        isDisabled: false
     }),
     created() {
         storage.getItem('workShopName', event => {
@@ -382,7 +383,9 @@ export default {
                         modal.toast({ message: ret.data.message, duration: 2 });
                         //    _this.$router.go(-1);
                         _this.time = setInterval(this.timer, 1000);
+                        _this.isDisabled = true;
                     } else {
+                        _this.isDisabled = false;
                         modal.toast({ message: ret.data.message, duration: 2 });
                     }
                 })

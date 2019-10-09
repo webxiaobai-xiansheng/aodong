@@ -29,6 +29,7 @@
             <text class="btn-txtNSS">桶/库位绑定</text>
           </div>
           <v-manual-storage class="contentBox-btn"></v-manual-storage>
+          <v-manual-input class="contentBox-btn"></v-manual-input>
       </div>
     </wxc-mask>
     <wxc-mask height="300"
@@ -61,9 +62,10 @@
   import vWeigh from './btn/vWeigh.vue';
   // 人工入库
   import vManualStorage from './btn/vManualStorage.vue'
+  import vManualInput from './btn/vManualInput.vue'
   const Stark = new BroadcastChannel('Avengers');
   export default {
-    components: { WxcMask,vStop,vStart,vGetSpritzerHopperRinses,vWeigh,vManualStorage },
+    components: { WxcMask,vStop,vStart,vGetSpritzerHopperRinses,vWeigh,vManualStorage,vManualInput },
     data: () => ({
       showBusiness: false,
       showFunction:false,
