@@ -50,16 +50,17 @@ export default {
                         method: "GET",
                         url: url,
                         type: 'json',
+                        timeout: 30000
                     }, function(ret) {
-                        _this.isDisabled = false;
-                        storage.removeItem('containerNum', event => {});
-                        // 订阅者
-                        const Steve = new BroadcastChannel('Avengers')
-                        Steve.postMessage('Assemble!')
                         if (ret.data.status === 1) {
                             modal.toast({ message: ret.data.message, duration: 2 });
+                            _this.isDisabled = false;
+                            // 订阅者
+                            const Steve = new BroadcastChannel('Avengers')
+                            Steve.postMessage('Assemble!')
                         } else {
                             modal.toast({ message: ret.data.message, duration: 2 });
+                            _this.isDisabled = false;
                         }
                     })
                 } else {
@@ -69,7 +70,7 @@ export default {
             }
         }
     },
-     destroyed() {
+    destroyed() {
         clearInterval(this.timer); // 清除定时器
         this.timer = null;
     },

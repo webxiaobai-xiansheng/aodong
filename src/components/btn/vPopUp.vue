@@ -382,7 +382,7 @@ export default {
                         Steve.postMessage('Assemble!')
                         modal.toast({ message: ret.data.message, duration: 2 });
                         //    _this.$router.go(-1);
-                        _this.time = setInterval(this.timer, 1000);
+                        _this.time = setInterval(_this.timer, 1000);
                         _this.isDisabled = true;
                     } else {
                         _this.isDisabled = false;

@@ -53,12 +53,6 @@ export default {
             title: '批料待发室',
             value: 'WL'
         }, {
-            title: '中间站',
-            value: 'ZJ'
-        }, {
-            title: '容器具清洗室',
-            value: 'QXCK'
-        }, {
             title: '制粒室',
             value: 'ZL'
         }, {
@@ -94,7 +88,12 @@ export default {
         }, {
             title: '铝塑包装室3',
             value: 'LSBZ3'
-
+        }, {
+            title: '中间站',
+            value: 'ZJ'
+        }, {
+            title: '容器具清洗室',
+            value: 'QXCK'
         }]
     }),
     methods: {

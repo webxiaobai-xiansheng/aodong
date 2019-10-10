@@ -60,14 +60,16 @@ export default {
                         headers: { 'Content-Type': 'application/json' },
                         body: body,
                         type: 'json',
+                        timeout: 30000
                     }, function(ret) {
-                        _this.isDisabled = false;
                         if (ret.data.status === 1) {
                             const Steve = new BroadcastChannel('Avengers')
                             Steve.postMessage('Assemble!')
                             modal.toast({ message: ret.data.message, duration: 2 });
+                            _this.isDisabled = false;
                         } else {
                             modal.toast({ message: ret.data.message + '请尝试其他操作', duration: 2 });
+                            _this.isDisabled = false;
                         }
                     })
                 } else {

@@ -48,9 +48,10 @@ export default {
                     method: "GET",
                     url: url,
                     type: 'json',
+                    timeout: 30000
                 }, function(ret) {
-                    _this.isDisabled = false;
                     if (ret.data.status === 1) {
+                        _this.isDisabled = false;
                         if (ret.data.data.length > 0) {
                             _this.$router.push({ name: 'popUp' })
                         } else {

@@ -71,10 +71,12 @@ export default {
                     method: "GET",
                     url: url,
                     type: 'json',
+                    timeout: 30000
                 }, function(ret) {
                     console.log(ret);
-                    _this.isDisabled = false;
+                    
                     if (ret.data.status === 1) {
+                        _this.isDisabled = false;
                         if (ret.data.data.length > 0) {
                             _this.show = true;
                             for (let i = 0; i < ret.data.data.length; i++) {
@@ -82,7 +84,6 @@ export default {
                             }
                         } else {
                             modal.toast({ message: '该车间没有料斗，请尝试其他操作', duration: 2 });
-                            _this.isDisabled = false;
                         }
                     }
                 })

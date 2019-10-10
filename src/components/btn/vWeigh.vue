@@ -25,7 +25,6 @@ export default {
     methods: {
         wxcButtonWeigh(e) {
             let _this = this;
-            _this.time = setInterval(_this.timer, 1000);
             _this.isDisabled = true;
             if (e.disabled) {
                 _this.isDisabled = true;
@@ -39,15 +38,17 @@ export default {
                     headers: { 'Content-Type': 'application/json' },
                     body: body,
                     type: 'json',
+                    timeout: 30000
                 }, function(ret) {
                     console.log(ret)
                     if (ret.data.status === 1) {
                         const Steve = new BroadcastChannel('Avengers');
                         Steve.postMessage('Assemble!');
-                        _this.isDisabled = false;
                         modal.toast({ message: ret.data.message, duration: 2 });
+                        _this.isDisabled = false;
                     } else {
                         modal.toast({ message: ret.data.message + '3秒后尝试', duration: 2 });
+                        _this.isDisabled = false;
                     }
                 });
             }

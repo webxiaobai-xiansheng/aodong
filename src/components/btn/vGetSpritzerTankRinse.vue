@@ -75,9 +75,11 @@ export default {
                     method: "GET",
                     url: url,
                     type: 'json',
+                    timeout: 30000
                 }, function(ret) {
-                    _this.isDisabled = false;
+                    
                     if (ret.data.status === 1) {
+                        _this.isDisabled = false;
                         if (ret.data.data.length > 0) {
                             for (let i = 0; i < ret.data.data.length; i++) {
                                 _this.emptyContainerList.push({ title: ret.data.data[i].containerNumber, value: ret.data.data[i].containerNumber })
@@ -85,7 +87,6 @@ export default {
                             _this.show = true
                         } else {
                             modal.toast({ message: '该车间没有料桶，请尝试其他操作', duration: 2 });
-                            _this.isDisabled = false;
                         }
                     }
 

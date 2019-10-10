@@ -114,7 +114,8 @@ export default {
         btext: '',
         taskFunctionNumber: '',
         taskContainerNumber: '',
-        task: ''
+        task: '',
+        taskTimer: ''
     }),
     methods: {
 
@@ -344,10 +345,11 @@ export default {
                 type: 'json',
             }, function(ret) {
                 if (ret.data.status === 1) {
+                    console.log('定时器')
                     if (ret.data.message === '当前没有执行任务') {
                         that.taskFunctionNumber = '';
                         that.taskContainerNumber = '';
-                        that.task = ''+ret.data.message+'';
+                        that.task = '' + ret.data.message + '';
                     } else {
                         let str = '车间:'
                         switch (ret.data.data.functionNumber) {
@@ -406,13 +408,13 @@ export default {
     created() {
         this.initTable(); //初始化table
         this.showFilterButton(); //筛选按钮
-        this.$nextTick(function() {
-            this.time = setInterval(this.timer, 20000);
-        })
         storage.getItem('workShopName', event => {
             this.btext = event.data;
         });
         this.showCarsDetails(); //获取车子当前信息
+        this.$nextTick(function() {
+            this.taskTimer = setInterval(this.showCarsDetails, 1000);
+        });
     },
     mounted() {
         let self = this;

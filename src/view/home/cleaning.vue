@@ -115,34 +115,43 @@ export default {
             this.show = false;
         },
         // 确认按钮
-        onClack() {
+        onClack(e) {
             let _this = this;
-            if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
-                let url = 'http://10.34.10.177:8999/delivery/sendEmptyContainer';
-                let body = JSON.stringify({
-                    containerNumber: _this.containerNum,
-                    functionRoomNumber: _this.workshopName
-                });
-                stream.fetch({
-                    method: "POST",
-                    url: url,
-                    headers: { 'Content-Type': 'application/json' },
-                    body: body,
-                    type: 'json',
-                }, function(ret) {
-                    if (ret.data.status === 1) {
-                        _this.isDisabled = true;
-                        _this.containerNum = ' ';
-                        const Steve = new BroadcastChannel('Avengers');
-                        Steve.postMessage('Assemble!');
-                        modal.toast({ message: ret.data.message, duration: 2 });
-                    } else {
-                        _this.containerNum = ' ';
-                        modal.toast({ message: ret.data.message, duration: 2 });
-                    }
-                })
+            _this.isDisabled = true;
+            if (e.disabled) {
+                _this.isDisabled = true;
+                return;
             } else {
-                modal.toast({ message: '请输入桶编号', duration: 2 });
+                if (this.containerNum !== 'undefined' && this.workshopName !== 'undefined') {
+                    let url = 'http://10.34.10.177:8999/delivery/sendEmptyContainer';
+                    let body = JSON.stringify({
+                        containerNumber: _this.containerNum,
+                        functionRoomNumber: _this.workshopName
+                    });
+                    stream.fetch({
+                        method: "POST",
+                        url: url,
+                        headers: { 'Content-Type': 'application/json' },
+                        body: body,
+                        type: 'json',
+                        timeout: 30000
+                    }, function(ret) {
+                        if (ret.data.status === 1) {
+                            _this.containerNum = ' ';
+                            modal.toast({ message: ret.data.message, duration: 2 });
+                            const Steve = new BroadcastChannel('Avengers');
+                            Steve.postMessage('Assemble!');
+                            _this.isDisabled = false;
+                        } else {
+                            _this.containerNum = ' ';
+                            modal.toast({ message: ret.data.message, duration: 2 });
+                            _this.isDisabled = false;
+                        }
+                    })
+                } else {
+                    modal.toast({ message: '请输入桶编号', duration: 2 });
+                    _this.isDisabled = false;
+                }
             }
         }
     }

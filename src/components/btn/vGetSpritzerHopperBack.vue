@@ -79,9 +79,10 @@ export default {
                     method: "GET",
                     url: url,
                     type: 'json',
+                    timeout: 30000
                 }, function(ret) {
-                    _this.isDisabled = false;
                     if (ret.data.status === 1) {
+                        _this.isDisabled = false;
                         if (ret.data.data.length > 0) {
                             for (let i = 0; i < ret.data.data.length; i++) {
                                 _this.emptyContainerList.push({ title: ret.data.data[i].containerNumber, value: ret.data.data[i].containerNumber })

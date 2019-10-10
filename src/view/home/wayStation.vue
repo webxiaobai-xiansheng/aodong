@@ -40,6 +40,7 @@
 <script>
 const modal = weex.requireModule('modal');
 const stream = weex.requireModule('stream');
+// const Stark = new BroadcastChannel('Avengers');
 import vPopoverWay from '../../components/vPopoverWay';
 import wayTable from '../../components/wayTable';
 import { WxcButton, WxcPopup } from 'weex-ui';
@@ -54,7 +55,7 @@ export default {
             time: '',
             showlist: false,
             confirmDisabled: false,
-            cancelDisabled:false
+            cancelDisabled: false
         }
     },
     components: {
@@ -71,7 +72,6 @@ export default {
     methods: {
         timer() {
             let _this = this;
-
             let url = 'http://10.34.10.177:8999/agvTask/getReviewTask';
             stream.fetch({
                 method: "GET",
@@ -89,49 +89,49 @@ export default {
 
                         switch (ret.data.data.functionNumber) {
                             case 'WL':
-                            _this.functionNumber = '批料待发室';
-                            break;
-                        case 'ZH':
-                            _this.functionNumber = '批混室';
-                            break;
-                        case 'ZL':
-                            _this.functionNumber = '制粒室';
-                            break;
-                        case 'JN1':
-                            _this.functionNumber = '胶囊填充室1';
-                            break;
-                        case 'JN2':
-                            _this.functionNumber = '胶囊填充室2';
-                            break;
-                        case 'JN3':
-                            _this.functionNumber = '胶囊填充室3';
-                            break;
-                        case 'YP1':
-                            _this.functionNumber = '压片室1';
-                            break;
-                        case 'YP2':
-                            _this.functionNumber = '压片室2';
-                            break;
-                        case 'BY':
-                            _this.functionNumber = '包衣室';
-                            break;
-                        case 'PBZ':
-                            _this.functionNumber = '瓶包装室';
-                            break;
-                        case 'LSBZ1':
-                            _this.functionNumber = '铝塑包装室1';
-                            break;
-                        case 'LSBZ2':
-                            _this.functionNumber = '铝塑包装室2';
-                            break;
-                        case 'LSBZ3':
-                            _this.functionNumber = '铝塑包装室3';
-                            break;
-                        case 'ZJ':
-                            _this.functionNumber = '中间站';
-                            break;
-                        case 'QXCK':
-                            _this.functionNumber = '容器具清洗室';
+                                _this.functionNumber = '批料待发室';
+                                break;
+                            case 'ZH':
+                                _this.functionNumber = '批混室';
+                                break;
+                            case 'ZL':
+                                _this.functionNumber = '制粒室';
+                                break;
+                            case 'JN1':
+                                _this.functionNumber = '胶囊填充室1';
+                                break;
+                            case 'JN2':
+                                _this.functionNumber = '胶囊填充室2';
+                                break;
+                            case 'JN3':
+                                _this.functionNumber = '胶囊填充室3';
+                                break;
+                            case 'YP1':
+                                _this.functionNumber = '压片室1';
+                                break;
+                            case 'YP2':
+                                _this.functionNumber = '压片室2';
+                                break;
+                            case 'BY':
+                                _this.functionNumber = '包衣室';
+                                break;
+                            case 'PBZ':
+                                _this.functionNumber = '瓶包装室';
+                                break;
+                            case 'LSBZ1':
+                                _this.functionNumber = '铝塑包装室1';
+                                break;
+                            case 'LSBZ2':
+                                _this.functionNumber = '铝塑包装室2';
+                                break;
+                            case 'LSBZ3':
+                                _this.functionNumber = '铝塑包装室3';
+                                break;
+                            case 'ZJ':
+                                _this.functionNumber = '中间站';
+                                break;
+                            case 'QXCK':
+                                _this.functionNumber = '容器具清洗室';
                         }
                         // _this.functionNumber=ret.data.data.functionNumber;
                         _this.containerNumber = ret.data.data.containerNumber;
@@ -147,67 +147,86 @@ export default {
         popupOverlayBottomClick() {
             this.showproduct = false;
         },
-        wxcChoseAllow() {
+        wxcChoseAllow(e) {
             let _this = this;
+            _this.confirmDisabled = true;
+            _this.showproduct = false;
+            if (e.disabled) {
+                _this.confirmDisabled = true;
+                return;
+            } else {
+                let url = 'http://10.34.10.177:8999/obtain/reviewVerify';
+                let body = JSON.stringify({
+                    taskId: _this.id,
+                    functionNumber: _this.functionNumber,
+                    containerNumber: _this.containerNumber,
+                    drugName: _this.productName
+                });
+                stream.fetch({
+                    method: "POST",
+                    url: url,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: body,
+                    type: 'json',
+                    timeout:30000
+                }, function(ret) {
+                    // 订阅者
+                    const Steve = new BroadcastChannel('Avengers')
+                    Steve.postMessage('Assemble!')
+                    if (ret.data.status === 1) {
+                        modal.toast({ message: ret.data.message, duration: 2 });
+                        _this.showproduct = false;
+                        setInterval(_this.timer, 10000);
+                        _this.showlist = false;
+                        _this.confirmDisabled = false;
+                    } else {
+                        modal.toast({ message: ret.data.message, duration: 2 });
+                        _this.confirmDisabled = false;
+                    }
+                })
+            }
 
-            let url = 'http://10.34.10.177:8999/obtain/reviewVerify';
-            let body = JSON.stringify({
-                taskId: _this.id,
-                functionNumber: _this.functionNumber,
-                containerNumber: _this.containerNumber,
-                drugName: _this.productName
-            });
-            stream.fetch({
-                method: "POST",
-                url: url,
-                headers: { 'Content-Type': 'application/json' },
-                body: body,
-                type: 'json',
-            }, function(ret) {
-                if (ret.data.status === 1) {
-                    _this.wxcChoseAllow = true;
-                    modal.toast({ message: ret.data.message, duration: 2 });
-                    _this.showproduct = false;
-                    setInterval(_this.timer, 10000);
-                    _this.showlist = false;
-                } else {
-                    modal.toast({ message: ret.data.message, duration: 2 });
-                }
-            })
         },
-        wxcChoseRefuse() {
+        wxcChoseRefuse(e) {
             let _this = this;
+            _this.cancelDisabled = true;
+            if (e.disabled) {
+                _this.cancelDisabled = true;
+                return;
+            } else {
+                let url = 'http://10.34.10.177:8999/obtain/reviewRefuse';
+                let body = JSON.stringify({
+                    taskId: _this.id,
+                    functionNumber: _this.functionNumber,
+                    containerNumber: _this.containerNumber,
+                    drugName: _this.productName
+                });
+                stream.fetch({
+                    method: "POST",
+                    url: url,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: body,
+                    type: 'json',
+                }, function(ret, callback, progressCallback) {
+                    if (ret.data.status === 1) {
+                        _this.cancelDisabled = false;
+                        modal.toast({ message: ret.data.message, duration: 2 });
+                        _this.showproduct = false;
+                        setInterval(_this.timer, 10000);
+                        _this.showlist = false;
+                    } else {
+                        modal.toast({ message: ret.data.message, duration: 2 });
+                        _this.cancelDisabled = false;
+                    }
+                })
+            }
 
-            let url = 'http://10.34.10.177:8999/obtain/reviewRefuse';
-            let body = JSON.stringify({
-                taskId: _this.id,
-                functionNumber: _this.functionNumber,
-                containerNumber: _this.containerNumber,
-                drugName: _this.productName
-            });
-            stream.fetch({
-                method: "POST",
-                url: url,
-                headers: { 'Content-Type': 'application/json' },
-                body: body,
-                type: 'json',
-            }, function(ret, callback, progressCallback) {
-                if (ret.data.status === 1) {
-                    _this.cancelDisabled = true;
-                    modal.toast({ message: ret.data.message, duration: 2 });
-                    _this.showproduct = false;
-                    setInterval(_this.timer, 10000);
-                    _this.showlist = false;
-                } else {
-                    modal.toast({ message: ret.data.message, duration: 2 });
-                }
-            })
         }
     },
     destroyed() {
         clearInterval(this.timer); // 清除定时器
         this.timer = null;
-    },
+    }
 }
 </script>
 <style scoped>
